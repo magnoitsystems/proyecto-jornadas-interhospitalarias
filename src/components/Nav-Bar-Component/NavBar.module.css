@@ -1,0 +1,128 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem;
+    background: rgba(0, 0, 0, 0.2); /* Fondo transparente con toque oscuro */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    z-index: 1000;
+    /* Sombreado arriba del navbar */
+    box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.3), 
+                0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+/* Menú de navegación */
+.menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.menu li {
+    margin: 0;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem; /* Aumentado de 1rem a 1.1rem */
+    font-weight: 500;
+    padding: 0.7rem 1.2rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Efecto hover general */
+.menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.menu a:hover::after {
+    width: 80%;
+}
+
+/* Colores específicos para cada sección en hover - SIN background-color */
+.homeLink:hover {
+    color: #ff6b6b;
+    transform: translateY(-2px);
+}
+
+.homeLink:hover::after {
+    background-color: #ff6b6b;
+}
+
+.autoridadesLink:hover {
+    color: #4ecdc4;
+    transform: translateY(-2px);
+}
+
+.autoridadesLink:hover::after {
+    background-color: #4ecdc4;
+}
+
+.invitadosLink:hover {
+    color: #45b7d1;
+    transform: translateY(-2px);
+}
+
+.invitadosLink:hover::after {
+    background-color: #45b7d1;
+}
+
+.programaLink:hover {
+    color: #f9ca24;
+    transform: translateY(-2px);
+}
+
+.programaLink:hover::after {
+    background-color: #f9ca24;
+}
+
+.inscripcionLink:hover {
+    color: #f0932b;
+    transform: translateY(-2px);
+}
+
+.inscripcionLink:hover::after {
+    background-color: #f0932b;
+}
+
+.trabajosLink:hover {
+    color: #eb4d4b;
+    transform: translateY(-2px);
+}
+
+.trabajosLink:hover::after {
+    background-color: #eb4d4b;
+}
+
+.sponsorsLink:hover {
+    color: #6c5ce7;
+    transform: translateY(-2px);
+}
+
+.sponsorsLink:hover::after {
+    background-color: #6c5ce7;
+}
