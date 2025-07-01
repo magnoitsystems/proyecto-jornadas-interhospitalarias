@@ -5,8 +5,12 @@ import Image from 'next/image';
 import styles from './NavBar.module.css';
 import { JSX } from 'react';
 import {cactus} from "@/app/ui/fonts"
+import { usePathname } from 'next/navigation';
 
 export default function NavBar(): JSX.Element {
+
+    const pathname = usePathname();
+
     return (
         <nav className={styles.navbar}>
             {/* Logo a la izquierda */}
@@ -24,14 +28,63 @@ export default function NavBar(): JSX.Element {
 
             {/* Menú a la derecha */}
             <ul className={styles.menu}>
-                <li><Link href="/" className={`${styles.homeLink} ${cactus.className}`}>Home</Link></li>
-                <li><Link href="/autoridades" className={`${styles.autoridadesLink} ${cactus.className}`}>Autoridades</Link></li>
-                <li><Link href="/invitados" className={`${styles.invitadosLink} ${cactus.className}`}>Invitados</Link></li>
-                <li><Link href="/programa" className={`${styles.programaLink} ${cactus.className}`}>Programa</Link></li>
-                <li><Link href="/inscripcion" className={`${styles.inscripcionLink} ${cactus.className}`}>Inscripción</Link></li>
-                <li><Link href="/trabajos" className={`${styles.trabajosLink} ${cactus.className}`}>Trabajos</Link></li>
-                <li><Link href="/sponsors" className={`${styles.sponsorsLink} ${cactus.className}`}>Sponsors</Link></li>
-            </ul>
+        <li>
+          <Link
+            href="/"
+            className={`${styles.homeLink} ${cactus.className} ${pathname === '/' ? styles.activeLink : ''}`}
+          >
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/autoridades"
+            className={`${styles.autoridadesLink} ${cactus.className} ${pathname === '/autoridades' ? styles.activeLink : ''}`}
+          >
+            Autoridades
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/invitados"
+            className={`${styles.invitadosLink} ${cactus.className} ${pathname === '/invitados' ? styles.activeLink : ''}`}
+          >
+            Invitados
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/programa"
+            className={`${styles.programaLink} ${cactus.className} ${pathname === '/programa' ? styles.activeLink : ''}`}
+          >
+            Programa
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/inscripcion"
+            className={`${styles.inscripcionLink} ${cactus.className} ${pathname === '/inscripcion' ? styles.activeLink : ''}`}
+          >
+            Inscripción
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/trabajos"
+            className={`${styles.trabajosLink} ${cactus.className} ${pathname === '/trabajos' ? styles.activeLink : ''}`}
+          >
+            Trabajos
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/sponsors"
+            className={`${styles.sponsorsLink} ${cactus.className} ${pathname === '/sponsors' ? styles.activeLink : ''}`}
+          >
+            Sponsors
+          </Link>
+        </li>
+      </ul>
         </nav>
     );
 }

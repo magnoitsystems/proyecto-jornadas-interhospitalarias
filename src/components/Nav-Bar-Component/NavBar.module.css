@@ -127,3 +127,31 @@
 .sponsorsLink:hover::after {
     background-color: var(--primary-color-7);
 }
+
+.homeLink.activeLink {
+  color: var(--primary-color-1);
+}
+
+.autoridadesLink.activeLink {
+  color: var(--primary-color-4);
+}
+
+.invitadosLink.activeLink {
+  color: var(--primary-color-2);
+}
+
+.programaLink.activeLink {
+  color: var(--primary-color-6);
+}
+
+.inscripcionLink.activeLink {
+  color: var(--primary-color-3);
+}
+
+.trabajosLink.activeLink {
+  color: var(--primary-color-5);
+}
+
+.sponsorsLink.activeLink {
+  color: var(--primary-color-7);
+}
