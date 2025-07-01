@@ -1,15 +1,16 @@
-import styles from './SectionTitle.module.css';
+import styles from './sectionTitle.module.css';
 import Image from "next/image";
 import {cactus} from "@/app/ui/fonts";
 
 type Props = {
     section: string;
     imgSrc: string;
+    className: string;
 };
 
-export default function Title({section, imgSrc}: Props){
+export default function Title({section, imgSrc, className}: Props){
     return(
-        <main className={`${cactus.className} ${styles.main}`}>
+        <main className={`${cactus.className} ${styles[className]}`}>
             <div className={styles.icon}>
                 <Image
                     src={imgSrc}
