@@ -13,7 +13,7 @@ export default function NavBar(): JSX.Element {
             <div className={styles.logo}>
                 <Link href="/">
                     <Image
-                        src={'/imgs/jornadas-logo.png'}
+                        src={'/imgs/nav-logo.png'}
                         alt={'interhospitalities meeting logo'}
                         width={392}
                         height={61}
