@@ -6,6 +6,7 @@ export default function Programa(){
             <SectionTitle
                 section={'Programa'}
                 imgSrc={'/icons/programa.png'}
+                className={'programaTitle'}
             />
         </main>
     )
