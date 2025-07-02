@@ -1,0 +1,229 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #1e1a1a;
+  color: white;
+  padding: 2rem;
+  position: relative;
+  font-family: 'Georgia', serif;
+  flex-wrap: wrap;
+}
+
+.leftSection,
+.centerSection {
+  flex: 1;
+}
+
+.rightSection {
+  background-color: white;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 250px;
+}
+
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  object-fit: contain;
+  max-width: 100%;
+  height: auto;
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.item {
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.item a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.3rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.link {
+  color: white;
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: #ccc;
+}
+
+
+.homeLink:hover {
+    color: var(--primary-color-1);
+    transform: translateY(-2px);
+}
+
+.homeLink:hover::after {
+    background-color: var(--primary-color-1);
+}
+
+.autoridadesLink:hover {
+    color: var(--primary-color-4);
+    transform: translateY(-2px);
+}
+
+.autoridadesLink:hover::after {
+    background-color: var(--primary-color-4);
+}
+
+.invitadosLink:hover {
+    color: var(--primary-color-2);
+    transform: translateY(-2px);
+}
+
+.invitadosLink:hover::after {
+    background-color: var(--primary-color-2);
+}
+
+.programaLink:hover {
+    color: var(--primary-color-6);
+    transform: translateY(-2px);
+}
+
+.programaLink:hover::after {
+    background-color: var(--primary-color-6);
+}
+
+.inscripcionLink:hover {
+    color: var(--primary-color-3);
+    transform: translateY(-2px);
+}
+
+.inscripcionLink:hover::after {
+    background-color: var(--primary-color-3);
+}
+
+.trabajosLink:hover {
+    color: var(--primary-color-5);
+    transform: translateY(-2px);
+}
+
+.trabajosLink:hover::after {
+    background-color: var(--primary-color-5);
+}
+
+.sponsorsLink:hover {
+    color: var(--primary-color-7);
+    transform: translateY(-2px);
+}
+
+.sponsorsLink:hover::after {
+    background-color: var(--primary-color-7);
+}
+
+.homeLink.activeLink {
+    color: var(--primary-color-1);
+}
+
+.autoridadesLink.activeLink {
+    color: var(--primary-color-4);
+}
+
+.invitadosLink.activeLink {
+    color: var(--primary-color-2);
+}
+
+.programaLink.activeLink {
+    color: var(--primary-color-6);
+}
+
+.inscripcionLink.activeLink {
+    color: var(--primary-color-3);
+}
+
+.trabajosLink.activeLink {
+    color: var(--primary-color-5);
+}
+
+.sponsorsLink.activeLink {
+    color: var(--primary-color-7);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+
+/* Transición base para todos los dots */
+.dotHome,
+.dotAutoridades,
+.dotInvitados,
+.dotPrograma,
+.dotInscripcion,
+.dotTrabajos,
+.dotSponsors {
+  transition: filter 0.2s ease;
+}
+
+.item:hover .dotHome,
+.item:focus-within .dotHome {
+  filter: brightness(0) saturate(100%) invert(15%) sepia(92%) saturate(5452%) hue-rotate(353deg) brightness(97%) contrast(103%);
+}
+
+/* Hover o focus en el item => cambia el ícono a color correspondiente */
+.item:hover .dotAutoridades,
+.item:focus-within .dotAutoridades {
+  filter: brightness(0.7) saturate(6) hue-rotate(200deg);
+
+}
+
+.item:hover .dotInvitados,
+.item:focus-within .dotInvitados {
+  filter: brightness(1.1) saturate(4) hue-rotate(35deg);
+
+}
+
+.item:hover .dotPrograma,
+.item:focus-within .dotPrograma {
+  filter: invert(34%) sepia(97%) saturate(1134%) hue-rotate(85deg) brightness(94%) contrast(105%);
+}
+
+.item:hover .dotInscripcion,
+.item:focus-within .dotInscripcion {
+  filter: invert(59%) sepia(61%) saturate(470%) hue-rotate(171deg) brightness(93%) contrast(98%);
+}
+
+.item:hover .dotTrabajos,
+.item:focus-within .dotTrabajos {
+ filter: brightness(1.2) saturate(7) hue-rotate(5deg);
+}
+
+.item:hover .dotSponsors,
+.item:focus-within .dotSponsors {
+filter: brightness(0.6) saturate(8) hue-rotate(280deg);
+
+}
+
+
