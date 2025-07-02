@@ -1,29 +1,28 @@
-import NavBar from "@/components/general/NavBarComponent/NavBar";
-import SectionTitle from "@/components/general/SectionTitle/SectionTitle";
+import Title from "@/components/general/SectionTitle/SectionTitle";
 import Summery from "@/components/programa/ProgramSummery/programSummery";
 
 export default function Programa(){
     return(
         <main>
-            <SectionTitle
+            <Title
                 section={'Programa'}
                 imgSrc={'/icons/programa.png'}
                 className={'programTitle'}
             />
             <Summery
                 date={'Miércoles 05 de Noviembre'}
-                eventos={['Acreditación de actividades pre-jornadas',
-                    'Apertura Jornadas Vacunas',
-                    'Taller Jornada Actualización Inmunizaciones',
-                    'Acreditaciones Jornadas',
-                    'Talleres para enfermería MUMBAT Sedoanalgesia Neonatología',
-                    '--- Prevención cardiovascular y envejecimiento vascular en pediatría',
-                    '--- HTA',
-                    '--- Obesidad y SME metabólico',
-                    '--- Prescripción de actividad física ene pediatría y controles',
-                    '--- Enfermedades crónicas, adecuación y transición a clínica médica',
-                    '--- Novedades de calendario 2026 Salón Blanco',
-                    'Acto inaugural'
+                eventos={['--- Acreditación de actividades pre-jornadas',
+                    '--- Apertura Jornadas Vacunas',
+                    '--- Taller Jornada Actualización Inmunizaciones',
+                    '--- Acreditaciones Jornadas',
+                    '--- Talleres para enfermería MUMBAT Sedoanalgesia - Neonatología:',
+                    '• Prevención cardiovascular y envejecimiento vascular en pediatría',
+                    '• HTA',
+                    '• Obesidad y SME metabólico',
+                    '• Prescripción de actividad física ene pediatría y controles',
+                    '• Enfermedades crónicas, adecuación y transición a clínica médica',
+                    '• Novedades de calendario 2026 Salón Blanco',
+                    '--- Acto inaugural'
                 ]}
                 invitados={['Dra. Angela Gentile',
                     'Dra. Florencia Bruggesser',
@@ -43,16 +42,16 @@ export default function Programa(){
             <Summery
                 date={'Jueves 06 de Noviembre'}
                 eventos={[
-                    'Presentación de posters',
-                    'Talleres de la Jornada',
-                    '--- Seguridad del paciente y calidad',
-                    '--- Simulación',
-                    '--- Simposio vacunas: VSR y Prevenar 20',
-                    '--- De Freud a la biología molecular. Actualidad del neurodesarrollo 130 años después',
-                    '--- Patología en salud mental en internación',
-                    '--- Presentación y diálogo con expertos',
-                    '--- Abordaje integral en TCA',
-                    '--- Nuevas Estrategias de Rehidratación'
+                    '--- Presentación de posters',
+                    '--- Talleres de la Jornada:',
+                    '• Seguridad del paciente y calidad',
+                    '• Simulación',
+                    '• Simposio vacunas: VSR y Prevenar 20',
+                    '• De Freud a la biología molecular. Actualidad del neurodesarrollo 130 años después',
+                    '• Patología en salud mental en internación',
+                    '• Presentación y diálogo con expertos',
+                    '• Abordaje integral en TCA',
+                    '• Nuevas Estrategias de Rehidratación'
                 ]}
                 invitados={[
                     'Dr. Tomás Baliña',
@@ -82,16 +81,16 @@ export default function Programa(){
             <Summery
                 date={'Viernes 07 de Noviembre'}
                 eventos={[
-                    'Talleres de la jornada',
-                    '--- Talleres de simulación (HTAL DBV)',
-                    '--- Reunión del Comité de Ética',
-                    '--- Trauma: Incidentes con víctimas múltiples',
-                    '--- Neurodesarrollo: Selectividad alimentaria',
-                    '--- Endocrinología. Tratamiento obesidad con análogos GLP1',
-                    '--- Simposio Takeda. Dengue',
-                    '--- Innovación Tecnológica/IA',
-                    '--- Procuración de órganos y trasplante (Comunidad)',
-                    'Cierre - Cocktail despedida 20:30hs'
+                    '--- Talleres de la jornada:',
+                    '• Talleres de simulación (HTAL DBV)',
+                    '• Reunión del Comité de Ética',
+                    '• Trauma: Incidentes con víctimas múltiples',
+                    '• Neurodesarrollo: Selectividad alimentaria',
+                    '• Endocrinología. Tratamiento obesidad con análogos GLP1',
+                    '• Simposio Takeda. Dengue',
+                    '• Innovación Tecnológica/IA',
+                    '• Procuración de órganos y trasplante (Comunidad)',
+                    '--- Cierre - Cocktail despedida 20:30hs'
                 ]}
                 invitados={[
                     'Dr. Miguel del Valle',
