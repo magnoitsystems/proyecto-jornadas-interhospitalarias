@@ -1,11 +1,10 @@
-import NavBar from "@/components/general/NavBarComponent/NavBar";
-import SectionTitle from "@/components/general/SectionTitle/SectionTitle";
+import Title from "@/components/general/SectionTitle/SectionTitle";
 import Summery from "@/components/programa/ProgramSummery/programSummery";
 
 export default function Programa(){
     return(
         <main>
-            <SectionTitle
+            <Title
                 section={'Programa'}
                 imgSrc={'/icons/programa.png'}
                 className={'programTitle'}
