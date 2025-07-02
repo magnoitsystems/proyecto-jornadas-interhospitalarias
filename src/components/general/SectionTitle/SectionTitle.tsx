@@ -58,5 +58,5 @@ export default function Title({section, imgSrc, className}: Props){
                 <h1>{section}</h1>
             </div>
         </main>
-    );
+    )
 }

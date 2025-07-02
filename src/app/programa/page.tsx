@@ -1,3 +1,4 @@
+import NavBar from "@/components/general/NavBarComponent/NavBar";
 import SectionTitle from "@/components/general/SectionTitle/SectionTitle";
 import Summery from "@/components/programa/ProgramSummery/programSummery";
 
