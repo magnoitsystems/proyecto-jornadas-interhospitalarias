@@ -1,4 +1,4 @@
-.programaTitle{
+.programTitle, .authoritiesTitle, .guestsTitle, .signinupTitle, .assignmentTitle{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -7,6 +7,7 @@
     width: 90%;
     height: 75px;
     margin: auto;
+    margin-top: var(--20px);
 
     border: 1px solid var(--secondary-color-5);
     border-radius: 5px;
@@ -20,8 +21,8 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 55px;
-    max-width: 55px;
+    height: 40px;
+    max-width: 40px;
     margin-right: 1.5rem;
 
     background-color: var(--secondary-color-4);
@@ -29,12 +30,119 @@
     transition: 0.5s ease;
 }
 
-/*properties for each section*/
-.programaTitle:hover{
-    color: var(--secondary-color-1);
-    background-color: var(--primary-color-6);
-    border: solid var(--primary-color-6);
+
+
+
+/*manual hover properties for each section*/
+/*programa*/
+.programTitle:hover{
+    color: var(--primary-color-6);
+    border: 1px solid var(--primary-color-6);
 }
-.programaTitle:hover .icon{
-    background-color: var(--secondary-color-1);
+.programTitle:hover .icon{
+    background-color: var(--primary-color-6);
+}
+
+/*autoridades*/
+.authoritiesTitle:hover{
+    color: var(--primary-color-4);
+    border: 1px solid var(--primary-color-4);
+}
+.authoritiesTitle:hover .icon{
+    background-color: var(--primary-color-4);
+}
+
+/*invitados*/
+.guestsTitle:hover{
+    color: var(--primary-color-2);
+    border: 1px solid var(--primary-color-2);
+}
+.guestsTitle:hover .icon{
+    background-color: var(--primary-color-2);
+}
+
+/*trabajos*/
+.assignmentTitle:hover{
+    color: var(--primary-color-5);
+    border: 1px solid var(--primary-color-5);
+}
+.assignmentTitle:hover .icon{
+    background-color: var(--primary-color-5);
+}
+
+/*inscripcion*/
+.signinupTitle:hover{
+    color: var(--primary-color-3);
+    border: 1px solid var(--primary-color-3);
+}
+.signinupTitle:hover .icon{
+    background-color: var(--primary-color-3);
+}
+
+
+
+
+
+
+
+/*automatic hover properties for each section*/
+/* programa */
+.programTitleHover {
+    color: var(--primary-color-6);
+    border: 1px solid var(--primary-color-6);
+}
+.programTitleIconHover {
+    background-color: var(--primary-color-6);
+}
+
+/* autoridades */
+.authoritiesTitleHover {
+    color: var(--primary-color-4);
+    border: 1px solid var(--primary-color-4);
+}
+.authoritiesTitleIconHover {
+    background-color: var(--primary-color-4);
+}
+
+/* invitados */
+.guestsTitleHover {
+    color: var(--primary-color-2);
+    border: 1px solid var(--primary-color-2);
+}
+.guestsTitleIconHover {
+    background-color: var(--primary-color-2);
+}
+
+/* trabajos */
+.assignmentTitleHover {
+    color: var(--primary-color-5);
+    border: 1px solid var(--primary-color-5);
+}
+.assignmentTitleIconHover {
+    background-color: var(--primary-color-5);
+}
+
+/* inscripcion */
+.signinupTitleHover {
+    color: var(--primary-color-3);
+    border: 1px solid var(--primary-color-3);
+}
+.signinupTitleIconHover {
+    background-color: var(--primary-color-3);
+}
+
+
+
+@media (min-width: 768px) {
+    .icon{
+        height: 55px;
+        max-width: 55px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .icon{
+        height: 55px;
+        max-width: 55px;
+    }
 }
