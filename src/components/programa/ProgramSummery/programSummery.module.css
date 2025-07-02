@@ -39,7 +39,6 @@
     margin: 0rem;
     padding-left: var(--15px);
 }
-
 .section ul li{
     list-style-type: none;
     margin-bottom: var(--5px);
@@ -51,4 +50,15 @@
 .date h2{
     margin-top: var(--5px);
     margin-bottom: var(--5px);
+}
+
+.schedule {
+    margin-top: var(--50px);
+    margin-bottom: var(--50px);
+    display: none;
+    transition: all 0.4s ease;
+}
+
+.visible {
+    display: flex;
 }
