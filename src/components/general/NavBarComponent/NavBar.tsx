@@ -15,7 +15,7 @@ export default function NavBar(): JSX.Element {
     const toggleMenu = () => setIsOpen(!isOpen);
 
     return (
-<section className={`${styles.heroSection} global-navbar` }>
+        <section className={`${styles.heroSection}`}>
             <nav className={styles.navbar}>
 
                 <div className={styles.logo}>
@@ -24,7 +24,7 @@ export default function NavBar(): JSX.Element {
                             src={'/imgs/nav-logo.png'}
                             alt={'interhospitalities meeting logo'}
                             fill
-  style={{ objectFit: 'contain', cursor: 'pointer' }}
+                            style={{ objectFit: 'contain', cursor: 'pointer' }}
                         />
                     </Link>
                 </div>
