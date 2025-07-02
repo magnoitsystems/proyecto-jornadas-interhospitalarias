@@ -19,12 +19,12 @@ export default function Summary({date, eventos, invitados, coordinadores, imgSrc
     return(
         <main className={`${styles.main} ${cactus.className}`}>
             <div className={styles.date}>
-                <h2>{date}</h2>
-                <h2 className={styles.desplegable}
+                <h3>{date}</h3>
+                <h3 className={styles.desplegable}
                     onClick={() => setMostrarHorario(!mostrarHorario)}
                     style={{ cursor: 'pointer' }}>
                     {mostrarHorario ? 'Ocultar horarios -' : 'Ver horarios +'}
-                </h2>
+                </h3>
             </div>
 
             <div className={styles.section}>
