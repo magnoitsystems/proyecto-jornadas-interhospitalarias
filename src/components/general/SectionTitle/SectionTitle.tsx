@@ -10,7 +10,7 @@ type Props = {
 
 export default function Title({section, imgSrc, className}: Props){
     return(
-        <main className={`${cactus.className} ${styles[className]}`}>
+        <main className={`${cactus.className} ${styles[className]}  ${styles.global}`}>
             <div className={styles.icon}>
                 <Image
                     src={imgSrc}

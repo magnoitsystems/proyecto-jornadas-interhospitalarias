@@ -15,7 +15,7 @@ export default function NavBar(): JSX.Element {
     const toggleMenu = () => setIsOpen(!isOpen);
 
     return (
-        <section className={styles.heroSection}>
+<section className={`${styles.heroSection} global-navbar` }>
             <nav className={styles.navbar}>
 
                 <div className={styles.logo}>

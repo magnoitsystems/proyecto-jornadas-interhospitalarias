@@ -1,3 +1,5 @@
+
+
 .navbar {
     position: fixed;
     top: 0;
@@ -17,6 +19,11 @@
 }
 
 .heroSection {
+  position: fixed;
+  inset: 0 auto auto 0; /* top: 0; left: 0 */
+  width: 100vw;
+  margin: 0 !important;
+  padding: 0 1rem;
     width: 100vw;
     height: 550px;
     background-image: url('/backgrounds/home.png');
