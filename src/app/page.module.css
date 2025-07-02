@@ -16,6 +16,7 @@
   font-family: var(--font-geist-sans);
 }
 
+
 @media (prefers-color-scheme: dark) {
   .page {
     --gray-rgb: 255, 255, 255;
@@ -106,6 +107,11 @@ a.secondary {
 
 .footer img {
   flex-shrink: 0;
+}
+
+.nav{
+  margin: 0;
+  padding: 0;
 }
 
 /* Enable hover only on non-touch devices */
