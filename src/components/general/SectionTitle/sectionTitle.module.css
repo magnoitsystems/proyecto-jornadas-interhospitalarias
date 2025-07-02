@@ -1,4 +1,4 @@
-.programaTitle{
+.programTitle, .authoritiesTitle, .guestsTitle, .signinupTitle, .assignmentTitle{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -34,11 +34,47 @@
 }
 
 /*properties for each section*/
-.programaTitle:hover{
-    color: var(--secondary-color-1);
-    background-color: var(--primary-color-6);
-    border: solid var(--primary-color-6);
+/*programa*/
+.programTitle:hover{
+    color: var(--primary-color-6);
+    border: 1px solid var(--primary-color-6);
 }
-.programaTitle:hover .icon{
-    background-color: var(--secondary-color-1);
+.programTitle:hover .icon{
+    background-color: var(--primary-color-6);
+}
+
+/*autoridades*/
+.authoritiesTitle:hover{
+    color: var(--primary-color-4);
+    border: 1px solid var(--primary-color-4);
+}
+.authoritiesTitle:hover .icon{
+    background-color: var(--primary-color-4);
+}
+
+/*invitados*/
+.guestsTitle:hover{
+    color: var(--primary-color-2);
+    border: 1px solid var(--primary-color-2);
+}
+.guestsTitle:hover .icon{
+    background-color: var(--primary-color-2);
+}
+
+/*trabajos*/
+.assignmentTitle:hover{
+    color: var(--primary-color-5);
+    border: 1px solid var(--primary-color-5);
+}
+.assignmentTitle:hover .icon{
+    background-color: var(--primary-color-5);
+}
+
+/*inscripcion*/
+.signinupTitle:hover{
+    color: var(--primary-color-3);
+    border: 1px solid var(--primary-color-3);
+}
+.signinupTitle:hover .icon{
+    background-color: var(--primary-color-3);
 }

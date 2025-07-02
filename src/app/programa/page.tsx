@@ -1,6 +1,6 @@
 import NavBar from "@/components/general/NavBarComponent/NavBar";
 import SectionTitle from "@/components/general/SectionTitle/SectionTitle";
-import Summery from "@/components/ProgramSummery/programSummery";
+import Summery from "@/components/programa/ProgramSummery/programSummery";
 
 export default function Programa(){
     return(
@@ -8,7 +8,7 @@ export default function Programa(){
             <SectionTitle
                 section={'Programa'}
                 imgSrc={'/icons/programa.png'}
-                className={'programaTitle'}
+                className={'programTitle'}
             />
             <Summery
                 date={'Miércoles 05 de Noviembre'}
@@ -38,6 +38,7 @@ export default function Programa(){
                     'Carolina Bullor',
                     'Mabel Brindo'
                 ]}
+                imgSrc={'/imgs/cronograma/miercoles.png'}
             />
             <Summery
                 date={'Jueves 06 de Noviembre'}
@@ -76,6 +77,7 @@ export default function Programa(){
                     'Celeste Garreta',
                     'Camila Pereyra'
                 ]}
+                imgSrc={'/imgs/cronograma/jueves.png'}
             />
             <Summery
                 date={'Viernes 07 de Noviembre'}
@@ -108,6 +110,7 @@ export default function Programa(){
                     'Micaela Salas',
                     'Nancy Guerrero'
                 ]}
+                imgSrc={'/imgs/cronograma/viernes.png'}
             />
         </main>
     )
