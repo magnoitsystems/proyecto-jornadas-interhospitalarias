@@ -1,0 +1,10 @@
+.infoCardProperties{
+    width: 440px;
+    height: 200px;
+    background-color: var(--primary-color-1);
+    color: var(--secondary-color-1);
+    font-size: 30px;
+    font-family: "Nunito";
+    text-align: center;
+    align-items: center;
+}

@@ -1,0 +1,68 @@
+.sectionCardsProperties{
+    display: flex;
+    flex-direction: row;
+    margin-top: 30%;
+    gap: 30px;
+    justify-content: center;
+}
+
+.cardProperties{
+    display: flex;
+    flex-direction: row;
+    width: 450px;
+    height: 137px;
+    background-color: var(--secondary-color-4);
+    color: white;
+    border-radius: 5px;
+    align-items: center;
+    padding-left: 25px;
+    gap: 30px;
+    cursor: pointer;
+}
+
+.cardCompletyProperties:hover .infoCardProperties, .cardProperties:hover{
+    background-color: var(--primary-color-1);
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border: none;
+    visibility: visible;
+    opacity: 1;
+}
+
+.infoCardProperties{
+    padding: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease;
+    z-index: 10;
+}
+
+.cardCompletyProperties{
+    display: flex;
+    flex-direction: column;
+}
+
+.cardCalendarProperties{
+    background-color: white;
+    color: var(--secondary-color-4);
+    border: var(--secondary-color-4) 3px solid;
+}
+
+.infoCardsProperties{
+    display: flex;
+    flex-direction: column;
+    font-size: 23px;
+}
+
+.imageCardProperties{
+    background-color: white;
+    width: 55px;
+    height: 55px;
+    align-self: center;
+    align-content: center;
+    text-align: center;
+}
+
+.imageCalendarCardProperties{
+    background-color: var(--secondary-color-4);
+}

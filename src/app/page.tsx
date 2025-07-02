@@ -1,10 +1,9 @@
-import {cactus} from "@/app/ui/fonts";
-import NavBar from "@/components/Nav-Bar-Component/NavBar";
+import Home from "@/components/Home/Home";
 
-export default function Home() {
-  return (
+export default function page() {
+    return (
     <div>
-      <NavBar></NavBar>
+        <Home />
     </div>
   );
 }
