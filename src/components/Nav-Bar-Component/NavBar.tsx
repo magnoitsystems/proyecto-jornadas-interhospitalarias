@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './NavBar.module.css';
-import { JSX } from 'react';
+import { JSX, useState } from 'react';
 import { cactus } from "@/app/ui/fonts"
 import { usePathname } from 'next/navigation';
 import { maxHeaderSize } from 'http';
@@ -11,6 +11,8 @@ import { maxHeaderSize } from 'http';
 export default function NavBar(): JSX.Element {
 
     const pathname = usePathname();
+    const [isOpen, setIsOpen] = useState(false);
+    const toggleMenu = () => setIsOpen(!isOpen);
 
     return (
         <section className={styles.heroSection}>
@@ -21,14 +23,23 @@ export default function NavBar(): JSX.Element {
                         <Image
                             src={'/imgs/nav-logo.png'}
                             alt={'interhospitalities meeting logo'}
-                            width={392}
-                            height={61}
-                            style={{ cursor: 'pointer' }}
+                            fill
+  style={{ objectFit: 'contain', cursor: 'pointer' }}
                         />
                     </Link>
                 </div>
 
-                <ul className={styles.menu}>
+                <div
+                    className={`${styles.btnBurgerProperties} ${isOpen ? styles.open : ''}`}
+                    onClick={toggleMenu}
+                >
+                    <span className={styles.line}></span>
+                    <span className={styles.line}></span>
+                    <span className={styles.line}></span>
+                </div>
+
+
+                <ul className={`${styles.menu} ${isOpen ? styles.openNav : styles.closeNav}`} >
                     <li>
                         <Link
                             href="/"
