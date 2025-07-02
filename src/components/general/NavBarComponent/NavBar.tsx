@@ -11,7 +11,7 @@ export default function NavBar(): JSX.Element {
         <nav className={styles.navbar}>
             {/* Logo a la izquierda */}
             <div className={styles.logo}>
-                <Link href="/">
+                <Link href="/public">
                     <Image
                         src={'/imgs/nav-logo.png'}
                         alt={'interhospitalities meeting logo'}
@@ -24,7 +24,7 @@ export default function NavBar(): JSX.Element {
 
             {/* Menú a la derecha */}
             <ul className={styles.menu}>
-                <li><Link href="/" className={`${styles.homeLink} ${cactus.className}`}>Home</Link></li>
+                <li><Link href="/public" className={`${styles.homeLink} ${cactus.className}`}>Home</Link></li>
                 <li><Link href="/autoridades" className={`${styles.autoridadesLink} ${cactus.className}`}>Autoridades</Link></li>
                 <li><Link href="/invitados" className={`${styles.invitadosLink} ${cactus.className}`}>Invitados</Link></li>
                 <li><Link href="/programa" className={`${styles.programaLink} ${cactus.className}`}>Programa</Link></li>
