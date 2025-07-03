@@ -196,3 +196,88 @@
 .item:focus-within .dotSponsors {
   color: var(--primary-color-7);
 }
+
+.logoMagno {
+  display: none; /* Por defecto oculta */
+}
+
+.logo{
+  position: relative;
+  width: 300px;
+  height: 200px;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1rem;
+    gap: 2rem;
+    background-color: #1e1a1a;
+  }
+
+  .footer::before {
+    display: none; /* Quitamos el bloque blanco */
+  }
+
+  .footer::after {
+    top: -20;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1));
+    height: 20px;
+  }
+
+  .leftSection,
+  .centerSection,
+  .rightSection {
+    margin: 0;
+    position: static;
+    width: 100%;
+  }
+
+  .rightSection{
+    display: flex;
+    background-color: white;
+    flex-direction: row;
+    width: 100vh;
+  }
+
+  .leftSection {
+    gap: 0.8rem;
+  }
+
+  .centerSection {
+    margin-left: 0;
+  }
+
+  .item {
+    justify-content: center;
+  }
+
+  /* Ocultar los dots en mobile */
+  .dotHome,
+  .dotAutoridades,
+  .dotInvitados,
+  .dotPrograma,
+  .dotInscripcion,
+  .dotTrabajos,
+  .dotSponsors {
+    display: none;
+  }
+
+  .logoWrapper{
+    gap: 2rem;
+    margin-top: 12px;
+  }
+
+  .logo {
+    max-width: 200px;
+    height: auto;
+  }
+
+  .logoMagno {
+    display: block;
+    max-width: 100px;
+    height: auto;
+  }
+}
