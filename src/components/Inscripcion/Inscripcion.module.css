@@ -1,75 +1,87 @@
 .formContainer {
-  position: absolute;
-  top: 80px;
-  left: 0;
-  z-index: 100;
-  width: 100vw;
-  min-height: calc(100vh - 80px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 3rem 1rem;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 3rem 1rem;
 }
 
 .formIntro {
-  width: 100%;
-  max-width: 1000px;
-  text-align: center;
-  color: white;
-  margin-bottom: 2rem;
-  padding: 0 1rem;
+    width: 100%;
+    max-width: 1000px;
+    text-align: center;
+    color: white;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
 }
 
 .formIntro h2 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
 }
 
 .formIntro p {
-  font-size: 1.1rem;
-  line-height: 1.4;
+    font-size: 1.1rem;
+    line-height: 1.4;
 }
 
 .formCard {
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 2rem;
-  border-radius: 16px;
-  max-width: 500px;
-  width: 90%;
-  color: white;
-  backdrop-filter: blur(4px);
+    border-radius: 16px;
+    max-width: 500px;
+    width: fit-content;
+    color: white;
 }
 
-.formCard form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-}
+
 
 .formCard label {
-  font-weight: bold;
-  text-align: left;
-  font-size: 0.9rem;
+    font-size: large;
+    text-align: left;
+    font-size: 0.9rem;
 }
 
 .formCard input {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 20px;
-  font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    width: 250px;
 }
 
-.formCard button {
+.formInput {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    padding: 2rem;
+    border-radius: 16px;
+}
+
+
+.formButton {
+  display: flex;
+  justify-content: center;
   margin-top: 1rem;
-  padding: 0.6rem;
+}
+
+.formButton button {
+  padding: 0.6rem 2rem;
   border: none;
   border-radius: 20px;
   background-color: white;
   color: black;
-  font-weight: bold;
+  font-weight: normal; /* sin negrita */
   cursor: pointer;
   transition: all 0.3s ease;
+  width: 70%; /* opcional: para que sea más ancho */
+  max-width: 300px;
 }
 
 .formCard button:hover {
