@@ -7,7 +7,7 @@ import styles from "./page.module.css";
 export default function Authorities(){
     return(
             <main>
-                <SectionTitle section={"autoridades"} className={"authoritiesTitle"} imgSrc={"/icons/autoridad.png"} />
+                <SectionTitle section={"Autoridades"} className={"authoritiesTitle"} imgSrc={"/icons/autoridades.png"} />
                 <section className={styles.cardsSection}>
                     <AuthoritiesCard/>
                     <AuthoritiesCard/>
