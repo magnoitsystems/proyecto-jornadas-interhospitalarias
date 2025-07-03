@@ -133,19 +133,19 @@ export default function Footer() {
       <div className={styles.rightSection}>
         <div className={styles.logoWrapper}>
           <Image
-  src="/imgs/logos/logo-title.png"
-  alt="Logo jornadas"
-  width={300}
-  height={200}
-  className={styles.logo}
-/>
-<Image
-  src="/imgs/magno.png"
-  alt="Logo magno"
-  width={100}
-  height={100}
-  className={styles.logoMagno}
-/>
+            src="/imgs/logos/logo-title.png"
+            alt="Logo jornadas"
+            width={300}
+            height={200}
+            className={styles.logo}
+          />
+          <Image
+            src="/imgs/magno.png"
+            alt="Logo magno"
+            width={100}
+            height={100}
+            className={styles.logoMagno}
+          />
 
         </div>
       </div>
