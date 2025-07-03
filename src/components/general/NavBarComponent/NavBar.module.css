@@ -248,7 +248,7 @@
     align-items: center;
     justify-content: flex-start;
     gap: 1.5rem;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.9);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     position: fixed;
@@ -285,7 +285,7 @@
   }
 
   .menu a {
-    font-size: 0.7rem;
+    font-size: 1rem;
     font-weight: 500;
     padding: 0.8rem 1.5rem;
     display: block;
