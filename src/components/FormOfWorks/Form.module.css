@@ -1,0 +1,87 @@
+/* Contenedor principal que centra todo */
+.container {
+    display: flex;
+    padding: 2rem;
+    background-color: #fff;
+    font-family: sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* El formulario ahora controla el ancho máximo del contenido */
+.formContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
+}
+
+/* Oculta el input de archivo real */
+.fileInput {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+/* El label estilizado que funciona como nuestro input visible */
+.fileLabel {
+    display: flex;
+    width: 100%; /* Ocupa el 100% del ancho del .formContainer */
+    align-items: center;
+    border: 1px solid #333;
+    padding: 0;
+    cursor: pointer;
+    background-color: #ffffff;
+    transition: background-color 0.6s ease;
+    overflow: hidden;
+    box-sizing: border-box; /* Asegura que el borde no añada ancho extra */
+}
+
+.fileLabel:hover {
+    background-color: #FC5739;
+}
+
+/* Contenedor del ícono */
+.iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2d2d2d;
+    padding: 1rem;
+}
+
+/* El texto "Trabajos" que se expande y se centra */
+.text {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.5rem;
+    color: #2d2d2d;
+    line-height: 1;
+    flex-grow: 1;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Estilo para el botón de envío */
+.submitButton {
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+    margin-left: 5%;
+    padding: 0.8rem 2.5rem; /* Un poco más de padding para que se vea bien */
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff; /* Color azul como en tu imagen */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.6s;
+    width: 60%;
+    box-sizing: border-box;
+}
+
+.submitButton:hover {
+    background-color: #FC5739;
+}

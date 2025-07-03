@@ -6,20 +6,41 @@ import styles from './NavBar.module.css';
 import { JSX, useState } from 'react';
 import { cactus } from "@/app/ui/fonts"
 import { usePathname } from 'next/navigation';
-import { maxHeaderSize } from 'http';
 
 export default function NavBar(): JSX.Element {
 
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => setIsOpen(!isOpen);
+    const getBackground = (pathname: string) => {
+        if (
+            pathname === '/' ||
+            pathname === '/autoridades' ||
+            pathname === '/invitados' ||
+            pathname === '/programa' ||
+            pathname === '/sponsors'
+        ) {
+            return '/backgrounds/home.png';
+        } else if (pathname === '/inscripcion' || pathname === '/trabajos') {
+            return '/backgrounds/form.png';
+        }
+        return 'none';
+    };
 
     return (
-        <section className={`${styles.heroSection}`}>
+        <section
+            className={`${styles.heroSection} ${pathname === '/inscripcion' || pathname === '/trabajos'
+                    ? styles.formHero
+                    : styles.homeHero
+                }`}
+            style={{ backgroundImage: `url(${getBackground(pathname)})` }}
+        >
+
             <nav className={styles.navbar}>
 
                 <div className={styles.logo}>
-                    <Link href="/">
+                    <Link href="/"
+                        onClick={() => setIsOpen(false)}>
                         <Image
                             src={'/imgs/nav-logo.png'}
                             alt={'interhospitalities meeting logo'}
@@ -44,6 +65,7 @@ export default function NavBar(): JSX.Element {
                         <Link
                             href="/"
                             className={`${styles.homeLink} ${cactus.className} ${pathname === '/' ? styles.activeLink : ''}`}
+                            onClick={() => setIsOpen(false)}
                         >
                             Home
                         </Link>
@@ -51,6 +73,7 @@ export default function NavBar(): JSX.Element {
                     <li>
                         <Link
                             href="/autoridades"
+                            onClick={() => setIsOpen(false)}
                             className={`${styles.autoridadesLink} ${cactus.className} ${pathname === '/autoridades' ? styles.activeLink : ''}`}
                         >
                             Autoridades
@@ -59,6 +82,7 @@ export default function NavBar(): JSX.Element {
                     <li>
                         <Link
                             href="/invitados"
+                            onClick={() => setIsOpen(false)}
                             className={`${styles.invitadosLink} ${cactus.className} ${pathname === '/invitados' ? styles.activeLink : ''}`}
                         >
                             Invitados
@@ -67,6 +91,7 @@ export default function NavBar(): JSX.Element {
                     <li>
                         <Link
                             href="/programa"
+                            onClick={() => setIsOpen(false)}
                             className={`${styles.programaLink} ${cactus.className} ${pathname === '/programa' ? styles.activeLink : ''}`}
                         >
                             Programa
@@ -75,6 +100,7 @@ export default function NavBar(): JSX.Element {
                     <li>
                         <Link
                             href="/inscripcion"
+                            onClick={() => setIsOpen(false)}
                             className={`${styles.inscripcionLink} ${cactus.className} ${pathname === '/inscripcion' ? styles.activeLink : ''}`}
                         >
                             Inscripción
@@ -83,6 +109,7 @@ export default function NavBar(): JSX.Element {
                     <li>
                         <Link
                             href="/trabajos"
+                            onClick={() => setIsOpen(false)}
                             className={`${styles.trabajosLink} ${cactus.className} ${pathname === '/trabajos' ? styles.activeLink : ''}`}
                         >
                             Trabajos
@@ -91,6 +118,7 @@ export default function NavBar(): JSX.Element {
                     <li>
                         <Link
                             href="/sponsors"
+                            onClick={() => setIsOpen(false)}
                             className={`${styles.sponsorsLink} ${cactus.className} ${pathname === '/sponsors' ? styles.activeLink : ''}`}
                         >
                             Sponsors
