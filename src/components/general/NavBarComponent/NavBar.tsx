@@ -14,35 +14,32 @@ export default function NavBar(): JSX.Element {
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => setIsOpen(!isOpen);
+    const getBackground = (pathname: string) => {
+  if (
+    pathname === '/' ||
+    pathname === '/autoridades' ||
+    pathname === '/invitados' ||
+    pathname === '/programa' ||
+    pathname === '/sponsors'
+  ) {
+    return '/backgrounds/home.png';
+  } else if (pathname === '/inscripcion' || pathname === '/trabajos') {
+    return '/backgrounds/form.png';
+  }
+  return 'none';
+};
+
 
 
     return (
         <section
-            className={styles.heroSection}
-            style={{
-                backgroundImage:
-                    pathname === '/' ? "url('/backgrounds/home.png')" :
-                        pathname === '/autoridades' ? "url('/backgrounds/home.png')" :
-                            pathname === '/invitados' ? "url('/backgrounds/home.png')" :
-                                pathname === '/programa' ? "url('/backgrounds/home.png')" :
-                                    pathname === '/inscripcion' ? "url('/backgrounds/form.png')" :
-                                        pathname === '/trabajos' ? "url('/backgrounds/form.png')" :
-                                            pathname === '/sponsors' ? "url('/backgrounds/home.png')" :
-                                                "none",
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                height:
-                    pathname === '/inscripcion' || pathname === '/trabajos'
-                        ? '100vh'
-                        : undefined,
-                marginBottom:
-                    pathname === '/inscripcion' || pathname === '/trabajos'
-                        ? '0'
-                        : undefined,
-            }}
-        >
-
+  className={`${styles.heroSection} ${
+    pathname === '/inscripcion' || pathname === '/trabajos'
+      ? styles.formHero
+      : styles.homeHero
+  }`}
+  style={{ backgroundImage: `url(${getBackground(pathname)})` }}
+>
 
 
             <nav className={styles.navbar}>

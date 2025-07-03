@@ -14,6 +14,14 @@
   background-image: "../backgrounds/home.png";
 }
 
+.homeHero {
+  height: 550px;
+}
+
+  .formHero {
+  height: 100vh;
+}
+
 .heroSection {
   position: fixed;
   inset: 0 auto auto 0;
@@ -188,6 +196,20 @@
     padding: 0;
     position: relative;
     z-index: 0;
+  }
+
+  .homeHero {
+    height: auto;
+    aspect-ratio: 16 / 9; /* Ajuste proporcional */
+    background-size: 100% auto;
+    background-position: top center;
+  }
+
+
+.formHero {
+    height: 100vh;
+    background-size: cover;
+    background-position: center bottom;
   }
 
   .btnBurgerProperties {
