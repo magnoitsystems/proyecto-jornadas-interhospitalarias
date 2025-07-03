@@ -1,6 +1,8 @@
 import RoundedCard from "@/components/RoundedCard/RoundedCard";
 import styles from './page.module.css';
 
+// /adminPanel
+
 export default function AdminPanel() {
     return (
         <main>
