@@ -7,6 +7,7 @@ import { JSX, useState } from 'react';
 import { cactus } from "@/app/ui/fonts"
 import { usePathname } from 'next/navigation';
 import { maxHeaderSize } from 'http';
+import path from 'path';
 
 export default function NavBar(): JSX.Element {
 
@@ -14,8 +15,36 @@ export default function NavBar(): JSX.Element {
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => setIsOpen(!isOpen);
 
+
     return (
-        <section className={`${styles.heroSection}`}>
+       <section
+  className={styles.heroSection}
+  style={{
+    backgroundImage:
+      pathname === '/' ? "url('/backgrounds/home.png')" :
+      pathname === '/autoridades' ? "url('/backgrounds/home.png')" :
+      pathname === '/invitados' ? "url('/backgrounds/home.png')" :
+      pathname === '/programa' ? "url('/backgrounds/home.png')" :
+      pathname === '/inscripcion' ? "url('/backgrounds/form.png')" :
+      pathname === '/trabajos' ? "url('/backgrounds/form.png')" :
+      pathname === '/sponsors' ? "url('/backgrounds/home.png')" :
+      "none",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    height:
+      pathname === '/inscripcion' || pathname === '/trabajos'
+        ? '100vh'
+        : undefined,
+    marginBottom:
+      pathname === '/inscripcion' || pathname === '/trabajos'
+        ? '0'
+        : undefined,
+  }}
+>
+
+
+
             <nav className={styles.navbar}>
 
                 <div className={styles.logo}>
