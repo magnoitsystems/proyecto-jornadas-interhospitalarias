@@ -2,7 +2,7 @@
     position: relative;
     top: 0;
     left: 0;
-    z-index: -1;
+    z-index: 1;
     width: 100%;
     min-height: calc(100vh - 80px);
     display: flex;
@@ -54,6 +54,7 @@
     border-radius: 20px;
     font-size: 0.9rem;
     width: 250px;
+    cursor: pointer;
 }
 
 .formInput {
@@ -70,6 +71,7 @@
     display: flex;
     justify-content: center;
     margin-top: 1rem;
+    cursor: pointer;
 }
 
 .formButton button {
@@ -79,14 +81,17 @@
     background-color: white;
     color: black;
     font-weight: normal;
-    cursor: pointer;
     transition: all 0.3s ease;
     width: 70%;
     max-width: 300px;
+    cursor: pointer;
 }
 
 .formCard button:hover {
-    background-color: #ddd;
+    background-color: var(--secondary-color-4);
+    color: var(--secondary-color-1);
+    border-color: var(--secondary-color-2);
+    border: solid;
 }
 
 /* Responsive */
