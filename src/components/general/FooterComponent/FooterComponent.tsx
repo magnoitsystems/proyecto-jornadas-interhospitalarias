@@ -133,7 +133,7 @@ export default function Footer() {
       <div className={styles.rightSection}>
         <div className={styles.logoWrapper}>
           <Image
-  src="/imgs/logo-title.png"
+  src="/imgs/logos/logo-title.png"
   alt="Logo jornadas"
   width={300}
   height={200}
