@@ -48,13 +48,12 @@
 
 .menu {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: end;
   flex-grow: 1;
   list-style: none;
   margin: 0 0 0 2rem;
   padding: 0;
-  gap: 0.5rem;
-  align-items: center;
+  gap: 1rem;
 }
 
 .menu li {

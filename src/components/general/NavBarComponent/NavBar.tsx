@@ -6,8 +6,6 @@ import styles from './NavBar.module.css';
 import { JSX, useState } from 'react';
 import { cactus } from "@/app/ui/fonts"
 import { usePathname } from 'next/navigation';
-import { maxHeaderSize } from 'http';
-import path from 'path';
 
 export default function NavBar(): JSX.Element {
 
@@ -15,38 +13,34 @@ export default function NavBar(): JSX.Element {
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => setIsOpen(!isOpen);
     const getBackground = (pathname: string) => {
-  if (
-    pathname === '/' ||
-    pathname === '/autoridades' ||
-    pathname === '/invitados' ||
-    pathname === '/programa' ||
-    pathname === '/sponsors'
-  ) {
-    return '/backgrounds/home.png';
-  } else if (pathname === '/inscripcion' || pathname === '/trabajos') {
-    return '/backgrounds/form.png';
-  }
-  return 'none';
-};
-
-
+        if (
+            pathname === '/' ||
+            pathname === '/autoridades' ||
+            pathname === '/invitados' ||
+            pathname === '/programa' ||
+            pathname === '/sponsors'
+        ) {
+            return '/backgrounds/home.png';
+        } else if (pathname === '/inscripcion' || pathname === '/trabajos') {
+            return '/backgrounds/form.png';
+        }
+        return 'none';
+    };
 
     return (
         <section
-  className={`${styles.heroSection} ${
-    pathname === '/inscripcion' || pathname === '/trabajos'
-      ? styles.formHero
-      : styles.homeHero
-  }`}
-  style={{ backgroundImage: `url(${getBackground(pathname)})` }}
->
-
+            className={`${styles.heroSection} ${pathname === '/inscripcion' || pathname === '/trabajos'
+                    ? styles.formHero
+                    : styles.homeHero
+                }`}
+            style={{ backgroundImage: `url(${getBackground(pathname)})` }}
+        >
 
             <nav className={styles.navbar}>
 
                 <div className={styles.logo}>
                     <Link href="/"
-                    onClick={() => setIsOpen(false)}>
+                        onClick={() => setIsOpen(false)}>
                         <Image
                             src={'/imgs/nav-logo.png'}
                             alt={'interhospitalities meeting logo'}
