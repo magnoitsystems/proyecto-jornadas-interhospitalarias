@@ -6,9 +6,6 @@ import styles from "./page.module.css";
 
 export default function Authorities(){
     return(
-        <>
-            <NavBar/>
-
             <main>
                 <SectionTitle section={"autoridades"} className={"authoritiesTitle"} imgSrc={"/icons/autoridad.png"} />
                 <section className={styles.cardsSection}>
@@ -18,6 +15,5 @@ export default function Authorities(){
                     <AuthoritiesCard/>
                 </section>
             </main>
-        </>
     )
 }
