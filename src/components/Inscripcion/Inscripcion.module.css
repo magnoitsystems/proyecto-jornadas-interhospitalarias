@@ -1,0 +1,68 @@
+.formContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.formCard {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 400px;
+  width: 100%;
+  color: white;
+  backdrop-filter: blur(4px);
+  text-align: center;
+}
+
+.formCard h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.formCard p {
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.formCard form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.formCard label {
+  font-weight: bold;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.formCard input {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.formCard button {
+  margin-top: 1rem;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 20px;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.formCard button:hover {
+  background-color: #ddd;
+}

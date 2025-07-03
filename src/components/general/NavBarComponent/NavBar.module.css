@@ -18,25 +18,21 @@
   height: 550px;
 }
 
-  .formHero {
+.formHero {
   height: 100vh;
 }
 
 .heroSection {
-  position: fixed;
-  inset: 0 auto auto 0;
-  /* top: 0; left: 0 */
   width: 100vw;
   margin: 0 !important;
   padding: 0 1rem;
-  width: 100vw;
-  height: 550px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
   z-index: 0;
 }
+
 
 
 .logo {
@@ -206,9 +202,9 @@
 
 
 .formHero {
-    height: 100vh;
-    background-size: cover;
-    background-position: center bottom;
+    height: 100vh !important;
+    background-size: cover !important;
+    background-position: center bottom !important;
   }
 
   .btnBurgerProperties {
