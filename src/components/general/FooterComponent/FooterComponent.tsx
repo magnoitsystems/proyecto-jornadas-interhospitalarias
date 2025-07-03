@@ -130,16 +130,16 @@ const DotsIcon = ({ className }: { className?: string }) => (
   </ul>
 </div>
 
-      <div className={styles.rightSection}>
-        <div className={styles.logoWrapper}>
-          <Image
-            src="/imgs/nav-logo.png"
-            alt="Logo jornadas"
-            width={200}
-            height={100}
-            className={styles.logo}
-          />
-        </div>
+       <div className={styles.rightSection}>
+      <div className={styles.logoWrapper}>
+        <Image
+          src="/imgs/logo-title.png"
+          alt="Logo jornadas"
+          width={300}
+          height={200}
+          className={styles.logo}
+        />
+      </div>
       </div>
     </footer>
   );
