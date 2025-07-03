@@ -19,7 +19,9 @@
 }
 
 .formHero {
-  height: 100vh;
+  height: auto;
+  min-height: 80px; /* Solo el espacio del navbar */
+  background: none !important;
 }
 
 .heroSection {
@@ -32,7 +34,6 @@
   position: relative;
   z-index: 0;
 }
-
 
 
 .logo {
@@ -182,11 +183,11 @@
 
   .heroSection {
     width: 100vw;
-     height: auto;
+    height: auto;
     min-height: 400px;
-     background-size: 100% auto; /* Ancho completo, altura automática */
+    background-size: 100% auto;
     background-position: center top;
-     background-attachment: local;
+    background-attachment: local;
     margin: 0;
     padding: 0;
     position: relative;
@@ -195,16 +196,15 @@
 
   .homeHero {
     height: auto;
-    aspect-ratio: 16 / 9; /* Ajuste proporcional */
+    aspect-ratio: 16 / 9;
     background-size: 100% auto;
     background-position: top center;
   }
 
-
-.formHero {
-    height: 100vh !important;
-    background-size: cover !important;
-    background-position: center bottom !important;
+  .formHero {
+    height: auto;
+    min-height: 60px; /* Solo el espacio del navbar móvil */
+    background: none !important;
   }
 
   .btnBurgerProperties {
@@ -325,6 +325,5 @@
 @media (min-width: 1600px) {
   .heroSection {
     height: 700px;
-    /* o un valor mayor */
   }
 }

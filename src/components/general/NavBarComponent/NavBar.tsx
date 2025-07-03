@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './NavBar.module.css';
-import { JSX, useState } from 'react';
+import { JSX, useState, useEffect } from 'react';
 import { cactus } from "@/app/ui/fonts"
 import { usePathname } from 'next/navigation';
 
@@ -12,6 +12,7 @@ export default function NavBar(): JSX.Element {
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => setIsOpen(!isOpen);
+    
     const getBackground = (pathname: string) => {
         if (
             pathname === '/' ||
@@ -27,13 +28,46 @@ export default function NavBar(): JSX.Element {
         return 'none';
     };
 
+    const isFormPage = pathname === '/inscripcion' || pathname === '/trabajos';
+
+    // Aplicar background al body para páginas de formulario
+    useEffect(() => {
+        if (isFormPage) {
+            document.body.style.backgroundImage = `url(/backgrounds/form.png)`;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundPosition = 'center';
+            document.body.style.backgroundRepeat = 'no-repeat';
+            document.body.style.backgroundAttachment = 'fixed';
+            document.body.style.minHeight = '100vh';
+        } else {
+            document.body.style.backgroundImage = '';
+            document.body.style.backgroundSize = '';
+            document.body.style.backgroundPosition = '';
+            document.body.style.backgroundRepeat = '';
+            document.body.style.backgroundAttachment = '';
+            document.body.style.minHeight = '';
+        }
+
+        // Cleanup al desmontar
+        return () => {
+            document.body.style.backgroundImage = '';
+            document.body.style.backgroundSize = '';
+            document.body.style.backgroundPosition = '';
+            document.body.style.backgroundRepeat = '';
+            document.body.style.backgroundAttachment = '';
+            document.body.style.minHeight = '';
+        };
+    }, [isFormPage]);
+
     return (
         <section
-            className={`${styles.heroSection} ${pathname === '/inscripcion' || pathname === '/trabajos'
+            className={`${styles.heroSection} ${isFormPage
                     ? styles.formHero
                     : styles.homeHero
                 }`}
-            style={{ backgroundImage: `url(${getBackground(pathname)})` }}
+            style={{ 
+                backgroundImage: !isFormPage ? `url(${getBackground(pathname)})` : 'none'
+            }}
         >
 
             <nav className={styles.navbar}>

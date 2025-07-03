@@ -1,15 +1,17 @@
 .formContainer {
-    position: absolute;
-    top: 40px;
+    position: relative;
+    top: 0;
     left: 0;
     z-index: 100;
-    width: 100vw;
+    width: 100%;
     min-height: calc(100vh - 80px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     padding: 3rem 1rem;
+    margin-top: 10px; /* Espacio para el navbar - más cerca */
+    margin-bottom: 2rem; /* Espacio antes del footer */
 }
 
 .formIntro {
@@ -24,11 +26,13 @@
 .formIntro h2 {
     font-size: 2rem;
     margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .formIntro p {
     font-size: 1.1rem;
     line-height: 1.4;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .formCard {
@@ -37,8 +41,6 @@
     width: fit-content;
     color: white;
 }
-
-
 
 .formCard label {
     font-size: large;
@@ -64,26 +66,51 @@
     border-radius: 16px;
 }
 
-
 .formButton {
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
 }
 
 .formButton button {
-  padding: 0.6rem 2rem;
-  border: none;
-  border-radius: 20px;
-  background-color: white;
-  color: black;
-  font-weight: normal; /* sin negrita */
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 70%; /* opcional: para que sea más ancho */
-  max-width: 300px;
+    padding: 0.6rem 2rem;
+    border: none;
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+    font-weight: normal;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 70%;
+    max-width: 300px;
 }
 
 .formCard button:hover {
-  background-color: #ddd;
+    background-color: #ddd;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .formContainer {
+        margin-top: 30px; /* Ajuste para navbar móvil - más cerca */
+        padding: 2rem 1rem;
+        min-height: calc(100vh - 60px);
+    }
+
+    .formIntro h2 {
+        font-size: 1.5rem;
+    }
+
+    .formIntro p {
+        font-size: 1rem;
+    }
+
+    .formCard input {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .formInput {
+        padding: 1.5rem;
+    }
 }
