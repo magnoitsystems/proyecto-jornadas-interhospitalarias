@@ -1,4 +1,21 @@
-.roundedCards{
+.roundedCards {
     display: flex;
     justify-content: space-around;
+    position: absolute;
+    top: 200px; /* Ajusta según la altura exacta donde quieras que aparezcan */
+    left: 0;
+    right: 0;
+    z-index: 1001; /* Mayor que el z-index del navbar (1000) */
+    padding: 0 1rem;
+}
+
+/* Responsive para mobile */
+@media (max-width: 728px) {
+    .roundedCards {
+        top: 30px; /* Ajusta para mobile */
+        padding: 0 0.5rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
 }

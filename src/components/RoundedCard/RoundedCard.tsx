@@ -1,4 +1,5 @@
 'use client';
+import { cactus } from '@/app/ui/fonts';
 import styles from './RoundedCard.module.css';
 
 interface RoundedCardProps {
@@ -31,8 +32,8 @@ export default function CircularCard({
       style={cardStyle}
     >
       <div className={styles.content}>
-        <span className={styles.number}>{number}</span>
-        <span className={styles.title}>{title}</span>
+        <span className={`${styles.number} ${cactus.className}`}>{number}</span>
+        <span className={`${styles.title} ${cactus.className}`}>{title}</span>
       </div>
     </div>
   );
