@@ -1,0 +1,126 @@
+.circularCard {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 4px solid var(--border-color, #ffffff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Clase para bordes multicolor circulares */
+.multicolorBorder {
+  border: none;
+  position: relative;
+}
+
+.multicolorBorder::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: var(--border-color);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.multicolorBorder::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.circularCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.content {
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1;
+  margin: 0;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-transform: capitalize;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .circularCard {
+    width: 120px;
+    height: 120px;
+    border-width: 3px;
+  }
+  
+  .multicolorBorder::before {
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+  }
+  
+  .multicolorBorder::after {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  .number {
+    font-size: 1.8rem;
+  }
+  
+  .title {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .circularCard {
+    width: 100px;
+    height: 100px;
+    border-width: 2px;
+  }
+  
+  .multicolorBorder::before {
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+  }
+  
+  .number {
+    font-size: 1.5rem;
+  }
+  
+  .title {
+    font-size: 0.8rem;
+  }
+}

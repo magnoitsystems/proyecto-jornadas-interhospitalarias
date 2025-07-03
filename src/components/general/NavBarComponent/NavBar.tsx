@@ -22,17 +22,18 @@ export default function NavBar(): JSX.Element {
             pathname === '/sponsors'
         ) {
             return '/backgrounds/home.png';
-        } else if (pathname === '/inscripcion' || pathname === '/trabajos') {
+        } else if (pathname === '/inscripcion' || pathname === '/trabajos' || pathname === '/adminPanel') {
             return '/backgrounds/form.png';
         }
         return 'none';
     };
 
     const isFormPage = pathname === '/inscripcion' || pathname === '/trabajos';
+    const isAdminPage = pathname === '/adminPanel';
 
-    // Aplicar background al body para páginas de formulario
+    // Aplicar background al body SOLO para páginas de formulario (no adminPanel)
     useEffect(() => {
-        if (isFormPage) {
+        if (isFormPage && !isAdminPage) {
             document.body.style.backgroundImage = `url(/backgrounds/form.png)`;
             document.body.style.backgroundSize = 'cover';
             document.body.style.backgroundPosition = 'center';
@@ -57,16 +58,16 @@ export default function NavBar(): JSX.Element {
             document.body.style.backgroundAttachment = '';
             document.body.style.minHeight = '';
         };
-    }, [isFormPage]);
+    }, [isFormPage, isAdminPage]);
 
     return (
         <section
-            className={`${styles.heroSection} ${isFormPage
+            className={`${styles.heroSection} ${(isFormPage && !isAdminPage)
                     ? styles.formHero
                     : styles.homeHero
                 }`}
             style={{ 
-                backgroundImage: !isFormPage ? `url(${getBackground(pathname)})` : 'none'
+                backgroundImage: (!isFormPage || isAdminPage) ? `url(${getBackground(pathname)})` : 'none'
             }}
         >
 

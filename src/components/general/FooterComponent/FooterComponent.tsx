@@ -9,7 +9,6 @@ export default function Footer() {
 
   const pathname = usePathname();
 
-  // Al inicio de tu archivo, después de los imports
   const DotsIcon = ({ className }: { className?: string }) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className={className}>
       <circle cx="5" cy="12" r="2" />
