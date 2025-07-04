@@ -7,7 +7,7 @@
     justify-content: center;
     gap: 40px;
     margin-bottom: 10px;
-    margin-top: 10px;
+    margin-top: 50px;
 }
 
 .sponsorsProperties, .imageProperties{
@@ -45,7 +45,14 @@
 .infoPresentationProperties{
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 10px;
+}
+
+.totalInfoProperties{
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+;
 }
 
 .presentationCardProperties, .sponsorsProperties{
@@ -67,6 +74,8 @@
 .imagePresentationProperties{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .paragraphProperties {
@@ -75,4 +84,45 @@
     color: var(--secondary-color-4);
     font-size: var(--20px);
     margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+    /* DOCUMENTO DE BIENVENDIA */
+    .cardAndSponsorsProperties{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .presentationCardProperties{
+        width: 100%;
+    }
+
+    .sponsorsProperties, .imageProperties{
+        width: 380px;
+    }
+
+    .paragraphProperties{
+        font-size: var(--15px);
+    }
+
+    .paragraphTwoProperties{
+        width: 400px;
+    }
+
+    .infoAndImageProperties p{
+        width: 155px;
+    }
+
+    .presentationCardProperties h1{
+        font-size: var(--h3-size);
+        font-family: "Cactus Classical Serif";
+    }
+
+    .sponsorsProperties h1{
+        font-size: var(--h1-size);
+    }
+
+    .sponsorsProperties{
+        margin-left: 5px;
+    }
 }

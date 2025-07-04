@@ -1,39 +1,30 @@
-.sectionCardsProperties{
+.sectionCardsProperties {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-top: 5%;
-    gap: 30px;
+    gap: 0;
     justify-content: center;
 }
 
 .cardProperties{
     display: flex;
-    flex-direction: row;
-    width: 450px;
+    flex-direction: column;
+    width: 380px;
     height: 137px;
     background-color: var(--secondary-color-4);
     color: white;
     border-radius: 5px;
     align-items: center;
     padding-left: 25px;
-    gap: 30px;
-    cursor: pointer;
-}
 
-.cardCompletyProperties:hover .infoCardProperties, .cardCompletyProperties:hover .cardHoverPropertie{
-    background-color: var(--primary-color-1);
-    color: var(--secondary-color-1);
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-    border: none;
-    visibility: visible;
-    opacity: 1;
+    cursor: pointer;
 }
 
 .infoCardProperties{
     padding: 10px;
     opacity: 0;
     visibility: hidden;
+    height: 0;
     transition: opacity 1s ease;
     z-index: 10;
 }
@@ -41,6 +32,9 @@
 .cardCompletyProperties{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }
 
 .cardCalendarProperties{
@@ -49,10 +43,18 @@
     border: var(--secondary-color-4) 3px solid;
 }
 
+.todo{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+}
+
 .infoCardsProperties{
     display: flex;
     flex-direction: column;
     font-size: 23px;
+    white-space: nowrap;
 }
 
 .imageCardProperties{
@@ -67,81 +69,89 @@
 .imageCalendarCardProperties{
     background-color: var(--secondary-color-4);
 }
-/* DOCUMENTO DE BIENVENDIA */
-.cardAndSponsorsProperties{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: fit-content;
-    justify-content: center;
-    gap: 40px;
-    margin-bottom: 10px;
-    margin-top: 10px;
+
+/**/
+.cardClosed {
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
 }
 
-.sponsorsProperties, .imageProperties{
-    display: flex;
-    flex-direction: column;
-    width: 408px;
-    align-items: center;
+.openCardCardCompletyProperties{
+    margin-bottom: 170px;
 }
 
-.imageProperties{
-    margin-top: 20px;
+.openCard{
+    visibility: visible;
+    background-color: var(--primary-color-1);
+    width: 380px;
+    opacity: 1;
 }
 
-.sponsorsProperties:hover, .presentationCardProperties:hover{
-   background-color: var(--secondary-color-4);
-}
-
-.presentationCardProperties:hover .infoColorProperties, .sponsorsProperties:hover, .presentationCardProperties:hover{
+.openCardProperties{
+    background-color: var(--primary-color-1);
     color: var(--secondary-color-1);
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border: none;
 }
 
-.sponsorsProperties h1{
-    font-size: var(--h1-size);
-    font-family: "Cactus Classical Serif";
-    border-bottom: #060606 1px solid;
+.deployIconProperties{
+    width: 100%;
+    text-align: right;
+    visibility: visible;
+    margin-top: 10px;
+    margin-right: 10px;
 }
 
-.presentationCardProperties{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 919px;
+.deployIconCardCalendarProperties{
+    padding-left: 0;
+    background-color: #7D0279;
+    margin-right: 5px;
 }
 
-.infoPresentationProperties{
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
+.buttonProperties{
+    background-color: transparent;
+    border-style: none;
+    transition: transform 0.3s ease;
 }
 
-.presentationCardProperties, .sponsorsProperties{
-    border: var(--secondary-color-4) 2px solid;
-    border-radius: 20px;
-    transition: background-color 1s ease;
+.iconRotate{
+    transform: rotate(180deg);
 }
+/**/
 
-.infoAndImageProperties{
-    display: flex;
-    flex-direction: row;
-    height: 312px;
-}
+@media (min-width: 768px) {
+    .sectionCardsProperties{
+        flex-direction: row;
+        margin-top: 5%;
+    }
 
-.infoAndImageProperties p{
-    width: 607px;
-}
+    .cardProperties{
+        width: 450px;
+        gap: 30px;
+    }
 
-.imagePresentationProperties{
-    display: flex;
-    flex-direction: column;
-}
+    .cardCompletyProperties:hover .infoCardProperties{
+        visibility: visible;
+        background-color: var(--primary-color-1);
+        width: 450px;
+        opacity: 1;
+    }
 
-.paragraphProperties{
-    display: flex;
-    flex-direction: column;
-    color: var(--secondary-color-4);
-    font-size: var(--20px);
-    margin-left: 20px;
+    .cardCompletyProperties:hover .cardHoverPropertie{
+        background-color: var(--primary-color-1);
+        color: var(--secondary-color-1);
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border: none;
+    }
+
+    .deployIconProperties{
+        visibility: hidden;
+        margin: 0;
+        padding: 0;
+        height: 0;
+        width: 0;
+    }
 }
