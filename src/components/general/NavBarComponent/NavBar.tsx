@@ -3,53 +3,79 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './NavBar.module.css';
-import { JSX, useState } from 'react';
+import { JSX, useState, useEffect } from 'react';
 import { cactus } from "@/app/ui/fonts"
 import { usePathname } from 'next/navigation';
-import { maxHeaderSize } from 'http';
-import path from 'path';
 
 export default function NavBar(): JSX.Element {
 
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => setIsOpen(!isOpen);
+    
+    const getBackground = (pathname: string) => {
+        if (
+            pathname === '/' ||
+            pathname === '/autoridades' ||
+            pathname === '/invitados' ||
+            pathname === '/programa' ||
+            pathname === '/sponsors'
+        ) {
+            return '/backgrounds/home.png';
+        } else if (pathname === '/inscripcion' || pathname === '/trabajos' || pathname === '/adminPanel') {
+            return '/backgrounds/form.png';
+        }
+        return 'none';
+    };
 
+    const isFormPage = pathname === '/inscripcion' || pathname === '/trabajos';
+    const isAdminPage = pathname === '/adminPanel';
+
+    // Aplicar background al body SOLO para páginas de formulario (no adminPanel)
+    useEffect(() => {
+        if (isFormPage && !isAdminPage) {
+            document.body.style.backgroundImage = `url(/backgrounds/form.png)`;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundPosition = 'center';
+            document.body.style.backgroundRepeat = 'no-repeat';
+            document.body.style.backgroundAttachment = 'fixed';
+            document.body.style.minHeight = '100vh';
+        } else {
+            document.body.style.backgroundImage = '';
+            document.body.style.backgroundSize = '';
+            document.body.style.backgroundPosition = '';
+            document.body.style.backgroundRepeat = '';
+            document.body.style.backgroundAttachment = '';
+            document.body.style.minHeight = '';
+        }
+
+        // Cleanup al desmontar
+        return () => {
+            document.body.style.backgroundImage = '';
+            document.body.style.backgroundSize = '';
+            document.body.style.backgroundPosition = '';
+            document.body.style.backgroundRepeat = '';
+            document.body.style.backgroundAttachment = '';
+            document.body.style.minHeight = '';
+        };
+    }, [isFormPage, isAdminPage]);
 
     return (
         <section
-            className={styles.heroSection}
-            style={{
-                backgroundImage:
-                    pathname === '/' ? "url('/backgrounds/home.png')" :
-                        pathname === '/autoridades' ? "url('/backgrounds/home.png')" :
-                            pathname === '/invitados' ? "url('/backgrounds/home.png')" :
-                                pathname === '/programa' ? "url('/backgrounds/home.png')" :
-                                    pathname === '/inscripcion' ? "url('/backgrounds/form.png')" :
-                                        pathname === '/trabajos' ? "url('/backgrounds/form.png')" :
-                                            pathname === '/sponsors' ? "url('/backgrounds/home.png')" :
-                                                "none",
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                height:
-                    pathname === '/inscripcion' || pathname === '/trabajos'
-                        ? '100vh'
-                        : undefined,
-                marginBottom:
-                    pathname === '/inscripcion' || pathname === '/trabajos'
-                        ? '0'
-                        : undefined,
+            className={`${styles.heroSection} ${(isFormPage && !isAdminPage)
+                    ? styles.formHero
+                    : styles.homeHero
+                }`}
+            style={{ 
+                backgroundImage: (!isFormPage || isAdminPage) ? `url(${getBackground(pathname)})` : 'none'
             }}
         >
-
-
 
             <nav className={styles.navbar}>
 
                 <div className={styles.logo}>
                     <Link href="/"
-                    onClick={() => setIsOpen(false)}>
+                        onClick={() => setIsOpen(false)}>
                         <Image
                             src={'/imgs/nav-logo.png'}
                             alt={'interhospitalities meeting logo'}

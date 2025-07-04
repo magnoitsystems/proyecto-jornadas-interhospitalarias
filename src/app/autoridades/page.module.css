@@ -1,7 +1,30 @@
 .cardsSection{
     display: flex;
-    margin-top: 100px;
+    margin-top: 25px;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+}
+
+.containerLongCard{
+    width: 90%;
+}
+
+@media (min-width: 1023px) {
+
+    .cardsSection{
+        display: grid;
+        align-items: stretch;
+        grid-template-columns: repeat(3, 1fr);
+        width: 90%;
+        margin: 25px auto 0;
+    }
+
+    .containerLongCard{
+        grid-column: span 3;
+    }
+
+    .containerLongCard{
+        width: 100%;
+    }
 }

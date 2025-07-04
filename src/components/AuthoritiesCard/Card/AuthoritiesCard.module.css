@@ -4,13 +4,17 @@
     width: 90%;
 }
 
+.longCard{
+    width: 100%;
+}
+
 .title{
     color: var(--secondary-color-1);
     background-color: var(--secondary-color-5);
 }
 
 .subSection{
-    margin-bottom: var(--5px);
+    margin-bottom: var(--15px);
 }
 
 .subTitle{
@@ -31,4 +35,13 @@
 @media (min-width: 641px) and (max-width: 1023px) {}
 
 /* Desktop */
-@media (min-width: 1024px) {}
+@media (min-width: 1024px) {
+    .card{
+
+        width: 100%;
+    }
+
+    .longCard{
+        margin: 0;
+    }
+}

@@ -9,7 +9,6 @@ export default function Footer() {
 
   const pathname = usePathname();
 
-  // Al inicio de tu archivo, después de los imports
   const DotsIcon = ({ className }: { className?: string }) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className={className}>
       <circle cx="5" cy="12" r="2" />
@@ -133,19 +132,19 @@ export default function Footer() {
       <div className={styles.rightSection}>
         <div className={styles.logoWrapper}>
           <Image
-  src="/imgs/logo-title.png"
-  alt="Logo jornadas"
-  width={300}
-  height={200}
-  className={styles.logo}
-/>
-<Image
-  src="/imgs/magno.png"
-  alt="Logo magno"
-  width={100}
-  height={100}
-  className={styles.logoMagno}
-/>
+            src="/imgs/logos/logo-title.png"
+            alt="Logo jornadas"
+            width={300}
+            height={200}
+            className={styles.logo}
+          />
+          <Image
+            src="/imgs/magno.png"
+            alt="Logo magno"
+            width={100}
+            height={100}
+            className={styles.logoMagno}
+          />
 
         </div>
       </div>
