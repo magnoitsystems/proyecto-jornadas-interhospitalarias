@@ -22,7 +22,7 @@ export default function NavBar(): JSX.Element {
             pathname === '/sponsors'
         ) {
             return '/backgrounds/home.png';
-        } else if (pathname === '/inscripcion' || pathname === '/trabajos' || pathname === '/adminPanel') {
+        } else if (pathname === '/inscripcion' || pathname === '/trabajos' || pathname === '/adminPanel' || pathname === '/login') {
             return '/backgrounds/form.png';
         }
         return 'none';

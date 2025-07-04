@@ -7,24 +7,24 @@
 .fieldLabel {
     font-size: 0.9rem;
     text-align: left;
-    color: white;
+    color: var(--secondary-color-1);
 }
 
-.required {
-    color: #ff6b6b;
-    margin-left: 0.25rem;
-}
-
-.fieldInput {
+.fieldInput{
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 20px;
     font-size: 0.9rem;
-    width: 250px;
+    width: 100%;
     cursor: pointer;
     transition: all 0.3s ease;
-    background-color: white;
+    background: rgba(255, 252, 249, 0.4);
     color: black;
+}
+
+.fieldInput::placeholder {
+    color: rgba(22, 22, 22, 0.7);
+;
 }
 
 .fieldInput:focus {

@@ -1,0 +1,57 @@
+.main{
+    color: var(--secondary-color-5);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.header h3 {
+    letter-spacing: 2.4px;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+.header h5 {
+    font-weight: 300;
+    margin: 0;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto 1rem;
+    padding: 1rem;
+    background-color: rgba(35, 32, 33, 0.7);
+    border-radius: var(--10px);
+}
+
+.button {
+    padding: 0.75rem 2rem;
+    border: 1.5px solid var(--secondary-color-4);
+    border-radius: 100px;
+    cursor: pointer;
+    margin: 1rem auto 0;
+    max-width: 147px;
+
+}
+
+/* Tablets */
+@media (min-width: 641px) and (max-width: 1023px) {
+    .form {
+        max-width: 450px;
+        padding: 1.5rem;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .form {
+        max-width: 370px;
+        padding: 2rem;
+    }
+}
