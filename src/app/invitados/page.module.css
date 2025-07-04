@@ -1,0 +1,37 @@
+/* app/page.module.css (o el archivo CSS de tu página) */
+.main {
+    /* Convierte 'main' en un contenedor flex vertical */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los hijos horizontalmente (el título y el grid de tarjetas) */
+
+    /* ¡AQUÍ ESTÁ LA SOLUCIÓN! */
+    /* Añade un espacio de 60px (o el valor que prefieras) ENTRE cada elemento hijo */
+    gap: 60px;
+
+    /* Estilos que ya tenías para dar espacio alrededor de la página */
+    padding: 8%; /* Más espacio arriba y abajo */
+    background-color: #f9f9f9;
+    min-height: 100vh;
+}
+.cardsContainer {
+
+    display: grid; /* ¡El cambio clave! */
+    grid-template-columns: repeat(2, 1fr); /* Crea dos columnas de igual tamaño */
+    gap: 40px 30px; /* 40px de espacio vertical, 30px de espacio horizontal */
+
+    /* Para centrar el grid en la página y darle un ancho máximo */
+    width: 100%;
+    max-width: 1350px; /* Ancho de 2 tarjetas (650px * 2) + gap (30px) */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    padding: 0 20px; /* Un poco de espacio en los lados */
+}
+
+/* --- MEJORA IMPORTANTE: RESPONSIVE DESIGN --- */
+/* Para que en pantallas más pequeñas se vea bien, lo pasamos a una sola columna */
+@media (max-width: 1400px) {
+    .cardsContainer {
+        grid-template-columns: 1fr; /* Una sola columna */
+        max-width: 700px; /* Ancho para una sola tarjeta + padding */
+    }
+}

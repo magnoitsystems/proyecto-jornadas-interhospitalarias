@@ -2,7 +2,7 @@
 .container {
     display: flex;
     padding: 2rem;
-    background-color: #fff;
+    background-color: transparent;
     font-family: sans-serif;
     width: 100%;
     box-sizing: border-box;
@@ -10,10 +10,11 @@
 
 /* El formulario ahora controla el ancho máximo del contenido */
 .formContainer {
-    width: 100%;
+    width: 70%;
     display: flex;
     flex-direction: column; /* Apila los elementos verticalmente */
     align-items: center; /* Centra los elementos horizontalmente */
+    margin-left: 14%;
 }
 
 /* Oculta el input de archivo real */

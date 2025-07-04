@@ -1,0 +1,119 @@
+/* app/components/ProfessionalCard.module.css */
+
+.card {
+    width: 650px;
+    height: 247px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    font-family: 'Times New Roman', serif;
+    color: #333;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    transition:
+            border-color 0.6s ease,
+            box-shadow 0.3s ease;
+}
+
+.card:hover {
+
+
+    border-color: #c59d5f; /* Un tono dorado que combina con el ícono */
+
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+.imageContainer {
+    flex-shrink: 0; /* Evita que el contenedor de la imagen se encoja */
+    margin-right: 25px;
+    width: 170px; /* Ancho para el contenedor de la imagen */
+    height: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo para la imagen de perfil real */
+.profileImage {
+    border-radius: 50%;
+    object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
+}
+
+/* Estilo para el contenedor gris cuando no hay imagen */
+.placeholderImage {
+    width: 170px;
+    height: 170px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo para el ícono SVG de usuario */
+.placeholderIcon {
+    width: 80px;
+    height: 80px;
+    color: #a0a0a0;
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.infoContainer h2 {
+    font-size: 28px;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #111;
+}
+
+.infoContainer p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 4px 0;
+    color: #444;
+}
+
+.infoContainer p strong {
+    font-weight: normal;
+    color: #555;
+}
+/* app/components/ProfessionalCard.module.css */
+
+/* ... (Todos tus estilos anteriores de .card, .imageContainer, etc., van aquí) ... */
+
+
+/* --- RESPONSIVE DESIGN PARA MÓVILES --- */
+/* Esta regla se aplicará en pantallas con un ancho máximo de 768px */
+@media (max-width: 728px) {
+    .card {
+        width: 100%;
+        /* 1. Cambia la dirección de flex a columna para apilar los elementos */
+        flex-direction: column;
+
+        /* 2. Permite que la altura crezca según el contenido */
+        height: auto;
+
+        /* 3. Ajusta el padding si es necesario para pantallas pequeñas */
+        padding: 25px 15px;
+    }
+
+    .imageContainer {
+        /* 4. Elimina el margen derecho y añade un margen inferior para separar la imagen del texto */
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    /* (Opcional pero recomendado) Centra el texto en la vista móvil */
+    .infoContainer {
+        text-align: center;
+    }
+}
