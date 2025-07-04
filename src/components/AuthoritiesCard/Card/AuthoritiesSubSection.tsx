@@ -12,12 +12,12 @@ interface AuthoritiesSubSectionProps {
 export default function AuthoritiesSubSection({ authorityGroup }: AuthoritiesSubSectionProps) {
     return (
         <div className={styles.subSection}>
-            <h5 className={`${styles.subTitle} ${styles.marginLeft}`}>
+            <h5 className={`${styles.text} ${styles.marginLeft}`}>
                 {authorityGroup.position}
             </h5>
             {authorityGroup.names.map((name: string, index: number) => (
                 <p
-                    className={`${styles.nameText} ${styles.marginLeft}`}
+                    className={`${styles.text} ${styles.marginLeft}`}
                     key={`${name}-${index}`} // Key mejorado para evitar conflicts
                 >
                     {name}
