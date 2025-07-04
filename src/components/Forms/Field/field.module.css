@@ -1,0 +1,40 @@
+.fieldContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.fieldLabel {
+    font-size: 0.9rem;
+    text-align: left;
+    color: white;
+}
+
+.required {
+    color: #ff6b6b;
+    margin-left: 0.25rem;
+}
+
+.fieldInput {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    width: 250px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: white;
+    color: black;
+}
+
+.fieldInput:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+    transform: scale(1.02);
+}
+
+.fieldInput:hover {
+    transform: scale(1.01);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
