@@ -34,7 +34,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    align-content: center;
+    background-color: #019B39;
 }
 
 .cardCalendarProperties{
@@ -134,8 +134,6 @@
 
     .cardCompletyProperties:hover .infoCardProperties{
         visibility: visible;
-        background-color: var(--primary-color-1);
-        width: 450px;
         opacity: 1;
     }
 
