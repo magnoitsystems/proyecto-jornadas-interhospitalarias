@@ -9,13 +9,44 @@
     padding: 0 1rem;
 }
 
-/* Responsive para mobile */
 @media (max-width: 728px) {
-    .roundedCards {
-        top: 30px; /* Ajusta para mobile */
-        padding: 0 0.5rem;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
+  .roundedCards {
+    top: 50px;
+    padding: 0 0.5rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* Este contenedor debe tener altura igual a la card y centrar verticalmente */
+  .sliderWrapper {
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    gap: 1rem;
+    height: 100%; /* Ocupa toda la altura del contenedor padre (la card) */
+  }
+
+  .arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    display: flex;
+    align-items: center; /* Centrar la imagen dentro de la flecha */
+    justify-content: center;
+  }
+
+  .arrow img {
+    width: 100%;
+    height: auto;
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
+  }
+
+  .arrow:hover img {
+    filter: brightness(1) sepia(1) saturate(10) hue-rotate(250deg);
+  }
 }

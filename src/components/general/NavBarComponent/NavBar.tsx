@@ -29,9 +29,8 @@ export default function NavBar(): JSX.Element {
     };
 
     const isFormPage = pathname === '/inscripcion' || pathname === '/trabajos';
-    const isAdminPage = pathname === '/adminPanel';
+    const isAdminPage = pathname === '/adminPanel' || pathname === '/login';
 
-    // Aplicar background al body SOLO para páginas de formulario (no adminPanel)
     useEffect(() => {
         if (isFormPage && !isAdminPage) {
             document.body.style.backgroundImage = `url(/backgrounds/form.png)`;

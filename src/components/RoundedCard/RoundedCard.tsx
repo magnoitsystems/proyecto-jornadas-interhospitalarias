@@ -27,6 +27,8 @@ export default function CircularCard({
   } as any;
 
   return (
+    <div>
+
     <div 
       className={`${styles.circularCard} ${isMulticolor ? styles.multicolorBorder : ''} ${className}`}
       style={cardStyle}
@@ -35,6 +37,8 @@ export default function CircularCard({
         <span className={`${styles.number} ${cactus.className}`}>{number}</span>
         <span className={`${styles.title} ${cactus.className}`}>{title}</span>
       </div>
+    </div>
+
     </div>
   );
 }
