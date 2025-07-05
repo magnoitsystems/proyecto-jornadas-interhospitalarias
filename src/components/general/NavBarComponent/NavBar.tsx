@@ -22,13 +22,14 @@ export default function NavBar(): JSX.Element {
             pathname === '/sponsors'
         ) {
             return '/backgrounds/home.png';
-        } else if (pathname === '/inscripcion' || pathname === '/trabajos' || pathname === '/adminPanel' || pathname === '/login') {
+        } else if (pathname === '/inscripcion' || pathname === '/trabajos' || pathname === '/adminPanel' || pathname === '/login' ||
+            pathname === '/redirection') {
             return '/backgrounds/form.png';
         }
         return 'none';
     };
 
-    const isFormPage = pathname === '/inscripcion' || pathname === '/trabajos';
+    const isFormPage = pathname === '/inscripcion' || pathname === '/trabajos' || pathname === '/redirection';
     const isAdminPage = pathname === '/adminPanel' || pathname === '/login';
 
     useEffect(() => {

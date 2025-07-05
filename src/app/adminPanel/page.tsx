@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import RoundedCard from "@/components/RoundedCard/RoundedCard";
+import { cactus } from "@/app/ui/fonts";
 import styles from './page.module.css';
 
 const cardData = [
@@ -61,6 +62,9 @@ export default function AdminPanel() {
                     ))
                 )}
             </div>
+            <h1 className= {`${styles.titleProperties} ${cactus.className}`}>
+                Registros de inscripción
+            </h1>
         </main>
     );
 }

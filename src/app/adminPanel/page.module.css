@@ -9,6 +9,12 @@
     padding: 0 1rem;
 }
 
+.titleProperties{
+    margin-left: 15px;
+    width: fit-content;
+    border-bottom: #060606 1px solid;
+}
+
 @media (max-width: 728px) {
   .roundedCards {
     top: 50px;
