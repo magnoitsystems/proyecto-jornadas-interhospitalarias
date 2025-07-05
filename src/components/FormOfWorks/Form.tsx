@@ -29,10 +29,8 @@ const FormPost: React.FC = () => {
                 />
 
                 <label htmlFor="file-upload" className={styles.fileLabel}>
-          <span className={styles.iconContainer}>
-            <PaperclipIcon />
-          </span>
-                    <span className={styles.text}>Trabajos</span>
+
+                    <span className={styles.text}>Ingresar trabajo</span>
                 </label>
 
                 <button type="submit" className={styles.submitButton}>

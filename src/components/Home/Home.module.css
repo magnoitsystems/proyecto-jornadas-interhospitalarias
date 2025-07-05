@@ -21,7 +21,8 @@
 }
 
 .infoCardProperties{
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     opacity: 0;
     visibility: hidden;
     height: 0;
@@ -34,7 +35,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #019B39;
 }
 
 .cardCalendarProperties{
