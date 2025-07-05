@@ -181,10 +181,16 @@
 
 @media (max-width: 728px) {
 
+  .navbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  }
+
   .heroSection {
     width: 100vw;
     height: auto;
-    min-height: 400px;
+    max-height: fit-content;
     background-size: 100% auto;
     background-position: center top;
     background-attachment: local;
