@@ -18,13 +18,12 @@
     gap: 1rem;
   }
 
-  /* Este contenedor debe tener altura igual a la card y centrar verticalmente */
   .sliderWrapper {
     display: flex;
-    align-items: center; /* Centra verticalmente */
-    justify-content: center; /* Centra horizontalmente */
+    align-items: center;
+    justify-content: center;
     gap: 1rem;
-    height: 100%; /* Ocupa toda la altura del contenedor padre (la card) */
+    height: 100%;
   }
 
   .arrow {
@@ -35,18 +34,15 @@
     height: 28px;
     padding: 0;
     display: flex;
-    align-items: center; /* Centrar la imagen dentro de la flecha */
+    align-items: center;
     justify-content: center;
+
+    color: white;
+    transition: color 0.3s ease;
   }
 
-  .arrow img {
-    width: 100%;
-    height: auto;
-    filter: brightness(0) invert(1);
-    transition: filter 0.3s ease;
+  .arrow:hover {
+    color: #7D0279; 
   }
 
-  .arrow:hover img {
-    filter: brightness(1) sepia(1) saturate(10) hue-rotate(250deg);
-  }
 }
