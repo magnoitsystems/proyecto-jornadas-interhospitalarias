@@ -12,7 +12,7 @@ export default function NavBar(): JSX.Element {
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => setIsOpen(!isOpen);
-    
+
     const getBackground = (pathname: string) => {
         if (
             pathname === '/' ||
@@ -22,16 +22,15 @@ export default function NavBar(): JSX.Element {
             pathname === '/sponsors'
         ) {
             return '/backgrounds/home.png';
-        } else if (pathname === '/inscripcion' || pathname === '/trabajos' || pathname === '/adminPanel') {
+        } else if (pathname === '/inscripcion' || pathname === '/trabajos' || pathname === '/adminPanel' || pathname === '/login') {
             return '/backgrounds/form.png';
         }
         return 'none';
     };
 
     const isFormPage = pathname === '/inscripcion' || pathname === '/trabajos';
-    const isAdminPage = pathname === '/adminPanel';
+    const isAdminPage = pathname === '/adminPanel' || pathname === '/login';
 
-    // Aplicar background al body SOLO para páginas de formulario (no adminPanel)
     useEffect(() => {
         if (isFormPage && !isAdminPage) {
             document.body.style.backgroundImage = `url(/backgrounds/form.png)`;
@@ -62,14 +61,16 @@ export default function NavBar(): JSX.Element {
 
     return (
         <section
-            className={`${styles.heroSection} ${(isFormPage && !isAdminPage)
-                    ? styles.formHero
-                    : styles.homeHero
-                }`}
-            style={{ 
+            className={`
+    ${styles.heroSection} 
+    ${(isFormPage && !isAdminPage) ? styles.formHero : styles.homeHero} 
+    ${isOpen ? styles.menuActive : ''}
+  `}
+            style={{
                 backgroundImage: (!isFormPage || isAdminPage) ? `url(${getBackground(pathname)})` : 'none'
             }}
         >
+
 
             <nav className={styles.navbar}>
 
