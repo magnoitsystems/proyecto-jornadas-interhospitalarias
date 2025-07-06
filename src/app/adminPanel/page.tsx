@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import RoundedCard from "@/components/RoundedCard/RoundedCard";
 import styles from './page.module.css';
+import GroupFilters from "@/components/FilterButton/GroupFilters/GroupFilters";
 
 const cardData = [
     { number: "0", title: "Inscriptos", borderColor: "linear-gradient(45deg, red, blue, green, yellow)" },
@@ -61,6 +62,9 @@ export default function AdminPanel() {
                     ))
                 )}
             </div>
+            <aside className={styles.aside}>
+                <GroupFilters/>
+            </aside>
         </main>
     );
 }
