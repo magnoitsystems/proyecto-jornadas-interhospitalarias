@@ -45,14 +45,20 @@
 .infoPresentationProperties{
     display: flex;
     flex-direction: column;
-    gap: 10px;
 }
 
 .totalInfoProperties{
     display: flex;
     flex-direction: column;
-    gap: 20px
-;
+    height: 380px;
+}
+
+.visible{
+    visibility: visible;
+}
+
+.visibleParagraph{
+    visibility: hidden;
 }
 
 .presentationCardProperties, .sponsorsProperties{
@@ -64,7 +70,6 @@
 .infoAndImageProperties{
     display: flex;
     flex-direction: row;
-    height: 312px;
 }
 
 .infoAndImageProperties p{
@@ -90,7 +95,13 @@
     /* DOCUMENTO DE BIENVENDIA */
     .cardAndSponsorsProperties{
         flex-direction: column;
+        align-items: center;
         width: 100%;
+    }
+
+    .totalInfoProperties{
+        gap: 20px;
+        height: 490px;
     }
 
     .presentationCardProperties{
@@ -113,16 +124,24 @@
         width: 155px;
     }
 
+    .infoAndImageProperties{
+        height: 312px;
+    }
+
     .presentationCardProperties h1{
         font-size: var(--h3-size);
         font-family: "Cactus Classical Serif";
     }
 
-    .sponsorsProperties h1{
-        font-size: var(--h1-size);
+    .visible{
+        visibility: hidden;
     }
 
-    .sponsorsProperties{
-        margin-left: 5px;
+    .visibleParagraph{
+        visibility: visible;
+    }
+
+    .sponsorsProperties h1{
+        font-size: var(--h1-size);
     }
 }

@@ -9,6 +9,12 @@
     padding: 0 1rem;
 }
 
+.titleProperties{
+    margin-left: 15px;
+    width: fit-content;
+    border-bottom: #060606 1px solid;
+}
+
 .aside {
     margin: 3rem;
     display: flex;

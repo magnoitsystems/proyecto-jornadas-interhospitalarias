@@ -82,7 +82,7 @@
     color: black;
     font-weight: normal;
     transition: all 0.3s ease;
-    width: 70%;
+    width: 100%;
     max-width: 300px;
     cursor: pointer;
 }

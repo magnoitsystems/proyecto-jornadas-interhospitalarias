@@ -14,14 +14,19 @@ export default function CardAndSponsors(){
                                     organizado en conjunto por el Hospital de Niños "Dr. Debilio Blanco Villegas" de Tandil, el Hospital
                                     de Niños "Ricardo Gutiérrez" y el Sistema Integrado de Salud Pública.
                                 </p>
+                                <p className={styles.visible}>
+                                    Estas jornadas han sido pensadas
+                                    como un puente entre experiencias hospitalarias, saberes interdisciplinarios y el compromiso cotidiano
+                                    por una salud pública de calidad. Desde la ciudad hasta las sierras, nos unimos para seguir construyendo
+                                    una atención pediátrica integral, humana y en constante evolución.</p>
                             </div>
-                            <div className={styles.imagePresentationProperties}>
+                            <div className={`${styles.imagePresentationProperties}`}>
                                 <Image src={'/imgs/fotoDirectorJornada.png'} alt={"Foto del director de la jornada"} width={207} height={236}/>
                                 <span>Apellido, Nombre</span>
                                 <span>Director/a del [Lugar]</span>
                             </div>
                         </div>
-                        <div className={`${styles.paragraphProperties} ${styles.infoColorProperties}`}>
+                        <div className={`${styles.paragraphProperties} ${styles.infoColorProperties} ${styles.visibleParagraph}`}>
                             <p>Estas jornadas han sido pensadas
                                 como un puente entre experiencias hospitalarias, saberes interdisciplinarios y el compromiso cotidiano
                                 por una salud pública de calidad. Desde la ciudad hasta las sierras, nos unimos para seguir construyendo

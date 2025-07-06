@@ -2,6 +2,7 @@
 
 import styles from './Inscripcion.module.css';
 import { cactus } from '../../app/ui/fonts';
+import Link from "next/link";
 
 export default function InscriptionForm() {
     return (
@@ -36,7 +37,7 @@ export default function InscriptionForm() {
                         <input type="text" placeholder="Profesión" />
                     </div>
                     <div className={styles.formButton}>
-                        <button type="submit" className={cactus.className}>Registrarse</button>
+                        <Link href={'/redirection'}><button type="submit" className={cactus.className}>Registrarse</button></Link>
                     </div>
                 </form>
             </div>

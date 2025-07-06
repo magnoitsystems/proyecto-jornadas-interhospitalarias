@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import RoundedCard from "@/components/RoundedCard/RoundedCard";
+import { cactus } from "@/app/ui/fonts";
 import styles from './page.module.css';
 import GroupFilters from "@/components/FilterButton/GroupFilters/GroupFilters";
 
@@ -65,6 +66,9 @@ export default function AdminPanel() {
             <aside className={styles.aside}>
                 <GroupFilters/>
             </aside>
+            <h1 className= {`${styles.titleProperties} ${cactus.className}`}>
+                Registros de inscripción
+            </h1>
         </main>
     );
 }
