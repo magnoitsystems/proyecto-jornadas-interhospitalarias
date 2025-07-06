@@ -23,6 +23,11 @@
     gap: 3rem;
 }
 
+.containerFilter{
+    width: 95%;
+    margin: 0 auto;
+}
+
 @media (max-width: 728px) {
   .roundedCards {
     top: 50px;

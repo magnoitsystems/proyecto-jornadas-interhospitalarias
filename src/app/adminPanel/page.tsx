@@ -64,11 +64,13 @@ export default function AdminPanel() {
                 )}
             </div>
             <aside className={styles.aside}>
-                <GroupFilters/>
+                <h1 className= {`${styles.titleProperties} ${cactus.className}`}>
+                    Registros de inscripción
+                </h1>
             </aside>
-            <h1 className= {`${styles.titleProperties} ${cactus.className}`}>
-                Registros de inscripción
-            </h1>
+            <div className={styles.containerFilter}>
+                <GroupFilters/>
+            </div>
         </main>
     );
 }

@@ -2,6 +2,8 @@
 
 import styles from './filterButton.module.css'
 import {useState} from "react";
+import {cactus} from "@/app/ui/fonts";
+
 // import {MouseEventHandler} from "react";
 
 interface FilterButtonProps {
@@ -22,6 +24,7 @@ export default function FilterButton({
         <button
             className={`
             ${styles.button} 
+            ${cactus.className}
             ${isActive ? styles.active : ''} 
             `}
             onClick={() => {setIsActive(!isActive)}}
