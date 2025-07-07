@@ -4,6 +4,7 @@ import {useState} from "react";
 import styles from "./page.module.css"
 import {cactus} from "@/app/ui/fonts";
 import Field from "@/components/Forms/Field/Field";
+import Link from "next/link";
 
 interface LoginData {
     user: string;
@@ -26,13 +27,11 @@ export default function Login() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         console.log('Login data:', loginData);
-        // Lógica de autenticación aquí
     };
 
     return (
-
-        <main className={`${cactus.className} ${styles.main}` }>
-            <section className={styles.header}>
+        <main className={`${cactus.className} ${styles.main}`}>
+            <section className={`${cactus.className} ${styles.header}`}>
                 <h3>Inicia Sesión</h3>
                 <h5>Inicia Sesión para acceder a la entrega de trabajos</h5>
             </section>
@@ -57,10 +56,11 @@ export default function Login() {
                         onChange={updateField('password')}
                         required
                     />
-                    <button className={styles.button} type="submit">Iniciar Sesión</button>
+                    <Link href={'/adminPanel'} className={styles.linkProperties}>
+                        <button className={`${cactus.className} ${styles.button}`} type="submit">Iniciar Sesión</button>
+                    </Link>
                 </form>
             </section>
-
         </main>
     );
 }

@@ -29,8 +29,8 @@ export default function NavBar(): JSX.Element {
         return 'none';
     };
 
-    const isFormPage = pathname === '/inscripcion' || pathname === '/trabajos' || pathname === '/redirection';
-    const isAdminPage = pathname === '/adminPanel' || pathname === '/login';
+    const isFormPage = pathname === '/inscripcion' || pathname === '/redirection' || pathname === '/login';
+    const isAdminPage = pathname === '/adminPanel';
 
     useEffect(() => {
         if (isFormPage && !isAdminPage) {
@@ -72,7 +72,6 @@ export default function NavBar(): JSX.Element {
             }}
         >
 
-
             <nav className={styles.navbar}>
 
                 <div className={styles.logo}>
@@ -95,7 +94,6 @@ export default function NavBar(): JSX.Element {
                     <span className={styles.line}></span>
                     <span className={styles.line}></span>
                 </div>
-
 
                 <ul className={`${styles.menu} ${isOpen ? styles.openNav : styles.closeNav}`} >
                     <li>
@@ -162,9 +160,7 @@ export default function NavBar(): JSX.Element {
                         </Link>
                     </li>
                 </ul>
-
             </nav>
         </section>
-
     );
 }

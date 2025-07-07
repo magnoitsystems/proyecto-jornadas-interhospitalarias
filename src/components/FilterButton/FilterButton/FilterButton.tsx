@@ -2,6 +2,8 @@
 
 import styles from './filterButton.module.css'
 import {useState} from "react";
+import { cactus } from "@/app/ui/fonts";
+
 // import {MouseEventHandler} from "react";
 
 interface FilterButtonProps {
@@ -26,7 +28,7 @@ export default function FilterButton({
             `}
             onClick={() => {setIsActive(!isActive)}}
         >
-            <span className={styles.label}>{label}</span>
+            <span className={`${styles.label} ${cactus.className}`}>{label}</span>
             <div className={`${styles.switch} ${isActive ? styles.active : ''}`}>
                 <div className={styles.slider}>
                     <div className={styles.knob}></div>

@@ -1,5 +1,6 @@
 .main{
-    color: var(--secondary-color-5);
+    color: var(--secondary-color-1);
+    height: 500px;
 }
 
 .header {
@@ -36,8 +37,20 @@
     border-radius: 100px;
     cursor: pointer;
     margin: 1rem auto 0;
-    max-width: 147px;
+    max-width: 200px;
+    transition: transform 0.3s ease;
+}
 
+.button:hover{
+    transform: translateY(-4px);
+    border: white 3px solid;
+    background-color: var(--secondary-color-4);
+    color: var(--secondary-color-1);
+}
+
+.linkProperties{
+    display: flex;
+    text-decoration: none;
 }
 
 /* Tablets */
