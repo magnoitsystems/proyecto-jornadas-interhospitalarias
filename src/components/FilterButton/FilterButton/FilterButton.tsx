@@ -28,7 +28,7 @@ export default function FilterButton({
             `}
             onClick={() => {setIsActive(!isActive)}}
         >
-            <span className={`${styles.label} ${cactus.className}`}>{label}</span>
+            <span className={styles.label}>{label}</span>
             <div className={`${styles.switch} ${isActive ? styles.active : ''}`}>
                 <div className={styles.slider}>
                     <div className={styles.knob}></div>

@@ -4,6 +4,7 @@ import {useState} from "react";
 import styles from "./groupFilters.module.css"
 import FilterButton from "@/components/FilterButton/FilterButton/FilterButton";
 import useResponsive from "@/components/FilterButton/GroupFilters/useResponsive";
+import {cactus} from "@/app/ui/fonts";
 
 interface FilterState {
     [key: string]: boolean;
@@ -28,9 +29,9 @@ export default function GroupFilters() {
         <div className={styles.toggleContainer}>
             {/* Botón que activa el toggle */}
             {isMobile && <button
-                className={styles.toggle}
+                className={`${styles.toggle} ${cactus.className}`}
                 onClick={handleToggle}>
-                Filtrar Por
+                Filtrar por
             </button>}
 
             {/* Contenido que se muestra/oculta */}
