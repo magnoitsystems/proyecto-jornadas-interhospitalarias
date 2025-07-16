@@ -5,18 +5,15 @@
     border: 1px solid black;
     background-color: var(--secondary-color-5);
     color: var(--secondary-color-1);
-    border-radius: 5px;
+    border-radius: 10px;
     text-align: left;
+    padding: 0.25rem;
 }
-
-/*.button:active {/
-     /*    transform: translateY(0);*/
- /*}*/
 
 .switch {
     position: relative;
-    width: 32px;
-    height: 16px;
+    width: 48px;
+    height: 20px;
     flex-shrink: 0;
 }
 
@@ -37,19 +34,19 @@
 /* El botón deslizante (knob) */
 .knob {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 15px;
-    height: 15px;
+    top: 3px;
+    left: 5px;
+    width: 14px;
+    height: 14px;
     background-color: var(--primary-color-5);
     border-radius: 50%;
-    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transition: all .3s cubic-bezier(0.4, 0.0, 0.2, 1);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Animación del knob cuando está activo */
-.switch .active .knob {
-    transform: translateX(17px);
+.switch.active .knob {
+    transform: translateX(26px);
     background-color: var(--primary-color-6);
 
 }
@@ -69,5 +66,18 @@
 /*        flex-direction: column;*/
 /*    }*/
 /*}*/
+
+@media (min-width: 1023px) {
+
+    .button{
+        width: 265px;
+        height: 40px;
+        font-size: 16px;
+        font-weight: 400;
+        padding-left: 1.125rem;
+        padding-right: var(--15px);
+    }
+
+}
 
 
