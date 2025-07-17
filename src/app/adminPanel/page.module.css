@@ -70,17 +70,17 @@
 @media (min-width: 768px) {
     .containerContent {
         display: flex;
+        align-items: flex-start;
         gap: 3rem;
     }
 
     .aside{
         margin: 0 0 0 var(--15px);
-        width: fit-content;
+        flex: 0 0 auto; /* No crece ni se encoje */
     }
 
     .containerUserCard {
-        width: 100%;
+        flex: 1;
         margin-right: var(--25px);
     }
-
 }

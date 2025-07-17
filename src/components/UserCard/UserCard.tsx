@@ -15,8 +15,10 @@ export default function UserCard({ image, name, surname, profession, age}: UserC
             <img src={image} alt={name} className={styles.image} />
             <div className={styles.containerAttribute}>
                 <p className={styles.name}>{name}, {surname}</p>
-                <p className={styles.attribute}>E: {age}</p>
-                <p className={styles.attribute}>P: {profession}</p>
+                <div className={styles.containerAttribute}>
+                    <p className={styles.attribute}>E: {age}</p>
+                    <p className={styles.attribute}>P: {profession}</p>
+                </div>
             </div>
         </div>
     );
