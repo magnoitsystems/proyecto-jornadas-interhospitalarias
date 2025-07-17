@@ -1,88 +1,213 @@
-/* Contenedor principal que centra todo */
+/* Animación de entrada para las tarjetas */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 .container {
-    display: flex;
-    padding: 2rem;
-    background-color: transparent;
-    font-family: sans-serif;
-    width: 100%;
-    box-sizing: border-box;
+    padding: 2rem 1rem;
 }
 
-/* El formulario ahora controla el ancho máximo del contenido */
 .formContainer {
-    width: 70%;
+    max-width: 700px;
+    margin: 0 auto;
+    font-family: "Georgia", "Times New Roman", serif;
     display: flex;
-    flex-direction: column; /* Apila los elementos verticalmente */
-    align-items: center; /* Centra los elementos horizontalmente */
-    margin-left: 14%;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-/* Oculta el input de archivo real */
-.fileInput {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
-}
-
-/* El label estilizado que funciona como nuestro input visible */
-.fileLabel {
+.formGroup {
     display: flex;
-    width: 100%; /* Ocupa el 100% del ancho del .formContainer */
-    align-items: center;
-    border: 1px solid #333;
-    padding: 0;
-    cursor: pointer;
-    background-color: #ffffff;
-    transition: background-color 0.6s ease;
-    overflow: hidden;
-    box-sizing: border-box; /* Asegura que el borde no añada ancho extra */
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.fileLabel:hover {
-    background-color: #FC5739;
+.formGroup label {
+    color: #333;
+    font-size: 1.1rem;
 }
 
-/* Contenedor del ícono */
-.iconContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #2d2d2d;
-    padding: 1rem;
-}
-
-/* El texto "Trabajos" que se expande y se centra */
-.text {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 2.5rem;
-    color: #2d2d2d;
-    line-height: 1;
-    flex-grow: 1;
-    text-align: center;
-    padding: 1rem;
-}
-
-/* Estilo para el botón de envío */
-.submitButton {
-    justify-content: flex-start;
-    margin-top: 1.5rem;
-    margin-left: 5%;
-    padding: 0.8rem 2.5rem; /* Un poco más de padding para que se vea bien */
+/* Estilos para inputs, selects y textareas */
+.formGroup input,
+.mainInput,
+.formGroup select,
+.formGroup textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    background-color: #353535;
+    color: #fff;
     font-size: 1rem;
-    font-weight: bold;
-    color: white;
-    background-color: #007bff; /* Color azul como en tu imagen */
+    font-family: inherit;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.formGroup input::placeholder,
+.mainInput::placeholder,
+.formGroup textarea::placeholder {
+    color: #a0a0a0;
+}
+
+.formGroup input:focus,
+.mainInput:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+    outline: none;
+    border-color: #e67e22;
+    box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.2);
+}
+
+.inputWithButton {
+    display: flex;
+    align-items: center;
+}
+
+.mainInput {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.checkButton {
+    flex-shrink: 0;
+    height: calc(1.5rem + 1.5rem + 2px);
+    width: 50px;
     border: none;
+    background-color: #e67e22;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+.checkButton:hover {
+    background-color: #d35400;
+}
+
+.autoresList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.autorCard {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    background-color: #fdfdfd;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.cardHeader h3 {
+    font-size: 1.3rem;
+    font-weight: normal;
+    color: #333;
+    margin: 0;
+}
+
+.removeButton {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 0.5rem;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.removeButton:hover {
+    color: #c0392b;
+    transform: scale(1.2);
+}
+
+.errorText {
+    color: #c0392b;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.fileInput {
+    background: #f1f1f1;
+    color: #333;
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+.fileInput::file-selector-button {
+    background-color: #353535;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.6s;
-    width: 60%;
-    box-sizing: border-box;
 }
 
-.submitButton:hover {
-    background-color: #FC5739;
+.submitButton {
+    padding: 0.8rem 1.5rem;
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    align-self: center; /* Para centrar el botón */
+}
+.toggleButton {
+    padding: 0.8rem 1.5rem;
+    background-color: #f1f1f1; /* Color gris claro por defecto */
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.toggleButton:hover {
+    background-color: #e0e0e0;
+}
+
+/* Estilo del botón cuando está ACTIVO */
+.toggleButtonActive {
+    background-color: #e67e22; /* Naranja, como el botón de check */
+    color: white;
+    border-color: #e67e22;
+}
+
+.toggleButtonActive:hover {
+    background-color: #d35400; /* Naranja más oscuro */
+}
+
+/* Contenedor del input de premio para la animación de entrada */
+@keyframes slideDownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.premioFileInputContainer {
+    margin-top: 1rem;
+    animation: slideDownFadeIn 0.4s ease-out forwards;
 }
