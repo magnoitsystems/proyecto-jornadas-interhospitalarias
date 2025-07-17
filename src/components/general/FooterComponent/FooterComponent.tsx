@@ -127,17 +127,6 @@ export default function Footer() {
               Trabajos
             </Link>
           </li>
-          <li className={styles.item}>
-            <span className={`${styles.dotSponsors} ${pathname === '/sponsors' ? styles.activeLink : ''}`}>
-              <DotsIcon></DotsIcon>
-            </span>
-            <Link
-              href="/sponsors"
-              className={`${styles.sponsorsLink} ${cactus.className} ${pathname === '/sponsors' ? styles.activeLink : ''}`}
-            >
-              Sponsors
-            </Link>
-          </li>
         </ul>
       </div>
 

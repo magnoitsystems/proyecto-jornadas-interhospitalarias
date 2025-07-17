@@ -18,8 +18,7 @@ export default function NavBar(): JSX.Element {
             pathname === '/' ||
             pathname === '/autoridades' ||
             pathname === '/invitados' ||
-            pathname === '/programa' ||
-            pathname === '/sponsors'
+            pathname === '/programa'
         ) {
             return '/backgrounds/home.png';
         } else if (pathname === '/inscripcion' || pathname === '/trabajos' || pathname === '/adminPanel' || pathname === '/login' ||
@@ -148,15 +147,6 @@ export default function NavBar(): JSX.Element {
                             className={`${styles.trabajosLink} ${cactus.className} ${pathname === '/trabajos' ? styles.activeLink : ''}`}
                         >
                             Trabajos
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href="/sponsors"
-                            onClick={() => setIsOpen(false)}
-                            className={`${styles.sponsorsLink} ${cactus.className} ${pathname === '/sponsors' ? styles.activeLink : ''}`}
-                        >
-                            Sponsors
                         </Link>
                     </li>
                 </ul>
