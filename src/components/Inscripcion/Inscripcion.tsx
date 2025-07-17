@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './Inscripcion.module.css';
-import { cactus } from '../../app/ui/fonts';
+import { cactus } from '@/app/ui/fonts';
 import Link from "next/link";
 
 export default function InscriptionForm() {

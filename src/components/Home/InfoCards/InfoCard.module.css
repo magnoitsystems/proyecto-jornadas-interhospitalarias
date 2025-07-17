@@ -8,7 +8,6 @@
     font-size: 28px;
     justify-content: left;
     gap: 5px;
-    font-family: "Nunito";
     align-items: center;
     justify-self: center;
     border-bottom-left-radius: 5px;
@@ -20,9 +19,18 @@
     padding-left: 15px;
 }
 
-#info1:hover, #info2:hover, #info3:hover, #info4:hover{
-    border-bottom: var(--secondary-color-1) 1px solid;
+.leftInfo span{
+    display: list-item;
+    list-style-type: disc; /* o circle, square, etc. */
+    margin-left: 20px;
+}
+
+.infoCardProperties span:hover{
     cursor: pointer;
+}
+
+.leftInfo span:hover{
+    border-bottom: var(--secondary-color-1) 1px solid;
 }
 
 .notBorder{

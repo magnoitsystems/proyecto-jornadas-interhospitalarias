@@ -1,5 +1,6 @@
 import styles from "@/components/Home/CardAndSponsors/CardAndSponsors.module.css";
 import Image from "next/image";
+import { cactus } from '@/app/ui/fonts';
 
 export default function CardAndSponsors(){
     return(
@@ -49,7 +50,11 @@ export default function CardAndSponsors(){
                 </div>
             </div>
             <div className={styles.sponsorsProperties}>
-                <h1>Nos acompañan</h1>
+                <div className={styles.infoProperties}>
+                    <h1>Nos acompañan</h1>
+                    <p className={`${cactus.className}`}>Al momento las Jornadas han sido declaradas de interes Municipal
+                        y han sido auspiciadas por la Sociedad Argentina de Pediatria</p>
+                </div>
                 <div className={styles.imageProperties}>
                     <Image src={'/imgs/sponsors/casascoImg.jpg'} alt={"Imagen sponsor CardioVex"} width={281} height={112} />
                     <Image src={'/imgs/sponsors/pfizerSponsor.png'} alt={"Imagen sponsor CardioVex"} width={310} height={180} />
