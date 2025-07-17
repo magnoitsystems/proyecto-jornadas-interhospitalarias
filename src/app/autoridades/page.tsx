@@ -60,16 +60,16 @@ const organizingGroup = {
         },
         {
             position: "Comité Organizador - Miembros",
-                names: [
-            "Dra. Ana Albanese",
-            "Dra. Lorena Moreno",
-            "Dra. Mabel Brindo",
-            "Lorena San Martin",
-            "Karina Ochoa",
-            "Gaston Mujica",
-            "Lic. Cecilia Acosta",
-            "Lic. Gabriela Osimek"
-        ]
+            names: [
+                "Dra. Ana Albanese",
+                "Dra. Lorena Moreno",
+                "Dra. Mabel Brindo",
+                "Lorena San Martin",
+                "Karina Ochoa",
+                "Gaston Mujica",
+                "Lic. Cecilia Acosta",
+                "Lic. Gabriela Osimek"
+            ]
         }
     ]
 }
