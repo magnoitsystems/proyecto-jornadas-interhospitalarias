@@ -247,12 +247,17 @@
     width: 100%;
   }
 
-  .rightSection{
-    display: flex;
-    background-color: white;
-    flex-direction: row;
-    width: 100vh;
-  }
+.rightSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 100vw; /* ✅ ocupa todo el ancho real de pantalla */
+  padding: 1rem 0;
+}
+
+
+
 
   .leftSection {
     gap: 0.8rem;
@@ -277,19 +282,28 @@
     display: none;
   }
 
-  .logoWrapper{
-    gap: 2rem;
-    margin-top: 12px;
-  }
+.logoWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
 
-  .logo {
-    max-width: 200px;
-    height: auto;
-  }
+.logo {
+  width: auto;
+  max-height: 70px;
+  object-fit: contain;
+}
 
-  .logoMagno {
-    display: block;
-    max-width: 100px;
-    height: auto;
-  }
+.logoMagno {
+  width: auto;
+  max-height: 70px;
+  object-fit: contain;
+  position: static; /* ✅ eliminamos absolute */
+  margin-top: 30px;
+}
+
+
 }
