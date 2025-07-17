@@ -136,15 +136,6 @@
   background-color: var(--primary-color-5);
 }
 
-.sponsorsLink:hover {
-  color: var(--primary-color-7);
-  transform: translateY(-2px);
-}
-
-.sponsorsLink:hover::after {
-  background-color: var(--primary-color-7);
-}
-
 .homeLink.activeLink {
   color: var(--primary-color-1);
 }
@@ -167,10 +158,6 @@
 
 .trabajosLink.activeLink {
   color: var(--primary-color-5);
-}
-
-.sponsorsLink.activeLink {
-  color: var(--primary-color-7);
 }
 
 .btnBurgerProperties {

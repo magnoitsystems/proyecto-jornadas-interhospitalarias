@@ -130,8 +130,7 @@
 .dotInvitados,
 .dotPrograma,
 .dotInscripcion,
-.dotTrabajos,
-.dotSponsors {
+.dotTrabajos {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -150,7 +149,6 @@
 .programaLink.activeLink { color: var(--primary-color-6); }
 .inscripcionLink.activeLink { color: var(--primary-color-3); }
 .trabajosLink.activeLink { color: var(--primary-color-5); }
-.sponsorsLink.activeLink { color: var(--primary-color-7); }
 
 /* Hover */
 .homeLink:hover { color: var(--primary-color-1); transform: translateY(-2px); }
@@ -159,7 +157,6 @@
 .programaLink:hover { color: var(--primary-color-6); transform: translateY(-2px); }
 .inscripcionLink:hover { color: var(--primary-color-3); transform: translateY(-2px); }
 .trabajosLink:hover { color: var(--primary-color-5); transform: translateY(-2px); }
-.sponsorsLink:hover { color: var(--primary-color-7); transform: translateY(-2px); }
 
 /* Dots hover */
 .item:hover .dotHome,
@@ -190,11 +187,6 @@
 .item:hover .dotTrabajos,
 .item:focus-within .dotTrabajos {
   color: var(--primary-color-5);
-}
-
-.item:hover .dotSponsors,
-.item:focus-within .dotSponsors {
-  color: var(--primary-color-7);
 }
 
 .logoMagno {
@@ -278,8 +270,7 @@
   .dotInvitados,
   .dotPrograma,
   .dotInscripcion,
-  .dotTrabajos,
-  .dotSponsors {
+  .dotTrabajos {
     display: none;
   }
 
