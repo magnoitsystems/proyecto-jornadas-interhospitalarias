@@ -337,4 +337,8 @@
   .heroSection {
     height: 700px;
   }
+
+  .formHero{
+    height: 10px;
+  }
 }
