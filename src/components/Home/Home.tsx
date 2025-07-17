@@ -44,7 +44,8 @@ export default function Home(){
                         </div>
                     </div>
                     <div className={`${styles.infoCardProperties} ${abierta? styles.openCard : styles.cardClosed}`}>
-                        <InfoCard info = "Teatro del Fuerte | Ubicado en Fuerte Independencia 999, frente a la Plaza del Centro" fecha1={""} fecha2={""}/>
+                        <InfoCard info="Teatro del Fuerte" info2={"MUMBAT"} info3={"Salón Blanco del Palacio Municipal"}
+                                  info4={"Htal. de Niños Debilio Blanco Villegas"} sede={true}/>
                     </div>
                 </div>
                 <div className={`${styles.cardCompletyProperties} ${abiertaB2? styles.openCardCardCompletyProperties : styles.cardCompletyProperties}`}>
@@ -65,7 +66,7 @@ export default function Home(){
                         </div>
                     </div>
                     <div className={`${styles.infoCardProperties} ${abiertaB2? styles.openCard : styles.cardClosed}`}>
-                        <InfoCard info = "05-Nov  |  nameCongreso1" fecha1={"06-Nov  |  nameCongreso2"} fecha2={"07-Nov  |  nameCongreso3"}/>
+                        <InfoCard info = {"05-Nov  |  nameCongreso1"} info2={"06-Nov  |  nameCongreso2"} info3={"07-Nov  |  nameCongreso3"} sede={false}/>
                     </div>
                 </div>
                 <div className={`${styles.cardCompletyProperties} ${abiertaB3? styles.openCardCardCompletyProperties : styles.cardCompletyProperties}`}>
@@ -86,7 +87,7 @@ export default function Home(){
                         </div>
                     </div>
                     <div className={`${styles.infoCardProperties} ${abiertaB3? styles.openCard : styles.cardClosed}`}>
-                        <InfoCard info = "Nombre  |  Abierto al público" fecha1={"Nombre  |  Abierto al público"} fecha2={"Nombre  |  Abierto al público"}/>
+                        <InfoCard info = {"Nombre  |  Abierto al público"} info2={"Nombre  |  Abierto al público"} info3={"Nombre  |  Abierto al público"} sede={false}/>
                     </div>
                 </div>
             </section>

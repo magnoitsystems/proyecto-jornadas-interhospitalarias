@@ -49,13 +49,11 @@ export default function CardAndSponsors(){
                 </div>
             </div>
             <div className={styles.sponsorsProperties}>
-                <h1>Sponsors Oficiales</h1>
+                <h1>Nos acompañan</h1>
                 <div className={styles.imageProperties}>
-                    <Image src={'/imgs/sponsor5.png'} alt={"Imagen sponsor CardioVex"} width={281} height={112} />
-                    <Image src={'/imgs/sponsor4.png'} alt={"Imagen sponsor CardioVex"} width={281} height={112} />
-                    <Image src={'/imgs/sponsor3.png'} alt={"Imagen sponsor Laerdal"} width={281} height={112} />
-                    <Image src={'/imgs/sponsor2.png'} alt={"Imagen sponsor AstraZeneca"} width={281} height={112} />
-                    <Image src={'/imgs/sponsor1.png'} alt={"Imagen sponsor Biopas"} width={281} height={112} />
+                    <Image src={'/imgs/sponsors/casascoImg.jpg'} alt={"Imagen sponsor CardioVex"} width={281} height={112} />
+                    <Image src={'/imgs/sponsors/pfizerSponsor.png'} alt={"Imagen sponsor CardioVex"} width={310} height={180} />
+                    <Image src={'/imgs/sponsors/roemmersSponsor.png'} alt={"Imagen sponsor Laerdal"} width={310} height={140} />
                 </div>
             </div>
         </div>

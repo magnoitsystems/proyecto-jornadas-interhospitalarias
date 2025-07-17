@@ -1,5 +1,6 @@
 import styles from "./AuthoritiesCard.module.css"
 import AuthoritiesSubSection from "@/components/AuthoritiesCard/Card/AuthoritiesSubSection";
+import { cactus } from "@/app/ui/fonts";
 
 export default function AuthoritiesCard({
                                             cardData,
@@ -12,7 +13,7 @@ export default function AuthoritiesCard({
             ${variant === 'long' ? styles.longCard : ''} 
             ${className}
         `}>
-            <h3 className={`${styles.title} ${styles.marginLeft}`}>
+            <h3 className={`${styles.title} ${styles.marginLeft} ${cactus.className}`}>
                 {cardData.title}
             </h3>
 

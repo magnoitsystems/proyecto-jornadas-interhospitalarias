@@ -6,38 +6,73 @@ const presidentialAuthority = {
     title: "Autoridades del Congreso",
     groups: [
         {
-            position: "PRESIDENTE DEL CONGRESO",
-            names: ["Apellidos, Nombres"]
+            position: "PRESIDENTES DEL CONGRESO",
+            names: [
+                "Dr. Pablo Neira",
+                "Dra. Nancy Guerrero"
+            ]
+        },
+        {
+            position: "Secretaria General",
+            names: [
+                "Dra. Carolina Pascual"
+            ]
         }
     ]
 };
 
-const authoritiesGroup = {
-    title: "Grupo de Autoridades",
+const scientificGroup = {
+    title: "Comité Científico",
     groups: [
         {
-            position: "CARGO EN EL CONGRESO",
+            position: "Secretarios",
             names: [
-                "Apellidos, Nombres",
-                "Apellidos, Nombres",
-                "Apellidos, Nombres",
-                "Apellidos, Nombres"
+                "Dra. Ileana Mastropierro",
+                "Dr. Juan Dartiguelongue"
             ]
         },
         {
-            position: "CARGO EN EL CONGRESO",
-            names: ["Apellidos, Nombres", "Apellidos, Nombres"]
-        },
-        {
-            position: "CARGO EN EL CONGRESO",
-            names: ["Apellidos, Nombres", "Apellidos, Nombres", "Apellidos, Nombres"]
-        },
-        {
-            position: "CARGO EN EL CONGRESO",
-            names: ["Apellidos, Nombres"]
+            position: "Miembros",
+            names: [
+                "Dra. Myriam Carbone",
+                "Dr. Christian Bernardo",
+                "Dr. Manuel Moran",
+                "Dr. Tomas Baliña",
+                "Dra. Alejandra Perez Cerisola",
+                "Lic. Constanza Funes",
+                "Dra. Celeste Garreta",
+                "Dra. Carolina Bullor",
+                "Dra. Micaela Salas",
+                "Dra. Camila Pereira"
+            ]
         }
     ]
 };
+
+const organizingGroup = {
+    title: "Cómite organizador",
+    groups: [
+        {
+            position: "Comité Organizador - Secretaria",
+            names: [
+            "Dra. Manuela Beazley"
+            ]
+        },
+        {
+            position: "Comité Organizador - Miembros",
+            names: [
+                "Dra. Ana Albanese",
+                "Dra. Lorena Moreno",
+                "Dra. Mabel Brindo",
+                "Lorena San Martin",
+                "Karina Ochoa",
+                "Gaston Mujica",
+                "Lic. Cecilia Acosta",
+                "Lic. Gabriela Osimek"
+            ]
+        }
+    ]
+}
 
 export default function Authorities(){
     return(
@@ -57,12 +92,8 @@ export default function Authorities(){
                     />
                 </div>
 
-                <AuthoritiesCard cardData={authoritiesGroup} />
-                <AuthoritiesCard cardData={authoritiesGroup} />
-                <AuthoritiesCard cardData={authoritiesGroup} />
-                <AuthoritiesCard cardData={authoritiesGroup} />
-                <AuthoritiesCard cardData={authoritiesGroup} />
-                <AuthoritiesCard cardData={authoritiesGroup} />
+                <AuthoritiesCard cardData={scientificGroup} />
+                <AuthoritiesCard cardData={organizingGroup} />
             </section>
         </main>
     )

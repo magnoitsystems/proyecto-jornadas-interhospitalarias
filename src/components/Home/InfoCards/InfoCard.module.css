@@ -2,20 +2,35 @@
     display: flex;
     flex-direction: column;
     width: 380px;
-    height: 170px;
+    height: max-content;
     background-color: var(--primary-color-1);
     color: var(--secondary-color-1);
     font-size: 28px;
-    justify-content: center;
-    gap: 10px;
+    justify-content: left;
+    gap: 5px;
     font-family: "Nunito";
-    text-align: center;
     align-items: center;
     justify-self: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.leftInfo{
+    align-items: start;
+    padding-left: 15px;
+}
+
+#info1:hover, #info2:hover, #info3:hover, #info4:hover{
+    border-bottom: var(--secondary-color-1) 1px solid;
+    cursor: pointer;
+}
+
+.notBorder{
+    border-bottom: none;
 }
 
 @media (min-width: 768px) {
     .infoCardProperties {
-        width: 450px;
+        width: 480px;
     }
 }

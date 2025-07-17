@@ -15,17 +15,18 @@
     flex-direction: column;
     width: 408px;
     align-items: center;
+    gap: 50px;
 }
 
 .imageProperties{
     margin-top: 20px;
 }
 
-.sponsorsProperties:hover, .presentationCardProperties:hover{
+.presentationCardProperties:hover{
     background-color: var(--secondary-color-4);
 }
 
-.presentationCardProperties:hover .infoColorProperties, .sponsorsProperties:hover, .presentationCardProperties:hover{
+.presentationCardProperties:hover .infoColorProperties, .presentationCardProperties:hover{
     color: var(--secondary-color-1);
 }
 

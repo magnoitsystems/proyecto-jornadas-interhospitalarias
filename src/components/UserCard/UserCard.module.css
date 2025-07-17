@@ -1,0 +1,65 @@
+.userCard {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    align-items: center;
+    gap: var(--10px);
+    padding: var(--10px);
+    background: var(--secondary-color-1);
+    border: 1px solid var(--secondary-color-2);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto var(--20px);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.userCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color-3);
+}
+
+
+.attribute {
+    margin: 0;
+    font-size: var(--10px);
+}
+
+.containerAttribute {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.name {
+    font-size: var(--10px);
+    font-weight: 400;
+    color: var(--secondary-color-4);
+    margin: 0;
+}
+
+.image {
+    background-color: var(--secondary-color-4);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+/* Responsive para móviles */
+
+/* Tablets */
+@media (min-width: 648px) and (max-width: 1023px) {
+    .userCard {
+        max-width: 500px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .userCard {
+        max-width: 650px;
+    }
+}

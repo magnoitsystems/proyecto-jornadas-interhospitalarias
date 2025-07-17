@@ -5,6 +5,7 @@ import RoundedCard from "@/components/RoundedCard/RoundedCard";
 import { cactus } from "@/app/ui/fonts";
 import styles from './page.module.css';
 import GroupFilters from "@/components/FilterButton/GroupFilters/GroupFilters";
+import UserCard from "@/components/UserCard/UserCard";
 
 const cardData = [
     { number: "0", title: "Inscriptos", borderColor: "linear-gradient(45deg, red, blue, green, yellow)" },
@@ -69,6 +70,9 @@ export default function AdminPanel() {
             <aside className={styles.aside}>
                 <GroupFilters/>
             </aside>
+            <section>
+                <UserCard image={"/icons/autoridades.png"} name={"Nombre"} profession={"Pediatra"} age={30}/>
+            </section>
         </main>
     );
 }
