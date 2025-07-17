@@ -9,10 +9,10 @@ type Prop = {
 export default function InfoCard({info, info2, info3, info4, sede} : Prop) {
     return (
         <div className={`${styles.infoCardProperties} ${sede ? styles.leftInfo : styles.infoCardProperties}`}>
-            <span className={styles.infoProperties} id={`${sede ? styles.info1 : styles.notBorder}`}>{info}</span>
-            <span className={styles.infoProperties} id={`${sede ? styles.info1 : styles.notBorder}`}>{info2}</span>
-            <span className={styles.infoProperties} id={`${sede ? styles.info1 : styles.notBorder}`}>{info3}</span>
-            <span className={styles.infoProperties} id={`${sede ? styles.info1 : styles.notBorder}`}>{info4}</span>
+            <span className={styles.infoProperties}>{info}</span>
+            <span className={styles.infoProperties}>{info2}</span>
+            <span className={styles.infoProperties}>{info3}</span>
+            <span className={styles.infoProperties}>{info4}</span>
         </div>
     );
 }
