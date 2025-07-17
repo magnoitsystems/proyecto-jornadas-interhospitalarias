@@ -29,11 +29,23 @@ export default function Footer() {
             </span>
           </li>
           <li className={styles.item}>
-            <Image src="/icons/mail-open.png" alt="Email" width={16} height={16} />
-            <a className={styles.link} href="mailto:jornadashospitalarias@gmail.com">
+            <a
+              className={styles.link}
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=jornadashospitalarias@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="/icons/mail-open.png"
+                alt="Email"
+                width={16}
+                height={16}
+                style={{ marginRight: '0.5rem', verticalAlign: 'middle' }}
+              />
               jornadashospitalarias@gmail.com
             </a>
           </li>
+
           <li className={styles.item}>
             <Image src="/icons/phone.png" alt="Teléfono" width={16} height={16} />
             <span>2494 01-2245</span>

@@ -15,13 +15,13 @@
     .cardsSection{
         display: grid;
         align-items: stretch;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         width: 90%;
         margin: 25px auto 0;
     }
 
     .containerLongCard{
-        grid-column: span 3;
+        grid-column: span 2;
     }
 
     .containerLongCard{

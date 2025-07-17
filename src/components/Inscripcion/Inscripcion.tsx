@@ -35,6 +35,13 @@ export default function InscriptionForm() {
 
                         <label>Profesión</label>
                         <input type="text" placeholder="Profesión" />
+
+                        <label>Género</label>
+                        <select name="genero" id="genero">
+                            <option value="femenino">Femenino</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="ns">Prefiero no decirlo</option>
+                        </select>
                     </div>
                     <div className={styles.formButton}>
                         <Link href={'/redirection'}><button type="submit" className={cactus.className}>Registrarse</button></Link>
