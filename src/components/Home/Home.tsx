@@ -4,6 +4,7 @@ import Image from "next/image";
 import InfoCard from "@/components/Home/InfoCards/InfoCard";
 import CardAndSponsors from "@/components/Home/CardAndSponsors/CardAndSponsors";
 import { useState } from 'react';
+import { cactus } from '@/app/ui/fonts';
 
 export default function Home(){
     const [abierta, setAbiertaB1] = useState(false);
@@ -26,14 +27,14 @@ export default function Home(){
     return(
         <div>
             <section className={styles.sectionCardsProperties}>
-                <div className={`${styles.cardCompletyProperties} ${abierta? styles.openCardCardCompletyProperties : styles.cardCompletyProperties}`}>
+                <div className={`${styles.cardCompletyProperties} ${abierta? styles.openCardCardCompletyProperties : styles.cardCompletyProperties} `}>
                     <div className={`${styles.cardProperties} ${styles.cardHoverPropertie} ${abierta? styles.openCardProperties : styles.cardProperties}`}>
                         <div className={styles.deployIconProperties}>
                             <button className={`${styles.buttonProperties} ${abierta? styles.iconRotate : styles.buttonProperties}`} onClick={toggleCardB1}>
                                 <Image src={'/icons/deployIcon.png'} alt={"Icono para desplegar la card con información"} width={25} height={15} />
                             </button>
                         </div>
-                        <div className={styles.todo}>
+                        <div className={`${styles.todo} ${cactus.className}`}>
                             <div className={styles.imageCardProperties}>
                                 <Image src={'/icons/homeIcon.png'} alt={"Icono de casa"} width={32} height={32}/>
                             </div>
@@ -44,7 +45,8 @@ export default function Home(){
                         </div>
                     </div>
                     <div className={`${styles.infoCardProperties} ${abierta? styles.openCard : styles.cardClosed}`}>
-                        <InfoCard info = "Teatro del Fuerte | Ubicado en Fuerte Independencia 999, frente a la Plaza del Centro" fecha1={""} fecha2={""}/>
+                        <InfoCard info="Teatro del Fuerte" info2={"MUMBAT"} info3={"Salón Blanco del Palacio Municipal"}
+                                  info4={"Htal. de Niños Debilio Blanco Villegas"} sede={true}/>
                     </div>
                 </div>
                 <div className={`${styles.cardCompletyProperties} ${abiertaB2? styles.openCardCardCompletyProperties : styles.cardCompletyProperties}`}>
@@ -54,7 +56,7 @@ export default function Home(){
                                 <Image src={'/icons/deployBlackIcon.png'} alt={"Icono para desplegar la card con información"} width={25} height={15} />
                             </button>
                         </div>
-                        <div className={styles.todo}>
+                        <div className={`${styles.todo} ${cactus.className}`}>
                             <div className={`${styles.imageCardProperties} ${styles.imageCalendarCardProperties}`}>
                                 <Image src={'/icons/calendarIcon.png'} alt={"Icono de calendario"} width={32} height={32}/>
                             </div>
@@ -65,7 +67,7 @@ export default function Home(){
                         </div>
                     </div>
                     <div className={`${styles.infoCardProperties} ${abiertaB2? styles.openCard : styles.cardClosed}`}>
-                        <InfoCard info = "05-Nov  |  nameCongreso1" fecha1={"06-Nov  |  nameCongreso2"} fecha2={"07-Nov  |  nameCongreso3"}/>
+                        <InfoCard info = {"05-Nov  |  nameCongreso1"} info2={"06-Nov  |  nameCongreso2"} info3={"07-Nov  |  nameCongreso3"} sede={false}/>
                     </div>
                 </div>
                 <div className={`${styles.cardCompletyProperties} ${abiertaB3? styles.openCardCardCompletyProperties : styles.cardCompletyProperties}`}>
@@ -75,7 +77,7 @@ export default function Home(){
                                 <Image src={'/icons/deployIcon.png'} alt={"Icono para desplegar la card con información"} width={25} height={15} />
                             </button>
                         </div>
-                        <div className={styles.todo}>
+                        <div className={`${styles.todo} ${cactus.className}`}>
                             <div className={`${styles.imageCardProperties}`}>
                                 <Image src={'/icons/hatIcon.png'} alt={"Icono de gorro de graduación"} width={32} height={32}/>
                             </div>
@@ -86,7 +88,7 @@ export default function Home(){
                         </div>
                     </div>
                     <div className={`${styles.infoCardProperties} ${abiertaB3? styles.openCard : styles.cardClosed}`}>
-                        <InfoCard info = "Nombre  |  Abierto al público" fecha1={"Nombre  |  Abierto al público"} fecha2={"Nombre  |  Abierto al público"}/>
+                        <InfoCard info = {"Nombre  |  Abierto al público"} info2={"Nombre  |  Abierto al público"} info3={"Nombre  |  Abierto al público"} sede={false}/>
                     </div>
                 </div>
             </section>

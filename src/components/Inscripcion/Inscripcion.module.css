@@ -4,14 +4,14 @@
     left: 0;
     z-index: 1;
     width: 100%;
-    min-height: calc(100vh - 80px);
+    min-height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     padding: 3rem 1rem;
-    margin-top: 10px; /* Espacio para el navbar - más cerca */
-    margin-bottom: 2rem; /* Espacio antes del footer */
+    padding-top: 10px;
+    margin-bottom: 2rem; 
 }
 
 .formIntro {
@@ -37,15 +37,19 @@
 
 .formCard {
     border-radius: 16px;
-    max-width: 500px;
-    width: fit-content;
+    max-width: 450px;
+    width: 100%;
     color: white;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .formCard label {
-    font-size: large;
     text-align: left;
     font-size: 0.9rem;
+
+    box-sizing: border-box;
 }
 
 .formCard input, .formCard select {
@@ -53,8 +57,10 @@
     border: none;
     border-radius: 20px;
     font-size: 0.9rem;
-    width: 250px;
+    width: 100%;
     cursor: pointer;
+
+    box-sizing: border-box;
 }
 
 
@@ -65,7 +71,12 @@
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(4px);
     padding: 2rem;
+    margin: 0px auto;
     border-radius: 16px;
+    justify-content: center;
+    align-items: start;
+
+    box-sizing: border-box;
 }
 
 .formButton {
