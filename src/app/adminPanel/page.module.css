@@ -29,6 +29,7 @@
 }
 
 @media (max-width: 728px) {
+
   .roundedCards {
     top: 50px;
     padding: 0 0.5rem;
@@ -63,5 +64,23 @@
   .arrow:hover {
     color: #7D0279; 
   }
+
+}
+
+@media (min-width: 768px) {
+    .containerContent {
+        display: flex;
+        gap: 3rem;
+    }
+
+    .aside{
+        margin: 0 0 0 var(--15px);
+        width: fit-content;
+    }
+
+    .containerUserCard {
+        width: 100%;
+        margin-right: var(--25px);
+    }
 
 }

@@ -67,11 +67,13 @@ export default function AdminPanel() {
             <h1 className= {`${styles.titleProperties} ${cactus.className}`}>
                 Registros de inscripción
             </h1>
-            <aside className={styles.aside}>
-                <GroupFilters/>
-            </aside>
-            <section>
-                <UserCard image={"/icons/autoridades.png"} name={"Nombre"} profession={"Pediatra"} age={30}/>
+            <section className={styles.containerContent}>
+                <aside className={styles.aside}>
+                    <GroupFilters/>
+                </aside>
+                <section className={styles.containerUserCard}>
+                    <UserCard image={"/icons/autoridades.png"} name={"Nombre"} surname={"Apellido"} profession={"Pediatra"} age={30}/>
+                </section>
             </section>
         </main>
     );
