@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: space-between;
     border: 1px solid black;
-    background-color: var(--secondary-color-5);
+    background-color: var(--secondary-color-4);
     color: var(--secondary-color-1);
     border-radius: 10px;
     text-align: left;
@@ -38,7 +38,7 @@
     left: 5px;
     width: 14px;
     height: 14px;
-    background-color: var(--primary-color-5);
+    background-color: var(--primary-color-1);
     border-radius: 50%;
     transition: all .3s cubic-bezier(0.4, 0.0, 0.2, 1);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
