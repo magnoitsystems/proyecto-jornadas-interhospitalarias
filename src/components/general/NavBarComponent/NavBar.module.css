@@ -21,7 +21,6 @@
 .formHero {
   height: auto;
   min-height: 80px;
-  /* Solo el espacio del navbar */
   background: none !important;
 }
 
@@ -337,5 +336,9 @@
 @media (min-width: 1600px) {
   .heroSection {
     height: 700px;
+  }
+
+  .formHero{
+    height: 10px;
   }
 }

@@ -1,13 +1,13 @@
 'use client';
 
 import styles from './Inscripcion.module.css';
-import { cactus } from '../../app/ui/fonts';
+import { cactus } from '@/app/ui/fonts';
 import Link from "next/link";
 
 export default function InscriptionForm() {
     return (
-        <section className={styles.formContainer}>
-            <div className={styles.formIntro}>
+        <section className={`${styles.formContainer} ${cactus.className}`}>
+            <div className={`${styles.formIntro} ${cactus.className}`}>
                 <h2>Registrate a la Jornada</h2>
                 <p>
                     Completá el formulario con tus datos y nos contactaremos<br />
@@ -35,6 +35,13 @@ export default function InscriptionForm() {
 
                         <label>Profesión</label>
                         <input type="text" placeholder="Profesión" />
+
+                        <label>Género</label>
+                        <select name="genero" id="genero">
+                            <option value="femenino">Femenino</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="ns">Prefiero no decirlo</option>
+                        </select>
                     </div>
                     <div className={styles.formButton}>
                         <Link href={'/redirection'}><button type="submit" className={cactus.className}>Registrarse</button></Link>

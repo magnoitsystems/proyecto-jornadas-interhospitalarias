@@ -1,0 +1,11 @@
+/* page.module.css */
+
+.container {
+    display: grid;
+
+    grid-template-columns: 2fr 1fr;
+
+    max-width: 1400px;
+    margin: 2rem auto;
+    gap: 3rem;
+}

@@ -50,7 +50,7 @@ const profesionales: Professional[] = [
 export default function Page(){
     return (
     <main className={styles.main}>
-        <Title section={"invitados"} imgSrc={"/icons/autoridades.png"} className={"guestsTitle"}/>
+        <Title section={"Invitados"} imgSrc={"/icons/autoridades.png"} className={"guestsTitle"}/>
 
         <div className={styles.cardsContainer}>
             {/* El `.map` funciona igual, pero ahora `prof` es de tipo `Professional` */}

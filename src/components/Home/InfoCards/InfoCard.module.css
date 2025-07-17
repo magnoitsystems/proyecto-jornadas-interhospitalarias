@@ -2,20 +2,44 @@
     display: flex;
     flex-direction: column;
     width: 380px;
-    height: 170px;
+    height: max-content;
     background-color: var(--primary-color-1);
     color: var(--secondary-color-1);
-    font-size: 28px;
-    justify-content: center;
-    gap: 10px;
-    font-family: "Nunito";
+    font-size: 20px;
+    justify-content: left;
     text-align: center;
+    gap: 5px;
     align-items: center;
     justify-self: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.leftInfo{
+    align-items: start;
+    padding-left: 15px;
+}
+
+.leftInfo span{
+    display: list-item;
+    list-style-type: disc; /* o circle, square, etc. */
+    margin-left: 20px;
+}
+
+.infoCardProperties span:hover{
+    cursor: pointer;
+}
+
+.leftInfo span:hover{
+    border-bottom: var(--secondary-color-1) 1px solid;
+}
+
+.notBorder{
+    border-bottom: none;
 }
 
 @media (min-width: 768px) {
     .infoCardProperties {
-        width: 450px;
+        width: 480px;
     }
 }
