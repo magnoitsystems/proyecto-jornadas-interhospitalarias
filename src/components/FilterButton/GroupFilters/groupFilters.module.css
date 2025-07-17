@@ -41,12 +41,12 @@
         flex-direction: column;
         justify-content: space-between;
         gap: 10px;
-        width: 11rem;
+        min-width: 11rem;
     }
 }
 
 @media (min-width: 1024px) {
     .buttonsContainer{
-        width: 12rem;
+        /*width: 12rem;*/
     }
 }
