@@ -4,14 +4,14 @@
     left: 0;
     z-index: 1;
     width: 100%;
-    min-height: calc(100vh - 80px);
+    min-height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     padding: 3rem 1rem;
-    margin-top: 10px; /* Espacio para el navbar - más cerca */
-    margin-bottom: 2rem; /* Espacio antes del footer */
+    padding-top: 10px;
+    margin-bottom: 2rem; 
 }
 
 .formIntro {

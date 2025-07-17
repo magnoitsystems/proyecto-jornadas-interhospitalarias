@@ -29,7 +29,7 @@ export default function NavBar(): JSX.Element {
         return 'none';
     };
 
-    const isFormPage = pathname === '/inscripcion' || pathname === '/redirection' || pathname === '/login';
+    const isFormPage = pathname === '/inscripcion' || pathname === '/redirection' || pathname === '/login' || pathname === '/trabajos';
     const isAdminPage = pathname === '/adminPanel';
 
     useEffect(() => {
