@@ -1,0 +1,144 @@
+/* Definición de la animación de entrada para las tarjetas */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.formContainer {
+    max-width: 600px;
+    margin: 2rem auto;
+    font-family: "Georgia", "Times New Roman", serif; /* Fuente elegante como en la imagen */
+}
+
+/* Grupo de Label + Input */
+.inputGroup {
+    margin-bottom: 1.5rem;
+}
+
+.inputGroup label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+/* Estilo para los inputs */
+.inputGroup input,
+.mainInput {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 20px; /* Bordes muy redondeados */
+    border: 1px solid #ccc;
+    background-color: #353535; /* Fondo oscuro */
+    color: #fff;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.inputGroup input::placeholder,
+.mainInput::placeholder {
+    color: #a0a0a0;
+}
+
+.inputGroup input:focus,
+.mainInput:focus {
+    outline: none;
+    border-color: #e67e22;
+    box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.2);
+}
+
+/* Contenedor del input principal con su botón */
+.inputWithButton {
+    display: flex;
+    align-items: center;
+}
+
+.mainInput {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Botón de check naranja */
+.checkButton {
+    flex-shrink: 0;
+    height: calc(1.5rem + 1.5rem + 2px); /* Para que coincida con la altura del input */
+    width: 50px;
+    border: none;
+    background-color: #e67e22; /* Naranja */
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+.checkButton:hover {
+    background-color: #d35400; /* Naranja más oscuro */
+}
+
+/* Lista de tarjetas de autor */
+.autoresList {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Tarjeta individual de autor */
+.autorCard {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    background-color: #fdfdfd;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.cardHeader h3 {
+    font-size: 1.3rem;
+    font-weight: normal;
+    color: #333;
+    margin: 0;
+}
+
+/* Botón de eliminar (X) */
+.removeButton {
+    background: none;
+    border: none;
+    color: #e74c3c; /* Rojo para eliminar */
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 0.5rem;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.removeButton:hover {
+    color: #c0392b; /* Rojo oscuro */
+    transform: scale(1.2);
+}
+
+/* Mensaje de error */
+.errorText {
+    color: #c0392b;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}

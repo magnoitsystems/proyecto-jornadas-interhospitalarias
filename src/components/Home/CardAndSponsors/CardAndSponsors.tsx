@@ -10,7 +10,7 @@ export default function CardAndSponsors(){
                 <div className={styles.infoPresentationProperties}>
                     <div className={`${styles.totalInfoProperties} ${styles.infoColorProperties}`}>
                         <div className={styles.infoAndImageProperties}>
-                            <div className={`${styles.paragraphProperties} ${styles.infoColorProperties}`}>
+                            <div className={`${styles.paragraphProperties} ${styles.infoColorProperties} ${cactus.className}`}>
                                 <p>Nos complace darles la bienvenida a este espacio de encuentro, reflexión y aprendizaje compartido,
                                     organizado en conjunto por el Hospital de Niños "Dr. Debilio Blanco Villegas" de Tandil, el Hospital
                                     de Niños "Ricardo Gutiérrez" y el Sistema Integrado de Salud Pública.
@@ -21,7 +21,7 @@ export default function CardAndSponsors(){
                                     por una salud pública de calidad. Desde la ciudad hasta las sierras, nos unimos para seguir construyendo
                                     una atención pediátrica integral, humana y en constante evolución.</p>
                             </div>
-                            <div className={`${styles.imagePresentationProperties}`}>
+                            <div className={`${styles.imagePresentationProperties} ${cactus.className}`}>
                                 <Image src={'/imgs/fotoDirectorJornada.png'} alt={"Foto del director de la jornada"} width={207} height={236}/>
                                 <span>Apellido, Nombre</span>
                                 <span>Director/a del [Lugar]</span>
@@ -34,7 +34,7 @@ export default function CardAndSponsors(){
                                 una atención pediátrica integral, humana y en constante evolución.</p>
                         </div>
                     </div>
-                    <div className={`${styles.paragraphProperties} ${styles.secondParagraphProperties} ${styles.infoColorProperties}`}>
+                    <div className={`${styles.paragraphProperties} ${styles.secondParagraphProperties} ${styles.infoColorProperties} ${cactus.className}`}>
                         <p>Nos complace darles la bienvenida a este espacio de encuentro, reflexión y aprendizaje compartido,
                             organizado en conjunto por el Hospital de Niños "Dr. Debilio Blanco Villegas" de Tandil, el Hospital
                             de Niños "Ricardo Gutiérrez" y el Sistema Integrado de Salud Pública.

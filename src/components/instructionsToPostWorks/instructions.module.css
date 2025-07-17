@@ -1,0 +1,41 @@
+
+
+/* El bloque principal de los links */
+.instructionsBox {
+    /* Mantenemos la caja pegada a la parte superior de su columna en el grid */
+    top: 2rem;
+    align-self: start;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2.5rem;
+
+}
+
+.instructionsBox ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+/* Estilos para los links, ahora sobre un fondo claro */
+.instructionsBox a {
+    color: #f1f5f9;
+    margin-top: 1rem;
+    font-weight: 500;
+
+
+    text-decoration: none;
+    font-size: 1.15rem;
+    line-height: 1.5;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: block;
+}
+
+.instructionsBox a:hover {
+    color: #c04a1b;
+    transform: translateX(5px);
+}

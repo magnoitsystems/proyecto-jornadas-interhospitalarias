@@ -5,8 +5,9 @@
     height: max-content;
     background-color: var(--primary-color-1);
     color: var(--secondary-color-1);
-    font-size: 28px;
+    font-size: 20px;
     justify-content: left;
+    text-align: center;
     gap: 5px;
     align-items: center;
     justify-self: center;

@@ -4,6 +4,7 @@ import Image from "next/image";
 import InfoCard from "@/components/Home/InfoCards/InfoCard";
 import CardAndSponsors from "@/components/Home/CardAndSponsors/CardAndSponsors";
 import { useState } from 'react';
+import { cactus } from '@/app/ui/fonts';
 
 export default function Home(){
     const [abierta, setAbiertaB1] = useState(false);
@@ -26,14 +27,14 @@ export default function Home(){
     return(
         <div>
             <section className={styles.sectionCardsProperties}>
-                <div className={`${styles.cardCompletyProperties} ${abierta? styles.openCardCardCompletyProperties : styles.cardCompletyProperties}`}>
+                <div className={`${styles.cardCompletyProperties} ${abierta? styles.openCardCardCompletyProperties : styles.cardCompletyProperties} `}>
                     <div className={`${styles.cardProperties} ${styles.cardHoverPropertie} ${abierta? styles.openCardProperties : styles.cardProperties}`}>
                         <div className={styles.deployIconProperties}>
                             <button className={`${styles.buttonProperties} ${abierta? styles.iconRotate : styles.buttonProperties}`} onClick={toggleCardB1}>
                                 <Image src={'/icons/deployIcon.png'} alt={"Icono para desplegar la card con información"} width={25} height={15} />
                             </button>
                         </div>
-                        <div className={styles.todo}>
+                        <div className={`${styles.todo} ${cactus.className}`}>
                             <div className={styles.imageCardProperties}>
                                 <Image src={'/icons/homeIcon.png'} alt={"Icono de casa"} width={32} height={32}/>
                             </div>
@@ -55,7 +56,7 @@ export default function Home(){
                                 <Image src={'/icons/deployBlackIcon.png'} alt={"Icono para desplegar la card con información"} width={25} height={15} />
                             </button>
                         </div>
-                        <div className={styles.todo}>
+                        <div className={`${styles.todo} ${cactus.className}`}>
                             <div className={`${styles.imageCardProperties} ${styles.imageCalendarCardProperties}`}>
                                 <Image src={'/icons/calendarIcon.png'} alt={"Icono de calendario"} width={32} height={32}/>
                             </div>
@@ -76,7 +77,7 @@ export default function Home(){
                                 <Image src={'/icons/deployIcon.png'} alt={"Icono para desplegar la card con información"} width={25} height={15} />
                             </button>
                         </div>
-                        <div className={styles.todo}>
+                        <div className={`${styles.todo} ${cactus.className}`}>
                             <div className={`${styles.imageCardProperties}`}>
                                 <Image src={'/icons/hatIcon.png'} alt={"Icono de gorro de graduación"} width={32} height={32}/>
                             </div>

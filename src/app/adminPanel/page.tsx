@@ -15,6 +15,89 @@ const cardData = [
     { number: "0", title: "Hombres" },
 ];
 
+const userCardData = [
+    {
+        id: 1,
+        image: "/icons/autoridades.png",
+        name: "María",
+        surname: "González",
+        profession: "Pediatra",
+        age: 34
+    },
+    {
+        id: 2,
+        image: "/icons/autoridades.png",
+        name: "Carlos",
+        surname: "Mendoza",
+        profession: "Cardiólogo",
+        age: 45
+    },
+    {
+        id: 3,
+        image: "/icons/autoridades.png",
+        name: "Ana",
+        surname: "Pérez",
+        profession: "Neuróloga",
+        age: 38
+    },
+    {
+        id: 4,
+        image: "/icons/autoridades.png",
+        name: "Luis",
+        surname: "Rodríguez",
+        profession: "Ginecólogo",
+        age: 42
+    },
+    {
+        id: 5,
+        image: "/icons/autoridades.png",
+        name: "Carmen",
+        surname: "Silva",
+        profession: "Dermatóloga",
+        age: 29
+    },
+    {
+        id: 6,
+        image: "/icons/autoridades.png",
+        name: "Roberto",
+        surname: "Morales",
+        profession: "Traumatólogo",
+        age: 51
+    },
+    {
+        id: 7,
+        image: "/icons/autoridades.png",
+        name: "Isabel",
+        surname: "Vargas",
+        profession: "Psiquiatra",
+        age: 39
+    },
+    {
+        id: 8,
+        image: "/icons/autoridades.png",
+        name: "Fernando",
+        surname: "Castro",
+        profession: "Oftalmólogo",
+        age: 47
+    },
+    {
+        id: 9,
+        image: "/icons/autoridades.png",
+        name: "Patricia",
+        surname: "Ramos",
+        profession: "Endocrinóloga",
+        age: 36
+    },
+    {
+        id: 10,
+        image: "/icons/autoridades.png",
+        name: "Miguel",
+        surname: "Torres",
+        profession: "Urólogo",
+        age: 44
+    }
+];
+
 export default function AdminPanel() {
     const [isMobile, setIsMobile] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -67,11 +150,22 @@ export default function AdminPanel() {
             <h1 className= {`${styles.titleProperties} ${cactus.className}`}>
                 Registros de inscripción
             </h1>
-            <aside className={styles.aside}>
-                <GroupFilters/>
-            </aside>
-            <section>
-                <UserCard image={"/icons/autoridades.png"} name={"Nombre"} profession={"Pediatra"} age={30}/>
+            <section className={styles.containerContent}>
+                <aside className={styles.aside}>
+                    <GroupFilters/>
+                </aside>
+                <section className={styles.containerUserCard}>
+                    {userCardData.map((user) => (
+                        <UserCard
+                            key={user.id}
+                            image={user.image}
+                            name={user.name}
+                            surname={user.surname}
+                            profession={user.profession}
+                            age={user.age}
+                        />
+                    ))}
+                </section>
             </section>
         </main>
     );

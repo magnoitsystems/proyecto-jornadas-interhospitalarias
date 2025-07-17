@@ -29,6 +29,7 @@
 }
 
 @media (max-width: 728px) {
+
   .roundedCards {
     top: 50px;
     padding: 0 0.5rem;
@@ -64,4 +65,22 @@
     color: #7D0279; 
   }
 
+}
+
+@media (min-width: 768px) {
+    .containerContent {
+        display: flex;
+        align-items: flex-start;
+        gap: 3rem;
+    }
+
+    .aside{
+        margin: 0 0 0 var(--15px);
+        flex: 0 0 auto; /* No crece ni se encoje */
+    }
+
+    .containerUserCard {
+        flex: 1;
+        margin-right: var(--25px);
+    }
 }
