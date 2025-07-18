@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import styles from './Form.module.css';
+import { cactus } from '@/app/ui/fonts';
 
 interface Autor {
     id: number;
@@ -53,7 +54,7 @@ const FormPost: React.FC = () => {
     };
 
     return (
-        <main className={styles.container}>
+        <main className={`${styles.container} ${cactus.className}`}>
             <form className={styles.formContainer} onSubmit={(e) => e.preventDefault()}>
 
                 <div className={styles.formGroup}>

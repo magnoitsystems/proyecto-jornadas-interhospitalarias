@@ -5,13 +5,17 @@
 }
 
 .container {
-    padding: 2rem 1rem;
+    width: 70%;
 }
+
+.formGroup option{
+    background-color: #F64401;
+}
+
 
 .formContainer {
     max-width: 700px;
     margin: 0 auto;
-    font-family: "Georgia", "Times New Roman", serif;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -21,6 +25,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    width: 100%;
 }
 
 .formGroup label {
@@ -55,7 +60,7 @@
 .formGroup select:focus,
 .formGroup textarea:focus {
     outline: none;
-    border-color: #e67e22;
+    border-color: #F64401;;
     box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.2);
 }
 
@@ -71,16 +76,16 @@
 
 .checkButton {
     flex-shrink: 0;
-    height: calc(1.5rem + 1.5rem + 2px);
-    width: 50px;
+    height: 45px;
+    width: 45px;
+    margin-left: 10px;
     border: none;
-    background-color: #e67e22;
+    background-color: #F64401;;
     color: white;
     font-size: 1.5rem;
     font-weight: bold;
     cursor: pointer;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-radius: 30px;
     transition: background-color 0.3s;
 }
 
@@ -159,7 +164,7 @@
 
 .submitButton {
     padding: 0.8rem 1.5rem;
-    background-color: #e67e22;
+    background-color: #F64401;;
     color: white;
     border: none;
     border-radius: 20px;
@@ -186,9 +191,9 @@
 
 /* Estilo del botón cuando está ACTIVO */
 .toggleButtonActive {
-    background-color: #e67e22; /* Naranja, como el botón de check */
+    background-color: #F64401;; /* Naranja, como el botón de check */
     color: white;
-    border-color: #e67e22;
+    border-color: #F64401;;
 }
 
 .toggleButtonActive:hover {
