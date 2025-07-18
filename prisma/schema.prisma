@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  idUser    Int      @id @default(autoincrement()) @map("id_user")
+  name      String   @db.VarChar(40)
+  lastname  String   @db.VarChar(40)
+  email     String   @unique @db.VarChar(40)
+  password  String   @db.VarChar(40)
+  job       String?  @db.VarChar(50)
+  specialty String?  @db.VarChar(40)
+  admin     Boolean? @default(false)
+  age       Int?
+  genre     String?  @db.VarChar(40)
+  works     Work[]
+
+  @@map("user")
+}
+
+model Work {
+  idWork      Int      @id @default(autoincrement()) @map("id_work")
+  category    String?  @db.VarChar(50)
+  description String?
+  userId      Int      @map("user_id")
+  workCode    String?  @unique @map("work_code") @db.VarChar(20)
+  title       String?  @db.VarChar(40)
+  file        String?  @db.VarChar(255)
+  authors     Author[]
+  user        User     @relation(fields: [userId], references: [idUser], onDelete: Cascade, onUpdate: NoAction, map: "fk_works_user")
+
+  @@map("works")
+}
+
+model Author {
+  idAuthor    Int     @id @default(autoincrement()) @map("id_author")
+  name        String  @db.VarChar(40)
+  lastname    String  @db.VarChar(40)
+  affiliation String? @db.VarChar(40)
+  workId      Int     @map("work_id")
+  work        Work    @relation(fields: [workId], references: [idWork], onDelete: Cascade, onUpdate: NoAction, map: "fk_author_works")
+
+  @@map("author")
+}
