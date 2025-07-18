@@ -2,7 +2,7 @@
 
 import styles from './sectionTitle.module.css';
 import Image from "next/image";
-import {cactus} from "@/app/ui/fonts";
+import { cactus } from '../../../app/(views)/ui/fonts';
 import { useEffect, useRef, useState } from 'react';
 
 type Props = {

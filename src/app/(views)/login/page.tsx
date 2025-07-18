@@ -2,7 +2,7 @@
 
 import {useState} from "react";
 import styles from "./page.module.css"
-import {cactus} from "@/app/ui/fonts";
+import { cactus } from '../../../app/(views)/ui/fonts';
 import Field from "@/components/Forms/Field/Field";
 import Link from "next/link";
 

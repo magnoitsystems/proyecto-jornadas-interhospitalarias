@@ -1,45 +1,60 @@
 .infoCardProperties{
     display: flex;
     flex-direction: column;
-    width: 380px;
-    height: max-content;
+    width: 100%;
+    margin-top: -1px;
     background-color: var(--primary-color-1);
     color: var(--secondary-color-1);
     font-size: 20px;
-    justify-content: left;
-    text-align: center;
-    gap: 5px;
+    gap: 10px;
     align-items: center;
+    white-space: wrap;
     justify-self: center;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    border-top: darkred 1px solid;
 }
 
-.leftInfo{
+.infoPositionProperties{
+    display: flex;
+    flex-direction: column;
     align-items: start;
-    padding-left: 15px;
+    height: max-content;
+    padding-bottom: 10px;
+    width: 50%;
+    justify-content: center;
 }
 
-.leftInfo span{
+.infoCardProperties a{
+    text-decoration: none;
+    color: var(--secondary-color-1);
+}
+
+.sedeInfo span{
     display: list-item;
     list-style-type: disc; /* o circle, square, etc. */
     margin-left: 20px;
+}
+
+.sedeInfo span:hover{
+    border-bottom: var(--secondary-color-1) 1px solid;
 }
 
 .infoCardProperties span:hover{
     cursor: pointer;
 }
 
-.leftInfo span:hover{
-    border-bottom: var(--secondary-color-1) 1px solid;
-}
-
 .notBorder{
     border-bottom: none;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1050px) {
     .infoCardProperties {
         width: 480px;
+        font-size: 24px;
+    }
+
+    .infoPositionProperties{
+        width: 80%;
     }
 }

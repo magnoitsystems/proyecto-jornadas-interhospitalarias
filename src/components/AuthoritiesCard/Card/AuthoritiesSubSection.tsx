@@ -1,5 +1,5 @@
 import styles from "@/components/AuthoritiesCard/Card/AuthoritiesCard.module.css";
-import { cactus } from "@/app/ui/fonts";
+import { cactus } from '../../../app/(views)/ui/fonts';
 
 interface AuthorityGroup {
     position: string;  // cargo en inglés

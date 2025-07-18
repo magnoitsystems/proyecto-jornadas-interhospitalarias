@@ -1,7 +1,7 @@
 // app/components/ProfessionalCard.tsx
 import Image from 'next/image';
 import styles from './page.module.css';
-import { Professional } from '@/app/types/index'; // Importamos nuestro tipo
+import { Professional } from '../../types'; // Importamos nuestro tipo
 import React from 'react';
 
 // Un componente SVG para el ícono de "incógnito"
