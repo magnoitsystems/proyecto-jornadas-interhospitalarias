@@ -1,11 +1,36 @@
 /* page.module.css */
+.mainPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .container {
     display: grid;
 
     grid-template-columns: 2fr 1fr;
+    margin-top: 50px;
 
-    max-width: 1400px;
-    margin: 2rem auto;
-    gap: 3rem;
+    width: 90%;
 }
+
+.introduction {
+    display: flex;
+    flex-direction: column;
+    color: #FFFFFF;
+    width: 100%;
+}
+
+.presentation {
+    display: flex;
+    flex-direction: column;
+    padding-inline: 5%;
+}
+
+.presentation h1 {
+    margin-bottom: 0;
+}
+.presentation h2 {
+    margin-top: 5px;
+}
+
