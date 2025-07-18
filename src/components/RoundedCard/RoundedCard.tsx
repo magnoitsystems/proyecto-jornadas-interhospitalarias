@@ -1,5 +1,5 @@
 'use client';
-import { cactus } from '../../app/(views)/ui/fonts';
+import { cactus } from '@/app/(views)/ui/fonts';
 import styles from './RoundedCard.module.css';
 
 interface RoundedCardProps {
@@ -28,17 +28,15 @@ export default function CircularCard({
 
   return (
     <div>
-
-    <div 
-      className={`${styles.circularCard} ${isMulticolor ? styles.multicolorBorder : ''} ${className}`}
-      style={cardStyle}
-    >
-      <div className={styles.content}>
-        <span className={`${styles.number} ${cactus.className}`}>{number}</span>
-        <span className={`${styles.title} ${cactus.className}`}>{title}</span>
+      <div
+        className={`${styles.circularCard} ${isMulticolor ? styles.multicolorBorder : ''} ${className}`}
+        style={cardStyle}
+      >
+        <div className={styles.content}>
+          <span className={`${styles.number} ${cactus.className}`}>{number}</span>
+          <span className={`${styles.title} ${cactus.className}`}>{title}</span>
+        </div>
       </div>
-    </div>
-
     </div>
   );
 }

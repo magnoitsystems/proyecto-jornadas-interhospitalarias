@@ -2,17 +2,23 @@
 
 import { useEffect, useState } from 'react';
 import RoundedCard from "@/components/RoundedCard/RoundedCard";
-import { cactus } from '../../../app/(views)/ui/fonts';
+import { cactus } from '@/app/(views)/ui/fonts';
 import styles from './page.module.css';
 import GroupFilters from "@/components/FilterButton/GroupFilters/GroupFilters";
 import UserCard from "@/components/UserCard/UserCard";
 
 const cardData = [
     { number: "0", title: "Inscriptos", borderColor: "linear-gradient(45deg, red, blue, green, yellow)" },
-    { number: "0", title: "Edad +50" },
-    { number: "0", title: "Edad -50" },
     { number: "0", title: "Mujeres" },
     { number: "0", title: "Hombres" },
+    { number: "0", title: "Estudiante" },
+    { number: "0", title: "Médico" },
+    { number: "0", title: "Enfermero" },
+    { number: "0", title: "Técnico" },
+    // { number: "0", title: "Kinesiólogos" },
+    // { number: "0", title: "Fonoaudiólogo" },
+    { number: "0", title: "Otros" },
+    // { number: "0", title: "No pertenecientes a la salud" },
 ];
 
 const userCardData = [

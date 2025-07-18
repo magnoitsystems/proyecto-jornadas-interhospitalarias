@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import styles from './Form.module.css';
-import { cactus } from '@/app/ui/fonts';
+import { cactus } from '@/app/(views)/ui/fonts';
 
 interface Autor {
     id: number;

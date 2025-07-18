@@ -67,7 +67,7 @@ export default function Home(){
                         </div>
                     </div>
                     <div className={`${styles.infoCardProperties} ${abiertaB2? styles.openCard : styles.cardClosed}`}>
-                        <InfoCard info = {"05-Nov  |  nameCongreso1"} info2={"06-Nov  |  nameCongreso2"} info3={"07-Nov  |  nameCongreso3"} sede={false}/>
+                        <InfoCard info = {"05-Nov  |  Comienzo de la jornada"} info2={"06-Nov  |  intervalo"} info3={"07-Nov  |  Cierre de la jornada"} sede={false}/>
                     </div>
                 </div>
                 <div className={`${styles.cardCompletyProperties} ${abiertaB3? styles.openCardCardCompletyProperties : styles.cardCompletyProperties}`}>
@@ -82,13 +82,14 @@ export default function Home(){
                                 <Image src={'/icons/hatIcon.png'} alt={"Icono de gorro de graduación"} width={32} height={32}/>
                             </div>
                             <div className={styles.infoCardsProperties}>
-                                <span>Jornadas</span>
-                                <span>Públicas/privadas</span>
+                                <span>Auspicios</span>
+                                <span>Auspiciantes</span>
                             </div>
                         </div>
                     </div>
                     <div className={`${styles.infoCardProperties} ${abiertaB3? styles.openCard : styles.cardClosed}`}>
-                        <InfoCard info = {"Nombre  |  Abierto al público"} info2={"Nombre  |  Abierto al público"} info3={"Nombre  |  Abierto al público"} sede={false}/>
+                        <InfoCard info = {"Al momento las Jornadas han sido declaradas de interes Municipal\n" +
+                            "                        y han sido auspiciadas por la Sociedad Argentina de Pediatria"} sede={false}/>
                     </div>
                 </div>
             </section>
