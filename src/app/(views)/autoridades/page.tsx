@@ -53,13 +53,13 @@ const organizingGroup = {
     title: "Cómite organizador",
     groups: [
         {
-            position: "Comité Organizador - Secretaria",
+            position: "Secretaria",
             names: [
-            "Dra. Manuela Beazley"
+                "Dra. Manuela Beazley"
             ]
         },
         {
-            position: "Comité Organizador - Miembros",
+            position: "Miembros",
             names: [
                 "Dra. Ana Albanese",
                 "Dra. Lorena Moreno",
