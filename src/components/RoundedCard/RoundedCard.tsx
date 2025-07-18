@@ -1,5 +1,5 @@
 'use client';
-import { cactus } from '@/app/ui/fonts';
+import { cactus } from '../../app/(views)/ui/fonts';
 import styles from './RoundedCard.module.css';
 
 interface RoundedCardProps {

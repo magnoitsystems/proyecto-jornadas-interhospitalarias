@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import styles from './FooterComponent.module.css';
 import Link from 'next/link';
-import { cactus } from '@/app/ui/fonts';
+import { cactus } from '../../../app/(views)/ui/fonts';
 import { usePathname } from 'next/navigation';
 
 export default function Footer() {

@@ -1,6 +1,6 @@
 import styles from "@/components/Home/CardAndSponsors/CardAndSponsors.module.css";
 import Image from "next/image";
-import { cactus } from '@/app/ui/fonts';
+import { cactus } from '../../../app/(views)/ui/fonts';
 
 export default function CardAndSponsors(){
     return(

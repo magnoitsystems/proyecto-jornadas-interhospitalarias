@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import RoundedCard from "@/components/RoundedCard/RoundedCard";
-import { cactus } from "@/app/ui/fonts";
+import { cactus } from '../../../app/(views)/ui/fonts';
 import styles from './page.module.css';
 import GroupFilters from "@/components/FilterButton/GroupFilters/GroupFilters";
 import UserCard from "@/components/UserCard/UserCard";

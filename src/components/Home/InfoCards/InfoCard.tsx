@@ -1,5 +1,5 @@
 import styles from './InfoCard.module.css';
-import { cactus } from '@/app/ui/fonts';
+import { cactus } from '../../../app/(views)/ui/fonts';
 
 type Prop = {
     info? : string;

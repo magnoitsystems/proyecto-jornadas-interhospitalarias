@@ -1,6 +1,6 @@
 import styles from './Redirection.module.css';
 import Link from "next/link";
-import { cactus } from '@/app/ui/fonts';
+import { cactus } from '../../app/(views)/ui/fonts';
 
 export default function Redirection(){
     return(

@@ -4,7 +4,7 @@ import {useState} from "react";
 import styles from "./groupFilters.module.css"
 import FilterButton from "@/components/FilterButton/FilterButton/FilterButton";
 import useResponsive from "@/components/FilterButton/GroupFilters/useResponsive";
-import {cactus} from "@/app/ui/fonts";
+import { cactus } from '../../../app/(views)/ui/fonts';
 
 interface FilterState {
     [key: string]: boolean;
