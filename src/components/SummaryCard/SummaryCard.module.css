@@ -45,7 +45,7 @@
     padding-top: 10px;
 }
 
-.infoCardProperties li{
+.infoCardProperties li, .middleInfoCardProperties li{
     list-style: none;
 }
 

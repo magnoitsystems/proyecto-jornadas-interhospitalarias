@@ -33,32 +33,6 @@ export default function Summary({date, eventos, invitados, coordinadores, day}: 
             <div>
                 <SummaryCard eventos={eventos} invitados={invitados} coordinadores={coordinadores}/>
             </div>
-            {/*<div className={styles.section}>*/}
-            {/*    <h4>EVENTOS A REALIZAR</h4>*/}
-            {/*    <ul>*/}
-            {/*        {eventos.map((evento, index) => (*/}
-            {/*            <li key={index}>{evento}</li>*/}
-            {/*        ))}*/}
-            {/*    </ul>*/}
-            {/*</div>*/}
-
-            {/*<div className={styles.section}>*/}
-            {/*    <h4>INVITADOS DEL DÍA</h4>*/}
-            {/*    <ul>*/}
-            {/*        {invitados.map((invitado, index) => (*/}
-            {/*            <li key={index}>{invitado}</li>*/}
-            {/*        ))}*/}
-            {/*    </ul>*/}
-            {/*</div>*/}
-
-            {/*<div className={styles.section}>*/}
-            {/*    <h4>COORDINADORES ASIGNADOS</h4>*/}
-            {/*    <ul>*/}
-            {/*        {coordinadores.map((coordinador, index) => (*/}
-            {/*            <li key={index}>{coordinador}</li>*/}
-            {/*        ))}*/}
-            {/*    </ul>*/}
-            {/*</div>*/}
         </main>
     )
 }

@@ -21,10 +21,10 @@ export default function SummaryCard({eventos, invitados, coordinadores}: Props){
               </div>
           </div>
           <div className={styles.completyCardProperties}>
-              <div className={`${styles.cardProperties} ${styles.middleCardProperties}`}>
+              <div className={`${styles.cardProperties}`}>
                   <h1>Invitados</h1>
               </div>
-              <div className={`${styles.middleInfoCardProperties}`}>
+              <div className={`${styles.infoCardProperties}`}>
                   {invitados.map((invitado, index) => (
                       <li key={index}>{invitado}</li>
                   ))}
