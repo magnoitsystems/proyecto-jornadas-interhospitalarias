@@ -27,80 +27,100 @@ const userCardData = [
         image: "/icons/autoridades.png",
         name: "María",
         surname: "González",
-        profession: "Pediatra",
-        age: 34
+        profession: "Médica",
+        age: 34,
+        genero: "Femenino",
+        specialty: "Pediatra"
     },
     {
         id: 2,
         image: "/icons/autoridades.png",
         name: "Carlos",
         surname: "Mendoza",
-        profession: "Cardiólogo",
-        age: 45
+        profession: "Médico",
+        age: 45,
+        genero: "Masculino",
+        specialty: "Cardiólogo"
     },
     {
         id: 3,
         image: "/icons/autoridades.png",
         name: "Ana",
         surname: "Pérez",
-        profession: "Neuróloga",
-        age: 38
+        profession: "Médica",
+        age: 38,
+        genero: "Femenino",
+        specialty: "Neuróloga"
     },
     {
         id: 4,
         image: "/icons/autoridades.png",
         name: "Luis",
         surname: "Rodríguez",
-        profession: "Ginecólogo",
-        age: 42
+        profession: "Médico",
+        age: 42,
+        genero: "Masculino",
+        specialty: "Ginecólogo"
     },
     {
         id: 5,
         image: "/icons/autoridades.png",
         name: "Carmen",
         surname: "Silva",
-        profession: "Dermatóloga",
-        age: 29
+        profession: "Médica",
+        age: 29,
+        genero: "Femenino",
+        specialty: "Dermatóloga"
     },
     {
         id: 6,
         image: "/icons/autoridades.png",
         name: "Roberto",
         surname: "Morales",
-        profession: "Traumatólogo",
-        age: 51
+        profession: "Médico",
+        age: 51,
+        genero: "Masculino",
+        specialty: "Traumatólogo"
     },
     {
         id: 7,
         image: "/icons/autoridades.png",
         name: "Isabel",
         surname: "Vargas",
-        profession: "Psiquiatra",
-        age: 39
+        profession: "Médica",
+        age: 39,
+        genero: "Femenino",
+        specialty: "Psiquiatra"
     },
     {
         id: 8,
         image: "/icons/autoridades.png",
         name: "Fernando",
         surname: "Castro",
-        profession: "Oftalmólogo",
-        age: 47
+        profession: "Médico",
+        age: 47,
+        genero: "Masculino",
+        specialty: "Oftalmólogo"
     },
     {
         id: 9,
         image: "/icons/autoridades.png",
         name: "Patricia",
         surname: "Ramos",
-        profession: "Endocrinóloga",
-        age: 36
+        profession: "Médica",
+        age: 36,
+        genero: "Femenino",
+        specialty: "Endocrinóloga"
     },
     {
         id: 10,
         image: "/icons/autoridades.png",
         name: "Miguel",
         surname: "Torres",
-        profession: "Urólogo",
-        age: 44
+        profession: "Médico",
+        age: 44,
+        genero: "Masculino",
+        specialty: "Urólogo"
     }
 ];
 
@@ -154,7 +174,7 @@ export default function AdminPanel() {
                 )}
             </div>
             <h1 className= {`${styles.titleProperties} ${cactus.className}`}>
-                Registros de inscripción
+                Registros de Inscriptos
             </h1>
             <section className={styles.containerContent}>
                 <aside className={styles.aside}>
@@ -169,6 +189,8 @@ export default function AdminPanel() {
                             surname={user.surname}
                             profession={user.profession}
                             age={user.age}
+                            gender={user.genero}
+                            specialty={user.specialty}
                         />
                     ))}
                 </section>
