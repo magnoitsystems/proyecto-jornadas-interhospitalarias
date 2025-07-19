@@ -7,6 +7,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Author {
+  idAuthor    Int     @id @default(autoincrement()) @map("id_author")
+  name        String  @db.VarChar(40)
+  lastname    String  @db.VarChar(40)
+  affiliation String? @db.VarChar(40)
+  idWork      Int     @map("id_work")
+
+  // Relación
+  work Work @relation(fields: [idWork], references: [idWork], onDelete: Cascade, onUpdate: NoAction, map: "fk_author_works")
+
+  @@map("author")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model User {
   idUser    Int      @id @default(autoincrement()) @map("id_user")
   name      String   @db.VarChar(40)
@@ -17,33 +31,27 @@ model User {
   specialty String?  @db.VarChar(40)
   admin     Boolean? @default(false)
   age       Int?
-  genre     String?  @db.VarChar(40)
-  works     Work[]
+  gender    String?  @map("gender")
+
+  // Relación
+  works Work[]
 
   @@map("user")
 }
 
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model Work {
-  idWork      Int      @id @default(autoincrement()) @map("id_work")
-  category    String?  @db.VarChar(50)
+  idWork      Int     @id @default(autoincrement()) @map("id_work")
+  category    String? @db.VarChar(50)
   description String?
-  userId      Int      @map("user_id")
-  workCode    String?  @unique @map("work_code") @db.VarChar(20)
-  title       String?  @db.VarChar(40)
-  file        String?  @db.VarChar(255)
-  authors     Author[]
-  user        User     @relation(fields: [userId], references: [idUser], onDelete: Cascade, onUpdate: NoAction, map: "fk_works_user")
+  idUser      Int     @map("id_user")
+  workCode    String? @unique @map("work_code") @db.VarChar(20)
+  title       String? @db.VarChar(40)
+  file        String? @db.VarChar(255)
+
+  // Relaciones
+  authors Author[]
+  user    User     @relation(fields: [idUser], references: [idUser], onDelete: Cascade, onUpdate: NoAction, map: "fk_works_user")
 
   @@map("works")
-}
-
-model Author {
-  idAuthor    Int     @id @default(autoincrement()) @map("id_author")
-  name        String  @db.VarChar(40)
-  lastname    String  @db.VarChar(40)
-  affiliation String? @db.VarChar(40)
-  workId      Int     @map("work_id")
-  work        Work    @relation(fields: [workId], references: [idWork], onDelete: Cascade, onUpdate: NoAction, map: "fk_author_works")
-
-  @@map("author")
 }
