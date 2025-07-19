@@ -16,7 +16,7 @@ CREATE TABLE "user" (
                         name VARCHAR(40) NOT NULL,
                         lastname VARCHAR(40) NOT NULL,
                         email VARCHAR(40) NOT NULL UNIQUE,
-                        password VARCHAR(40) NOT NULL,
+                        password VARCHAR(255) NOT NULL,
                         job VARCHAR(50) CHECK (job IN (
                                                        'medico',
                                                        'estudiante',

@@ -16,7 +16,7 @@ export class UserValidationService {
         this.validateJob(userData.job);
         this.validateSpecialty(userData.specialty);
         this.validateAge(userData.age);
-        this.validateGenre(userData.gender);
+        this.validateGender(userData.gender);
 
         return {
             isValid: this.errors.length === 0,
@@ -155,15 +155,15 @@ export class UserValidationService {
         }
     }
 
-    private validateGenre(genre: string): void {
-        if (!genre || genre.trim().length === 0) {
-            this.addError('genre', 'El género es obligatorio');
+    private validateGender(gender: string): void {
+        if (!gender || gender.trim().length === 0) {
+            this.addError('gender', 'El género es obligatorio');
             return;
         }
 
 
-        if (!Object.values(Gender).includes(genre.toLowerCase() as Gender)) {
-            this.addError('genre', `El género debe ser uno de: ${Object.values(Gender).join(', ')}`);
+        if (!Object.values(Gender).includes(gender.toLowerCase() as Gender)) {
+            this.addError('gender', `El género debe ser uno de: ${Object.values(Gender).join(', ')}`);
         }
     }
 
