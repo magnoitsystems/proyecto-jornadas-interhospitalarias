@@ -1,14 +1,5 @@
-// app/types/index.ts
-export enum JobType {
-    DOCTOR = 'medico',
-    STUDENT = 'estudiante',
-    NURSE = 'enfermero',
-    NON_HEALTH_PROFESSIONAL = 'no perteneciente al área de la salud',
-    KINESIOLOGIST = 'kinesiologo',
-    SPEECH_THERAPIST = 'fonoaudiologo',
-    TECHNICIAN = 'tecnico',
-    OTHER = 'otros'
-}
+// app/types/index.
+import { User } from "./user"
 
 export enum WorkCategory {
     QUALITATIVE_RESEARCH = 'investigacion cualitativa',
@@ -17,31 +8,10 @@ export enum WorkCategory {
     EXPERIENCE_REPORTS = 'relatos de experiencias'
 }
 
-export enum Gender {
-    MALE = 'masculino',
-    FEMALE = 'femenino',
-    OTHER = 'otro',
-    PREFER_NOT_TO_SAY = 'prefiero no decir'
-}
-
 export interface Origin {
     city: string;
     province: string;
     country: string;
-}
-
-export interface User {
-    id: number;
-    name: string;
-    lastname: string;
-    email: string;
-    password: string;
-    job: JobType;
-    specialty: string | null;
-    admin: boolean;
-    age: number;
-    gender: Gender;
-    works?: Work[];
 }
 
 export interface Author {
