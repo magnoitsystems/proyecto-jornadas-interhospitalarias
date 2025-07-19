@@ -19,22 +19,34 @@ export default function InscriptionForm() {
                 <form>
                     <div className={styles.formInput}>
                         <label>Nombre</label>
-                        <input type="text" placeholder="Nombre" />
+                        <input type="text" placeholder="Nombre"/>
 
                         <label>Apellido</label>
-                        <input type="text" placeholder="Apellido" />
+                        <input type="text" placeholder="Apellido"/>
 
                         <label>Fecha de Nacimiento</label>
-                        <input type="date" />
+                        <input type="date"/>
 
                         <label>D.N.I</label>
-                        <input type="text" placeholder="D.N.I" />
+                        <input type="text" placeholder="D.N.I"/>
 
                         <label>Correo Electrónico</label>
-                        <input type="email" placeholder="Correo Electrónico" />
+                        <input type="email" placeholder="Correo Electrónico"/>
 
                         <label>Profesión</label>
-                        <input type="text" placeholder="Profesión" />
+                        <select name="profesion" id="profesion">
+                            <option value="medico">Médico</option>
+                            <option value="estudiante">Estudiante</option>
+                            <option value="enfermero">Enfermero</option>
+                            <option value="no-pertenece">No perteneciente al área de la salud</option>
+                            <option value="kinesiologo">Kinesiólogo</option>
+                            <option value="fonoudiologo">Fonoudiólogo</option>
+                            <option value="tecnico">Técnico</option>
+                            <option value="otros">Otros</option>
+                        </select>
+
+                        <label>Especialización</label>
+                        <input type="text" placeholder="Especialización"/>
 
                         <label>Género</label>
                         <select name="genero" id="genero">
