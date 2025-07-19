@@ -1,1 +1,54 @@
 //metodos de crear usuarios y obtenerlos
+import { NextRequest, NextResponse } from 'next/server';
+import { UserService } from '@/libs/database/userService';
+import { prisma } from '@/libs/prisma';
+
+export async function POST(request: NextRequest) {
+    try {
+        const userData = await request.json();
+        const userService = new UserService();
+
+        const result = await userService.validateUser(userData);
+
+        if (result.success && result.user) {
+
+             const createdUser = await prisma.user.create({
+                 data: result.user,
+                 select: {
+                     id_user: true,
+                     name: true,
+                     lastname: true,
+                     email: true,
+                     job: true,
+                     specialty: true,
+                     admin: true,
+                     age: true,
+                     genre: true,
+                     // NO seleccionamos password por seguridad
+                 }
+            })
+
+            return NextResponse.json(
+                {
+                    message: 'Usuario creado exitosamente',
+                    user: createdUser,
+                },
+                { status: 201 }
+            );
+        } else {
+            return NextResponse.json(
+                {
+                    message: 'Error de validación',
+                    errors: result.errors
+                },
+                { status: 400 }
+            );
+        }
+    } catch (error) {
+        console.error('API Error:', error);
+        return NextResponse.json(
+            { message: 'Error interno del servidor' },
+            { status: 500 }
+        );
+    }
+}
