@@ -1,7 +1,6 @@
 .sectionCardsProperties {
     display: flex;
     flex-direction: column;
-    margin-top: 5%;
     gap: 10px;
     justify-content: center;
 }
@@ -122,7 +121,7 @@
 
 /**/
 
-@media (min-width: 1050px) {
+@media (min-width: 1290px) {
     .sectionCardsProperties{
         flex-direction: row;
         margin-top: 5%;

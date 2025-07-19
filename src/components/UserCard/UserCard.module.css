@@ -1,10 +1,8 @@
 .userCard {
     display: flex;
     align-items: center;
-    width: 80%;
-    align-items: center;
-    gap: var(--10px);
-    padding: var(--10px);
+    gap: var(--20px);
+    padding: var(--20px);
     background: var(--secondary-color-1);
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 12px;
@@ -19,21 +17,22 @@
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
-
 .attribute {
-    margin: 0;
-    width: 60px;
-    flex-shrink: 0;
+    width: fit-content;
     text-wrap: nowrap;
     overflow: hidden;
     font-size: var(--10px);
 }
 
-.containerAttribute {
-    flex: 1;
-    display: grid;
+.containerAttribute{
     align-items: center;
-    grid-template-columns: 1fr auto auto;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.containerAttribute, .containerNameAttribute {
+    display: flex;
+    flex-direction: row;
 }
 
 .name {
@@ -44,7 +43,10 @@
 }
 
 .image {
-    background-color: var(--secondary-color-4);
+    background-color: var(--primary-color-1);
+    text-align: center;
+    align-content: center;
+    font-size: var(--15px);
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -63,6 +65,10 @@
         font-size: 0.75rem;
     }
 
+    .image{
+        font-size: var(--30px);
+    }
+
     .name {
         font-size: 0.875rem;
     }
@@ -70,7 +76,7 @@
 
 @media (min-width: 768px) {
     .userCard {
-        width: 100%;
+        width: 90%;
     }
 
     .name{
@@ -100,7 +106,7 @@
     }
 
     .image{
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
     }
 }
