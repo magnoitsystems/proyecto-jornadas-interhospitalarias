@@ -16,7 +16,7 @@ CREATE TABLE "user" (
                         name VARCHAR(40) NOT NULL,
                         lastname VARCHAR(40) NOT NULL,
                         email VARCHAR(40) NOT NULL UNIQUE,
-                        password VARCHAR(40) NOT NULL,
+                        password VARCHAR(255) NOT NULL,
                         job VARCHAR(50) CHECK (job IN (
                                                        'medico',
                                                        'estudiante',
@@ -30,7 +30,7 @@ CREATE TABLE "user" (
                         specialty VARCHAR(40),
                         admin BOOLEAN DEFAULT FALSE,
                         age INTEGER CHECK (age > 0 AND age < 150),
-                        genre VARCHAR(40)
+                        gender VARCHAR(40)
 );
 
 -- =========================================================================
@@ -62,9 +62,9 @@ CREATE TABLE author (
                         name VARCHAR(40) NOT NULL,
                         lastname VARCHAR(40) NOT NULL,
                         affiliation VARCHAR(40),
-                        work_id INTEGER NOT NULL,
+                        id_work INTEGER NOT NULL,
 
-                        CONSTRAINT fk_author_works FOREIGN KEY (work_id)
+                        CONSTRAINT fk_author_works FOREIGN KEY (id_work)
                             REFERENCES works(id_work) ON DELETE CASCADE
 );
 
@@ -74,7 +74,7 @@ CREATE TABLE author (
 -- =========================================================================
 
 -- Usuarios de prueba
-INSERT INTO "user" (name, lastname, email, password, job, specialty, admin, age, genre) VALUES
+INSERT INTO "user" (name, lastname, email, password, job, specialty, admin, age, gender) VALUES
                                                                                             ('Juan', 'Pérez', 'juan.perez@hospital.com', 'password123', 'medico', 'cardiología', false, 35, 'masculino'),
                                                                                             ('María', 'González', 'maria.gonzalez@universidad.edu', 'password456', 'estudiante', 'medicina', false, 22, 'femenino'),
                                                                                             ('Carlos', 'López', 'carlos.lopez@clinica.com', 'password789', 'enfermero', 'cuidados intensivos', false, 28, 'masculino'),
@@ -125,7 +125,7 @@ INSERT INTO works (category, description, user_id, work_code, title, file) VALUE
                                                                                );
 
 -- Autores de prueba (DESPUÉS de insertar works)
-INSERT INTO author (name, lastname, affiliation, work_id) VALUES
+INSERT INTO author (name, lastname, affiliation, id_work) VALUES
                                                               ('Juan', 'Pérez', 'Hospital Central', 1),
                                                               ('Dra. Elena', 'Vásquez', 'Universidad Nacional', 1),
                                                               ('Juan', 'Pérez', 'Hospital Central', 2),
