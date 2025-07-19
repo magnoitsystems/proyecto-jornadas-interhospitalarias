@@ -173,9 +173,14 @@ export default function AdminPanel() {
                     ))
                 )}
             </div>
-            <h1 className= {`${styles.titleProperties} ${cactus.className}`}>
-                Registros de Inscriptos
-            </h1>
+            <div className={`${styles.seeCards} ${cactus.className}`}>
+                <h1>Ver</h1>
+                <select name="cards" id="cards">
+                    <option value="registro">Registro de inscriptos</option>
+                    <option value="sin">Manuscritos SIN opción a premio</option>
+                    <option value="con">Manuscritos CON opción a premio</option>
+                </select>
+            </div>
             <section className={styles.containerContent}>
                 <aside className={styles.aside}>
                     <GroupFilters/>

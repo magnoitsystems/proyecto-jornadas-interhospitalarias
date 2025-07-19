@@ -2,17 +2,17 @@
     display: flex;
     justify-content: space-around;
     position: absolute;
-    top: 200px; /* Ajusta según la altura exacta donde quieras que aparezcan */
+    top: 200px;
     left: 0;
     right: 0;
-    z-index: 1001; /* Mayor que el z-index del navbar (1000) */
+    z-index: 1001;
     padding: 0 1rem;
 }
 
 .titleProperties{
     margin-left: 15px;
+    margin-bottom: 50px;
     width: fit-content;
-    border-bottom: #060606 1px solid;
 }
 
 .aside {
@@ -26,6 +26,44 @@
 .containerFilter{
     width: 95%;
     margin: 0 auto;
+}
+
+.seeCards {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3rem;
+    align-items: center;
+    justify-content: left;
+
+    margin-left: 10px;
+
+    color: var(--secondary-color-4);
+    font-size: 28px;
+}
+.seeCards select{
+    width: fit-content;
+    height: fit-content;
+
+    margin-left: 10px;
+    padding-inline: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    font-size: 32px;
+    font-family: inherit;
+    border: 1px solid var(--primary-color-1);
+    border-radius: 50px;
+    background-color: white;
+    color: var(--secondary-color-4);
+
+    appearance: none;
+    cursor: pointer;
+
+    transition: border-color 0.3s ease;
+}
+.seeCards select:focus {
+    color: var(--primary-color-1);
+    outline: none;
 }
 
 @media (max-width: 728px) {
