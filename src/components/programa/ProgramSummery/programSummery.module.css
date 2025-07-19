@@ -46,6 +46,12 @@
     padding-inline: var(--20px);
     box-sizing: border-box;
 }
+
+.section h4{
+    color: var(--primary-color-6);
+    font-weight: bold;
+}
+
 .section ul{
     margin: 0rem;
     padding-left: var(--15px);
@@ -66,7 +72,15 @@
     transition: all 0.4s ease;
 }
 .visible {
-    display: flex;
+    visibility: visible;
+}
+
+.notVisible{
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
 }
 
 

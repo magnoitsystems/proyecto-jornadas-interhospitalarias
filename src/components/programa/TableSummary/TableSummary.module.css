@@ -1,0 +1,30 @@
+.agendatable {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Segoe UI", sans-serif;
+    margin-top: 24px;
+}
+
+.agendatable th,
+.agendatable td {
+    border: 1px solid #444;
+    padding: 12px;
+    vertical-align: center;
+    text-align: center;
+    max-width: 300px;
+}
+
+.agendatable th {
+    background-color: var(--primary-color-6);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.agendatable td strong {
+    font-weight: bold;
+}
+
+.agendatable tbody tr:nth-child(even) {
+    background-color: #e0e0e0;
+}

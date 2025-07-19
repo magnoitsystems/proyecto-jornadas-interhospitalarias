@@ -1,5 +1,6 @@
 import Title from "@/components/general/SectionTitle/SectionTitle";
 import Summery from "@/components/programa/ProgramSummery/programSummery";
+import SummaryCard from "@/components/SummaryCard/SummaryCard";
 
 export default function Programa(){
     return(
@@ -45,7 +46,7 @@ export default function Programa(){
                     'Mabel Brindo',
                     'Dra. Laura Riva'
                 ]}
-                imgSrc={'/imgs/cronograma/miercoles.png'}
+                day={"miercoles"}
             />
             <Summery
                 date={'Jueves 06 de Noviembre'}
@@ -94,7 +95,7 @@ export default function Programa(){
                     'Dra. Camila Pereyra',
                     'Dra. Ileana Mastropierro'
                 ]}
-                imgSrc={'/imgs/cronograma/jueves.png'}
+                day={"jueves"}
             />
             <Summery
                 date={'Viernes 07 de Noviembre'}
@@ -146,7 +147,7 @@ export default function Programa(){
                     'Dra. Camila Pereyra',
                     'Equipo de Procuración'
                 ]}
-                imgSrc={'/imgs/cronograma/viernes.png'}
+                day={"viernes"}
             />
         </main>
     )
