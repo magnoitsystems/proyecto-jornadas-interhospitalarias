@@ -31,17 +31,20 @@
 .seeCards {
     display: flex;
     flex-direction: row;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     align-items: center;
-    justify-content: left;
+    justify-content: center;
 
-    margin-left: 10px;
+    width: 100%;
+
+    margin-left: 0px;
 
     color: var(--secondary-color-4);
-    font-size: 28px;
+    font-size: 16px;
 }
 .seeCards select{
     width: fit-content;
+    max-width: 90%;
     height: fit-content;
 
     margin-left: 10px;
@@ -49,7 +52,7 @@
     padding-top: 5px;
     padding-bottom: 5px;
 
-    font-size: 32px;
+    font-size: 16px;
     font-family: inherit;
     border: 1px solid var(--primary-color-1);
     border-radius: 50px;
@@ -59,13 +62,22 @@
     appearance: none;
     cursor: pointer;
 
-    transition: border-color 0.3s ease;
+    transition: 0.3s ease;
+}
+.seeCards select:hover{
+    background-color: var(--primary-color-1);
+    color: var(--secondary-color-1);
+
+    transition: 0.3s ease;
 }
 .seeCards select:focus {
     color: var(--secondary-color-4);
     border: 1px solid var(--secondary-color-2);
     box-shadow: 0 0 0 3px rgba(239, 25, 35, 0.2);
     outline: none;
+}
+.seeCards h1 {
+    font-size: 16px;
 }
 
 @media (max-width: 728px) {
@@ -104,10 +116,9 @@
   .arrow:hover {
     color: #7D0279; 
   }
-
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
     .containerContent {
         display: flex;
         align-items: flex-start;
@@ -122,5 +133,18 @@
     .containerUserCard {
         flex: 1;
         margin-right: var(--25px);
+    }
+
+    .seeCards {
+        margin-bottom: 2rem;
+        margin-top: 1rem;
+        justify-content: left;
+        padding-left: 20px;
+    }
+    .seeCards select {
+        font-size: 30px;
+    }
+    .seeCards h1 {
+        font-size: 30px;
     }
 }
