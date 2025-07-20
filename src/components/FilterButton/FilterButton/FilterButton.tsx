@@ -24,6 +24,7 @@ export default function FilterButton({
         <button
             className={`
             ${styles.button} 
+            ${cactus.className}
             ${isActive ? styles.active : ''} 
             `}
             onClick={() => {setIsActive(!isActive)}}

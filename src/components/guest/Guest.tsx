@@ -23,7 +23,7 @@ const ProfessionalCard: React.FC<ProfessionalCardProps> = ({ professional }) => 
     return (
         <main className={styles.card}>
             <div className={`${styles.infoContainer} ${cactus.className}`}>
-                <h1>{`Dr/a. ${nombre} ${apellido}`}</h1>
+                <h1>{`${nombre} ${apellido}`}</h1>
             </div>
             <div className={`${styles.info} ${cactus.className}`}>
                 <h5> Profesión-es/Cursos/Estudios: {profesion}</h5>
