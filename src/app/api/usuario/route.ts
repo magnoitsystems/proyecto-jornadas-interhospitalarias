@@ -8,16 +8,9 @@ export async function POST(request: NextRequest) {
         const userData = await request.json();
         const userService = new UserService();
 
-        console.log("📥 DATOS RECIBIDOS:", userData);
-
         const result = await userService.validateUser(userData);
 
-
         if (result.success && result.user) {
-
-            console.log("🔍 VALIDATION RESULT:", result);
-            console.log("🐛 USER OBJECT:", result.user);
-            console.log("🔑 USER KEYS:", Object.keys(result.user));
 
              const createdUser = await prisma.user.create({
                  data:{
@@ -63,7 +56,6 @@ export async function POST(request: NextRequest) {
         }
     } catch (error) {
         console.error('API Error:', error);
-        console.error('💥 ERROR COMPLETO:', error);
         return NextResponse.json(
             { message: 'Error interno del servidor' },
             { status: 500 }
