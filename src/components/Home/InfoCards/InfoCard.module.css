@@ -33,7 +33,7 @@
 
 .sedeInfo span{
     display: list-item;
-    list-style-type: disc; /* o circle, square, etc. */
+    list-style-type: disc;
     margin-left: 20px;
 }
 
