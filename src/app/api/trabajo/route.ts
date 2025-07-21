@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import cloudinary from '@/libs/cloudinary';
 import { prisma } from '@/libs/prisma';
+import { v4 as uuidv4 } from 'uuid';
 // import { getServerSession } from 'next-auth';
 // import { authOptions } from '@/libs/auth'; 
 
@@ -66,18 +67,21 @@ export async function POST(request: NextRequest) {
     try {
         const formData = await request.formData();
 
-        const file = formData.get('file') as File;
+
         const title = formData.get('title') as string;
         const category = formData.get('category') as string;
         const description = formData.get('description') as string;
         const userId = parseInt(formData.get('userId') as string); // temporal
 
-        if (!file || !title || !category || !description || isNaN(userId)) {
-            return NextResponse.json({ message: 'Faltan datos' }, { status: 400 });
+        const file = formData.get('file');
+
+        if (!file || !(file instanceof Blob)) {
+            return NextResponse.json({ message: 'Archivo inválido' }, { status: 400 });
         }
 
         const arrayBuffer = await file.arrayBuffer();
         const buffer = Buffer.from(arrayBuffer);
+
 
         const uploadResult = await new Promise<any>((resolve, reject) => {
             cloudinary.uploader.upload_stream(
@@ -110,11 +114,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json(newWork, { status: 201 });
     } catch (error) {
         console.error('Error al subir el trabajo:', error);
-        return NextResponse.json({ message: 'Error interno' }, { status: 500 });
+  return NextResponse.json({ message: error || 'Error interno' }, { status: 500 });
     }
-}
-
-function uuidv4() {
-    throw new Error('Function not implemented.');
 }
 
