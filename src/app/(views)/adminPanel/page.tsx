@@ -15,10 +15,7 @@ const cardData = [
     { number: "0", title: "Médico" },
     { number: "0", title: "Enfermero" },
     { number: "0", title: "Técnico" },
-    // { number: "0", title: "Kinesiólogos" },
-    // { number: "0", title: "Fonoaudiólogo" },
     { number: "0", title: "Otros" },
-    // { number: "0", title: "No pertenecientes a la salud" },
 ];
 
 const userCardData = [
@@ -30,17 +27,20 @@ const userCardData = [
         profession: "Médica",
         age: 34,
         genero: "Femenino",
-        specialty: "Pediatra"
+        specialty: "Pediatra",
+        typeCard: "user",
     },
     {
         id: 2,
         image: "/icons/autoridades.png",
         name: "Carlos",
         surname: "Mendoza",
-        profession: "Médico",
+        profession: "No",
         age: 45,
         genero: "Masculino",
-        specialty: "Cardiólogo"
+        specialty: "Cardiólogo",
+        typeCard: "manuscrito",
+        manuscrito: "Archivo.jpg"
     },
     {
         id: 3,
@@ -50,27 +50,32 @@ const userCardData = [
         profession: "Médica",
         age: 38,
         genero: "Femenino",
-        specialty: "Neuróloga"
+        specialty: "Neuróloga",
+        typeCard: "user"
     },
     {
         id: 4,
         image: "/icons/autoridades.png",
         name: "Luis",
         surname: "Rodríguez",
-        profession: "Médico",
+        profession: "No",
         age: 42,
         genero: "Masculino",
-        specialty: "Ginecólogo"
+        specialty: "Ginecólogo",
+        typeCard: "manuscrito",
+        manuscrito: "Archivo.tsx"
     },
     {
         id: 5,
         image: "/icons/autoridades.png",
         name: "Carmen",
         surname: "Silva",
-        profession: "Médica",
+        profession: "Sí",
         age: 29,
         genero: "Femenino",
-        specialty: "Dermatóloga"
+        specialty: "Dermatóloga",
+        typeCard: "manuscrito",
+        manuscrito: "Archivo.png"
     },
     {
         id: 6,
@@ -80,17 +85,20 @@ const userCardData = [
         profession: "Médico",
         age: 51,
         genero: "Masculino",
-        specialty: "Traumatólogo"
+        specialty: "Traumatólogo",
+        typeCard: "user"
     },
     {
         id: 7,
         image: "/icons/autoridades.png",
         name: "Isabel",
         surname: "Vargas",
-        profession: "Médica",
+        profession: "Sí",
         age: 39,
         genero: "Femenino",
-        specialty: "Psiquiatra"
+        specialty: "Psiquiatra",
+        typeCard: "manuscrito",
+        manuscrito: "Archivo.tsx"
     },
     {
         id: 8,
@@ -100,7 +108,9 @@ const userCardData = [
         profession: "Médico",
         age: 47,
         genero: "Masculino",
-        specialty: "Oftalmólogo"
+        specialty: "Oftalmólogo",
+        typeCard: "manuscrito",
+        manuscrito: "Archivo.jpg"
     },
     {
         id: 9,
@@ -110,7 +120,8 @@ const userCardData = [
         profession: "Médica",
         age: 36,
         genero: "Femenino",
-        specialty: "Endocrinóloga"
+        specialty: "Endocrinóloga",
+        typeCard: "user"
     },
     {
         id: 10,
@@ -120,7 +131,8 @@ const userCardData = [
         profession: "Médico",
         age: 44,
         genero: "Masculino",
-        specialty: "Urólogo"
+        specialty: "Urólogo",
+        typeCard: "user"
     }
 ];
 
@@ -157,7 +169,6 @@ export default function AdminPanel() {
                             </svg>
                         </button>
 
-
                         <RoundedCard {...cardData[currentIndex]} />
 
                         <button className={styles.arrow} onClick={handleNext} aria-label="Siguiente">
@@ -173,9 +184,14 @@ export default function AdminPanel() {
                     ))
                 )}
             </div>
-            <h1 className= {`${styles.titleProperties} ${cactus.className}`}>
-                Registros de Inscriptos
-            </h1>
+            <div className={`${styles.seeCards} ${cactus.className}`}>
+                <h1>Ver</h1>
+                <select name="cards" id="cards">
+                    <option value="registro">Registro de inscriptos</option>
+                    <option value="sin">Manuscritos SIN opción a premio</option>
+                    <option value="con">Manuscritos CON opción a premio</option>
+                </select>
+            </div>
             <section className={styles.containerContent}>
                 <aside className={styles.aside}>
                     <GroupFilters/>
@@ -191,6 +207,8 @@ export default function AdminPanel() {
                             age={user.age}
                             gender={user.genero}
                             specialty={user.specialty}
+                            typeCard={user.typeCard}
+                            manuscrito={user.manuscrito}
                         />
                     ))}
                 </section>

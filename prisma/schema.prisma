@@ -7,43 +7,37 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model author {
+  id_author   Int     @id @default(autoincrement())
+  name        String  @db.VarChar(40)
+  lastname    String  @db.VarChar(40)
+  affiliation String? @db.VarChar(40)
+  id_work     Int
+  works       works   @relation(fields: [id_work], references: [id_work], onDelete: Cascade, onUpdate: NoAction, map: "fk_author_works")
+}
+
+model user {
   idUser    Int      @id @default(autoincrement()) @map("id_user")
   name      String   @db.VarChar(40)
   lastname  String   @db.VarChar(40)
   email     String   @unique @db.VarChar(40)
-  password  String   @db.VarChar(40)
+  password  String   @db.VarChar(255)
   job       String?  @db.VarChar(50)
   specialty String?  @db.VarChar(40)
   admin     Boolean? @default(false)
   age       Int?
-  genre     String?  @db.VarChar(40)
-  works     Work[]
-
-  @@map("user")
+  gender    String?  @db.VarChar(40)
+  works     works[]
 }
 
-model Work {
-  idWork      Int      @id @default(autoincrement()) @map("id_work")
+model works {
+  id_work     Int      @id @default(autoincrement())
   category    String?  @db.VarChar(50)
   description String?
-  userId      Int      @map("user_id")
-  workCode    String?  @unique @map("work_code") @db.VarChar(20)
+  user_id     Int
+  work_code   String?  @unique @db.VarChar(20)
   title       String?  @db.VarChar(40)
   file        String?  @db.VarChar(255)
-  authors     Author[]
-  user        User     @relation(fields: [userId], references: [idUser], onDelete: Cascade, onUpdate: NoAction, map: "fk_works_user")
-
-  @@map("works")
-}
-
-model Author {
-  idAuthor    Int     @id @default(autoincrement()) @map("id_author")
-  name        String  @db.VarChar(40)
-  lastname    String  @db.VarChar(40)
-  affiliation String? @db.VarChar(40)
-  workId      Int     @map("work_id")
-  work        Work    @relation(fields: [workId], references: [idWork], onDelete: Cascade, onUpdate: NoAction, map: "fk_author_works")
-
-  @@map("author")
+  author      author[]
+  user        user     @relation(fields: [user_id], references: [idUser], onDelete: Cascade, onUpdate: NoAction, map: "fk_works_user")
 }

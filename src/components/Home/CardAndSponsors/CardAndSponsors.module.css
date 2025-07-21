@@ -47,7 +47,7 @@
 .infoProperties h1, .presentationCardProperties h1{
     font-size: var(--h1-size);
     font-family: "Cactus Classical Serif";
-    border-bottom: #060606 1px solid;
+    border-bottom: var(--secondary-color-5) 1px solid;
     text-align: center;
 }
 
@@ -89,10 +89,9 @@
     flex-direction: column;
     padding-top: 30px;
     position: relative;
-    z-index: 10;
 }
 
-.s{
+.paragraphOneProperties{
     display: flex;
     align-items: center;
 }
@@ -110,7 +109,6 @@
 }
 
 @media (max-width: 1050px) {
-    /* DOCUMENTO DE BIENVENDIA */
     .cardAndSponsorsProperties{
         flex-direction: column;
         align-items: center;
