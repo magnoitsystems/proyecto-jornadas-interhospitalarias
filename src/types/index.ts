@@ -1,4 +1,9 @@
 // app/types/index.ts
+export type User = {
+    id_admin: number;
+    admin_email: string;
+    admin_password: string;
+};
 
 // Tipo para el objeto de origen anidado
 export type Origen = {
