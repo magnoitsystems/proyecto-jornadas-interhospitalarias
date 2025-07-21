@@ -1,9 +1,8 @@
 'use client';
-
-import React, { useState } from 'react';
 import styles from './Form.module.css';
 import { cactus } from '@/app/(views)/ui/fonts';
 import useUploadWork from '@/hooks/worksAdmin';
+import { useState } from 'react';
 
 interface Autor {
     id: number;
@@ -11,7 +10,7 @@ interface Autor {
     afiliacion: string;
 }
 
-const categorias = ["Investigación cualitativa o cuantitativa", "Presentación de casos", "Relato de experiencias"];
+const categorias = ["investigación cualitativa", "investigación cuantitativa", "presentación de casos", "relatos de experiencias"];
 
 const FormPost: React.FC = () => {
     const [opcionAPremio, setOpcionAPremio] = useState<boolean>(false);
@@ -53,12 +52,12 @@ const FormPost: React.FC = () => {
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
+             console.log("hola handle submit");
         e.preventDefault();
 
         const title = (document.getElementById('titulo') as HTMLInputElement)?.value;
         const category = (document.getElementById('categoriaSelect') as HTMLSelectElement)?.value;
         const description = (document.getElementById('resumen') as HTMLTextAreaElement)?.value;
-        const work_code = 123; // código simulado por ahora
         const userId = 1; // id simulado por ahora
 
         if (!title || !category || !description || !workFile) {
@@ -66,13 +65,26 @@ const FormPost: React.FC = () => {
             return;
         }
 
+        const autoresData = autores.map(autor => ({
+            nombre: autor.nombre.trim(),
+            afiliacion: autor.afiliacion.trim(),
+        }));
+
+        if (autoresData.some(a => !a.nombre)) {
+            alert("Todos los autores deben tener nombre completo.");
+            return;
+        }
+
+        console.log("antes de llamar a upload work en el front");
         await uploadWork({
             title,
             category,
             description,
             userId,
             file: workFile,
+            autores: autoresData,
         });
+
 
         if (success) {
             alert('Trabajo subido exitosamente.');
