@@ -1,0 +1,103 @@
+/*cards properties*/
+.card {
+    display: flex;
+    flex-direction: row;
+
+    width: 98%;
+    height: fit-content;
+
+    margin: 0px auto;
+    margin-bottom: var(--20px);
+
+    border-radius: 10px;
+    border: 1px solid rgba(149, 150, 154, 0.3);
+    color: var(--secondary-color-4);
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+
+    width: 96%;
+
+    gap: var(--30px);
+}
+
+.eventMainInformation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 100%;
+
+    padding-inline: var(--20px);
+}
+
+.name {
+    width: 60%;
+}
+
+.details {
+    display: flex;
+    flex-direction: row;
+
+    gap: var(--20px);
+}
+
+.aditionalInformation {
+    display: none;
+    flex-direction: column;
+
+    padding-inline: var(--20px);
+    gap: var(--10px);
+}
+.aditionalInformation h4 {
+    margin: 0px;
+    padding: 0px;
+}
+.visible {
+    display: flex;
+    padding-bottom: var(--30px);
+}
+
+.plus {
+    font-weight: bolder;
+}
+
+.taller, .redonda, .simposio, .conferencia, .dialogo, .reunion, .confAbierta, .others {
+    display: flex;
+    flex-direction: column;
+
+    width: 4%;
+
+    margin-right: var(--10px);
+
+    border-radius: 10px 0px 0px 10px;
+}
+
+
+/*general*/
+.others {
+    background: linear-gradient(to right, var(--primary-color-1), var(--secondary-color-1));
+}
+.taller {
+    background: linear-gradient(to right, var(--primary-color-2), var(--secondary-color-1));
+}
+.dialogo {
+    background: linear-gradient(to right, var(--primary-color-3), var(--secondary-color-1));
+}
+.redonda {
+    background: linear-gradient(to right, var(--primary-color-4), var(--secondary-color-1));
+}
+.conferencia {
+    background: linear-gradient(to right, var(--primary-color-5), var(--secondary-color-1));
+}
+.simposio {
+    background: linear-gradient(to right, var(--primary-color-6), var(--secondary-color-1));
+}
+.reunion {
+    background: linear-gradient(to right, var(--primary-color-7), var(--secondary-color-1));
+}
+.confAbierta {
+    background: linear-gradient(to right, var(--secondary-color-4), var(--secondary-color-1));
+}

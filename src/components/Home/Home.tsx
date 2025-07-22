@@ -4,7 +4,7 @@ import Image from "next/image";
 import InfoCard from "@/components/Home/InfoCards/InfoCard";
 import CardAndSponsors from "@/components/Home/CardAndSponsors/CardAndSponsors";
 import { useState } from 'react';
-import { cactus } from '../../app/(views)/ui/fonts';
+import { cactus } from '@/app/(views)/ui/fonts';
 
 export default function Home(){
     const [abierta, setAbiertaB1] = useState(false);
@@ -23,11 +23,13 @@ export default function Home(){
     const toggleCardB3 = () => {
         setAbiertaB3(!abiertaB3);
     };
+    const [hovered, setHovered] = useState(false);
 
     return(
         <div>
-            <section className={styles.sectionCardsProperties}>
-                <div className={`${styles.cardCompletyProperties} ${abierta? styles.openCardCardCompletyProperties : styles.cardCompletyProperties} `}>
+            <section className={`${styles.sectionCardsProperties}`}>
+                <div className={`${styles.cardCompletyProperties} ${abierta? styles.openCardCardCompletyProperties : styles.cardCompletyProperties}`}  onMouseEnter={() => setHovered(true)}
+                     onMouseLeave={() => setHovered(false)}>
                     <div className={`${styles.cardProperties} ${styles.cardHoverPropertie} ${abierta? styles.openCardProperties : styles.cardProperties}`}>
                         <div className={styles.deployIconProperties}>
                             <button className={`${styles.buttonProperties} ${abierta? styles.iconRotate : styles.buttonProperties}`} onClick={toggleCardB1}>
@@ -49,7 +51,8 @@ export default function Home(){
                                   info4={"Htal. de Niños Debilio Blanco Villegas"} sede={true}/>
                     </div>
                 </div>
-                <div className={`${styles.cardCompletyProperties} ${abiertaB2? styles.openCardCardCompletyProperties : styles.cardCompletyProperties}`}>
+                <div className={`${styles.cardCompletyProperties} ${abiertaB2? styles.openCardCardCompletyProperties : styles.cardCompletyProperties}`} onMouseEnter={() => setHovered(true)}
+                     onMouseLeave={() => setHovered(false)}>
                     <div className={`${styles.cardProperties} ${styles.cardCalendarProperties} ${styles.cardHoverPropertie} ${abiertaB2? styles.openCardProperties : styles.cardProperties}`}>
                         <div className={styles.deployIconProperties}>
                             <button className={`${styles.buttonProperties} ${abiertaB2? styles.iconRotate : styles.buttonProperties}`} onClick={toggleCardB2}>
@@ -70,7 +73,8 @@ export default function Home(){
                         <InfoCard info = {"05-Nov  |  Comienzo de la jornada"} info2={"06-Nov  |  intervalo"} info3={"07-Nov  |  Cierre de la jornada"} sede={false}/>
                     </div>
                 </div>
-                <div className={`${styles.cardCompletyProperties} ${abiertaB3? styles.openCardCardCompletyProperties : styles.cardCompletyProperties}`}>
+                <div className={`${styles.cardCompletyProperties} ${abiertaB3? styles.openCardCardCompletyProperties : styles.cardCompletyProperties}`} onMouseEnter={() => setHovered(true)}
+                     onMouseLeave={() => setHovered(false)}>
                     <div className={`${styles.cardProperties} ${styles.cardHoverPropertie} ${abiertaB3? styles.openCardProperties : styles.cardProperties}`}>
                         <div className={styles.deployIconProperties}>
                             <button className={`${styles.buttonProperties} ${abiertaB3? styles.iconRotate : styles.buttonProperties}`} onClick={toggleCardB3}>
@@ -93,7 +97,7 @@ export default function Home(){
                     </div>
                 </div>
             </section>
-            <div>
+            <div className={`${styles.documentProperties} ${hovered ? styles.activa : ""}`}>
                 <CardAndSponsors />
             </div>
         </div>

@@ -12,7 +12,7 @@ export default function CardAndSponsors(){
                             <div className={styles.infoAndImageProperties}>
                                 <div className={`${styles.paragraphProperties} ${styles.infoColorProperties} ${cactus.className}`}>
                                     <div className={styles.imageAndInfoProperties}>
-                                        <div className={styles.s}>
+                                        <div className={styles.paragraphOneProperties}>
                                             <p>Nos complace darles la bienvenida a este espacio de encuentro, reflexión y aprendizaje compartido,
                                                 organizado en conjunto por el Hospital de Niños "Dr. Debilio Blanco Villegas" de Tandil, el Hospital
                                                 de Niños "Ricardo Gutiérrez" y el Sistema Integrado de Salud Pública.

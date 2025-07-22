@@ -7,20 +7,6 @@ import styles from './page.module.css';
 import GroupFilters from "@/components/FilterButton/GroupFilters/GroupFilters";
 import UserCard from "@/components/UserCard/UserCard";
 
-const cardData = [
-    { number: "0", title: "Inscriptos", borderColor: "linear-gradient(45deg, red, blue, green, yellow)" },
-    { number: "0", title: "Mujeres" },
-    { number: "0", title: "Hombres" },
-    { number: "0", title: "Estudiante" },
-    { number: "0", title: "Médico" },
-    { number: "0", title: "Enfermero" },
-    { number: "0", title: "Técnico" },
-    // { number: "0", title: "Kinesiólogos" },
-    // { number: "0", title: "Fonoaudiólogo" },
-    { number: "0", title: "Otros" },
-    // { number: "0", title: "No pertenecientes a la salud" },
-];
-
 const userCardData = [
     {
         id: 1,
@@ -30,17 +16,20 @@ const userCardData = [
         profession: "Médica",
         age: 34,
         genero: "Femenino",
-        specialty: "Pediatra"
+        specialty: "Pediatra",
+        typeCard: "user",
     },
     {
         id: 2,
         image: "/icons/autoridades.png",
         name: "Carlos",
         surname: "Mendoza",
-        profession: "Médico",
+        profession: "No",
         age: 45,
         genero: "Masculino",
-        specialty: "Cardiólogo"
+        specialty: "Cardiólogo",
+        typeCard: "manuscrito",
+        manuscrito: "Archivo.jpg"
     },
     {
         id: 3,
@@ -50,27 +39,32 @@ const userCardData = [
         profession: "Médica",
         age: 38,
         genero: "Femenino",
-        specialty: "Neuróloga"
+        specialty: "Neuróloga",
+        typeCard: "user"
     },
     {
         id: 4,
         image: "/icons/autoridades.png",
         name: "Luis",
         surname: "Rodríguez",
-        profession: "Médico",
+        profession: "No",
         age: 42,
         genero: "Masculino",
-        specialty: "Ginecólogo"
+        specialty: "Ginecólogo",
+        typeCard: "manuscrito",
+        manuscrito: "Archivo.tsx"
     },
     {
         id: 5,
         image: "/icons/autoridades.png",
         name: "Carmen",
         surname: "Silva",
-        profession: "Médica",
+        profession: "Sí",
         age: 29,
         genero: "Femenino",
-        specialty: "Dermatóloga"
+        specialty: "Dermatóloga",
+        typeCard: "manuscrito",
+        manuscrito: "Archivo.png"
     },
     {
         id: 6,
@@ -80,17 +74,20 @@ const userCardData = [
         profession: "Médico",
         age: 51,
         genero: "Masculino",
-        specialty: "Traumatólogo"
+        specialty: "Traumatólogo",
+        typeCard: "user"
     },
     {
         id: 7,
         image: "/icons/autoridades.png",
         name: "Isabel",
         surname: "Vargas",
-        profession: "Médica",
+        profession: "Sí",
         age: 39,
         genero: "Femenino",
-        specialty: "Psiquiatra"
+        specialty: "Psiquiatra",
+        typeCard: "manuscrito",
+        manuscrito: "Archivo.tsx"
     },
     {
         id: 8,
@@ -100,7 +97,9 @@ const userCardData = [
         profession: "Médico",
         age: 47,
         genero: "Masculino",
-        specialty: "Oftalmólogo"
+        specialty: "Oftalmólogo",
+        typeCard: "manuscrito",
+        manuscrito: "Archivo.jpg"
     },
     {
         id: 9,
@@ -110,7 +109,8 @@ const userCardData = [
         profession: "Médica",
         age: 36,
         genero: "Femenino",
-        specialty: "Endocrinóloga"
+        specialty: "Endocrinóloga",
+        typeCard: "user"
     },
     {
         id: 10,
@@ -120,7 +120,8 @@ const userCardData = [
         profession: "Médico",
         age: 44,
         genero: "Masculino",
-        specialty: "Urólogo"
+        specialty: "Urólogo",
+        typeCard: "user"
     }
 ];
 
@@ -138,40 +139,32 @@ export default function AdminPanel() {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const handleNext = () => {
-        setCurrentIndex((prev) => (prev + 1) % cardData.length);
-    };
-
-    const handlePrev = () => {
-        setCurrentIndex((prev) => (prev === 0 ? cardData.length - 1 : prev - 1));
-    };
-
     return (
         <main>
             <div className={styles.roundedCards}>
-                {isMobile ? (
-                    <div className={styles.sliderWrapper}>
-                        <button className={styles.arrow} onClick={handlePrev} aria-label="Anterior">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="28" width="28" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M15.41 16.59 10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
-                            </svg>
-                        </button>
+                <RoundedCard />
+                {/*{isMobile ? (*/}
+                {/*    <div className={styles.sliderWrapper}>*/}
+                {/*        <button className={styles.arrow} onClick={handlePrev} aria-label="Anterior">*/}
+                {/*            <svg xmlns="http://www.w3.org/2000/svg" height="28" width="28" viewBox="0 0 24 24" fill="currentColor">*/}
+                {/*                <path d="M15.41 16.59 10.83 12l4.58-4.59L14 6l-6 6 6 6z" />*/}
+                {/*            </svg>*/}
+                {/*        </button>*/}
 
+                {/*        <RoundedCard {...cardData[currentIndex]} />*/}
 
-                        <RoundedCard {...cardData[currentIndex]} />
+                {/*        <button className={styles.arrow} onClick={handleNext} aria-label="Siguiente">*/}
+                {/*            <svg xmlns="http://www.w3.org/2000/svg" height="28" width="28" viewBox="0 0 24 24" fill="currentColor">*/}
+                {/*                <path d="M8.12 4.12 6.71 5.54 13.17 12l-6.46 6.46 1.41 1.41L16 12z" />*/}
+                {/*            </svg>*/}
+                {/*        </button>*/}
 
-                        <button className={styles.arrow} onClick={handleNext} aria-label="Siguiente">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="28" width="28" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M8.12 4.12 6.71 5.54 13.17 12l-6.46 6.46 1.41 1.41L16 12z" />
-                            </svg>
-                        </button>
-
-                    </div>
-                ) : (
-                    cardData.map((card, index) => (
-                        <RoundedCard key={index} {...card} />
-                    ))
-                )}
+                {/*    </div>*/}
+                {/*) : (*/}
+                {/*    cardData.map((card, index) => (*/}
+                {/*        <RoundedCard key={index} {...card} />*/}
+                {/*    ))*/}
+                {/*)}*/}
             </div>
             <div className={`${styles.seeCards} ${cactus.className}`}>
                 <h1>Ver</h1>
@@ -196,6 +189,8 @@ export default function AdminPanel() {
                             age={user.age}
                             gender={user.genero}
                             specialty={user.specialty}
+                            typeCard={user.typeCard}
+                            manuscrito={user.manuscrito}
                         />
                     ))}
                 </section>
