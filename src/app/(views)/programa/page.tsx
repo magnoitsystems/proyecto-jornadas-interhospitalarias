@@ -36,8 +36,7 @@ export default function Programa(){
                             '"Pertussis: un brote silencioso (10:15 - 11:10)", ',
                             '"Cómo completar esquemas y evitar oportunidades perdidas de vacunación (11:30 - 12:15)".'
                         ]}
-                        personalizedClassName={'taller'}
-                    />
+                        personalizedClassName={'taller'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Educar para la prevención cardiovascular"}
@@ -59,8 +58,7 @@ export default function Programa(){
                             '"Obesidad y sme metabólico, "',
                             '"Prescripción de actividad física en pediatría".'
                         ]}
-                        personalizedClassName={'taller'}
-                    />
+                        personalizedClassName={'taller'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Enfermedades crónicas, adecuación y transición a clínica médica"}
@@ -79,8 +77,7 @@ export default function Programa(){
                             '“El proceso de transición a los servicios de adultos en CABA”, ',
                             '“¿Cuál es la mirada del clínico al recibir un adolescente con enfermedad crónica?".'
                         ]}
-                        personalizedClassName={'taller'}
-                    />
+                        personalizedClassName={'taller'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Novedades de calendario 2026"}
@@ -96,8 +93,7 @@ export default function Programa(){
                         topics={[
                             '-'
                         ]}
-                        personalizedClassName={'conferencia'}
-                    />
+                        personalizedClassName={'conferencia'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Acto Inaugural"}
@@ -113,8 +109,7 @@ export default function Programa(){
                         topics={[
                             '-'
                         ]}
-                        personalizedClassName={'others'}
-                    />
+                        personalizedClassName={'others'} className={""}                    />
                 </div>
             </div>
 
@@ -140,8 +135,7 @@ export default function Programa(){
                         topics={[
                             '-'
                         ]}
-                        personalizedClassName={'others'}
-                    />
+                        personalizedClassName={'others'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Seguridad del paciente y calidad"}
@@ -160,8 +154,7 @@ export default function Programa(){
                             '"La importancia de la comunicación efectiva en salud", ',
                             '"Instaurando una cultura de seguridad para brindar cuidados de calidad".'
                         ]}
-                        personalizedClassName={'taller'}
-                    />
+                        personalizedClassName={'taller'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Simulación como herramienta de formación"}
@@ -181,8 +174,7 @@ export default function Programa(){
                             '“Experiencia Tandil”, ',
                             '“Experiencia CABA”.'
                         ]}
-                        personalizedClassName={'taller'}
-                    />
+                        personalizedClassName={'taller'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Simposio de la industria VSR y Prevenar 20"}
@@ -198,8 +190,7 @@ export default function Programa(){
                         topics={[
                             '-'
                         ]}
-                        personalizedClassName={'simposio'}
-                    />
+                        personalizedClassName={'simposio'} className={""}                    />
 
                     <ActivityCard
                         eventName={"De Freud a la biología molecular. Actualidad del neurodesarrollo 130 años después."}
@@ -215,8 +206,7 @@ export default function Programa(){
                         topics={[
                             '-'
                         ]}
-                        personalizedClassName={'conferencia'}
-                    />
+                        personalizedClassName={'conferencia'} className={""}                    />
 
                     <ActivityCard
                         eventName={"La internación por salud mental en sala pediatría."}
@@ -235,8 +225,7 @@ export default function Programa(){
                             '"Cuidados clínicos en pacientes internados por patología de salud mental", ',
                             '"Seguimiento pediátrico ambulatorio de pacientes con patología".'
                         ]}
-                        personalizedClassName={'taller'}
-                    />
+                        personalizedClassName={'taller'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Presentación y diálogo con expertos"}
@@ -257,8 +246,7 @@ export default function Programa(){
                             '"Desafíos clínicos en la atención de los TCA", ',
                             '"Fluidoterapia endovenosa en situaciones especiales: CAD, cardiopatías y lesión renal aguda".'
                         ]}
-                        personalizedClassName={'dialogo'}
-                    />
+                        personalizedClassName={'dialogo'} className={""}                    />
                 </div>
             </div>
 
@@ -282,8 +270,7 @@ export default function Programa(){
                         topics={[
                             '-'
                         ]}
-                        personalizedClassName={'taller'}
-                    />
+                        personalizedClassName={'taller'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Reunión del Comité de Ética"}
@@ -300,8 +287,7 @@ export default function Programa(){
                         topics={[
                             '-'
                         ]}
-                        personalizedClassName={'reunion'}
-                    />
+                        personalizedClassName={'reunion'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Controversias en la atención del politrauma TIPO??"}
@@ -319,8 +305,7 @@ export default function Programa(){
                             '“Trauma con víctimas múltiples. Prehospital.”, ',
                             '“Registro Nacional del Trauma”.'
                         ]}
-                        personalizedClassName={'others'}
-                    />
+                        personalizedClassName={'others'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Comorbilidades en los trastornos del neurodesarrollo. Alimentación, crianza y sueño"}
@@ -337,8 +322,7 @@ export default function Programa(){
                         topics={[
                             '-'
                         ]}
-                        personalizedClassName={'others'}
-                    />
+                        personalizedClassName={'others'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Obesidad. Tratamiento obesidad con análogos GLP1."}
@@ -351,13 +335,12 @@ export default function Programa(){
                         ]}
                         coordinators={[
                             'Dra. Cintia Ojea, ',
-                            'Nancy Guerrero.'
+                            'Dra. Nancy Guerrero.'
                         ]}
                         topics={[
                             '"Estrategias en intervenciones nutricionales y hábitos."'
                         ]}
-                        personalizedClassName={'redonda'}
-                    />
+                        personalizedClassName={'redonda'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Vacuna Dengue."}
@@ -373,8 +356,7 @@ export default function Programa(){
                         topics={[
                             '-'
                         ]}
-                        personalizedClassName={'simposio'}
-                    />
+                        personalizedClassName={'simposio'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Innovación Tecnológica"}
@@ -391,8 +373,7 @@ export default function Programa(){
                         topics={[
                             '-'
                         ]}
-                        personalizedClassName={'redonda'}
-                    />
+                        personalizedClassName={'redonda'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Taller Mindfullnes"}
@@ -408,8 +389,7 @@ export default function Programa(){
                         topics={[
                             '-'
                         ]}
-                        personalizedClassName={'taller'}
-                    />
+                        personalizedClassName={'taller'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Inteligencia Artificial aplicada al campo de la salud. ¿Para qué debemos prepararnos?"}
@@ -426,8 +406,7 @@ export default function Programa(){
                         topics={[
                             '-'
                         ]}
-                        personalizedClassName={'others'}
-                    />
+                        personalizedClassName={'others'} className={""}                    />
 
                     <ActivityCard
                         eventName={'Procuración de órganos y trasplante'}
@@ -447,8 +426,7 @@ export default function Programa(){
                         topics={[
                             '-'
                         ]}
-                        personalizedClassName={'confAbierta'}
-                    />
+                        personalizedClassName={'confAbierta'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Cierre - Cocktail despedida"}
@@ -464,8 +442,7 @@ export default function Programa(){
                         topics={[
                             '-'
                         ]}
-                        personalizedClassName={'others'}
-                    />
+                        personalizedClassName={'others'} className={""}                    />
                 </div>
             </div>
         </main>

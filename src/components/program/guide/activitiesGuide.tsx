@@ -1,7 +1,7 @@
 'use client'
 
 import styles from './activitiesGuide.module.css';
-import { cactus } from '../../../app/(views)/ui/fonts';
+import { cactus } from '@/app/(views)/ui/fonts';
 
 export default function ActivitiesGuide() {
     return (
