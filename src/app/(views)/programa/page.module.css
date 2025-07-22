@@ -1,0 +1,43 @@
+.dayProgram {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 90%;
+    height: fit-content;
+
+    margin: 20px auto;
+    padding: 10px;
+    padding-inline: 0px;
+    gap: 20px;
+
+    border: 1px solid var(--secondary-color-2);
+    border-radius: 5px;
+}
+
+.events {
+    width: 100%;
+
+    gap: 20px;
+}
+
+.date {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: fit-content;
+
+    margin-bottom: 20px;
+
+    background-color: var(--secondary-color-4);
+    color: var(--secondary-color-1);
+}
+
+.date h2 {
+    margin: 0px;
+    padding: 0px;
+}
