@@ -38,6 +38,7 @@ model works {
   work_code   String?  @unique @db.VarChar(20)
   title       String?  @db.VarChar(40)
   file        String?  @db.VarChar(255)
+  prize       Boolean? @default(false)
   author      author[]
   user        user     @relation(fields: [user_id], references: [idUser], onDelete: Cascade, onUpdate: NoAction, map: "fk_works_user")
 }

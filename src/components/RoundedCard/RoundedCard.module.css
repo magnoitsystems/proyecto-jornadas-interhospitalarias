@@ -5,12 +5,19 @@
   background-color: rgba(0, 0, 0, 0.8);
   border: 4px solid var(--border-color, #ffffff);
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   position: relative;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.containerProperties{
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
 }
 
 /* Clase para bordes multicolor circulares */
@@ -26,7 +33,7 @@
   left: -4px;
   right: -4px;
   bottom: -4px;
-  background: var(--border-color);
+  background: linear-gradient(45deg, red, blue, green, yellow);
   border-radius: 50%;
   z-index: -1;
 }
@@ -69,6 +76,10 @@
   margin: 0;
 }
 
+.number, .title{
+  font-size: var(--25px);
+}
+
 .title {
   text-transform: capitalize;
 }
@@ -102,6 +113,33 @@
   .title {
     font-size: 0.9rem;
   }
+
+  .sliderWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    height: 100%;
+  }
+
+
+  .arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: color 0.3s ease;
+  }
+
+  .arrow:hover {
+    color: #7D0279;
+  }
 }
 
 @media (max-width: 480px) {
@@ -119,10 +157,10 @@
   }
   
   .number {
-    font-size: 1.5rem;
+    font-size: var(--15px);
   }
   
   .title {
-    font-size: 0.8rem;
+    font-size: var(--15px);
   }
 }
