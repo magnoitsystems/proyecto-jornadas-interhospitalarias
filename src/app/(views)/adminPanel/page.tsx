@@ -142,7 +142,29 @@ export default function AdminPanel() {
     return (
         <main>
             <div className={styles.roundedCards}>
-               <RoundedCard></RoundedCard>
+                <RoundedCard />
+                {/*{isMobile ? (*/}
+                {/*    <div className={styles.sliderWrapper}>*/}
+                {/*        <button className={styles.arrow} onClick={handlePrev} aria-label="Anterior">*/}
+                {/*            <svg xmlns="http://www.w3.org/2000/svg" height="28" width="28" viewBox="0 0 24 24" fill="currentColor">*/}
+                {/*                <path d="M15.41 16.59 10.83 12l4.58-4.59L14 6l-6 6 6 6z" />*/}
+                {/*            </svg>*/}
+                {/*        </button>*/}
+
+                {/*        <RoundedCard {...cardData[currentIndex]} />*/}
+
+                {/*        <button className={styles.arrow} onClick={handleNext} aria-label="Siguiente">*/}
+                {/*            <svg xmlns="http://www.w3.org/2000/svg" height="28" width="28" viewBox="0 0 24 24" fill="currentColor">*/}
+                {/*                <path d="M8.12 4.12 6.71 5.54 13.17 12l-6.46 6.46 1.41 1.41L16 12z" />*/}
+                {/*            </svg>*/}
+                {/*        </button>*/}
+
+                {/*    </div>*/}
+                {/*) : (*/}
+                {/*    cardData.map((card, index) => (*/}
+                {/*        <RoundedCard key={index} {...card} />*/}
+                {/*    ))*/}
+                {/*)}*/}
             </div>
             <div className={`${styles.seeCards} ${cactus.className}`}>
                 <h1>Ver</h1>
