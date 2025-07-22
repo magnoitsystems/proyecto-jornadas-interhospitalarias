@@ -78,9 +78,9 @@ export async function POST(request: NextRequest) {
             work_id: newWork.id_work,
         }));
 
-        await prisma.author.createMany({
-            data: autoresToCreate,
-        });
+        // await prisma.author.createMany({
+        //     data: autoresToCreate,
+        // });
 
         console.log("creado autores");
 

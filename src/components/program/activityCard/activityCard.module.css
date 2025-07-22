@@ -2,24 +2,19 @@
 .card {
     display: flex;
     flex-direction: row;
-
     width: 98%;
     height: fit-content;
-
-    margin: 0px auto;
     margin-bottom: var(--20px);
-
     border-radius: 10px;
     border: 1px solid rgba(149, 150, 154, 0.3);
     color: var(--secondary-color-4);
+    justify-self: center;
 }
 
 .information {
     display: flex;
     flex-direction: column;
-
     width: 96%;
-
     gap: var(--30px);
 }
 
@@ -27,9 +22,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
     width: 100%;
-
     padding-inline: var(--20px);
 }
 
@@ -40,23 +33,27 @@
 .details {
     display: flex;
     flex-direction: row;
-
     gap: var(--20px);
 }
 
 .aditionalInformation {
     display: none;
     flex-direction: column;
-
     padding-inline: var(--20px);
     gap: var(--10px);
+    /*transition: opacity 1s ease-out;*/
+}
+
+.aditionalInformation h4 span{
+    border-bottom: #060606 1px solid;
 }
 .aditionalInformation h4 {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 .visible {
     display: flex;
+    /*opacity: 1;*/
     padding-bottom: var(--30px);
 }
 
@@ -67,12 +64,9 @@
 .taller, .redonda, .simposio, .conferencia, .dialogo, .reunion, .confAbierta, .others {
     display: flex;
     flex-direction: column;
-
     width: 4%;
-
     margin-right: var(--10px);
-
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 10px 0 0 10px;
 }
 
 

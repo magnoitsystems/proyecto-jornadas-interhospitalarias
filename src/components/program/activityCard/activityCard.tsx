@@ -1,7 +1,7 @@
 'use client'
 
 import styles from './activityCard.module.css';
-import { cactus } from '../../../app/(views)/ui/fonts';
+import { cactus } from '@/app/(views)/ui/fonts';
 import { useState } from "react";
 
 type Props = {
@@ -13,6 +13,7 @@ type Props = {
     coordinators: string[],
     topics: string[],
     className: string,
+    personalizedClassName: string;
 }
 
 export default function ActivityCard({eventName, time, place, guestsName, guests, coordinators, topics, personalizedClassName}: Props) {
@@ -40,10 +41,10 @@ export default function ActivityCard({eventName, time, place, guestsName, guests
                         </h3>
                     </div>
                 </div>
-                <div className={`${styles.aditionalInformation} ${showDetails ? styles.visible : ""}`}>
-                    <h4>{guestsName}: {guests}</h4>
-                    <h4>Coordinadores: {coordinators}</h4>
-                    <h4>Temas a tratar: {topics}</h4>
+                <div className={`${styles.aditionalInformation} ${showDetails ? styles.visible : styles.invisible}`}>
+                    <h4><span>{guestsName}</span>: {guests}</h4>
+                    <h4><span>Coordinadores</span>: {coordinators}</h4>
+                    <h4><span>Temas a tratar</span>: {topics}</h4>
                 </div>
             </div>
         </main>
