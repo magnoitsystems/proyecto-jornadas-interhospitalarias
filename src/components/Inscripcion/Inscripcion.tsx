@@ -2,7 +2,7 @@
 
 import styles from './Inscripcion.module.css';
 import { cactus } from '../../app/(views)/ui/fonts';
-import useCreateUser from '@/hooks/getUsers';
+import useCreateUser from '@/hooks/useUsers';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 

@@ -6,6 +6,7 @@ import { cactus } from '@/app/(views)/ui/fonts';
 import styles from './page.module.css';
 import GroupFilters from "@/components/FilterButton/GroupFilters/GroupFilters";
 import UserCard from "@/components/UserCard/UserCard";
+import useUsers, { User } from '@/hooks/useUsers';
 
 const cardData = [
     { number: "0", title: "Inscriptos", borderColor: "linear-gradient(45deg, red, blue, green, yellow)" },
@@ -18,125 +19,8 @@ const cardData = [
     { number: "0", title: "Otros" },
 ];
 
-const userCardData = [
-    {
-        id: 1,
-        image: "/icons/autoridades.png",
-        name: "María",
-        surname: "González",
-        profession: "Médica",
-        age: 34,
-        genero: "Femenino",
-        specialty: "Pediatra",
-        typeCard: "user",
-    },
-    {
-        id: 2,
-        image: "/icons/autoridades.png",
-        name: "Carlos",
-        surname: "Mendoza",
-        profession: "No",
-        age: 45,
-        genero: "Masculino",
-        specialty: "Cardiólogo",
-        typeCard: "manuscrito",
-        manuscrito: "Archivo.jpg"
-    },
-    {
-        id: 3,
-        image: "/icons/autoridades.png",
-        name: "Ana",
-        surname: "Pérez",
-        profession: "Médica",
-        age: 38,
-        genero: "Femenino",
-        specialty: "Neuróloga",
-        typeCard: "user"
-    },
-    {
-        id: 4,
-        image: "/icons/autoridades.png",
-        name: "Luis",
-        surname: "Rodríguez",
-        profession: "No",
-        age: 42,
-        genero: "Masculino",
-        specialty: "Ginecólogo",
-        typeCard: "manuscrito",
-        manuscrito: "Archivo.tsx"
-    },
-    {
-        id: 5,
-        image: "/icons/autoridades.png",
-        name: "Carmen",
-        surname: "Silva",
-        profession: "Sí",
-        age: 29,
-        genero: "Femenino",
-        specialty: "Dermatóloga",
-        typeCard: "manuscrito",
-        manuscrito: "Archivo.png"
-    },
-    {
-        id: 6,
-        image: "/icons/autoridades.png",
-        name: "Roberto",
-        surname: "Morales",
-        profession: "Médico",
-        age: 51,
-        genero: "Masculino",
-        specialty: "Traumatólogo",
-        typeCard: "user"
-    },
-    {
-        id: 7,
-        image: "/icons/autoridades.png",
-        name: "Isabel",
-        surname: "Vargas",
-        profession: "Sí",
-        age: 39,
-        genero: "Femenino",
-        specialty: "Psiquiatra",
-        typeCard: "manuscrito",
-        manuscrito: "Archivo.tsx"
-    },
-    {
-        id: 8,
-        image: "/icons/autoridades.png",
-        name: "Fernando",
-        surname: "Castro",
-        profession: "Médico",
-        age: 47,
-        genero: "Masculino",
-        specialty: "Oftalmólogo",
-        typeCard: "manuscrito",
-        manuscrito: "Archivo.jpg"
-    },
-    {
-        id: 9,
-        image: "/icons/autoridades.png",
-        name: "Patricia",
-        surname: "Ramos",
-        profession: "Médica",
-        age: 36,
-        genero: "Femenino",
-        specialty: "Endocrinóloga",
-        typeCard: "user"
-    },
-    {
-        id: 10,
-        image: "/icons/autoridades.png",
-        name: "Miguel",
-        surname: "Torres",
-        profession: "Médico",
-        age: 44,
-        genero: "Masculino",
-        specialty: "Urólogo",
-        typeCard: "user"
-    }
-];
-
 export default function AdminPanel() {
+    const { users, getAllUsers, loading, error } = useUsers();
     const [isMobile, setIsMobile] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -148,6 +32,10 @@ export default function AdminPanel() {
         handleResize(); // set initial value
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    useEffect(() => {
+        getAllUsers();
     }, []);
 
     const handleNext = () => {
@@ -194,21 +82,24 @@ export default function AdminPanel() {
             </div>
             <section className={styles.containerContent}>
                 <aside className={styles.aside}>
-                    <GroupFilters/>
+                    <GroupFilters />
                 </aside>
                 <section className={styles.containerUserCard}>
-                    {userCardData.map((user) => (
+                    {loading && <p>Cargando usuarios...</p>}
+                    {error && <p style={{ color: 'red' }}>{error}</p>}
+                    {!loading && !error && users.length === 0 && <p>No hay usuarios para mostrar.</p>}
+
+                    {!loading && users.map((user: User) => (
                         <UserCard
                             key={user.id}
-                            image={user.image}
+                            image={user.admin ? "/icons/autoridades.png" : undefined} // icono si admin
                             name={user.name}
-                            surname={user.surname}
-                            profession={user.profession}
+                            surname={user.lastname}
+                            profession={user.job}
                             age={user.age}
-                            gender={user.genero}
-                            specialty={user.specialty}
-                            typeCard={user.typeCard}
-                            manuscrito={user.manuscrito}
+                            gender={user.gender}
+                            specialty={user.specialty || ""}
+                            typeCard="user"
                         />
                     ))}
                 </section>
