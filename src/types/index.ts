@@ -24,13 +24,14 @@ export interface Author {
 
 export interface Work {
     id: number;
-    category: WorkCategory;
-    description: string;
+    category: string | null;
+    description: string | null;
     userId: number;
-    workCode: string;
-    title: string;
+    workCode: string | null;
+    title: string | null;
     file: string | null;
-    user?: User;
+    prize: boolean | null;
+    user: User;
     authors: Author[];
 }
 
