@@ -31,7 +31,7 @@ export default function ActivityCard({eventName, time, place, guestsName, guests
                     </div>
                     <div className={styles.details}>
                         <h3>{time}</h3>
-                        <h3>{place}</h3>
+                        <h4>{place}</h4>
                         <h3
                             className={styles.plus}
                             onClick={() => setShowDetails(prev => !prev)}

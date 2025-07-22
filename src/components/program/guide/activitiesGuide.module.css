@@ -1,14 +1,22 @@
 /*guide properties*/
 .guide {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+
     width: 90%;
     height: fit-content;
-    padding: var(--20px);
-    margin: 0 auto;
-    margin-top: var(--20px);
+
+    padding: var(--5px);
+    padding-inline: 0px;
+    margin: 0px auto;
+    margin-top: var(--50px);
+    margin-bottom: var(--40px);
     gap: var(--20px);
-    border: 1px solid var(--secondary-color-2);
+
+    border: 1px solid transparent;
     border-radius: 5px;
 }
 
