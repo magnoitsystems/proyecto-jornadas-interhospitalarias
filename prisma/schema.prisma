@@ -12,8 +12,8 @@ model author {
   name        String  @db.VarChar(40)
   lastname    String  @db.VarChar(40)
   affiliation String? @db.VarChar(40)
-  id_work     Int
-  works       works   @relation(fields: [id_work], references: [id_work], onDelete: Cascade, onUpdate: NoAction, map: "fk_author_works")
+  work_id     Int
+  works       works   @relation(fields: [work_id], references: [id_work], onDelete: Cascade, onUpdate: NoAction, map: "fk_author_works")
 }
 
 model user {
@@ -21,23 +21,23 @@ model user {
   name      String   @db.VarChar(40)
   lastname  String   @db.VarChar(40)
   email     String   @unique @db.VarChar(40)
-  password  String   @db.VarChar(255)
+  password  String   @db.VarChar(40)
   job       String?  @db.VarChar(50)
   specialty String?  @db.VarChar(40)
   admin     Boolean? @default(false)
   age       Int?
-  gender    String?  @db.VarChar(40)
+  genre     String?  @db.VarChar(40)
   works     works[]
 }
 
 model works {
   id_work     Int      @id @default(autoincrement())
-  category    String?  @db.VarChar(50)
-  description String?
+  category    String?  @db.VarChar(500)
+  description String?  @db.VarChar(500)
   user_id     Int
-  work_code   String?  @unique @db.VarChar(20)
-  title       String?  @db.VarChar(40)
-  file        String?  @db.VarChar(255)
+  work_code   String?  @unique @db.VarChar(500)
+  title       String?  @db.VarChar(500)
+  file        String?  @db.VarChar(500)
   author      author[]
   user        user     @relation(fields: [user_id], references: [idUser], onDelete: Cascade, onUpdate: NoAction, map: "fk_works_user")
 }

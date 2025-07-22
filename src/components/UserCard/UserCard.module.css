@@ -18,7 +18,7 @@
 }
 
 .attribute {
-    width: fit-content;
+    width: max-content;
     text-wrap: nowrap;
     overflow: hidden;
     font-size: var(--10px);
@@ -33,6 +33,13 @@
 .containerAttribute, .containerNameAttribute {
     display: flex;
     flex-direction: row;
+    gap: 50px;
+}
+
+.containerNameAttribute button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .name {
@@ -61,7 +68,7 @@
 
 @media (min-width: 480px) {
     .attribute {
-        width: 80px;
+        width: fit-content;
         font-size: 0.75rem;
     }
 
@@ -85,7 +92,7 @@
 
     .attribute{
         font-size: var(--15px);
-        width: 110px;
+        width: fit-content;
     }
 
     .image{
@@ -102,7 +109,7 @@
 
     .attribute{
         font-size: var(--20px);
-        width: 160px;
+        width: fit-content;
     }
 
     .image{
