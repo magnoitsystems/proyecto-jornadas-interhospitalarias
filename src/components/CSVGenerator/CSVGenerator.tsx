@@ -48,7 +48,7 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
         setError(null);
 
         try {
-            const response = await fetch('/api/medical-stats', {
+            const response = await fetch('/api/estadistica', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
