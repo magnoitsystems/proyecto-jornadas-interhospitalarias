@@ -19,12 +19,12 @@ html {
   --secondary-color-5: #060606;
 
   /*font-sizes*/
-  --h1-size: 1.75rem; /* 28px */
-  --h2-size: 1.5rem;  /* 24px */
-  --h3-size: 1.25rem; /* 20px */
-  --h4-size: 1.125rem; /* 18px */
-  --h5-size: 1rem;    /* 16px */
-  --h6-size: 0.875rem; /* 14px */
+  --h1-size: 1.125rem; /* 18px */
+  --h2-size: 1rem;    /* 16px */
+  --h3-size: 0.875rem; /* 14px */
+  --h4-size: 0.75rem; /*12px*/
+  --h5-size: 0.625rem; /*10px*/
+  --h6-size: 0.5rem; /*8px*/
 
   /*margin/padding*/
   --50px: 3.125rem; /*50px*/
