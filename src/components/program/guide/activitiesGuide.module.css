@@ -1,0 +1,66 @@
+/*guide properties*/
+.guide {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+    width: 90%;
+    height: fit-content;
+
+    padding: var(--20px);
+    margin: 0px auto;
+    margin-top: var(--20px);
+    gap: var(--20px);
+
+    border: 1px solid var(--secondary-color-2);
+    border-radius: 5px;
+}
+
+.activity {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    max-width: 300px;
+    width: 100%;
+    max-height: 80px;
+    height: 100%;
+
+    padding: var(--5px);
+    padding-inline: var(--10px);
+
+    border-radius: 10px;
+    color: var(--secondary-color-1);
+}
+.activity h3 {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+/*general*/
+.others {
+    background: var(--primary-color-1);
+}
+.taller {
+    background: var(--primary-color-2);
+}
+.dialogo {
+    background: var(--primary-color-3);
+}
+.redonda {
+    background: var(--primary-color-4);
+}
+.conferencia {
+    background: var(--primary-color-5);
+}
+.simposio {
+    background: var(--primary-color-6);
+}
+.reunion {
+    background: var(--primary-color-7);
+}
+.confAbierta {
+    background: var(--secondary-color-4);
+}

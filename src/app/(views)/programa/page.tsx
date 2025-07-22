@@ -1,6 +1,7 @@
 import Title from "@/components/general/SectionTitle/SectionTitle";
 import styles from './page.module.css';
 import ActivityCard from "@/components/program/activityCard/activityCard";
+import ActivitiesGuide from "@/components/program/guide/activitiesGuide";
 
 export default function Programa(){
     return(
@@ -10,6 +11,8 @@ export default function Programa(){
                 imgSrc={'/icons/programa.png'}
                 className={'programTitle'}
             />
+
+            <ActivitiesGuide/>
 
             <div className={styles.dayProgram}>
                 <div className={styles.date}>
