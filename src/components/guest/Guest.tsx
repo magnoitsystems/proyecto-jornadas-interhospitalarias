@@ -3,6 +3,7 @@ import Image from 'next/image';
 import styles from './page.module.css';
 import { Professional } from '../../types'; // Importamos nuestro tipo
 import React from 'react';
+import { cactus } from '../../app/(views)/ui/fonts';
 
 // Un componente SVG para el ícono de "incógnito"
 const UserIcon = () => (
@@ -16,43 +17,21 @@ type ProfessionalCardProps = {
 };
 
 const ProfessionalCard: React.FC<ProfessionalCardProps> = ({ professional }) => {
-    // Desestructuramos los datos. TypeScript ya sabe el tipo de cada variable.
+
     const { nombre, apellido, imagen, profesion, especializacion, lugarEjerce, origen } = professional;
 
     return (
-        <div className={styles.card}>
-            <div className={styles.imageContainer}>
-                {imagen ? (
-                    <Image
-                        src={imagen}
-                        alt={`Foto de ${nombre} ${apellido}`}
-                        width={150}
-                        height={150}
-                        className={styles.profileImage}
-                    />
-                ) : (
-                    <div className={styles.placeholderImage}>
-                        <UserIcon />
-                    </div>
-                )}
+        <main className={styles.card}>
+            <div className={`${styles.infoContainer} ${cactus.className}`}>
+                <h1>{`${nombre} ${apellido}`}</h1>
             </div>
-
-            <div className={styles.infoContainer}>
-                <h2>{`Dr. ${nombre} ${apellido}`}</h2>
-                <p>
-                    <strong>Profesión-es/Cursos/Estudios:</strong> {profesion}
-                </p>
-                <p>
-                    <strong>Especialización-es:</strong> {especializacion}
-                </p>
-                <p>
-                    <strong>Lugar donde ejerce:</strong> {lugarEjerce}
-                </p>
-                <p>
-                    <strong>Desde dónde viene:</strong> {`${origen.ciudad}/${origen.provincia}/${origen.pais}`}
-                </p>
+            <div className={`${styles.info} ${cactus.className}`}>
+                <h5> Profesión-es/Cursos/Estudios: {profesion}</h5>
+                <h5> Especialización-es: {especializacion}</h5>
+                <h5> Lugar donde ejerce: {lugarEjerce}</h5>
+                <h5> Desde dónde viene: {`${origen.ciudad}, ${origen.provincia}, ${origen.pais}`}</h5>
             </div>
-        </div>
+        </main>
     );
 };
 

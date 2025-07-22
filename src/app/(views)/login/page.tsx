@@ -1,33 +1,15 @@
 'use client';
 
-import {useState} from "react";
-import styles from "./page.module.css"
-import { cactus } from '../../../app/(views)/ui/fonts';
+import { useActionState } from 'react';
+import styles from "./page.module.css";
+import { cactus } from '../../../app/(views)/ui/fonts'; // Asegúrate de que esta ruta es correcta
 import Field from "@/components/Forms/Field/Field";
-import Link from "next/link";
-
-interface LoginData {
-    user: string;
-    password: string;
-}
+import { authenticate } from '@/libs/actions'; // 1. Importa tu Server Action
 
 export default function Login() {
-    const [loginData, setLoginData] = useState<LoginData>({
-        user: '',
-        password: ''
-    });
 
-    const updateField = (fieldName: keyof LoginData) => (value: string) => {
-        setLoginData(prev => ({
-            ...prev,
-            [fieldName]: value
-        }));
-    };
+    const [state, formAction, isPending] = useActionState(authenticate, undefined);
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        console.log('Login data:', loginData);
-    };
 
     return (
         <main className={`${cactus.className} ${styles.main}`}>
@@ -37,14 +19,12 @@ export default function Login() {
             </section>
 
             <section>
-                <form className={styles.form} onSubmit={handleSubmit}>
+                <form className={styles.form} action={formAction}>
                     <Field
-                        label="Usuario"
-                        type="text"
-                        name="user"
-                        placeholder="Usuario"
-                        value={loginData.user}
-                        onChange={updateField('user')}
+                        label="Email"
+                        type="email"
+                        name="email"
+                        placeholder="Email"
                         required
                     />
                     <Field
@@ -52,13 +32,23 @@ export default function Login() {
                         type="password"
                         name="password"
                         placeholder="Contraseña"
-                        value={loginData.password}
-                        onChange={updateField('password')}
                         required
                     />
-                    <Link href={'/adminPanel'} className={styles.linkProperties}>
-                        <button className={`${cactus.className} ${styles.button}`} type="submit">Iniciar Sesión</button>
-                    </Link>
+
+                    <button
+                        className={`${cactus.className} ${styles.button}`}
+                        type="submit"
+                        aria-disabled={isPending}
+                    >
+                        {isPending ? 'Iniciando Sesión...' : 'Iniciar Sesión'}
+                    </button>
+
+
+                    <div className={styles.errorContainer}>
+                        {state && (
+                            <p className={styles.errorMessage}>{state}</p>
+                        )}
+                    </div>
                 </form>
             </section>
         </main>

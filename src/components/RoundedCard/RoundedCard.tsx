@@ -32,9 +32,9 @@ export default function CircularCard({
         className={`${styles.circularCard} ${isMulticolor ? styles.multicolorBorder : ''} ${className}`}
         style={cardStyle}
       >
-        <div className={styles.content}>
-          <span className={`${styles.number} ${cactus.className}`}>{number}</span>
-          <span className={`${styles.title} ${cactus.className}`}>{title}</span>
+        <div className={`${styles.content} ${cactus.className}`}>
+          <h1 className={`${styles.number} ${cactus.className}`}>{number}</h1>
+          <h4 className={`${styles.title} ${cactus.className}`}>{title}</h4>
         </div>
       </div>
     </div>

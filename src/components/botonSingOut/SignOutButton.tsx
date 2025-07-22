@@ -1,6 +1,6 @@
 // src/components/SignOutButton.tsx
 
-import { handleSignOut } from '../../lib/actions'; // 1. Importa la acción del servidor
+import { handleSignOut } from '@/libs/actions'; // 1. Importa la acción del servidor
 import styles from "./button.module.css"
 
 // Este es un componente simple que solo renderiza un formulario con un botón.

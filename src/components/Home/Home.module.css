@@ -1,7 +1,6 @@
 .sectionCardsProperties {
     display: flex;
     flex-direction: column;
-    margin-top: 5%;
     gap: 10px;
     justify-content: center;
 }
@@ -20,7 +19,7 @@
 }
 
 .infoCardProperties{
-    opacity: 0;
+    visibility: hidden;
     height: 0;
     transition: opacity 1s ease;
     width: 90%;
@@ -86,6 +85,7 @@
     visibility: visible;
     opacity: 1;
     width: 90%;
+    background-color: var(--primary-color-1);
 }
 
 .openCardProperties{
@@ -120,9 +120,7 @@
     transform: rotate(180deg);
 }
 
-/**/
-
-@media (min-width: 1050px) {
+@media (min-width: 1290px) {
     .sectionCardsProperties{
         flex-direction: row;
         margin-top: 5%;
@@ -140,6 +138,14 @@
     .cardCompletyProperties:hover .infoCardProperties{
         visibility: visible;
         opacity: 1;
+    }
+
+    .documentProperties{
+        transition: margin-top 1s ease-out;
+    }
+
+    .documentProperties.activa{
+        margin-top: 250px;
     }
 
     .cardCompletyProperties:hover .cardHoverPropertie{

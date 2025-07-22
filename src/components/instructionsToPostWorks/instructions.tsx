@@ -4,7 +4,6 @@ import {cactus} from "@/app/(views)/ui/fonts";
 
 export default function InstructionsToPostWorks() {
     return (
-
         <nav className={`${styles.instructionsBox} ${cactus.className}`}>
             <ul>
                 <li className={cactus.className}>

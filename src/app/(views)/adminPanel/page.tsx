@@ -6,6 +6,7 @@ import { cactus } from '@/app/(views)/ui/fonts';
 import styles from './page.module.css';
 import GroupFilters from "@/components/FilterButton/GroupFilters/GroupFilters";
 import UserCard from "@/components/UserCard/UserCard";
+import SignOutButton from "@/components/botonSingOut/SignOutButton"
 
 const cardData = [
     { number: "0", title: "Inscriptos", borderColor: "linear-gradient(45deg, red, blue, green, yellow)" },
@@ -15,10 +16,7 @@ const cardData = [
     { number: "0", title: "Médico" },
     { number: "0", title: "Enfermero" },
     { number: "0", title: "Técnico" },
-    // { number: "0", title: "Kinesiólogos" },
-    // { number: "0", title: "Fonoaudiólogo" },
     { number: "0", title: "Otros" },
-    // { number: "0", title: "No pertenecientes a la salud" },
 ];
 
 const userCardData = [
@@ -27,80 +25,115 @@ const userCardData = [
         image: "/icons/autoridades.png",
         name: "María",
         surname: "González",
-        profession: "Pediatra",
-        age: 34
+        profession: "Médica",
+        age: 34,
+        genero: "Femenino",
+        specialty: "Pediatra",
+        typeCard: "user",
     },
     {
         id: 2,
         image: "/icons/autoridades.png",
         name: "Carlos",
         surname: "Mendoza",
-        profession: "Cardiólogo",
-        age: 45
+        profession: "No",
+        age: 45,
+        genero: "Masculino",
+        specialty: "Cardiólogo",
+        typeCard: "manuscrito",
+        manuscrito: "Archivo.jpg"
     },
     {
         id: 3,
         image: "/icons/autoridades.png",
         name: "Ana",
         surname: "Pérez",
-        profession: "Neuróloga",
-        age: 38
+        profession: "Médica",
+        age: 38,
+        genero: "Femenino",
+        specialty: "Neuróloga",
+        typeCard: "user"
     },
     {
         id: 4,
         image: "/icons/autoridades.png",
         name: "Luis",
         surname: "Rodríguez",
-        profession: "Ginecólogo",
-        age: 42
+        profession: "No",
+        age: 42,
+        genero: "Masculino",
+        specialty: "Ginecólogo",
+        typeCard: "manuscrito",
+        manuscrito: "Archivo.tsx"
     },
     {
         id: 5,
         image: "/icons/autoridades.png",
         name: "Carmen",
         surname: "Silva",
-        profession: "Dermatóloga",
-        age: 29
+        profession: "Sí",
+        age: 29,
+        genero: "Femenino",
+        specialty: "Dermatóloga",
+        typeCard: "manuscrito",
+        manuscrito: "Archivo.png"
     },
     {
         id: 6,
         image: "/icons/autoridades.png",
         name: "Roberto",
         surname: "Morales",
-        profession: "Traumatólogo",
-        age: 51
+        profession: "Médico",
+        age: 51,
+        genero: "Masculino",
+        specialty: "Traumatólogo",
+        typeCard: "user"
     },
     {
         id: 7,
         image: "/icons/autoridades.png",
         name: "Isabel",
         surname: "Vargas",
-        profession: "Psiquiatra",
-        age: 39
+        profession: "Sí",
+        age: 39,
+        genero: "Femenino",
+        specialty: "Psiquiatra",
+        typeCard: "manuscrito",
+        manuscrito: "Archivo.tsx"
     },
     {
         id: 8,
         image: "/icons/autoridades.png",
         name: "Fernando",
         surname: "Castro",
-        profession: "Oftalmólogo",
-        age: 47
+        profession: "Médico",
+        age: 47,
+        genero: "Masculino",
+        specialty: "Oftalmólogo",
+        typeCard: "manuscrito",
+        manuscrito: "Archivo.jpg"
     },
     {
         id: 9,
         image: "/icons/autoridades.png",
         name: "Patricia",
         surname: "Ramos",
-        profession: "Endocrinóloga",
-        age: 36
+        profession: "Médica",
+        age: 36,
+        genero: "Femenino",
+        specialty: "Endocrinóloga",
+        typeCard: "user"
     },
     {
         id: 10,
         image: "/icons/autoridades.png",
         name: "Miguel",
         surname: "Torres",
-        profession: "Urólogo",
-        age: 44
+        profession: "Médico",
+        age: 44,
+        genero: "Masculino",
+        specialty: "Urólogo",
+        typeCard: "user"
     }
 ];
 
@@ -128,7 +161,9 @@ export default function AdminPanel() {
 
     return (
         <main>
+
             <div className={styles.roundedCards}>
+                <SignOutButton/>
                 {isMobile ? (
                     <div className={styles.sliderWrapper}>
                         <button className={styles.arrow} onClick={handlePrev} aria-label="Anterior">
@@ -136,7 +171,6 @@ export default function AdminPanel() {
                                 <path d="M15.41 16.59 10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
                             </svg>
                         </button>
-
 
                         <RoundedCard {...cardData[currentIndex]} />
 
@@ -153,9 +187,14 @@ export default function AdminPanel() {
                     ))
                 )}
             </div>
-            <h1 className= {`${styles.titleProperties} ${cactus.className}`}>
-                Registros de inscripción
-            </h1>
+            <div className={`${styles.seeCards} ${cactus.className}`}>
+                <h1>Ver</h1>
+                <select name="cards" id="cards">
+                    <option value="registro">Registro de inscriptos</option>
+                    <option value="sin">Manuscritos SIN opción a premio</option>
+                    <option value="con">Manuscritos CON opción a premio</option>
+                </select>
+            </div>
             <section className={styles.containerContent}>
                 <aside className={styles.aside}>
                     <GroupFilters/>
@@ -169,6 +208,10 @@ export default function AdminPanel() {
                             surname={user.surname}
                             profession={user.profession}
                             age={user.age}
+                            gender={user.genero}
+                            specialty={user.specialty}
+                            typeCard={user.typeCard}
+                            manuscrito={user.manuscrito}
                         />
                     ))}
                 </section>

@@ -4,7 +4,7 @@ import {useState} from "react";
 import styles from "./groupFilters.module.css"
 import FilterButton from "@/components/FilterButton/FilterButton/FilterButton";
 import useResponsive from "@/components/FilterButton/GroupFilters/useResponsive";
-import { cactus } from '../../../app/(views)/ui/fonts';
+import { cactus } from '@/app/(views)/ui/fonts';
 
 interface FilterState {
     [key: string]: boolean;
@@ -37,10 +37,13 @@ export default function GroupFilters() {
             {/* Contenido que se muestra/oculta */}
             { ((isMobile && isActive) || !isMobile)  && (
                 <div className={styles.buttonsContainer}>
-                    <FilterButton label={"Field"} initialState={false}/>
-                    <FilterButton label={"Field"} initialState={false}/>
-                    <FilterButton label={"Field"} initialState={false}/>
-                    <FilterButton label={"Field"} initialState={false}/>
+                    <FilterButton label={"Mujeres"} initialState={true}/>
+                    <FilterButton label={"Varones"} initialState={true}/>
+                    <FilterButton label={"Estudiantes"} initialState={true}/>
+                    <FilterButton label={"Médicos"} initialState={true}/>
+                    <FilterButton label={"Enfermeros"} initialState={true}/>
+                    <FilterButton label={"Técnicos"} initialState={true}/>
+                    <FilterButton label={"Otros"} initialState={true}/>
                 </div>
             )}
         </div>

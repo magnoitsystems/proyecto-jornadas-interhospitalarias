@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import styles from './Form.module.css';
 import { cactus } from '@/app/(views)/ui/fonts';
+import useUploadWork from '@/hooks/worksAdmin';
 
 interface Autor {
     id: number;
@@ -13,14 +14,13 @@ interface Autor {
 const categorias = ["Investigación cualitativa o cuantitativa", "Presentación de casos", "Relato de experiencias"];
 
 const FormPost: React.FC = () => {
-    // --- ESTADO PARA LA OPCIÓN A PREMIO ---
     const [opcionAPremio, setOpcionAPremio] = useState<boolean>(false);
-
-    // Estados para autores
     const [cantidadAutoresInput, setCantidadAutoresInput] = useState<string>('');
     const [autores, setAutores] = useState<Autor[]>([]);
     const [error, setError] = useState<string>('');
+    const [workFile, setWorkFile] = useState<File | null>(null);
 
+    const { uploadWork, loading, error: uploadError, success } = useUploadWork();
 
     const handleGenerarFormularios = () => {
         const cantidad = parseInt(cantidadAutoresInput, 10);
@@ -48,19 +48,48 @@ const FormPost: React.FC = () => {
         setAutores(prev => prev.filter(autor => autor.id !== id));
     };
 
-    // --- FUNCIÓN PARA EL BOTÓN DE PREMIO ---
     const handleTogglePremio = () => {
-        setOpcionAPremio(prev => !prev); // Invierte el estado actual
+        setOpcionAPremio(prev => !prev);
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        const title = (document.getElementById('titulo') as HTMLInputElement)?.value;
+        const category = (document.getElementById('categoriaSelect') as HTMLSelectElement)?.value;
+        const description = (document.getElementById('resumen') as HTMLTextAreaElement)?.value;
+        const work_code = 123; // código simulado por ahora
+        const userId = 1; // id simulado por ahora
+
+        if (!title || !category || !description || !workFile) {
+            alert('Por favor, completa todos los campos y sube un archivo.');
+            return;
+        }
+
+        await uploadWork({
+            title,
+            category,
+            description,
+            userId,
+            file: workFile,
+        });
+
+        if (success) {
+            alert('Trabajo subido exitosamente.');
+        } else if (uploadError) {
+            alert(`Error: ${uploadError}`);
+        }
     };
 
     return (
         <main className={`${styles.container} ${cactus.className}`}>
-            <form className={styles.formContainer} onSubmit={(e) => e.preventDefault()}>
+            <form className={styles.formContainer} onSubmit={handleSubmit}>
 
                 <div className={styles.formGroup}>
                     <label htmlFor="titulo">Título (máximo 100 caracteres)</label>
                     <input type="text" id="titulo" maxLength={100} placeholder="Escribe el título de tu trabajo" />
                 </div>
+
                 <div className={styles.formGroup}>
                     <label htmlFor="categoriaSelect">Categoría del trabajo</label>
                     <select name="categorias" id="categoriaSelect">
@@ -70,7 +99,6 @@ const FormPost: React.FC = () => {
                     </select>
                 </div>
 
-                {/* --- SECCIÓN DINÁMICA DE AUTORES --- */}
                 <div className={styles.formGroup}>
                     <label htmlFor="cantidadAutores">Cantidad de autores (hasta 8)</label>
                     <div className={styles.inputWithButton}>
@@ -88,10 +116,10 @@ const FormPost: React.FC = () => {
                     </div>
                     {error && <p className={styles.errorText}>{error}</p>}
                 </div>
+
                 <div className={styles.autoresList}>
                     {autores.map((autor, index) => (
                         <div key={autor.id} className={styles.autorCard}>
-                            {/* ...contenido de la tarjeta de autor... */}
                             <div className={styles.cardHeader}>
                                 <h3>Datos del autor Nro. {index + 1}</h3>
                                 <button type="button" onClick={() => handleRemoverAutor(autor.id)} className={styles.removeButton}>×</button>
@@ -112,14 +140,20 @@ const FormPost: React.FC = () => {
                     <label htmlFor="resumen">Resumen (máximo 5000 caracteres)</label>
                     <textarea id="resumen" maxLength={5000} rows={10} placeholder="Escribe un resumen de tu trabajo..."></textarea>
                 </div>
+
                 <div className={styles.formGroup}>
                     <label htmlFor="archivo">Subí tu archivo PDF</label>
-                    <input type="file" id="archivo" name="archivo" accept="application/pdf" className={styles.fileInput} />
+                    <input
+                        type="file"
+                        id="archivo"
+                        name="archivo"
+                        accept="application/pdf"
+                        className={styles.fileInput}
+                        onChange={(e) => setWorkFile(e.target.files?.[0] || null)}
+                    />
                 </div>
 
-
                 <div className={styles.formGroup}>
-                    {/* El estilo del botón cambia según el estado 'opcionAPremio' */}
                     <button
                         type="button"
                         onClick={handleTogglePremio}
@@ -128,7 +162,6 @@ const FormPost: React.FC = () => {
                         Opción a premio (clickear en caso de requerir)
                     </button>
 
-                    {/* El input solo se muestra si 'opcionAPremio' es true */}
                     {opcionAPremio && (
                         <div className={styles.premioFileInputContainer}>
                             <label htmlFor="archivoPremio">Subí el PDF para el premio</label>
@@ -142,7 +175,9 @@ const FormPost: React.FC = () => {
                     )}
                 </div>
 
-                <button type="submit" className={styles.submitButton}>Enviar Formulario</button>
+                <button type="submit" disabled={loading} className={styles.submitButton}>
+                    {loading ? 'Subiendo...' : 'Enviar Formulario'}
+                </button>
             </form>
         </main>
     );

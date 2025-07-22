@@ -8,6 +8,8 @@
     gap: 40px;
     margin-bottom: 10px;
     margin-top: 50px;
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 
 .sponsorsProperties, .imageProperties{
@@ -29,6 +31,11 @@
     font-size: 20px;
 }
 
+.imageAndInfoProperties{
+    display: flex;
+    flex-direction: row;
+}
+
 .presentationCardProperties:hover{
     background-color: var(--secondary-color-4);
 }
@@ -40,7 +47,8 @@
 .infoProperties h1, .presentationCardProperties h1{
     font-size: var(--h1-size);
     font-family: "Cactus Classical Serif";
-    border-bottom: #060606 1px solid;
+    border-bottom: var(--secondary-color-5) 1px solid;
+    text-align: center;
 }
 
 .presentationCardProperties{
@@ -53,21 +61,12 @@
 .infoPresentationProperties{
     display: flex;
     flex-direction: column;
-    gap: 20px;
 }
 
 .totalInfoProperties{
     display: flex;
     flex-direction: column;
     height: 380px;
-}
-
-.visible{
-    visibility: visible;
-}
-
-.visibleParagraph{
-    visibility: hidden;
 }
 
 .presentationCardProperties, .sponsorsProperties{
@@ -82,15 +81,19 @@
 }
 
 .infoAndImageProperties p{
-    width: 607px;
+    width: 80%;
 }
 
 .imagePresentationProperties{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    padding-top: 30px;
+    position: relative;
+}
+
+.paragraphOneProperties{
+    display: flex;
     align-items: center;
-    margin-left: 50px;
 }
 
 .paragraphProperties {
@@ -105,16 +108,11 @@
     width: 95%;
 }
 
-@media (max-width: 768px) {
-    /* DOCUMENTO DE BIENVENDIA */
+@media (max-width: 1050px) {
     .cardAndSponsorsProperties{
         flex-direction: column;
         align-items: center;
         width: 100%;
-    }
-
-    .imagePresentationProperties{
-        margin-left: 40px;
     }
 
     .totalInfoProperties{
@@ -134,29 +132,17 @@
         font-size: var(--15px);
     }
 
-    .paragraphTwoProperties{
-        width: 400px;
-    }
-
-    .infoAndImageProperties p{
-        width: 155px;
-    }
-
-    .infoAndImageProperties{
-        height: 312px;
-    }
-
     .presentationCardProperties h1{
-        font-size: var(--h3-size);
+        font-size: var(--h2-size);
         font-family: "Cactus Classical Serif";
     }
 
     .visible{
-        visibility: hidden;
+        visibility: visible;
     }
 
     .visibleParagraph{
-        visibility: visible;
+        visibility: hidden;
     }
 
     .sponsorsProperties h1{
