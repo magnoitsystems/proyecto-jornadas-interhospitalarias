@@ -15,17 +15,13 @@
     gap: 30px;
 
     background-color: #ffffff;
-    border: 1px solid #e0e0e0;
+    border: 2px solid var(--primary-color-2);
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.40);
     color: #333;
     transition:
             border-color 0.6s ease,
             box-shadow 0.3s ease;
-}
-.card:hover {
-    border-color: var(--primary-color-2);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.40);
 }
 
 .infoContainer {
