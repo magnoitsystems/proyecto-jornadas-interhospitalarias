@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
 
         await prisma.author.createMany({
             data: autoresParsed.map((a: any) => ({
-                name: a.name,
+                name: a.nombre,
                 affiliation: a.afiliacion,
                 work_id: normalWork.id_work,
             })),
