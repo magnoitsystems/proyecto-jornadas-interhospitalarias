@@ -1,7 +1,7 @@
 import { Work } from "@/types/index";
 
 export interface User {
-    id: number;
+    id_user: number;
     name: string;
     lastname: string;
     email: string;

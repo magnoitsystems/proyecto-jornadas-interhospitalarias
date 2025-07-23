@@ -108,13 +108,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     color: white;
     transition: color 0.3s ease;
   }
 
   .arrow:hover {
-    color: #7D0279; 
+    color: #7D0279;
   }
 }
 
