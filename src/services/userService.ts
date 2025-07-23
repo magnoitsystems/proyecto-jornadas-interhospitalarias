@@ -1,6 +1,6 @@
 import { CreateUserData } from '@/types/user';
 import { ValidationResult } from '@/types/validation';
-import { UserValidationService } from '@/libs/validations/userValidations';
+import { UserValidationService } from '@/utils/userValidations';
 import bcrypt from 'bcryptjs';
 
 export class UserService {
