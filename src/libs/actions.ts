@@ -3,9 +3,8 @@
 'use server';
 
 import { signIn, signOut } from "@/auth";
-import { AuthError } from "next-auth"; // Asegúrate de que esta importación funcione ahora
+import { AuthError } from "next-auth";
 
-// Ya no necesitamos Zod ni el tipo State aquí, porque el backend se encarga de todo.
 
 export async function authenticate(
     prevState: string | undefined,
