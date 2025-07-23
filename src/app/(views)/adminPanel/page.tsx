@@ -5,6 +5,7 @@ import { cactus } from '@/app/(views)/ui/fonts';
 import styles from './page.module.css';
 import GroupFilters from "@/components/FilterButton/GroupFilters/GroupFilters";
 import UserCard from "@/components/UserCard/UserCard";
+import SignOutButton from "@/components/botonSingOut/SignOutButton"
 
 const userCardData = [
     {
@@ -138,6 +139,7 @@ export default function AdminPanel() {
                     <option value="con">Manuscritos CON opción a premio</option>
                 </select>
             </div>
+            <SignOutButton/>
             <section className={styles.containerContent}>
                 <aside className={styles.aside}>
                     <GroupFilters/>

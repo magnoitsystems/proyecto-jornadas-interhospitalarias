@@ -1,4 +1,3 @@
-// app/types/index.
 import { User } from "./user"
 
 export enum WorkCategory {
@@ -24,13 +23,14 @@ export interface Author {
 
 export interface Work {
     id: number;
-    category: WorkCategory;
-    description: string;
+    category: string | null;
+    description: string | null;
     userId: number;
-    workCode: string;
-    title: string;
+    workCode: string | null;
+    title: string | null;
     file: string | null;
-    user?: User;
+    prize: boolean | null;
+    user: User;
     authors: Author[];
 }
 
@@ -57,3 +57,19 @@ export type Professional = {
     lugarEjerce: string;
     origen: Origen; // Usamos el tipo que definimos arriba
 };
+
+interface AuthorityGroup {
+    position: string;
+    names: string[];
+}
+
+interface AuthorityCardData {
+    title: string;
+    groups: AuthorityGroup[];
+}
+
+interface AuthoritiesCardProps {
+    cardData: AuthorityCardData;
+    variant?: 'default' | 'long';
+    className?: string;
+}
