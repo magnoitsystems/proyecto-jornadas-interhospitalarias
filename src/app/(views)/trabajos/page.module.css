@@ -6,9 +6,11 @@
 }
 
 .container {
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    grid-template-columns: 2fr 1fr;
+
     margin-top: 50px;
 
     width: 90%;
@@ -34,3 +36,9 @@
     margin-top: 5px;
 }
 
+@media (min-width: 750px) {
+    .container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
