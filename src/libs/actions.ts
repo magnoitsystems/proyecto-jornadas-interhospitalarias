@@ -4,6 +4,7 @@
 
 import { signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth"; // Asegúrate de que esta importación funcione ahora
+import { redirect } from "next/navigation";
 
 // Ya no necesitamos Zod ni el tipo State aquí, porque el backend se encarga de todo.
 
@@ -34,5 +35,13 @@ export async function authenticate(
 }
 
 export async function handleSignOut() {
-    await signOut({ redirectTo: '/login' });
+  try {
+    await signOut({ 
+      redirect: false  // No redirigir automáticamente
+    });
+    redirect('/login'); // Redirigir manualmente
+  } catch (error) {
+    console.error('Error al cerrar sesión:', error);
+    throw error;
+  }
 }

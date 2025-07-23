@@ -9,7 +9,6 @@ interface UploadData {
   title: string;
   category: string;
   description: string;
-  userId: number;
   file: File;
   autores: AutorInput[];
   premio: boolean;
@@ -17,11 +16,12 @@ interface UploadData {
 }
 
 const useUploadWork = () => {
+  console.log("hola useupload");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
 
-  const uploadWork = async ({ title, category, description, userId, file, autores, premio, premioFile }: UploadData) => {
+  const uploadWork = async ({ title, category, description, file, autores, premio, premioFile }: UploadData) => {
     setLoading(true);
     setError(null);
     setSuccess(false);
@@ -31,13 +31,13 @@ const useUploadWork = () => {
       formData.append('title', title);
       formData.append('category', category);
       formData.append('description', description);
-      formData.append('userId', userId.toString());
       formData.append('file', file);
       formData.append('autores', JSON.stringify(autores));
       formData.append('premio', premio.toString());
       if (premioFile) {
         formData.append('premioFile', premioFile);
       }
+      console.log("obtuvimos todos los campos");
 
       const res = await fetch('/api/trabajo', {
         method: 'POST',
@@ -45,10 +45,12 @@ const useUploadWork = () => {
       });
 
       if (!res.ok) {
+        console.log("se rompió en el post");
         let errorMessage = 'Error desconocido';
         try {
           const errorData = await res.json();
           errorMessage = errorData.message || errorMessage;
+          console.log(errorMessage);
         } catch {}
         throw new Error(errorMessage);
       }
