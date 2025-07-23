@@ -20,6 +20,7 @@ export async function POST(request: NextRequest) {
         }
         
         const userId = session.user.id;
+        console.log(userId);
         const formData = await request.formData();
 
         const title = formData.get('title') as string;

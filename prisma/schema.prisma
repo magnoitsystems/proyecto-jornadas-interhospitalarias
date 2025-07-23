@@ -20,7 +20,7 @@ model user {
   name      String   @db.VarChar(40)
   lastname  String   @db.VarChar(40)
   email     String   @unique @db.VarChar(40)
-  password  String   @db.VarChar(40)
+  password  String   @db.VarChar(80)
   job       String?  @db.VarChar(50)
   specialty String?  @db.VarChar(40)
   admin     Boolean? @default(false)
