@@ -4,7 +4,6 @@ import { GetStatistic } from "@/services/statisticService";
 import { generateMockUsers } from '@/utils/mockData';
 import { MedicalStatsProcessor } from '@/utils/MedicalStatsProcessor';
 import { CSVGenerator } from '@/utils/csvGenerator';
-import { CSVConfigBuilder } from '@/utils/CSVConfigBuilder';
 
 const statisticService = new GetStatistic();
 
@@ -32,14 +31,7 @@ export async function GET(){
 export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
-        const {
-            includeGender,
-            includeSpecialty = false,
-            includeProfession = false,
-            healthOnly = false,
-            format = 'readable',
-            userCount = 150,
-        } = body;
+        const { userCount } = body;
 
         if (userCount < 1 || userCount > 1000) {
             return NextResponse.json({
@@ -47,28 +39,19 @@ export async function POST(request: NextRequest) {
             }, { status: 400 });
         }
 
-        // Crear configuración usando el Builder
-        const config = new CSVConfigBuilder()
-            .includeGender(includeGender)
-            .includeSpecialty(includeSpecialty)
-            .includeProfesion(includeProfession)
-            .includeHealthOnly(healthOnly)
-            .setFormat(format)
-            .build();
-
         // Procesar datos con la nueva configuración
         const mockUsers = generateMockUsers(userCount);
         const processor = new MedicalStatsProcessor(mockUsers);
-        const processedData = processor.getStatsWithConfig(config);
+        const processedData = processor.getStatsWithConfig(body);
 
         // Generar CSV con configuración
-        const csvContent = CSVGenerator.generateWithConfig(processedData, config);
+        const csvContent = CSVGenerator.generateWithConfig(processedData, body);
 
         const BOM = '\uFEFF';
         const finalContent = BOM + csvContent;
 
         const timestamp = new Date().toISOString().split('T')[0];
-        const filename = `estadisticas-medicas-${format}-${timestamp}.csv`;
+        const filename = `estadisticas-medicas-${body.format}-${timestamp}.csv`;
 
         return new NextResponse(finalContent, {
             status: 200,
