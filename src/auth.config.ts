@@ -10,7 +10,6 @@ export const authConfig = {
             const isLoggedIn = !!auth?.user;
             const userIsAdmin = auth?.user?.admin === true;
 
-            // ... tu lógica de redirección se queda igual
             const isOnAdminPanel = nextUrl.pathname.startsWith('/adminPanel');
             const isOnTrabajos = nextUrl.pathname.startsWith('/trabajos');
             const isOnLoginPage = nextUrl.pathname.startsWith('/login');
