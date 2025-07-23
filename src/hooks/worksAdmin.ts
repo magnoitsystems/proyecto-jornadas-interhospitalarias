@@ -12,23 +12,21 @@ interface UploadData {
   userId: number;
   file: File;
   autores: AutorInput[];
+  premio: boolean;
+  premioFile: File | null;
 }
-
 
 const useUploadWork = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
 
-       console.log("hola hook");
-
-  const uploadWork = async ({ title, category, description, userId, file, autores }: UploadData) => {
+  const uploadWork = async ({ title, category, description, userId, file, autores, premio, premioFile }: UploadData) => {
     setLoading(true);
     setError(null);
     setSuccess(false);
 
     try {
-      console.log("en el try del hook");
       const formData = new FormData();
       formData.append('title', title);
       formData.append('category', category);
@@ -36,31 +34,31 @@ const useUploadWork = () => {
       formData.append('userId', userId.toString());
       formData.append('file', file);
       formData.append('autores', JSON.stringify(autores));
+      formData.append('premio', premio.toString());
+      if (premioFile) {
+        formData.append('premioFile', premioFile);
+      }
 
-
-      console.log("antes de la llamad a api/trabajo");
       const res = await fetch('/api/trabajo', {
         method: 'POST',
         body: formData,
       });
 
-     if (!res.ok) {
-      console.log("salió mal la llamada, no res");
-  let errorMessage = 'Error desconocido';
-  try {
-    const errorData = await res.json();
-    errorMessage = errorData.message || errorMessage;
-  } catch {
-  }
-  throw new Error(errorMessage);
-}
+      if (!res.ok) {
+        let errorMessage = 'Error desconocido';
+        try {
+          const errorData = await res.json();
+          errorMessage = errorData.message || errorMessage;
+        } catch {}
+        throw new Error(errorMessage);
+      }
 
       const result = await res.json();
       setSuccess(true);
-      return result; // Retornar el resultado para poder usarlo
+      return result;
     } catch (err: any) {
       setError(err.message);
-      throw err; // Re-lanzar el error para manejarlo en el componente
+      throw err;
     } finally {
       setLoading(false);
     }
