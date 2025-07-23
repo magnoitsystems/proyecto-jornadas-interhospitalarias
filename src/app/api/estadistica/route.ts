@@ -4,6 +4,7 @@ import { GetStatistic } from "@/services/statisticService";
 import { generateMockUsers } from '@/utils/mockData';
 import { MedicalStatsProcessor } from '@/utils/MedicalStatsProcessor';
 import { CSVGenerator } from '@/utils/csvGenerator';
+import {CSVConfig} from "@/types/csv";
 
 const statisticService = new GetStatistic();
 
@@ -32,6 +33,13 @@ export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
         const { userCount } = body;
+        const config: CSVConfig = {
+            includeGender: body.includeGender ?? false,
+            includeSpecialty: body.includeSpecialty ?? false,
+            includeProfession: body.includeProfession ?? false,
+            healthOnly: body.healthOnly ?? false,
+            format: body.format ?? 'readable'
+        };
 
         if (userCount < 1 || userCount > 1000) {
             return NextResponse.json({
@@ -42,10 +50,10 @@ export async function POST(request: NextRequest) {
         // Procesar datos con la nueva configuración
         const mockUsers = generateMockUsers(userCount);
         const processor = new MedicalStatsProcessor(mockUsers);
-        const processedData = processor.getStatsWithConfig(body);
+        const processedData = processor.getStatsWithConfig(config); // Filtra usuarios
 
         // Generar CSV con configuración
-        const csvContent = CSVGenerator.generateWithConfig(processedData, body);
+        const csvContent = CSVGenerator.generateWithConfig(processedData, config); // Genera csv
 
         const BOM = '\uFEFF';
         const finalContent = BOM + csvContent;
