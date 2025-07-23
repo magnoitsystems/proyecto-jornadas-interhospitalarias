@@ -1,49 +1,140 @@
-/* CSVGenerator.module.css */
-
+/* =============================================================================
+   CONTENEDOR PRINCIPAL
+   ============================================================================= */
 .container {
     background: var(--secondary-color-1);
-    border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    border-radius: var(--15px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: var(--30px);
-    max-width: 42rem;
+    max-width: 48rem;
     margin: 0 auto;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,
+    var(--primary-color-4) 0%,
+    var(--primary-color-3) 50%,
+    var(--primary-color-6) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .container:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
 }
 
+.container:hover::before {
+    opacity: 1;
+}
+
+/* =============================================================================
+   TÍTULO PRINCIPAL
+   ============================================================================= */
 .title {
     font-size: var(--h1-size);
     font-weight: 700;
     margin-bottom: var(--30px);
     color: var(--secondary-color-4);
     text-align: center;
+    position: relative;
+    line-height: 1.2;
 }
 
+.title::after {
+    content: '';
+    position: absolute;
+    bottom: calc(-1 * var(--10px));
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color-4), var(--primary-color-3));
+    border-radius: 2px;
+}
+
+/* =============================================================================
+   ALERTAS Y MENSAJES
+   ============================================================================= */
 .errorAlert {
     margin-bottom: var(--25px);
-    padding: var(--15px);
+    padding: var(--20px);
     background: rgba(239, 25, 35, 0.05);
+    border: 1px solid rgba(239, 25, 35, 0.15);
     border-left: 4px solid var(--primary-color-1);
-    border-radius: 5px;
+    border-radius: var(--10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.errorAlert::before {
+    content: '⚠';
+    position: absolute;
+    top: var(--20px);
+    right: var(--20px);
+    color: var(--primary-color-1);
+    font-size: var(--h3-size);
+    opacity: 0.3;
 }
 
 .errorTitle {
     font-weight: 600;
     color: var(--primary-color-1);
-    margin-bottom: var(--5px);
-    font-size: var(--h5-size);
+    margin-bottom: var(--10px);
+    font-size: var(--h4-size);
+    display: flex;
+    align-items: center;
+    gap: var(--10px);
 }
 
 .errorMessage {
-    font-size: var(--h6-size);
+    font-size: var(--h5-size);
     color: var(--primary-color-1);
     margin: 0;
+    line-height: 1.5;
 }
 
+.successAlert {
+    margin-top: var(--25px);
+    padding: var(--20px);
+    background: rgba(1, 155, 57, 0.05);
+    border: 1px solid rgba(1, 155, 57, 0.15);
+    border-left: 4px solid var(--primary-color-6);
+    border-radius: var(--10px);
+    position: relative;
+}
+
+.successAlert::before {
+    content: '✓';
+    position: absolute;
+    top: var(--20px);
+    right: var(--20px);
+    color: var(--primary-color-6);
+    font-size: var(--h3-size);
+    opacity: 0.3;
+}
+
+.successMessage {
+    margin: 0;
+    font-weight: 500;
+    color: var(--primary-color-6);
+    font-size: var(--h5-size);
+    line-height: 1.5;
+}
+
+/* =============================================================================
+   ESTRUCTURA DEL FORMULARIO
+   ============================================================================= */
 .formContent {
     display: flex;
     flex-direction: column;
@@ -53,44 +144,88 @@
 .section {
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+
+.section:not(:last-child) {
+    margin-bottom: var(--10px);
 }
 
 .sectionLabel {
     display: block;
-    font-size: var(--h6-size);
-    font-weight: 600;
+    font-size: var(--h4-size);
+    font-weight: 650;
     color: var(--secondary-color-4);
-    margin-bottom: var(--15px);
+    margin-bottom: var(--20px);
+    position: relative;
+    padding-left: var(--15px);
 }
 
+.sectionLabel::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: var(--20px);
+    background: linear-gradient(135deg, var(--primary-color-4), var(--primary-color-3));
+    border-radius: 2px;
+}
+
+/* =============================================================================
+   RADIO BUTTONS (FORMATO)
+   ============================================================================= */
 .radioGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--15px);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--20px);
 }
 
 .radioOption {
     position: relative;
     display: flex;
     cursor: pointer;
-    border-radius: 10px;
-    border: 1px solid var(--secondary-color-2);
-    padding: var(--20px);
-    transition: all 0.2s ease;
-    background: var(--secondary-color-1);
+    border-radius: var(--15px);
+    border: 2px solid rgba(0, 0, 0, 0.06);
+    padding: var(--25px);
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg,
+    var(--secondary-color-1) 0%,
+    rgba(248, 250, 252, 0.8) 100%);
+    overflow: hidden;
+}
+
+.radioOption::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg,
+    rgba(68, 147, 198, 0.03) 0%,
+    rgba(20, 74, 162, 0.02) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .radioOption:hover {
-    background: rgba(239, 25, 35, 0.02);
-    border-color: var(--primary-color-1);
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color-3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(68, 147, 198, 0.15);
+}
+
+.radioOption:hover::before {
+    opacity: 1;
 }
 
 .radioOptionSelected {
-    border-color: var(--primary-color-1);
-    background: rgba(239, 25, 35, 0.05);
-    box-shadow: 0 0 0 2px rgba(239, 25, 35, 0.1);
+    border-color: var(--primary-color-3);
+    background: linear-gradient(135deg,
+    rgba(68, 147, 198, 0.08) 0%,
+    rgba(20, 74, 162, 0.04) 100%);
+    box-shadow: 0 0 0 4px rgba(68, 147, 198, 0.1);
 }
 
 .radioInput {
@@ -107,121 +242,224 @@
 
 .radioContent {
     flex: 1;
+    position: relative;
+    z-index: 1;
 }
 
 .radioLabel {
     display: block;
-    font-weight: 600;
+    font-weight: 650;
     color: var(--secondary-color-4);
-    margin-bottom: var(--5px);
-    font-size: var(--h5-size);
+    margin-bottom: var(--10px);
+    font-size: var(--h4-size);
+    line-height: 1.3;
 }
 
 .radioDescription {
     color: var(--secondary-color-2);
-    font-size: var(--h6-size);
+    font-size: var(--h5-size);
     margin: 0;
+    line-height: 1.4;
 }
 
+/* =============================================================================
+   CHECKBOXES (CATEGORÍAS Y FILTROS)
+   ============================================================================= */
+.checkboxGrid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--15px);
+    background: rgba(248, 250, 252, 0.4);
+    border-radius: var(--10px);
+    padding: var(--20px);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.checkboxContainer {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--15px);
+    padding: var(--15px);
+    border-radius: var(--10px);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.checkboxContainer:hover {
+    background: linear-gradient(135deg,
+    rgba(1, 155, 57, 0.04) 0%,
+    rgba(1, 155, 57, 0.02) 100%);
+    transform: translateX(4px);
+}
+
+.checkboxContainer:hover .checkboxLabel {
+    color: var(--primary-color-6);
+}
+
+.checkbox {
+    height: var(--20px);
+    width: var(--20px);
+    min-width: var(--20px);
+    accent-color: var(--primary-color-6);
+    border: 2px solid var(--secondary-color-2);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+.checkbox:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(1, 155, 57, 0.2);
+}
+
+.checkbox:checked {
+    border-color: var(--primary-color-6);
+    background-color: var(--primary-color-6);
+}
+
+.checkboxLabel {
+    display: block;
+    font-size: var(--h5-size);
+    color: var(--secondary-color-4);
+    font-weight: 500;
+    line-height: 1.4;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s ease;
+}
+
+/* =============================================================================
+   INPUTS NUMÉRICOS
+   ============================================================================= */
 .inputGroup {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .inputLabel {
     display: block;
-    font-size: var(--h6-size);
+    font-size: var(--h5-size);
     font-weight: 600;
     color: var(--secondary-color-4);
-    margin-bottom: var(--10px);
+    margin-bottom: var(--15px);
+    position: relative;
+    padding-left: var(--10px);
+}
+
+.inputLabel::before {
+    content: '📊';
+    position: absolute;
+    left: calc(-1 * var(--20px));
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: var(--h5-size);
 }
 
 .numberInput {
     display: block;
     width: 100%;
-    border-radius: 5px;
-    border: 1px solid var(--secondary-color-2);
+    border-radius: var(--10px);
+    border: 2px solid rgba(0, 0, 0, 0.06);
     padding: var(--15px);
-    font-size: var(--h6-size);
+    font-size: var(--h5-size);
     background: var(--secondary-color-1);
     color: var(--secondary-color-4);
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
+    font-weight: 500;
 }
 
 .numberInput:focus {
     outline: none;
-    border-color: var(--primary-color-1);
-    box-shadow: 0 0 0 2px rgba(239, 25, 35, 0.1);
+    border-color: var(--primary-color-3);
+    box-shadow: 0 0 0 4px rgba(68, 147, 198, 0.1);
+    background: #ffffff;
+}
+
+.numberInput:hover:not(:focus) {
+    border-color: rgba(68, 147, 198, 0.3);
+    background: #fefefe;
 }
 
 .inputHint {
-    margin-top: var(--5px);
+    margin-top: var(--10px);
     font-size: var(--h6-size);
     color: var(--secondary-color-2);
+    line-height: 1.4;
+    font-style: italic;
 }
 
-.checkboxContainer {
-    display: flex;
-    align-items: center;
-    gap: var(--10px);
-}
-
-.checkbox {
-    height: 18px;
-    width: 18px;
-    accent-color: var(--primary-color-1);
-    border: 1px solid var(--secondary-color-2);
-    border-radius: 3px;
-    transition: all 0.2s ease;
-}
-
-.checkbox:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(239, 25, 35, 0.1);
-}
-
-.checkboxLabel {
-    display: block;
-    font-size: var(--h6-size);
-    color: var(--secondary-color-4);
-    font-weight: 500;
-}
-
+/* =============================================================================
+   BOTÓN PRINCIPAL
+   ============================================================================= */
 .generateButton {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: var(--15px) var(--25px);
+    padding: var(--20px) var(--30px);
     border: none;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    font-size: var(--h5-size);
-    font-weight: 600;
+    border-radius: var(--15px);
+    font-size: var(--h4-size);
+    font-weight: 650;
     color: var(--secondary-color-1);
-    background: var(--primary-color-1);
-    transition: all 0.2s ease;
+    background: linear-gradient(135deg,
+    var(--primary-color-3) 0%,
+    var(--primary-color-4) 100%);
+    transition: all 0.3s ease;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(68, 147, 198, 0.3);
+}
+
+.generateButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent);
+    transition: left 0.5s ease;
 }
 
 .generateButton:hover:not(:disabled) {
-    background: var(--primary-color-5);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(239, 25, 35, 0.25);
+    background: linear-gradient(135deg,
+    var(--primary-color-4) 0%,
+    var(--primary-color-3) 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(68, 147, 198, 0.4);
+}
+
+.generateButton:hover:not(:disabled)::before {
+    left: 100%;
+}
+
+.generateButton:active:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(68, 147, 198, 0.3);
 }
 
 .generateButton:disabled {
-    background: var(--secondary-color-2);
+    background: linear-gradient(135deg,
+    var(--secondary-color-2) 0%,
+    var(--secondary-color-3) 100%);
     cursor: not-allowed;
     transform: none;
+    box-shadow: none;
 }
 
 .loadingSpinner {
     animation: spin 1s linear infinite;
-    margin-left: calc(-1 * var(--5px));
-    margin-right: var(--10px);
-    height: var(--20px);
-    width: var(--20px);
+    margin-right: var(--15px);
+    height: var(--25px);
+    width: var(--25px);
     color: var(--secondary-color-1);
 }
 
@@ -234,88 +472,187 @@
     }
 }
 
-.successAlert {
-    margin-top: var(--25px);
-    padding: var(--15px);
-    background: rgba(1, 155, 57, 0.05);
-    border-left: 4px solid var(--primary-color-6);
-    border-radius: 5px;
-}
+/* =============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================= */
 
-.successMessage {
-    margin: 0;
-    font-weight: 500;
-    color: var(--primary-color-6);
-    font-size: var(--h6-size);
-}
-
-/* Responsive Design */
+/* Móviles */
 @media (max-width: 640px) {
     .container {
         padding: var(--20px);
-        margin: var(--15px);
+        margin: var(--10px);
+        border-radius: var(--10px);
     }
 
     .title {
         font-size: var(--h2-size);
+        margin-bottom: var(--25px);
+    }
+
+    .formContent {
+        gap: var(--25px);
     }
 
     .radioGrid {
         grid-template-columns: 1fr;
+        gap: var(--15px);
+    }
+
+    .radioOption {
+        padding: var(--20px);
+    }
+
+    .checkboxGrid {
+        padding: var(--15px);
+        gap: var(--10px);
+    }
+
+    .checkboxContainer {
+        padding: var(--10px);
     }
 
     .generateButton {
         padding: var(--15px) var(--20px);
-        font-size: var(--h6-size);
+        font-size: var(--h5-size);
     }
 
-    .formContent {
-        gap: var(--20px);
+    .sectionLabel {
+        font-size: var(--h5-size);
+        margin-bottom: var(--15px);
+    }
+
+    .section:not(:last-child) {
+        margin-bottom: 0;
+    }
+
+    .loadingSpinner {
+        height: var(--20px);
+        width: var(--20px);
+        margin-right: var(--10px);
     }
 }
 
+/* Tablets */
 @media (min-width: 641px) and (max-width: 1023px) {
+    .container {
+        padding: var(--40px);
+    }
+
     .radioGrid {
         grid-template-columns: repeat(2, 1fr);
     }
-}
 
-@media (min-width: 1024px) {
-    .container {
-        padding: var(--50px);
-    }
-
-    .title {
-        font-size: var(--h1-size);
-    }
-
-    .radioLabel {
-        font-size: var(--h4-size);
-    }
-
-    .radioDescription {
-        font-size: var(--h5-size);
-    }
-
-    .inputLabel {
-        font-size: var(--h5-size);
-    }
-
-    .numberInput {
-        font-size: var(--h5-size);
+    .checkboxGrid {
         padding: var(--20px);
-    }
-
-    .checkboxLabel {
-        font-size: var(--h5-size);
     }
 
     .generateButton {
         font-size: var(--h4-size);
-        padding: var(--20px) var(--30px);
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .container {
+        padding: var(--50px);
+        border-radius: var(--20px);
     }
 
-    .inputHint, .errorMessage, .successMessage {
+    .title {
+        margin-bottom: var(--40px);
+    }
+
+    .formContent {
+        gap: var(--40px);
+    }
+
+    .radioLabel {
+        font-size: var(--h3-size);
+    }
+
+    .radioDescription {
+        font-size: var(--h4-size);
+    }
+
+    .sectionLabel {
+        font-size: var(--h3-size);
+        margin-bottom: var(--25px);
+    }
+
+    .inputLabel {
+        font-size: var(--h4-size);
+    }
+
+    .numberInput {
+        font-size: var(--h4-size);
+        padding: var(--20px);
+    }
+
+    .checkboxLabel {
+        font-size: var(--h4-size);
+    }
+
+    .checkboxGrid {
+        padding: var(--25px);
+        gap: var(--20px);
+    }
+
+    .generateButton {
+        font-size: var(--h3-size);
+        padding: var(--25px) var(--40px);
+    }
+
+    .inputHint,
+    .errorMessage,
+    .successMessage {
         font-size: var(--h6-size);
+    }
+
+    .loadingSpinner {
+        height: var(--30px);
+        width: var(--30px);
+        margin-right: var(--15px);
+    }
+}
+
+/* =============================================================================
+   ANIMACIONES Y MICRO-INTERACCIONES
+   ============================================================================= */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(var(--20px));
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.container {
+    animation: fadeInUp 0.6s ease;
+}
+
+.loadingSpinner {
+    animation: spin 1s linear infinite, pulse 2s ease-in-out infinite;
+}
+
+/* Modo oscuro preparado usando variables existentes */
+@media (prefers-color-scheme: dark) {
+    .container {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .numberInput:focus {
+        background: rgba(255, 255, 255, 0.05);
     }
 }
