@@ -1,25 +1,7 @@
-// utils/statsProcessor.ts
-import { User, JobType, Gender } from '@/types/user';
+// utils/MedicalStatsProcessor.ts
+import { User } from '@/types/user';
+import { StatsByProfession, StatsByGender, StatsBySpecialty, ProcessedStats, CSVConfig } from '@/types/csv'
 
-export interface StatsByProfession {
-    profession: string;
-    count: number;
-    genderBreakdown: Record<string, number>;
-    specialties: Record<string, number>;
-}
-
-export interface StatsByGender {
-    gender: string;
-    count: number;
-    professionBreakdown: Record<string, number>;
-}
-
-export interface StatsBySpecialty {
-    specialty: string;
-    count: number;
-    professions: Record<string, number>;
-    genderBreakdown: Record<string, number>;
-}
 
 export class MedicalStatsProcessor {
     private users: User[];
@@ -28,7 +10,7 @@ export class MedicalStatsProcessor {
         this.users = users;
 
         if (!users || users.length === 0) {
-            throw new Error('No hay usuarios para procesar. Esto está más vacío que mi historial de citas');
+            throw new Error('No hay usuarios para procesar.');
         }
     }
 
@@ -118,7 +100,6 @@ export class MedicalStatsProcessor {
 
         const specialtyMap = new Map<string, {
             users: User[],
-            ageSum: number,
             professionCount: Record<string, number>,
             genderCount: Record<string, number>
         }>();
@@ -129,7 +110,6 @@ export class MedicalStatsProcessor {
             if (!specialtyMap.has(specialty)) {
                 specialtyMap.set(specialty, {
                     users: [],
-                    ageSum: 0,
                     professionCount: {},
                     genderCount: {}
                 });
@@ -137,7 +117,6 @@ export class MedicalStatsProcessor {
 
             const specialtyData = specialtyMap.get(specialty)!;
             specialtyData.users.push(user);
-            specialtyData.ageSum += user.age || 0;
 
             const profession = user.job || 'sin definir';
             specialtyData.professionCount[profession] = (specialtyData.professionCount[profession] || 0) + 1;
@@ -149,7 +128,6 @@ export class MedicalStatsProcessor {
         return Array.from(specialtyMap.entries()).map(([specialty, data]) => ({
             specialty,
             count: data.users.length,
-            avgAge: Math.round(data.ageSum / data.users.length * 100) / 100,
             professions: data.professionCount,
             genderBreakdown: data.genderCount
         }));
@@ -166,5 +144,38 @@ export class MedicalStatsProcessor {
             bySpecialty: this.getStatsBySpecialty(),
             adminPercentage: Math.round((this.users.filter(u => u.admin).length / this.users.length) * 10000) / 100 // Con 2 decimales
         };
+    }
+
+    getStatsWithConfig(config: CSVConfig): ProcessedStats {
+        // Filtrar usuarios según configuración
+        const usersToProcess = config.healthOnly
+            ? this.users.filter(user => user.job !== 'no perteneciente al área de la salud')
+            : this.users;
+
+        // Crear procesador temporal con usuarios filtrados
+        const tempProcessor = new MedicalStatsProcessor(usersToProcess);
+
+        const result: ProcessedStats = {};
+
+        // Incluir datos según configuración
+        if (config.includeProfession)
+            result.profession = tempProcessor.getStatsByProfession();
+
+        if (config.includeGender)
+            result.gender = tempProcessor.getStatsByGender();
+
+        if (config.includeSpecialty)
+            result.specialty = tempProcessor.getStatsBySpecialty();
+
+
+        // Siempre incluir resumen básico
+        result.summary = {
+            totalUsers: usersToProcess.length,
+            avgAge: Math.round(usersToProcess.reduce((sum, u) => sum + (u.age || 0), 0) / usersToProcess.length * 100) / 100,
+            usersWithSpecialty: usersToProcess.filter(u => u.specialty).length,
+            uniqueSpecialties: [...new Set(usersToProcess.map(u => u.specialty).filter(Boolean))].length
+        };
+
+        return result;
     }
 }

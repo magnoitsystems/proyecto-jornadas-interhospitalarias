@@ -1,5 +1,5 @@
 // utils/csvGenerator.ts
-import { StatsByProfession, StatsByGender, StatsBySpecialty } from './statsProcessor';
+import {StatsByProfession, StatsByGender, StatsBySpecialty, ProcessedStats, CSVConfig} from '@/types/csv';
 
 export class CSVGenerator {
 
@@ -113,4 +113,105 @@ export class CSVGenerator {
 
         return report;
     }
+
+
+    static generateWithConfig(data: ProcessedStats, config: CSVConfig): string {
+        if (config.format === 'readable') {
+            return this.generateReadableFormat(data, config);
+        }
+
+        // Fallback al formato compacto existente
+        return this.generateCompactFormat(data, config);
+    }
+
+    private static generateReadableFormat(data: ProcessedStats, config: CSVConfig): string {
+        let output = '';
+
+        // Resumen general
+        if (data.summary) {
+            output += 'RESUMEN GENERAL\n';
+            output += '================\n';
+            output += `Total de usuarios: ${data.summary.totalUsers}\n`;
+            output += `Edad promedio: ${data.summary.avgAge} años\n`;
+            output += `Porcentaje administradores: ${data.summary.adminPercentage}%\n\n`;
+        }
+
+        // Estadísticas por profesión
+        if (data.profession && config.includeProfession) {
+            output += 'ESTADÍSTICAS POR PROFESIÓN\n';
+            output += '==========================\n';
+            data.profession.forEach(prof => {
+                output += `${prof.profession}: ${prof.count} personas\n`;
+            });
+            output += '\n';
+        }
+
+        // Estadísticas por género
+        if (data.gender && config.includeGender) {
+            output += 'ESTADÍSTICAS POR GÉNERO\n';
+            output += '=======================\n';
+            data.gender.forEach(gender => {
+                output += `${gender.gender}: ${gender.count} personas\n`;
+            });
+            output += '\n';
+        }
+
+        // Estadísticas por especialidad
+        if (data.specialty && config.includeSpecialty) {
+            output += 'ESTADÍSTICAS POR ESPECIALIDAD\n';
+            output += '=============================\n';
+            data.specialty.forEach(spec => {
+                output += `${spec.specialty}: ${spec.count} personas\n`;
+            });
+            output += '\n';
+        }
+
+        return output;
+    }
+
+    private static generateCompactFormat(data: ProcessedStats, config: CSVConfig): string {
+        let output = '';
+
+        // Resumen
+        if (data.summary) {
+            output += 'RESUMEN\n';
+            output += 'Métrica,Valor\n';
+            output += `Total Usuarios,${data.summary.totalUsers}\n`;
+            output += `Edad Promedio,${data.summary.avgAge}\n`;
+            output += `% Administradores,${data.summary.adminPercentage}\n\n`;
+        }
+
+        // Por profesión
+        if (data.profession && config.includeProfession) {
+            output += 'PROFESIONES\n';
+            output += 'Profesión,Cantidad\n';
+            data.profession.forEach(prof => {
+                output += `${prof.profession},${prof.count}\n`;
+            });
+            output += '\n';
+        }
+
+        // Por género
+        if (data.gender && config.includeGender) {
+            output += 'GÉNEROS\n';
+            output += 'Género,Cantidad\n';
+            data.gender.forEach(gender => {
+                output += `${gender.gender},${gender.count}\n`;
+            });
+            output += '\n';
+        }
+
+        // Por especialidad
+        if (data.specialty && config.includeSpecialty) {
+            output += 'ESPECIALIDADES\n';
+            output += 'Especialidad,Cantidad\n';
+            data.specialty.forEach(spec => {
+                output += `${spec.specialty},${spec.count}\n`;
+            });
+            output += '\n';
+        }
+
+        return output;
+    }
+
 }

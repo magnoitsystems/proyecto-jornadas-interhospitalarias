@@ -2,8 +2,9 @@ import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
 import { GetStatistic } from "@/services/statisticService";
 import { generateMockUsers } from '@/utils/mockData';
-import { MedicalStatsProcessor } from '@/utils/statsProcessor';
+import { MedicalStatsProcessor } from '@/utils/MedicalStatsProcessor';
 import { CSVGenerator } from '@/utils/csvGenerator';
+import { CSVConfigBuilder } from '@/utils/CSVConfigBuilder';
 
 const statisticService = new GetStatistic();
 
@@ -30,20 +31,15 @@ export async function GET(){
 
 export async function POST(request: NextRequest) {
     try {
-
         const body = await request.json();
         const {
-            reportType = 'complete',
+            includeGender,
+            includeSpecialty = false,
+            includeProfession = false,
+            healthOnly = false,
+            format = 'readable',
             userCount = 150,
         } = body;
-
-        const validReportTypes = ['profession', 'gender', 'specialty', 'complete'];
-        if (!validReportTypes.includes(reportType)) {
-            return NextResponse.json({
-                message: 'Tipo de reporte inválido',
-                validTypes: validReportTypes
-            }, { status: 400 });
-        }
 
         if (userCount < 1 || userCount > 1000) {
             return NextResponse.json({
@@ -51,43 +47,28 @@ export async function POST(request: NextRequest) {
             }, { status: 400 });
         }
 
+        // Crear configuración usando el Builder
+        const config = new CSVConfigBuilder()
+            .includeGender(includeGender)
+            .includeSpecialty(includeSpecialty)
+            .includeProfesion(includeProfession)
+            .includeHealthOnly(healthOnly)
+            .setFormat(format)
+            .build();
 
+        // Procesar datos con la nueva configuración
         const mockUsers = generateMockUsers(userCount);
-
         const processor = new MedicalStatsProcessor(mockUsers);
+        const processedData = processor.getStatsWithConfig(config);
 
-        let csvContent: string;
-        let filename: string;
-
-        switch (reportType) {
-            case 'profession':
-                const professionStats = processor.getStatsByProfession();
-                csvContent = CSVGenerator.generateProfessionStats(professionStats);
-                filename = `estadisticas-profesion-${new Date().toISOString().split('T')[0]}.csv`;
-                break;
-
-            case 'gender':
-                const genderStats = processor.getStatsByGender();
-                csvContent = CSVGenerator.generateGenderStats(genderStats);
-                filename = `estadisticas-genero-${new Date().toISOString().split('T')[0]}.csv`;
-                break;
-
-            case 'specialty':
-                const specialtyStats = processor.getStatsBySpecialty();
-                csvContent = CSVGenerator.generateSpecialtyStats(specialtyStats);
-                filename = `estadisticas-especialidad-${new Date().toISOString().split('T')[0]}.csv`;
-                break;
-
-            case 'complete':
-            default:
-                const completeStats = processor.getCompleteStats();
-                csvContent = CSVGenerator.generateCompleteReport(completeStats);
-                filename = `reporte-completo-medico-${new Date().toISOString().split('T')[0]}.csv`;
-                break;
-        }
+        // Generar CSV con configuración
+        const csvContent = CSVGenerator.generateWithConfig(processedData, config);
 
         const BOM = '\uFEFF';
         const finalContent = BOM + csvContent;
+
+        const timestamp = new Date().toISOString().split('T')[0];
+        const filename = `estadisticas-medicas-${format}-${timestamp}.csv`;
 
         return new NextResponse(finalContent, {
             status: 200,
@@ -100,7 +81,6 @@ export async function POST(request: NextRequest) {
 
     } catch (error) {
         console.error(error);
-
         return NextResponse.json({
             message: 'Error interno del servidor',
             error: process.env.NODE_ENV === 'development' ? (error as Error).message : 'Error desconocido'
