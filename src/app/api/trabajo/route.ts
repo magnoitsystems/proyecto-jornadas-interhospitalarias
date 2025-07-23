@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { auth } from '@/auth';
 
 export async function POST(request: NextRequest) {
+    console.log("fuckin post");
     try {
         console.log("HOLA POST");
         
@@ -12,7 +13,7 @@ export async function POST(request: NextRequest) {
         const session = await auth();
         
         // Verificar si el usuario está autenticado
-        if (!session || !session.user?.id) {
+        if (!session || !session?.user?.id) {
             return NextResponse.json(
                 { message: 'Usuario no autenticado' }, 
                 { status: 401 }
