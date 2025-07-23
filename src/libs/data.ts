@@ -1,5 +1,3 @@
-// src/lib/data.ts
-
 import postgres from 'postgres';
 import type { User as AppUser } from '@/types/user'; // Asegúrate que la ruta a tus tipos es correcta
 

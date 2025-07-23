@@ -21,11 +21,11 @@ export async function GET(){
         return NextResponse.json(allStats);
     }
     catch (e){
-        console.log(e);
-        NextResponse.json(
-            { message: "" },
+        console.error(e);
+        return NextResponse.json(
+            { message: "Error interno del servidor" },
             { status: 500 }
-        )
+        );
     }
 }
 

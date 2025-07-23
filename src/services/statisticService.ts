@@ -6,7 +6,7 @@ export class GetStatistic{
     async getForGenderFeminine(): Promise<Statistics[]>{
         const result = await prisma.user.count({
             where: {
-                gender: 'femenino'
+                genre: "femenino"
             }
         })
         return [{
@@ -18,7 +18,7 @@ export class GetStatistic{
     async getForGenderMale(): Promise<Statistics[]>{
         const result = await prisma.user.count({
             where:{
-                gender: 'masculino'
+                genre: "masculino"
             }
         })
         return [{
@@ -39,7 +39,7 @@ export class GetStatistic{
     async getStudents(): Promise<Statistics[]>{
         const result = await prisma.user.count({
             where:{
-                job: 'estudiante'
+                job: "estudiante"
             }
         })
 
@@ -52,7 +52,7 @@ export class GetStatistic{
     async getMedical(): Promise<Statistics[]>{
         const result = await prisma.user.count({
             where:{
-                job: 'medico'
+                job: "medico"
             }
         })
 
@@ -65,7 +65,7 @@ export class GetStatistic{
     async getNurse(): Promise<Statistics[]>{
         const result = await prisma.user.count({
             where:{
-                job: 'enfermero'
+                job: "enfermero"
             }
         })
 
@@ -78,7 +78,7 @@ export class GetStatistic{
     async getTechnique(): Promise<Statistics[]>{
         const result = await prisma.user.count({
             where:{
-                job: 'tecnico'
+                job: "tecnico"
             }
         })
 
@@ -88,7 +88,6 @@ export class GetStatistic{
         }]
     }
 
-    // dentro de getStatistic
     async getAllStatistics(): Promise<Statistics[]> {
         const results = await Promise.all([
             this.getTotalUsers(),
@@ -100,6 +99,6 @@ export class GetStatistic{
             this.getTechnique()
         ]);
 
-        return results.flat(); // lo devuelve como Statistics[]
+        return results.flat();
     }
 }

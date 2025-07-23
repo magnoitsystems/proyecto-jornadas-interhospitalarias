@@ -6,11 +6,11 @@ export interface User {
     lastname: string;
     email: string;
     password: string;
-    job: JobType;
+    job: string;
     specialty?: string | null;
     admin: boolean;
     age: number;
-    gender: Gender;
+    gender: string;
     works?: Work[];
 }
 
