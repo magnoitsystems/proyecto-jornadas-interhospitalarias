@@ -62,8 +62,7 @@ export class UserService {
     }
 
     private async checkEmailExists(email: string): Promise<boolean> {
-        // Implementar consulta a base de datos
-        console.log(email)
+        // TODO: Implementar con Prisma cuando esté configurado        console.log(email)
         return false;
     }
 }

@@ -1,4 +1,3 @@
-// utils/MedicalStatsProcessor.ts
 import { User } from '@/types/user';
 import { StatsByProfession, StatsByGender, StatsBySpecialty, ProcessedStats, CSVConfig } from '@/types/csv'
 

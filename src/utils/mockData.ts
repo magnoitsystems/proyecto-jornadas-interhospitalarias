@@ -24,11 +24,11 @@ export function generateMockUsers(count: number = 150): User[] {
             name: `Usuario${index + 1}`,
             lastname: `Apellido${index + 1}`,
             email: `user${index + 1}@hospital.com`,
-            password: 'hasheado123', // En producción hasheado, obviamente
+            password: 'hasheado123',
             job: randomJob,
             specialty: possibleSpecialties[Math.floor(Math.random() * possibleSpecialties.length)],
-            admin: Math.random() < 0.1, // 10% admins
-            age: Math.floor(Math.random() * 40) + 20, // 20-60 años
+            admin: Math.random() < 0.1,
+            age: Math.floor(Math.random() * 40) + 20,
             gender: genders[Math.floor(Math.random() * genders.length)]
         } as User;
     });

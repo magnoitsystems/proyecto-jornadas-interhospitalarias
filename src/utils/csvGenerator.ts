@@ -1,4 +1,3 @@
-// utils/csvGenerator.ts
 import { ProcessedStats, CSVConfig } from '@/types/csv';
 
 export class CSVGenerator {
