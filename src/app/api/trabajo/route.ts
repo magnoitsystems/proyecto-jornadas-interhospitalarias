@@ -8,6 +8,7 @@ import {GetWorkForFilter} from "@/services/workFilterService";
 const userService = new GetWorkForFilter();
 
 export async function POST(request: NextRequest) {
+    console.log("fuckin post");
     try {
         console.log("HOLA POST");
         
@@ -15,7 +16,7 @@ export async function POST(request: NextRequest) {
         const session = await auth();
         
         // Verificar si el usuario está autenticado
-        if (!session || !session.user?.id) {
+        if (!session || !session?.user?.id) {
             return NextResponse.json(
                 { message: 'Usuario no autenticado' }, 
                 { status: 401 }
@@ -77,7 +78,7 @@ export async function POST(request: NextRequest) {
 
         await prisma.author.createMany({
             data: autoresParsed.map((a: any) => ({
-                name: a.name,
+                name: a.nombre,
                 affiliation: a.afiliacion,
                 work_id: normalWork.id_work,
             })),
