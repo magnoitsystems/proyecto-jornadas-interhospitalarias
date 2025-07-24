@@ -1,7 +1,7 @@
-
 html {
   scroll-behavior: smooth;
 }
+
 :root {
   /*colors*/
   --primary-color-1: #EF1923;
@@ -18,7 +18,7 @@ html {
   --secondary-color-4: #232021;
   --secondary-color-5: #060606;
 
-  /*font-sizes*/
+  /*font-sizes for mobile*/
   --h1-size: 1.125rem; /* 18px */
   --h2-size: 1rem;    /* 16px */
   --h3-size: 0.875rem; /* 14px */
@@ -77,7 +77,7 @@ h6{
   font-weight: lighter;
 }
 
-
+/*same for tablet and desktop*/
 @media (min-width: 768px) {
   :root {
     /* Tablet */
@@ -90,15 +90,4 @@ h6{
   }
 }
 
-@media (min-width: 1024px) {
-  :root {
-    /* Desktop*/
-    --h1-size: 2.125rem; /*34px*/
-    --h2-size: 1.625rem; /*26px*/
-    --h3-size: 1.5rem; /*24px*/
-    --h4-size: 1.25rem; /*20px*/
-    --h5-size: 1.125rem; /*18px*/
-    --h6-size: 0.875rem; /*14px*/
-  }
-}
 
