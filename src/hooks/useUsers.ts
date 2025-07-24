@@ -27,9 +27,10 @@ export interface UserData {
 }
 
 export interface UserFilters {
-  gender?: string;
-  job?: string[]; // múltiples trabajos
+  gender?: string[];
+  job?: string[];
 }
+
 
 export default function useUsers() {
   const [loading, setLoading] = useState(false);
@@ -72,8 +73,21 @@ export default function useUsers() {
     try {
       const params = new URLSearchParams();
 
-      filters.gender?.forEach(g => params.append("gender", g));
-      filters.job?.forEach(j => params.append("job", j));
+      const genderArray = Array.isArray(filters.gender)
+  ? filters.gender
+  : filters.gender
+    ? [filters.gender]
+    : [];
+
+const jobArray = Array.isArray(filters.job)
+  ? filters.job
+  : filters.job
+    ? [filters.job]
+    : [];
+
+genderArray.forEach(g => params.append("gender", g));
+jobArray.forEach(j => params.append("job", j));
+
 
       const query = params.toString();
       const url = query ? `/api/usuario?${query}` : `/api/usuario`;

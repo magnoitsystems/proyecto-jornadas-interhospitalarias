@@ -7,7 +7,7 @@ import styles from './page.module.css';
 import GroupFilters from "@/components/FilterButton/GroupFilters/GroupFilters";
 import UserCard from "@/components/UserCard/UserCard";
 import SignOutButton from "@/components/botonSingOut/SignOutButton";
-import useUsers from "@/hooks/useUsers"; // 💡 asegurate de tener el hook como lo actualizamos
+import useUsers from "@/hooks/useUsers";
 
 interface FilterState {
   [key: string]: boolean;
@@ -26,10 +26,19 @@ export default function AdminPanel() {
     Otros: true,
   });
 
-  // ⚡ Ejecuta la búsqueda cada vez que cambia el filtro
+  // 🚀 Ejecuta la búsqueda cada vez que cambia el filtro
   useEffect(() => {
-    const gender = ["Mujeres", "Varones"].filter(g => filterState[g]);
-    const job = ["Estudiantes", "Médicos", "Enfermeros", "Técnicos", "Otros"].filter(j => filterState[j]);
+    const gender: string[] = [];
+    const job: string[] = [];
+
+    if (filterState.Mujeres) gender.push("Mujer");
+    if (filterState.Varones) gender.push("Varón");
+
+    if (filterState.Estudiantes) job.push("Estudiante");
+    if (filterState.Médicos) job.push("Médico");
+    if (filterState.Enfermeros) job.push("Enfermero");
+    if (filterState.Técnicos) job.push("Técnico");
+    if (filterState.Otros) job.push("Otro");
 
     getUsers({
       gender: gender.length > 0 ? gender : undefined,
@@ -79,7 +88,7 @@ export default function AdminPanel() {
                 profession={user.job}
                 age={user.age}
                 gender={user.gender}
-                specialty={user.specialty}
+                specialty={user.specialty ?? ''}
                 typeCard={"user"}
               />
             ))
