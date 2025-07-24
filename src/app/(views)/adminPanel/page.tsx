@@ -49,14 +49,14 @@ export default function AdminPanel() {
         const gender: string[] = [];
         const job: string[] = [];
 
-        if (filterState.Mujeres) gender.push("Mujer");
-        if (filterState.Varones) gender.push("Varón");
+        if (filterState.Mujeres) gender.push("femenino");
+        if (filterState.Varones) gender.push("masculino");
 
-        if (filterState.Estudiantes) job.push("Estudiante");
-        if (filterState.Médicos) job.push("Médico");
-        if (filterState.Enfermeros) job.push("Enfermero");
-        if (filterState.Técnicos) job.push("Técnico");
-        if (filterState.Otros) job.push("Otro");
+        if (filterState.Estudiantes) job.push("estudiante");
+        if (filterState.Médicos) job.push("medico");
+        if (filterState.Enfermeros) job.push("enfermero");
+        if (filterState.Técnicos) job.push("técnico");
+        if (filterState.Otros) job.push("otros");
 
         getUsers({
             gender: gender.length > 0 ? gender : undefined,
