@@ -1,3 +1,5 @@
+// src/auth.ts
+
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { authConfig } from './auth.config'; // Importamos la configuración centralizada
@@ -29,14 +31,16 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
                 if (passwordsMatch) {
                     // El objeto que retornas aquí se pasa al callback 'jwt'
                     return {
-                        id: userFromDb.id.toString(),
+                        id: userFromDb.id_user.toString(),
                         email: userFromDb.email,
                         name: `${userFromDb.name} ${userFromDb.lastname}`,
                         admin: userFromDb.admin, // Esta es la propiedad crucial
                     };
                 }
+
                 return null;
             },
         }),
     ],
+    // El bloque 'callbacks' ya no es necesario aquí, porque está en authConfig
 });

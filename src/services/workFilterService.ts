@@ -22,7 +22,7 @@ export class GetWorkForFilter{
                 workId: author.id_work
             })),
             user: {
-                id: work.user.idUser,
+                id_user: work.user.idUser,
                 name: work.user.name,
                 lastname: work.user.lastname,
                 email: work.user.email,
@@ -47,7 +47,7 @@ export class GetWorkForFilter{
             }
         });
 
-        return result.map(work => this.mapWorkToInterface(work));
+        return result.map((work: any) => this.mapWorkToInterface(work));
     }
 
     async getWorkWithoutPrize(): Promise<Work[]> {
@@ -61,7 +61,7 @@ export class GetWorkForFilter{
             }
         });
 
-        return result.map(work => this.mapWorkToInterface(work));
+        return result.map((work: any) => this.mapWorkToInterface(work));
     }
 
     async getWorks(): Promise<Work[]> {
@@ -72,7 +72,7 @@ export class GetWorkForFilter{
             }
         });
 
-        return result.map(work => this.mapWorkToInterface(work));
+        return result.map((work: any) => this.mapWorkToInterface(work));
     }
 
     async getAllStatistics(): Promise<{withPrize: Work[], withoutPrize: Work[], allWorks: Work[]}> {
