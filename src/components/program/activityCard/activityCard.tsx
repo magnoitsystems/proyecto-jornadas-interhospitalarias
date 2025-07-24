@@ -30,15 +30,15 @@ export default function ActivityCard({eventName, time, place, guestsName, guests
                         <h3>{eventName}</h3>
                     </div>
                     <div className={styles.details}>
-                        <h3>{time}</h3>
-                        <h4>{place}</h4>
-                        <h3
+                        <h1
                             className={styles.plus}
                             onClick={() => setShowDetails(prev => !prev)}
                             style={{cursor: "pointer"}}
                         >
                             {showDetails ? "-" : "+"}
-                        </h3>
+                        </h1>
+                        <h3>{time}</h3>
+                        <h4>{place}</h4>
                     </div>
                 </div>
                 <div className={`${styles.aditionalInformation} ${showDetails ? styles.visible : styles.invisible}`}>

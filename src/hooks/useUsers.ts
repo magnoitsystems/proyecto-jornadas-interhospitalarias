@@ -74,19 +74,19 @@ export default function useUsers() {
       const params = new URLSearchParams();
 
       const genderArray = Array.isArray(filters.gender)
-  ? filters.gender
-  : filters.gender
-    ? [filters.gender]
-    : [];
+        ? filters.gender
+        : filters.gender
+          ? [filters.gender]
+          : [];
 
-const jobArray = Array.isArray(filters.job)
-  ? filters.job
-  : filters.job
-    ? [filters.job]
-    : [];
+      const jobArray = Array.isArray(filters.job)
+        ? filters.job
+        : filters.job
+          ? [filters.job]
+          : [];
 
-genderArray.forEach(g => params.append("gender", g));
-jobArray.forEach(j => params.append("job", j));
+      genderArray.forEach(g => params.append("gender", g));
+      jobArray.forEach(j => params.append("job", j));
 
 
       const query = params.toString();

@@ -126,7 +126,7 @@ export class UserValidationService {
         }
     }
 
-    private validateSpecialty(specialty: string | undefined): void {
+    private validateSpecialty(specialty: string | undefined | null): void {
         if (!specialty) return;
 
         if (specialty.trim().length === 0) {

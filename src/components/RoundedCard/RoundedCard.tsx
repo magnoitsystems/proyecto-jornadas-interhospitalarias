@@ -32,6 +32,9 @@ export default function CircularCard() {
 
   if (loading) return <p className={styles.loadingProperties}>Cargando estadísticas...</p>;
   if (error) return <p>Error: {error}</p>;
+  if (data.length === 0) {
+    return <p className={styles.loadingProperties}>No hay estadísticas disponibles.</p>;
+  }
 
   return (
     <div className={styles.containerProperties}>

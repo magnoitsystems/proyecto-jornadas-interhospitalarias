@@ -1,7 +1,4 @@
-// src/auth.config.ts
-
 import type { NextRequest } from 'next/server';
-// ✅ PASO 1: IMPORTA LOS TIPOS NECESARIOS
 import type { Session, User } from 'next-auth';
 import type { JWT } from 'next-auth/jwt';
 
@@ -18,7 +15,7 @@ export const authConfig = {
             const isOnLoginPage = nextUrl.pathname.startsWith('/login');
 
             if (!isLoggedIn) {
-                if (isOnAdminPanel || isOnTrabajos) return false;
+                if (isOnAdminPanel || isOnTrabajos) return true; //VOLVER A FALSE
                 return true;
             }
 
@@ -38,7 +35,6 @@ export const authConfig = {
             return true;
         },
 
-        // ✅ PASO 2: AÑADE LOS TIPOS EXPLÍCITAMENTE
         jwt({ token, user }: { token: JWT; user?: User }) {
             if (user) {
                 // Ahora token.admin y user.admin son completamente type-safe
@@ -48,7 +44,6 @@ export const authConfig = {
             return token;
         },
 
-        // ✅ PASO 3: AÑADE LOS TIPOS EXPLÍCITAMENTE
         session({ session, token }: { session: Session; token: JWT }) {
             if (session.user) {
                 // Ahora session.user.admin y token.admin son completamente type-safe

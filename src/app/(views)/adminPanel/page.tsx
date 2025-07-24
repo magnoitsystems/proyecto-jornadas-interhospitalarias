@@ -2,101 +2,128 @@
 
 import { useEffect, useState } from "react";
 import RoundedCard from "@/components/RoundedCard/RoundedCard";
-import { cactus } from '@/app/(views)/ui/fonts';
 import styles from './page.module.css';
 import GroupFilters from "@/components/FilterButton/GroupFilters/GroupFilters";
 import UserCard from "@/components/UserCard/UserCard";
-import SignOutButton from "@/components/botonSingOut/SignOutButton";
+import SignOutButton from "@/components/botonSingOut/SignOutButton"
+import { useWorkFilter } from "@/hooks/workFilterAdmin";
+import { Work } from "@/types";
 import useUsers from "@/hooks/useUsers";
-
-interface FilterState {
-  [key: string]: boolean;
-}
+import ManuscriptCard from "@/components/UserCard/ManuscriptCard";
+import UserItemCard from "@/components/UserCard/UserCard";
+import { FilterState } from "@/types/user";
 
 export default function AdminPanel() {
-  const { users, getUsers, loading } = useUsers();
+    const { data, loading, error } = useWorkFilter();
+    const [selectedFilter, setSelectedFilter] = useState<"allWorks" | "withPrize" | "withoutPrize">("allWorks");
+    const [worksToShow, setWorksToShow] = useState<Work[]>([]);
 
-  const [filterState, setFilterState] = useState<FilterState>({
-    Mujeres: true,
-    Varones: true,
-    Estudiantes: true,
-    Médicos: true,
-    Enfermeros: true,
-    Técnicos: true,
-    Otros: true,
-  });
+    useEffect(() => {
+        console.log(data)
+        if (!data) return;
 
-  // cada vez que se cambia/agrega un filtro se ejecuta el getUsers
-  useEffect(() => {
-    const gender: string[] = [];
-    const job: string[] = [];
+        switch (selectedFilter) {
+            case "withPrize":
+                setWorksToShow(data.withPrize);
+                break;
+            case "withoutPrize":
+                setWorksToShow(data.withoutPrize);
+                break;
+            case "allWorks":
+            default:
+                setWorksToShow(data.allWorks);
+                break;
+        }
+    }, [selectedFilter, data]);
 
-    if (filterState.Mujeres) gender.push("Mujer");
-    if (filterState.Varones) gender.push("Varón");
+    if (loading) return <p>Cargando trabajos...</p>;
+    if (error) return <p>Error: {error}</p>;
 
-    if (filterState.Estudiantes) job.push("Estudiante");
-    if (filterState.Médicos) job.push("Médico");
-    if (filterState.Enfermeros) job.push("Enfermero");
-    if (filterState.Técnicos) job.push("Técnico");
-    if (filterState.Otros) job.push("Otro");
+    const { users, getUsers, loading: usersLoading } = useUsers();
 
-    getUsers({
-      gender: gender.length > 0 ? gender : undefined,
-      job: job.length > 0 ? job : undefined,
+    const [filterState, setFilterState] = useState<FilterState>({
+        Mujeres: true,
+        Varones: true,
+        Estudiantes: true,
+        Médicos: true,
+        Enfermeros: true,
+        Técnicos: true,
+        Otros: true,
     });
-  }, [filterState]);
 
-  const handleFiltersChange = (newFilters: FilterState) => {
-    setFilterState(newFilters);
-  };
+    // cada vez que se cambia/agrega un filtro se ejecuta el getUsers
+    useEffect(() => {
+        const gender: string[] = [];
+        const job: string[] = [];
 
-  return (
-    <main>
-      <div className={styles.roundedCards}>
-        <RoundedCard />
-      </div>
+        if (filterState.Mujeres) gender.push("Mujer");
+        if (filterState.Varones) gender.push("Varón");
 
-      <div className={`${styles.seeCards} ${cactus.className}`}>
-        <h1>Ver</h1>
-        <select name="cards" id="cards">
-          <option value="registro">Registro de inscriptos</option>
-          <option value="sin">Manuscritos SIN opción a premio</option>
-          <option value="con">Manuscritos CON opción a premio</option>
-        </select>
-      </div>
+        if (filterState.Estudiantes) job.push("Estudiante");
+        if (filterState.Médicos) job.push("Médico");
+        if (filterState.Enfermeros) job.push("Enfermero");
+        if (filterState.Técnicos) job.push("Técnico");
+        if (filterState.Otros) job.push("Otro");
 
-      <SignOutButton />
+        getUsers({
+            gender: gender.length > 0 ? gender : undefined,
+            job: job.length > 0 ? job : undefined,
+        });
+    }, [filterState]);
 
-      <section className={styles.containerContent}>
-        <aside className={styles.aside}>
-          <GroupFilters
-            onFiltersChange={handleFiltersChange}
-            initialFilters={filterState}
-          />
-        </aside>
+    const handleFiltersChange = (newFilters: FilterState) => {
+        setFilterState(newFilters);
+    };
 
-        <section className={styles.containerUserCard}>
-          {loading ? (
-            <p>Cargando usuarios...</p>
-          ) : users.length > 0 ? (
-            users.map((user) => (
-              <UserCard
-                key={user.id}
-                image={"/icons/autoridades.png"}
-                name={user.name}
-                surname={user.lastname}
-                profession={user.job}
-                age={user.age}
-                gender={user.gender}
-                specialty={user.specialty ?? ''}
-                typeCard={"user"}
-              />
-            ))
-          ) : (
-            <p>No se encontraron usuarios con esos filtros.</p>
-          )}
-        </section>
-      </section>
-    </main>
-  );
+    return (
+        <main>
+            <div className={styles.roundedCards}>
+                <RoundedCard />
+            </div>
+            <div className={styles.seeCards}>
+                {/*<h1>Ver</h1>*/}
+                <select
+                    value={selectedFilter}
+                    onChange={(e) => setSelectedFilter(e.target.value as "allWorks" | "withPrize" | "withoutPrize")}
+                    style={{ marginBottom: "1rem" }}
+                >
+                    <option value="allWorks">Todos los manuscritos</option>
+                    <option value="withPrize">Manuscritos CON premio</option>
+                    <option value="withoutPrize">Manuscritos SIN premio</option>
+                </select>
+            </div>
+            <SignOutButton />
+            <section className={styles.containerContent}>
+                <aside className={styles.aside}>
+                    <GroupFilters
+                        onFiltersChange={handleFiltersChange}
+                        initialFilters={filterState}
+                    />                </aside>
+                <section className={styles.containerUserCard}>
+                    {worksToShow.map((work) => (
+                        <ManuscriptCard key={work.id} work={work} />
+                    ))}
+
+                    {usersLoading ? (
+                        <p>Cargando usuarios...</p>
+                    ) : users.length > 0 ? (
+                        users.map((user) => (
+                            <UserItemCard
+                                key={user.id}
+                                name={user.name}
+                                lastname={user.lastname}
+                                gender={user.gender}
+                                age={user.age}
+                                job={user.job}
+                                specialty={user.specialty ?? ''}
+                            />
+                        ))
+                    ) : (
+                        <p>No se encontraron usuarios con esos filtros.</p>
+                    )}
+                </section>
+
+            </section>
+        </main>
+    );
 }

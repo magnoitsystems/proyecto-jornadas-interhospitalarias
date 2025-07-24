@@ -50,18 +50,13 @@
     padding-inline: 0px;
     gap: var(--5px);
 }
-.details h3 {
+.details h1, .details h3, .details h4 {
     margin: 0px;
     padding: 0px;
 
     text-align: left;
 }
-.details h4 {
-    margin: 0px;
-    padding: 0px;
 
-    text-align: left;
-}
 
 .aditionalInformation {
     display: none;

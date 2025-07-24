@@ -1,7 +1,4 @@
-// app/types/index.ts
-
 import { User } from "./user"
-
 
 export enum WorkCategory {
     QUALITATIVE_RESEARCH = 'investigacion cualitativa',
@@ -60,3 +57,19 @@ export type Professional = {
     lugarEjerce: string;
     origen: Origen; // Usamos el tipo que definimos arriba
 };
+
+interface AuthorityGroup {
+    position: string;
+    names: string[];
+}
+
+interface AuthorityCardData {
+    title: string;
+    groups: AuthorityGroup[];
+}
+
+interface AuthoritiesCardProps {
+    cardData: AuthorityCardData;
+    variant?: 'default' | 'long';
+    className?: string;
+}

@@ -49,7 +49,7 @@
     border-bottom: none;
 }
 
-@media (min-width: 1050px) {
+@media (min-width: 1400px) {
     .infoCardProperties {
         width: 480px;
         font-size: 24px;
