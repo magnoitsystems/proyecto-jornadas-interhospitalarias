@@ -44,3 +44,17 @@ export enum JobType {
     OTHER = 'otros'
 }
 
+
+// types/filters.ts
+export type FilterState = {
+  Mujeres: boolean;
+  Varones: boolean;
+  Estudiantes: boolean;
+  Médicos: boolean;
+  Enfermeros: boolean;
+  Técnicos: boolean;
+  Otros: boolean;
+};
+
+
+

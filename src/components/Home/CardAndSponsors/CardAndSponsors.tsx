@@ -54,8 +54,6 @@ export default function CardAndSponsors(){
             <div className={styles.sponsorsProperties}>
                 <div className={styles.infoProperties}>
                     <h1>Nos acompañan</h1>
-                    <p className={`${cactus.className}`}>Al momento las Jornadas han sido declaradas de interes Municipal
-                        y han sido auspiciadas por la Sociedad Argentina de Pediatria</p>
                 </div>
                 <div className={styles.imageProperties}>
                     <a href={"https://www.casasco.com.ar/es/"}><Image src={'/imgs/sponsors/casascoImg.jpg'} alt={"Imagen sponsor CardioVex"} width={281} height={112}/></a>

@@ -1,49 +1,60 @@
 'use client'
 
-import {useState} from "react";
+import { useState } from "react";
 import styles from "./groupFilters.module.css"
 import FilterButton from "@/components/FilterButton/FilterButton/FilterButton";
 import useResponsive from "@/components/FilterButton/GroupFilters/useResponsive";
 import { cactus } from '@/app/(views)/ui/fonts';
+import { FilterState } from "@/types/user";
 
-interface FilterState {
-    [key: string]: boolean;
-}
+
 
 interface GroupFiltersProps {
     onFiltersChange?: (filters: FilterState) => void;
     initialFilters?: FilterState;
 }
 
-export default function GroupFilters() {
+export default function GroupFilters({ onFiltersChange, initialFilters = {
+    Mujeres: false,
+    Varones: false,
+    Estudiantes: false,
+    Médicos: false,
+    Enfermeros: false,
+    Técnicos: false,
+    Otros: false
+} }: GroupFiltersProps) {
+    const [filters, setFilters] = useState<FilterState>(initialFilters);
 
-    const isMobile = useResponsive();
-    const [isActive, setIsActive] = useState<boolean>(false)
-
-    const handleToggle = () => {
-        setIsActive(!isActive);
+    const handleChange = (label: keyof FilterState, isActive: boolean) => {
+        const updated = { ...filters, [label]: isActive };
+        setFilters(updated);
+        onFiltersChange?.(updated);
     };
 
+    const isMobile = useResponsive();
+    const [isActive, setIsActive] = useState<boolean>(false);
+
+    const toggle = () => setIsActive(!isActive);
 
     return (
         <div className={styles.toggleContainer}>
-            {/* Botón que activa el toggle */}
-            {isMobile && <button
-                className={`${styles.toggle} ${cactus.className}`}
-                onClick={handleToggle}>
-                Filtrar por
-            </button>}
+            {isMobile && (
+                <button className={`${styles.toggle} ${cactus.className}`} onClick={toggle}>
+                    Filtrar por
+                </button>
+            )}
 
-            {/* Contenido que se muestra/oculta */}
-            { ((isMobile && isActive) || !isMobile)  && (
+            {((isMobile && isActive) || !isMobile) && (
                 <div className={styles.buttonsContainer}>
-                    <FilterButton label={"Mujeres"} initialState={true}/>
-                    <FilterButton label={"Varones"} initialState={true}/>
-                    <FilterButton label={"Estudiantes"} initialState={true}/>
-                    <FilterButton label={"Médicos"} initialState={true}/>
-                    <FilterButton label={"Enfermeros"} initialState={true}/>
-                    <FilterButton label={"Técnicos"} initialState={true}/>
-                    <FilterButton label={"Otros"} initialState={true}/>
+                    {(Object.keys(filters) as (keyof FilterState)[]).map(label => (
+                        <FilterButton
+                            key={label}
+                            label={label}
+                            initialState={filters[label]}
+                            onChange={(value) => handleChange(label, value)}
+                        />
+                    ))}
+
                 </div>
             )}
         </div>
