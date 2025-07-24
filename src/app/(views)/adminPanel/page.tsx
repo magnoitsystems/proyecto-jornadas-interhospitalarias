@@ -26,7 +26,7 @@ export default function AdminPanel() {
     Otros: true,
   });
 
-  // 🚀 Ejecuta la búsqueda cada vez que cambia el filtro
+  // cada vez que se cambia/agrega un filtro se ejecuta el getUsers
   useEffect(() => {
     const gender: string[] = [];
     const job: string[] = [];
