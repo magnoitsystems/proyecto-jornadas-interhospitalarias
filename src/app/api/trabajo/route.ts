@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
             data: autoresParsed.map((a: any) => ({
                 name: a.nombre,
                 affiliation: a.afiliacion,
-                work_id: normalWork.id_work,
+                work_id: normalWork.id_work
             })),
         });
 
