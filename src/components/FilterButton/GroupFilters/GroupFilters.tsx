@@ -15,37 +15,40 @@ interface GroupFiltersProps {
     initialFilters?: FilterState;
 }
 
-export default function GroupFilters() {
+export default function GroupFilters({ onFiltersChange, initialFilters = {} }: GroupFiltersProps) {
+  const [filters, setFilters] = useState<FilterState>(initialFilters);
 
-    const isMobile = useResponsive();
-    const [isActive, setIsActive] = useState<boolean>(false)
+  const handleChange = (label: string, isActive: boolean) => {
+    const updated = { ...filters, [label]: isActive };
+    setFilters(updated);
+    onFiltersChange?.(updated);
+  };
 
-    const handleToggle = () => {
-        setIsActive(!isActive);
-    };
+  const isMobile = useResponsive();
+  const [isActive, setIsActive] = useState<boolean>(false);
 
+  const toggle = () => setIsActive(!isActive);
 
-    return (
-        <div className={styles.toggleContainer}>
-            {/* Botón que activa el toggle */}
-            {isMobile && <button
-                className={`${styles.toggle} ${cactus.className}`}
-                onClick={handleToggle}>
-                Filtrar por
-            </button>}
+  return (
+    <div className={styles.toggleContainer}>
+      {isMobile && (
+        <button className={`${styles.toggle} ${cactus.className}`} onClick={toggle}>
+          Filtrar por
+        </button>
+      )}
 
-            {/* Contenido que se muestra/oculta */}
-            { ((isMobile && isActive) || !isMobile)  && (
-                <div className={styles.buttonsContainer}>
-                    <FilterButton label={"Mujeres"} initialState={true}/>
-                    <FilterButton label={"Varones"} initialState={true}/>
-                    <FilterButton label={"Estudiantes"} initialState={true}/>
-                    <FilterButton label={"Médicos"} initialState={true}/>
-                    <FilterButton label={"Enfermeros"} initialState={true}/>
-                    <FilterButton label={"Técnicos"} initialState={true}/>
-                    <FilterButton label={"Otros"} initialState={true}/>
-                </div>
-            )}
+      {((isMobile && isActive) || !isMobile) && (
+        <div className={styles.buttonsContainer}>
+          {["Mujeres", "Varones", "Estudiantes", "Médicos", "Enfermeros", "Técnicos", "Otros"].map(label => (
+            <FilterButton
+              key={label}
+              label={label}
+              initialState={filters[label]}
+              onChange={(value) => handleChange(label, value)}
+            />
+          ))}
         </div>
-    );
+      )}
+    </div>
+  );
 }
