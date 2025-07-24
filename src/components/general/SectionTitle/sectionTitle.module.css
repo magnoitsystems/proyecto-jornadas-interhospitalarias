@@ -6,7 +6,7 @@
     text-align: center;
 
     width: 90%;
-    height: 75px;
+    height: fit-content;
 
     margin: auto;
     margin-top: var(--20px);

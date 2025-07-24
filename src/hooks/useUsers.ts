@@ -26,6 +26,12 @@ export interface UserData {
   admin: boolean;
 }
 
+export interface UserFilters {
+  gender?: string[];
+  job?: string[];
+}
+
+
 export default function useUsers() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -59,13 +65,34 @@ export default function useUsers() {
     }
   };
 
-  // GET - Obtener todos los usuarios
-  const getAllUsers = async () => {
+  // GET - Obtener todos los usuarios o por filtros
+  const getUsers = async (filters: UserFilters = {}) => {
     setLoading(true);
     setError(null);
 
     try {
-      const response = await fetch("/api/usuario", {
+      const params = new URLSearchParams();
+
+      const genderArray = Array.isArray(filters.gender)
+        ? filters.gender
+        : filters.gender
+          ? [filters.gender]
+          : [];
+
+      const jobArray = Array.isArray(filters.job)
+        ? filters.job
+        : filters.job
+          ? [filters.job]
+          : [];
+
+      genderArray.forEach(g => params.append("gender", g));
+      jobArray.forEach(j => params.append("job", j));
+
+
+      const query = params.toString();
+      const url = query ? `/api/usuario?${query}` : `/api/usuario`;
+
+      const response = await fetch(url, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
@@ -86,7 +113,7 @@ export default function useUsers() {
 
   return {
     createUser,
-    getAllUsers,
+    getUsers,
     users,
     loading,
     error,

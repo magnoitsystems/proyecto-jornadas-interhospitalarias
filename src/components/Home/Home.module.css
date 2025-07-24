@@ -120,7 +120,7 @@
     transform: rotate(180deg);
 }
 
-@media (min-width: 1290px) {
+@media (min-width: 1400px) {
     .sectionCardsProperties{
         flex-direction: row;
         margin-top: 5%;

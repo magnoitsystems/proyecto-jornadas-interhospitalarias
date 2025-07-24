@@ -8,9 +8,8 @@ datasource db {
 }
 
 model author {
-  id_author   Int     @id @default(autoincrement())
+  ment())
   name        String  @db.VarChar(40)
-  lastname    String  @db.VarChar(40)
   affiliation String? @db.VarChar(40)
   id_work     Int
   works       works   @relation(fields: [id_work], references: [id_work], onDelete: Cascade, onUpdate: NoAction, map: "fk_author_works")

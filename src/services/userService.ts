@@ -1,6 +1,6 @@
 import { CreateUserData } from '@/types/user';
 import { ValidationResult } from '@/types/validation';
-import { UserValidationService } from '@/libs/validations/userValidations';
+import { UserValidationService } from '@/utils/userValidations';
 import bcrypt from 'bcryptjs';
 
 export class UserService {
@@ -62,8 +62,7 @@ export class UserService {
     }
 
     private async checkEmailExists(email: string): Promise<boolean> {
-        // Implementar consulta a base de datos
-        console.log(email)
+        // TODO: Implementar con Prisma cuando esté configurado        console.log(email)
         return false;
     }
 }

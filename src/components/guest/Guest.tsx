@@ -1,6 +1,6 @@
 // app/components/ProfessionalCard.tsx
 import Image from 'next/image';
-import styles from './page.module.css';
+import styles from './guest.module.css';
 import { Professional } from '../../types'; // Importamos nuestro tipo
 import React from 'react';
 import { cactus } from '../../app/(views)/ui/fonts';

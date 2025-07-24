@@ -1,5 +1,3 @@
-// src/auth.config.ts
-
 import type { NextRequest } from 'next/server';
 import type { Session, User } from 'next-auth';
 import type { JWT } from 'next-auth/jwt';
@@ -17,7 +15,7 @@ export const authConfig = {
             const isOnLoginPage = nextUrl.pathname.startsWith('/login');
 
             if (!isLoggedIn) {
-                if (isOnAdminPanel || isOnTrabajos) return false;
+                if (isOnAdminPanel || isOnTrabajos) return true; //VOLVER A FALSE
                 return true;
             }
 
@@ -41,6 +39,7 @@ export const authConfig = {
             if (user) {
                 // Ahora token.admin y user.admin son completamente type-safe
                 token.admin = user.admin;
+                token.id = user.id;
             }
             return token;
         },

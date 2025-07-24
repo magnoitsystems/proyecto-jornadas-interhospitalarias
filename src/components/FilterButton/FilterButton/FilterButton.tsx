@@ -2,9 +2,7 @@
 
 import styles from './filterButton.module.css'
 import {useState} from "react";
-import { cactus } from '../../../app/(views)/ui/fonts';
-
-// import {MouseEventHandler} from "react";
+import { cactus } from '@/app/(views)/ui/fonts';
 
 interface FilterButtonProps {
     label: string;

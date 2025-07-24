@@ -1,165 +1,128 @@
 'use client';
 
+import { useEffect, useState } from "react";
 import RoundedCard from "@/components/RoundedCard/RoundedCard";
-import { cactus } from '@/app/(views)/ui/fonts';
 import styles from './page.module.css';
 import GroupFilters from "@/components/FilterButton/GroupFilters/GroupFilters";
 import UserCard from "@/components/UserCard/UserCard";
 import SignOutButton from "@/components/botonSingOut/SignOutButton"
-
-const userCardData = [
-    {
-        id: 1,
-        image: "/icons/autoridades.png",
-        name: "María",
-        surname: "González",
-        profession: "Médica",
-        age: 34,
-        genero: "Femenino",
-        specialty: "Pediatra",
-        typeCard: "user",
-    },
-    {
-        id: 2,
-        image: "/icons/autoridades.png",
-        name: "Carlos",
-        surname: "Mendoza",
-        profession: "No",
-        age: 45,
-        genero: "Masculino",
-        specialty: "Cardiólogo",
-        typeCard: "manuscrito",
-        manuscrito: "Archivo.jpg"
-    },
-    {
-        id: 3,
-        image: "/icons/autoridades.png",
-        name: "Ana",
-        surname: "Pérez",
-        profession: "Médica",
-        age: 38,
-        genero: "Femenino",
-        specialty: "Neuróloga",
-        typeCard: "user"
-    },
-    {
-        id: 4,
-        image: "/icons/autoridades.png",
-        name: "Luis",
-        surname: "Rodríguez",
-        profession: "No",
-        age: 42,
-        genero: "Masculino",
-        specialty: "Ginecólogo",
-        typeCard: "manuscrito",
-        manuscrito: "Archivo.tsx"
-    },
-    {
-        id: 5,
-        image: "/icons/autoridades.png",
-        name: "Carmen",
-        surname: "Silva",
-        profession: "Sí",
-        age: 29,
-        genero: "Femenino",
-        specialty: "Dermatóloga",
-        typeCard: "manuscrito",
-        manuscrito: "Archivo.png"
-    },
-    {
-        id: 6,
-        image: "/icons/autoridades.png",
-        name: "Roberto",
-        surname: "Morales",
-        profession: "Médico",
-        age: 51,
-        genero: "Masculino",
-        specialty: "Traumatólogo",
-        typeCard: "user"
-    },
-    {
-        id: 7,
-        image: "/icons/autoridades.png",
-        name: "Isabel",
-        surname: "Vargas",
-        profession: "Sí",
-        age: 39,
-        genero: "Femenino",
-        specialty: "Psiquiatra",
-        typeCard: "manuscrito",
-        manuscrito: "Archivo.tsx"
-    },
-    {
-        id: 8,
-        image: "/icons/autoridades.png",
-        name: "Fernando",
-        surname: "Castro",
-        profession: "Médico",
-        age: 47,
-        genero: "Masculino",
-        specialty: "Oftalmólogo",
-        typeCard: "manuscrito",
-        manuscrito: "Archivo.jpg"
-    },
-    {
-        id: 9,
-        image: "/icons/autoridades.png",
-        name: "Patricia",
-        surname: "Ramos",
-        profession: "Médica",
-        age: 36,
-        genero: "Femenino",
-        specialty: "Endocrinóloga",
-        typeCard: "user"
-    },
-    {
-        id: 10,
-        image: "/icons/autoridades.png",
-        name: "Miguel",
-        surname: "Torres",
-        profession: "Médico",
-        age: 44,
-        genero: "Masculino",
-        specialty: "Urólogo",
-        typeCard: "user"
-    }
-];
+import { useWorkFilter } from "@/hooks/workFilterAdmin";
+import { Work } from "@/types";
+import useUsers from "@/hooks/useUsers";
+import ManuscriptCard from "@/components/UserCard/ManuscriptCard";
+import UserItemCard from "@/components/UserCard/UserCard";
+import { FilterState } from "@/types/user";
 
 export default function AdminPanel() {
+    const { data, loading, error } = useWorkFilter();
+    const [selectedFilter, setSelectedFilter] = useState<"allWorks" | "withPrize" | "withoutPrize">("allWorks");
+    const [worksToShow, setWorksToShow] = useState<Work[]>([]);
+
+    useEffect(() => {
+        console.log(data)
+        if (!data) return;
+
+        switch (selectedFilter) {
+            case "withPrize":
+                setWorksToShow(data.withPrize);
+                break;
+            case "withoutPrize":
+                setWorksToShow(data.withoutPrize);
+                break;
+            case "allWorks":
+            default:
+                setWorksToShow(data.allWorks);
+                break;
+        }
+    }, [selectedFilter, data]);
+
+    if (loading) return <p>Cargando trabajos...</p>;
+    if (error) return <p>Error: {error}</p>;
+
+    const { users, getUsers, loading: usersLoading } = useUsers();
+
+    const [filterState, setFilterState] = useState<FilterState>({
+        Mujeres: true,
+        Varones: true,
+        Estudiantes: true,
+        Médicos: true,
+        Enfermeros: true,
+        Técnicos: true,
+        Otros: true,
+    });
+
+    // cada vez que se cambia/agrega un filtro se ejecuta el getUsers
+    useEffect(() => {
+        const gender: string[] = [];
+        const job: string[] = [];
+
+        if (filterState.Mujeres) gender.push("femenino");
+        if (filterState.Varones) gender.push("masculino");
+
+        if (filterState.Estudiantes) job.push("estudiante");
+        if (filterState.Médicos) job.push("medico");
+        if (filterState.Enfermeros) job.push("enfermero");
+        if (filterState.Técnicos) job.push("técnico");
+        if (filterState.Otros) job.push("otros");
+
+        getUsers({
+            gender: gender.length > 0 ? gender : undefined,
+            job: job.length > 0 ? job : undefined,
+        });
+    }, [filterState]);
+
+    const handleFiltersChange = (newFilters: FilterState) => {
+        setFilterState(newFilters);
+    };
+
     return (
         <main>
             <div className={styles.roundedCards}>
                 <RoundedCard />
             </div>
-            <div className={`${styles.seeCards} ${cactus.className}`}>
-                <h1>Ver</h1>
-                <select name="cards" id="cards">
-                    <option value="registro">Registro de inscriptos</option>
-                    <option value="sin">Manuscritos SIN opción a premio</option>
-                    <option value="con">Manuscritos CON opción a premio</option>
+            <div className={styles.seeCards}>
+                {/*<h1>Ver</h1>*/}
+                <select
+                    value={selectedFilter}
+                    onChange={(e) => setSelectedFilter(e.target.value as "allWorks" | "withPrize" | "withoutPrize")}
+                    style={{ marginBottom: "1rem" }}
+                >
+                    <option value="allWorks">Todos los manuscritos</option>
+                    <option value="withPrize">Manuscritos CON premio</option>
+                    <option value="withoutPrize">Manuscritos SIN premio</option>
                 </select>
             </div>
-            <SignOutButton/>
+            <SignOutButton />
             <section className={styles.containerContent}>
                 <aside className={styles.aside}>
-                    <GroupFilters/>
-                </aside>
+                    <GroupFilters
+                        onFiltersChange={handleFiltersChange}
+                        initialFilters={filterState}
+                    />                </aside>
                 <section className={styles.containerUserCard}>
-                    {userCardData.map((user) => (
-                        <UserCard
-                            key={user.id}
-                            image={user.image}
-                            name={user.name}
-                            surname={user.surname}
-                            profession={user.profession}
-                            age={user.age}
-                            gender={user.genero}
-                            specialty={user.specialty}
-                            typeCard={user.typeCard}
-                            manuscrito={user.manuscrito}
-                        />
+                    {worksToShow.map((work) => (
+                        <ManuscriptCard key={work.id} work={work} />
                     ))}
+
+                    {usersLoading ? (
+                        <p>Cargando usuarios...</p>
+                    ) : users.length > 0 ? (
+                        users.map((user) => (
+                            <UserItemCard
+                                key={user.id}
+                                name={user.name}
+                                lastname={user.lastname}
+                                gender={user.gender}
+                                age={user.age}
+                                job={user.job}
+                                specialty={user.specialty ?? ''}
+                            />
+                        ))
+                    ) : (
+                        <p>No se encontraron usuarios con esos filtros.</p>
+                    )}
                 </section>
+
             </section>
         </main>
     );

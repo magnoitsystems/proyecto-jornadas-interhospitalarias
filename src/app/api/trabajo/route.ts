@@ -3,8 +3,12 @@ import cloudinary from '@/libs/cloudinary';
 import { prisma } from '@/libs/prisma';
 import { v4 as uuidv4 } from 'uuid';
 import { auth } from '@/auth';
+import {GetWorkForFilter} from "@/services/workFilterService";
+
+const userService = new GetWorkForFilter();
 
 export async function POST(request: NextRequest) {
+    console.log("fuckin post");
     try {
         console.log("HOLA POST");
         
@@ -12,7 +16,7 @@ export async function POST(request: NextRequest) {
         const session = await auth();
         
         // Verificar si el usuario está autenticado
-        if (!session || !session.user?.id) {
+        if (!session || !session?.user?.id) {
             return NextResponse.json(
                 { message: 'Usuario no autenticado' }, 
                 { status: 401 }
@@ -74,7 +78,7 @@ export async function POST(request: NextRequest) {
 
         await prisma.author.createMany({
             data: autoresParsed.map((a: any) => ({
-                name: a.name,
+                name: a.nombre,
                 affiliation: a.afiliacion,
                 work_id: normalWork.id_work,
             })),
@@ -106,4 +110,25 @@ async function subirACloudinary(fileBlob: Blob, title: string) {
             }
         ).end(buffer);
     });
+}
+
+export async function GET(){
+    const usersFilter = await userService.getAllStatistics();
+
+    try {
+        if(!usersFilter){
+            return NextResponse.json(
+                {message: "Error al filtrar"},
+                {status: 400}
+            )
+        }
+
+        return NextResponse.json(usersFilter);
+    }
+    catch (e){
+        return NextResponse.json(
+            { message: "Error del servidor" },
+            { status: 500 }
+        )
+    }
 }

@@ -1,6 +1,6 @@
 import FormPost from "@/components/FormOfWorks/Form";
 import Title from "@/components/general/SectionTitle/SectionTitle"
-import InstructionsToPostWorks from "@/components/instructionsToPostWorks/instructions"
+import InstructionsToPostWorks from "@/components/InstructionsToPostWorks/instructions"
 import styles from "./page.module.css";
 import Rules from   "@/components/rulesToPostWork/Rules"
 import { cactus } from '@/app/(views)/ui/fonts';

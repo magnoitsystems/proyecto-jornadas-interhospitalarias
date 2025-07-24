@@ -1,16 +1,16 @@
 import { Work } from "@/types/index";
 
 export interface User {
-    id_user: number;
+    id: number;
     name: string;
     lastname: string;
     email: string;
     password: string;
-    job: JobType;
+    job: string;
     specialty?: string | null;
     admin: boolean;
     age: number;
-    gender: Gender;
+    gender: string;
     works?: Work[];
 }
 
@@ -43,4 +43,18 @@ export enum JobType {
     TECHNICIAN = 'tecnico',
     OTHER = 'otros'
 }
+
+
+// types/filters.ts
+export type FilterState = {
+  Mujeres: boolean;
+  Varones: boolean;
+  Estudiantes: boolean;
+  Médicos: boolean;
+  Enfermeros: boolean;
+  Técnicos: boolean;
+  Otros: boolean;
+};
+
+
 
