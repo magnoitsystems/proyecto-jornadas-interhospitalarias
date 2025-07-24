@@ -4,6 +4,7 @@ import { prisma } from '@/libs/prisma';
 import { v4 as uuidv4 } from 'uuid';
 import { auth } from '@/auth';
 import {GetWorkForFilter} from "@/services/workFilterService";
+import { supabase } from '@/libs/supabase';
 
 const userService = new GetWorkForFilter();
 
@@ -44,7 +45,7 @@ export async function POST(request: NextRequest) {
         }
 
         // Subir archivo principal
-        const normalUploadResult = await subirACloudinary(file, title);
+        const normalUploadResult = await subirASupabase(file, title);
         const workCode = uuidv4();
 
         // Crear trabajo principal con userId
@@ -54,7 +55,7 @@ export async function POST(request: NextRequest) {
                 category,
                 description,
                 work_code: workCode,
-                file: normalUploadResult.secure_url,
+                file: normalUploadResult,
                 prize: false,
                 user_id: Number(userId),
             },
@@ -62,14 +63,14 @@ export async function POST(request: NextRequest) {
 
         // Si hay premio y archivo de premio
         if (premio && premioFile && premioFile instanceof Blob) {
-            const premioUploadResult = await subirACloudinary(premioFile, `${title}-premio`);
+            const premioUploadUrl = await subirASupabase(premioFile, `${title}-premio`);
             await prisma.works.create({
                 data: {
                     title,
                     category,
                     description,
                     work_code: uuidv4(),
-                    file: premioUploadResult.secure_url,
+                    file: premioUploadUrl,
                     prize: true,
                     user_id: Number(userId)
                 },
@@ -94,22 +95,27 @@ export async function POST(request: NextRequest) {
     }
 }
 
-async function subirACloudinary(fileBlob: Blob, title: string) {
-    console.log("subiendo a cloudinary");
+async function subirASupabase(fileBlob: Blob, filename: string): Promise<string> {
     const buffer = Buffer.from(await fileBlob.arrayBuffer());
-    return await new Promise<any>((resolve, reject) => {
-        cloudinary.uploader.upload_stream(
-            {
-                folder: 'trabajos',
-                resource_type: 'raw',
-                public_id: `${title}-${Date.now()}`,
-            },
-            (error: any, result: any) => {
-                if (error) return reject(error);
-                resolve(result);
-            }
-        ).end(buffer);
-    });
+
+    const { data, error } = await supabase.storage
+        .from('trabajos') // este es el nombre de tu bucket
+        .upload(`${filename}-${Date.now()}.pdf`, buffer, {
+            contentType: 'application/pdf',
+            upsert: true,
+        });
+
+    if (error) {
+        console.error("Error al subir a Supabase:", error.message);
+        throw new Error("No se pudo subir el archivo");
+    }
+
+    const { data: publicUrlData } = supabase
+        .storage
+        .from('trabajos')
+        .getPublicUrl(data.path);
+
+    return publicUrlData.publicUrl;
 }
 
 export async function GET(){
