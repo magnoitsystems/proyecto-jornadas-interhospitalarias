@@ -1,6 +1,6 @@
 import styles from "./AuthoritiesCard.module.css"
 import AuthoritiesSubSection from "@/components/AuthoritiesCard/Card/AuthoritiesSubSection";
-import { cactus } from '../../../app/(views)/ui/fonts';
+import { cactus } from '@/app/(views)/ui/fonts';
 
 export default function AuthoritiesCard({
                                             cardData,
@@ -17,7 +17,7 @@ export default function AuthoritiesCard({
                 {cardData.title}
             </h3>
 
-            {cardData.groups.map((group, index) => (
+            {cardData.groups.map((group: any, index: any) => (
                 <AuthoritiesSubSection
                     key={`${group.position}-${index}`}
                     authorityGroup={group}

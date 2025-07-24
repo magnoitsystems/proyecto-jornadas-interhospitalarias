@@ -24,6 +24,10 @@
     margin: 0 0 var(--5px) 0;
 }
 
+.position{
+    color: var(--primary-color-4);
+}
+
 .marginLeft{
     padding-left: var(--15px);
 }

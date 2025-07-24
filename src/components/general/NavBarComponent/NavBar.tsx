@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './NavBar.module.css';
 import { JSX, useState, useEffect } from 'react';
-import { cactus } from '../../../app/(views)/ui/fonts';
+import { cactus } from '@/app/(views)/ui/fonts';
 import { usePathname } from 'next/navigation';
 
 export default function NavBar(): JSX.Element {
@@ -77,7 +77,7 @@ export default function NavBar(): JSX.Element {
                     <Link href="/"
                         onClick={() => setIsOpen(false)}>
                         <Image
-                            src={'/imgs/nav-logo.png'}
+                            src={'/imgs/logos/navLogo.png'}
                             alt={'interhospitalities meeting logo'}
                             fill
                             style={{ objectFit: 'contain', cursor: 'pointer' }}

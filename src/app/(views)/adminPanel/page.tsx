@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import RoundedCard from "@/components/RoundedCard/RoundedCard";
 import styles from './page.module.css';
 import GroupFilters from "@/components/FilterButton/GroupFilters/GroupFilters";
-import UserCard from "@/components/UserCard/UserCard";
 import SignOutButton from "@/components/botonSingOut/SignOutButton"
 import { useWorkFilter } from "@/hooks/workFilterAdmin";
 import { Work } from "@/types";
@@ -15,8 +14,18 @@ import { FilterState } from "@/types/user";
 
 export default function AdminPanel() {
     const { data, loading, error } = useWorkFilter();
+    const { users, getUsers, loading: usersLoading } = useUsers();
     const [selectedFilter, setSelectedFilter] = useState<"allWorks" | "withPrize" | "withoutPrize">("allWorks");
     const [worksToShow, setWorksToShow] = useState<Work[]>([]);
+    const [filterState, setFilterState] = useState<FilterState>({
+        Mujeres: true,
+        Varones: true,
+        Estudiantes: true,
+        Médicos: true,
+        Enfermeros: true,
+        Técnicos: true,
+        Otros: true,
+    });
 
     useEffect(() => {
         console.log(data)
@@ -36,34 +45,18 @@ export default function AdminPanel() {
         }
     }, [selectedFilter, data]);
 
-    if (loading) return <p>Cargando trabajos...</p>;
-    if (error) return <p>Error: {error}</p>;
-
-    const { users, getUsers, loading: usersLoading } = useUsers();
-
-    const [filterState, setFilterState] = useState<FilterState>({
-        Mujeres: true,
-        Varones: true,
-        Estudiantes: true,
-        Médicos: true,
-        Enfermeros: true,
-        Técnicos: true,
-        Otros: true,
-    });
-
-    // cada vez que se cambia/agrega un filtro se ejecuta el getUsers
     useEffect(() => {
         const gender: string[] = [];
         const job: string[] = [];
 
-        if (filterState.Mujeres) gender.push("Mujer");
-        if (filterState.Varones) gender.push("Varón");
+        if (filterState.Mujeres) gender.push("femenino");
+        if (filterState.Varones) gender.push("masculino");
 
-        if (filterState.Estudiantes) job.push("Estudiante");
-        if (filterState.Médicos) job.push("Médico");
-        if (filterState.Enfermeros) job.push("Enfermero");
-        if (filterState.Técnicos) job.push("Técnico");
-        if (filterState.Otros) job.push("Otro");
+        if (filterState.Estudiantes) job.push("estudiante");
+        if (filterState.Médicos) job.push("medico");
+        if (filterState.Enfermeros) job.push("enfermero");
+        if (filterState.Técnicos) job.push("técnico");
+        if (filterState.Otros) job.push("otros");
 
         getUsers({
             gender: gender.length > 0 ? gender : undefined,
@@ -75,13 +68,16 @@ export default function AdminPanel() {
         setFilterState(newFilters);
     };
 
+    if (loading) return <p>Cargando trabajos...</p>;
+    if (error) return <p>Error: {error}</p>;
+
     return (
         <main>
             <div className={styles.roundedCards}>
                 <RoundedCard />
             </div>
             <div className={styles.seeCards}>
-                {/*<h1>Ver</h1>*/}
+                <h1>Ver</h1>
                 <select
                     value={selectedFilter}
                     onChange={(e) => setSelectedFilter(e.target.value as "allWorks" | "withPrize" | "withoutPrize")}
@@ -101,7 +97,7 @@ export default function AdminPanel() {
                     />                </aside>
                 <section className={styles.containerUserCard}>
                     {worksToShow.map((work) => (
-                        <ManuscriptCard key={work.id} work={work} />
+                        <ManuscriptCard work={work} />
                     ))}
 
                     {usersLoading ? (
@@ -122,7 +118,6 @@ export default function AdminPanel() {
                         <p>No se encontraron usuarios con esos filtros.</p>
                     )}
                 </section>
-
             </section>
         </main>
     );

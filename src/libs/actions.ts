@@ -1,10 +1,6 @@
-// src/lib/actions.ts
-
 'use server';
-
 import { signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
-
 
 export async function authenticate(
     prevState: string | undefined,
@@ -26,8 +22,6 @@ export async function authenticate(
                     return 'Algo salió mal. Por favor, inténtelo de nuevo.';
             }
         }
-
-
         throw error;
     }
 }
