@@ -16,7 +16,7 @@ CREATE TABLE "user" (
                         name VARCHAR(40) NOT NULL,
                         lastname VARCHAR(40) NOT NULL,
                         email VARCHAR(40) NOT NULL UNIQUE,
-                        password VARCHAR(255) NOT NULL,
+                        password VARCHAR(80) NOT NULL,
                         job VARCHAR(50) CHECK (job IN (
                                                        'medico',
                                                        'estudiante',
@@ -60,7 +60,6 @@ CREATE TABLE works (
 CREATE TABLE author (
                         id_author SERIAL PRIMARY KEY,
                         name VARCHAR(40) NOT NULL,
-                        lastname VARCHAR(40) NOT NULL,
                         affiliation VARCHAR(40),
                         id_work INTEGER NOT NULL,
 
@@ -125,14 +124,14 @@ INSERT INTO works (category, description, user_id, work_code, title, file) VALUE
                                                                                );
 
 -- Autores de prueba (DESPUÉS de insertar works)
-INSERT INTO author (name, lastname, affiliation, id_work) VALUES
-                                                              ('Juan', 'Pérez', 'Hospital Central', 1),
-                                                              ('Dra. Elena', 'Vásquez', 'Universidad Nacional', 1),
-                                                              ('Juan', 'Pérez', 'Hospital Central', 2),
-                                                              ('María', 'González', 'Universidad de Medicina', 3),
-                                                              ('Prof. Roberto', 'Silva', 'Facultad de Medicina', 3),
-                                                              ('Carlos', 'López', 'Hospital San Juan', 4),
-                                                              ('Enfermera Jefe Laura', 'Torres', 'Hospital San Juan', 4),
-                                                              ('Ana', 'Martínez', 'Centro de Rehabilitación', 5),
-                                                              ('Dr. Miguel', 'Herrera', 'Instituto Neurológico', 5),
-                                                              ('Lic. Patricia', 'Morales', 'Centro de Rehabilitación', 5);
+INSERT INTO author (name, affiliation, id_work) VALUES
+                                                              ('Juan Pérez', 'Hospital Central', 1),
+                                                              ('Dra. Elena Vásquez', 'Universidad Nacional', 1),
+                                                              ('Juan Pérez', 'Hospital Central', 2),
+                                                              ('María González', 'Universidad de Medicina', 3),
+                                                              ('Roberto Silva', 'Facultad de Medicina', 3),
+                                                              ('Carlos López', 'Hospital San Juan', 4),
+                                                              ('Laura Torres', 'Hospital San Juan', 4),
+                                                              ('Ana Martínez', 'Centro de Rehabilitación', 5),
+                                                              ('Miguel Herrera', 'Instituto Neurológico', 5),
+                                                              ('Patricia Morales', 'Centro de Rehabilitación', 5);
