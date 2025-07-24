@@ -8,14 +8,13 @@
     gap: 40px;
     margin-bottom: 10px;
     margin-top: 50px;
-    padding-bottom: 20px;
-    padding-top: 20px;
+    padding: 20px;
 }
 
 .sponsorsProperties, .imageProperties{
     display: flex;
     flex-direction: column;
-    width: 408px;
+    width: 30%;
     align-items: center;
 }
 
@@ -55,7 +54,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 919px;
+    width: 70%;
 }
 
 .infoPresentationProperties{
@@ -94,7 +93,7 @@
     width: 95%;
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1024px) {
     .cardAndSponsorsProperties{
         flex-direction: column;
         align-items: center;
