@@ -35,7 +35,6 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
                         admin: userFromDb.admin, // Esta es la propiedad crucial
                     };
                 }
-
                 return null;
             },
         }),

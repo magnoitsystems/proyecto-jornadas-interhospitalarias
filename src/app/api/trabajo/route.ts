@@ -3,6 +3,9 @@ import cloudinary from '@/libs/cloudinary';
 import { prisma } from '@/libs/prisma';
 import { v4 as uuidv4 } from 'uuid';
 import { auth } from '@/auth';
+import {GetWorkForFilter} from "@/services/workFilterService";
+
+const userService = new GetWorkForFilter();
 
 export async function POST(request: NextRequest) {
     try {
@@ -106,4 +109,25 @@ async function subirACloudinary(fileBlob: Blob, title: string) {
             }
         ).end(buffer);
     });
+}
+
+export async function GET(){
+    const usersFilter = await userService.getAllStatistics();
+
+    try {
+        if(!usersFilter){
+            return NextResponse.json(
+                {message: "Error al filtrar"},
+                {status: 400}
+            )
+        }
+
+        return NextResponse.json(usersFilter);
+    }
+    catch (e){
+        return NextResponse.json(
+            { message: "Error del servidor" },
+            { status: 500 }
+        )
+    }
 }

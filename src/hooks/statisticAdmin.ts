@@ -10,15 +10,12 @@ export function statisticAdmin(){
         fetch('/api/estadistica')
             .then(async (res) => {
                 if (!res.ok) {
-                    const errorBody = await res.text();
-                    console.error("Error body:", errorBody);
                     throw new Error("Error al obtener las estadísticas");
                 }
                 return res.json();
             })
             .then((stats: Statistics[]) => setData(stats.flat()))
             .catch((err) => {
-                console.error("Fetch error:", err);
                 setError(err.message);
             })
             .finally(() => setLoading(false));

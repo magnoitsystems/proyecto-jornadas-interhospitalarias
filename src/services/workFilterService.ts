@@ -2,7 +2,7 @@ import {prisma} from "@/libs/prisma";
 import {Work} from "@/types";
 import {Gender, JobType} from "@/types/user";
 
-export class getWorkForFilter{
+export class GetWorkForFilter{
 
     private mapWorkToInterface(work: any): Work {
         return {

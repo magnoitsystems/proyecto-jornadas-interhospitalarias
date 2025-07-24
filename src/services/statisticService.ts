@@ -6,7 +6,7 @@ export class GetStatistic{
     async getForGenderFeminine(): Promise<Statistics[]>{
         const result = await prisma.user.count({
             where: {
-                genre: "femenino"
+                gender: "femenino"
             }
         })
         return [{
@@ -18,7 +18,7 @@ export class GetStatistic{
     async getForGenderMale(): Promise<Statistics[]>{
         const result = await prisma.user.count({
             where:{
-                genre: "masculino"
+                gender: "masculino"
             }
         })
         return [{
