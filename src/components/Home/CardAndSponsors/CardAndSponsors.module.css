@@ -75,25 +75,11 @@
     transition: background-color 1s ease;
 }
 
-.infoAndImageProperties{
-    display: flex;
-    flex-direction: row;
-}
-
-.infoAndImageProperties p{
-    width: 80%;
-}
-
-.imagePresentationProperties{
-    display: flex;
-    flex-direction: column;
-    padding-top: 30px;
-    position: relative;
-}
-
 .paragraphOneProperties{
     display: flex;
     align-items: center;
+
+    width: 100%;
 }
 
 .paragraphProperties {

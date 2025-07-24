@@ -30,12 +30,14 @@ export default function Home(){
             <section className={`${styles.sectionCardsProperties}`}>
                 <div className={`${styles.cardCompletyProperties} ${abierta? styles.openCardCardCompletyProperties : styles.cardCompletyProperties}`}  onMouseEnter={() => setHovered(true)}
                      onMouseLeave={() => setHovered(false)}>
+
                     <div className={`${styles.cardProperties} ${styles.cardHoverPropertie} ${abierta? styles.openCardProperties : styles.cardProperties}`}>
                         <div className={styles.deployIconProperties}>
                             <button className={`${styles.buttonProperties} ${abierta? styles.iconRotate : styles.buttonProperties}`} onClick={toggleCardB1}>
                                 <Image src={'/icons/deployIcon.png'} alt={"Icono para desplegar la card con información"} width={25} height={15} />
                             </button>
                         </div>
+
                         <div className={`${styles.todo} ${cactus.className}`}>
                             <div className={styles.imageCardProperties}>
                                 <Image src={'/icons/homeIcon.png'} alt={"Icono de casa"} width={32} height={32}/>
@@ -46,6 +48,7 @@ export default function Home(){
                             </div>
                         </div>
                     </div>
+
                     <div className={`${styles.infoCardProperties} ${abierta? styles.openCard : styles.cardClosed}`}>
                         <InfoCard info="Teatro del Fuerte" info2={"MUMBAT"} info3={"Salón Blanco del Palacio Municipal"}
                                   info4={"Htal. de Niños Debilio Blanco Villegas"} sede={true}/>
