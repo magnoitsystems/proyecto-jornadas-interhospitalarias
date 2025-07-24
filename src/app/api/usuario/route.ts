@@ -2,6 +2,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { UserService } from '@/libs/database/userService';
 import { prisma } from '@/libs/prisma';
+import {Prisma} from "@prisma/client/extension";
 
 export async function POST(request: NextRequest) {
     try {
@@ -69,4 +70,13 @@ export async function POST(request: NextRequest) {
             { status: 500 }
         );
     }
+
+}
+export async function GET(request: NextRequest) {
+    const searchParams = request.nextUrl.searchParams;
+    const genderFilters = searchParams.getAll('gender');
+    const jobFilters = searchParams.getAll('job');
+
+    const filters: Prisma.UserWhereInput={admin: false};
+
 }
