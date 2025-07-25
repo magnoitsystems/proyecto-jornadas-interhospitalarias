@@ -221,7 +221,7 @@
     animation: slideDownFadeIn 0.4s ease-out forwards;
 }
 
-@media (min-width: 740px) {
+@media (min-width: 768px) {
     .formContainer {
         margin: 0;
     }

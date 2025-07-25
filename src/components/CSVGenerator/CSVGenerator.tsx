@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import styles from './CSVGenerator.module.css';
+import { cactus } from '@/app/(views)/ui/fonts';
 
 interface CSVGeneratorProps {
     className?: string;
@@ -125,19 +126,19 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
     };
 
     return (
-        <div className={`${styles.container} ${className}`}>
+        <div className={`${styles.container} ${className} ${cactus.className}`}>
             <h2 className={styles.title}>
                 Generador de Reportes Médicos
             </h2>
 
             {error && (
-                <div className={styles.errorAlert}>
+                <div className={`${styles.errorAlert} ${cactus.className}`}>
                     <p className={styles.errorTitle}>Error generando reporte:</p>
                     <p className={styles.errorMessage}>{error}</p>
                 </div>
             )}
 
-            <div className={styles.formContent}>
+            <div className={`${styles.formContent} ${cactus.className}`}>
                 {/* Formato de Reporte */}
                 <div className={styles.section}>
                     <label className={styles.sectionLabel}>
