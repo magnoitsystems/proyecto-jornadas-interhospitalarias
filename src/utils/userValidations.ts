@@ -12,7 +12,6 @@ export class UserValidationService {
         this.validateName(userData.name);
         this.validateLastname(userData.lastname);
         this.validateEmail(userData.email);
-        this.validatePassword(userData.password);
         this.validateJob(userData.job);
         this.validateSpecialty(userData.specialty);
         this.validateAge(userData.age);
@@ -82,35 +81,6 @@ export class UserValidationService {
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if (!emailRegex.test(email)) {
             this.addError('email', 'El formato del email no es válido');
-        }
-    }
-
-    private validatePassword(password: string): void {
-        if (!password || password.length === 0) {
-            this.addError('password', 'La contraseña es obligatoria');
-            return;
-        }
-
-        if (password.length > 40) {
-            this.addError('password', 'La contraseña no puede exceder 40 caracteres');
-            return;
-        }
-
-        if (password.length < 8) {
-            this.addError('password', 'La contraseña debe tener al menos 8 caracteres');
-            return;
-        }
-
-        if (!/[a-z]/.test(password)) {
-            this.addError('password', 'La contraseña debe contener al menos una letra minúscula');
-        }
-
-        if (!/[A-Z]/.test(password)) {
-            this.addError('password', 'La contraseña debe contener al menos una letra mayúscula');
-        }
-
-        if (!/\d/.test(password)) {
-            this.addError('password', 'La contraseña debe contener al menos un número');
         }
     }
 

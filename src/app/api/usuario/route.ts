@@ -12,6 +12,9 @@ export async function POST(request: NextRequest) {
 
         const result = await userService.validateUser(userData);
 
+				console.log(result);
+				console.log(result.success, result.user);
+
         if (result.success && result.user) {
 
              const createdUser = await prisma.user.create({
