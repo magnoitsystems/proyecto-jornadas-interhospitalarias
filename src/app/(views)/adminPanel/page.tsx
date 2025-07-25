@@ -25,6 +25,7 @@ export default function AdminPanel() {
         Enfermeros: true,
         Técnicos: true,
         Otros: true,
+        NoSalud: false
     });
 
     useEffect(() => {
@@ -63,6 +64,7 @@ export default function AdminPanel() {
         if (filterState.Enfermeros) job.push("enfermero");
         if (filterState.Técnicos) job.push("técnico");
         if (filterState.Otros) job.push("otros");
+        if(filterState.NoSalud) job.push("no perteneciente al área de la salud");
 
         getUsers({
             gender: gender.length > 0 ? gender : undefined,
