@@ -3,6 +3,7 @@ import { ValidationResult } from '@/types/validation';
 import { UserValidationService } from '@/utils/userValidations';
 import bcrypt from 'bcryptjs';
 import {PasswordGenerator} from "@/utils/PasswordGenerator";
+import { prisma } from '@/libs/prisma';
 
 export class UserService {
     private validator: UserValidationService;
@@ -65,7 +66,15 @@ export class UserService {
     }
 
     private async checkEmailExists(email: string): Promise<boolean> {
-        // TODO: Implementar con Prisma cuando esté configurado        console.log(email)
+	    const response = await prisma.user.findFirst({
+		    where: {
+				email: email
+		    }
+	    })
+
+	    if (!response)
+			return true;
+
         return false;
     }
 }
