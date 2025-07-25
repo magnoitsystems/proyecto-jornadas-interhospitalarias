@@ -12,7 +12,7 @@
     height: fit-content;
 
     padding: 30px;
-    gap: 30px;
+    gap: 10px;
 
     background-color: #ffffff;
     border: 2px solid var(--primary-color-2);
@@ -45,34 +45,10 @@
     font-weight: normal;
     color: #555;
 }
-/* app/components/ProfessionalCard.module.css */
-
-/* ... (Todos tus estilos anteriores de .card, .imageContainer, etc., van aquí) ... */
 
 
-/* --- RESPONSIVE DESIGN PARA MÓVILES --- */
-/* Esta regla se aplicará en pantallas con un ancho máximo de 768px */
-@media (max-width: 728px) {
+@media (min-width: 1024px) {
     .card {
-        width: 100%;
-        /* 1. Cambia la dirección de flex a columna para apilar los elementos */
-        flex-direction: column;
-
-        /* 2. Permite que la altura crezca según el contenido */
-        height: auto;
-
-        /* 3. Ajusta el padding si es necesario para pantallas pequeñas */
-        padding: 25px 15px;
-    }
-
-    .imageContainer {
-        /* 4. Elimina el margen derecho y añade un margen inferior para separar la imagen del texto */
-        margin-right: 0;
-        margin-bottom: 20px;
-    }
-
-    /* (Opcional pero recomendado) Centra el texto en la vista móvil */
-    .infoContainer {
-        text-align: center;
+        gap: var(--30px);
     }
 }

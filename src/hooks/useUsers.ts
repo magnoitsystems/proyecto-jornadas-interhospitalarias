@@ -1,5 +1,4 @@
-import { useState } from "react";
-
+import { useState, useCallback, useEffect } from "react";
 export interface User {
   id: number;
   name: string;
@@ -33,7 +32,7 @@ export interface UserFilters {
 
 
 export default function useUsers() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [users, setUsers] = useState<User[]>([]);
@@ -100,7 +99,9 @@ export default function useUsers() {
       if (!response.ok) throw new Error("Error al obtener usuarios");
 
       const data = await response.json();
-      setUsers(data.users || []);
+
+      setUsers(data.responseUser || []);
+
       return data.users || [];
     } catch (err: any) {
       setError(err.message);

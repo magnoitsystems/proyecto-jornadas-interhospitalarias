@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import RoundedCard from "@/components/RoundedCard/RoundedCard";
 import styles from './page.module.css';
 import GroupFilters from "@/components/FilterButton/GroupFilters/GroupFilters";
-import UserCard from "@/components/UserCard/UserCard";
 import SignOutButton from "@/components/botonSingOut/SignOutButton"
 import { useWorkFilter } from "@/hooks/workFilterAdmin";
 import { Work } from "@/types";
@@ -15,8 +14,18 @@ import { FilterState } from "@/types/user";
 
 export default function AdminPanel() {
     const { data, loading, error } = useWorkFilter();
+    const { users, getUsers, loading: usersLoading } = useUsers();
     const [selectedFilter, setSelectedFilter] = useState<"allWorks" | "withPrize" | "withoutPrize">("allWorks");
     const [worksToShow, setWorksToShow] = useState<Work[]>([]);
+    const [filterState, setFilterState] = useState<FilterState>({
+        Mujeres: true,
+        Varones: true,
+        Estudiantes: true,
+        Médicos: true,
+        Enfermeros: true,
+        Técnicos: true,
+        Otros: true,
+    });
 
     useEffect(() => {
         console.log(data)
@@ -36,22 +45,12 @@ export default function AdminPanel() {
         }
     }, [selectedFilter, data]);
 
-    if (loading) return <p>Cargando trabajos...</p>;
-    if (error) return <p>Error: {error}</p>;
+    useEffect(() => {
+        // Llama a getUsers con filtros vacíos (o todos) para cargar todo al inicio.
+        // La función getUsers debería manejar el caso de filtros 'undefined' para traer todo.
+        getUsers({});
+    }, []);
 
-    const { users, getUsers, loading: usersLoading } = useUsers();
-
-    const [filterState, setFilterState] = useState<FilterState>({
-        Mujeres: true,
-        Varones: true,
-        Estudiantes: true,
-        Médicos: true,
-        Enfermeros: true,
-        Técnicos: true,
-        Otros: true,
-    });
-
-    // cada vez que se cambia/agrega un filtro se ejecuta el getUsers
     useEffect(() => {
         const gender: string[] = [];
         const job: string[] = [];
@@ -75,13 +74,16 @@ export default function AdminPanel() {
         setFilterState(newFilters);
     };
 
+    if (loading) return <p>Cargando trabajos...</p>;
+    if (error) return <p>Error: {error}</p>;
+
     return (
         <main>
             <div className={styles.roundedCards}>
                 <RoundedCard />
             </div>
             <div className={styles.seeCards}>
-                {/*<h1>Ver</h1>*/}
+                <h1>Ver</h1>
                 <select
                     value={selectedFilter}
                     onChange={(e) => setSelectedFilter(e.target.value as "allWorks" | "withPrize" | "withoutPrize")}
@@ -101,7 +103,7 @@ export default function AdminPanel() {
                     />                </aside>
                 <section className={styles.containerUserCard}>
                     {worksToShow.map((work) => (
-                        <ManuscriptCard key={work.id} work={work} />
+                        <ManuscriptCard work={work} />
                     ))}
 
                     {usersLoading ? (
@@ -122,7 +124,6 @@ export default function AdminPanel() {
                         <p>No se encontraron usuarios con esos filtros.</p>
                     )}
                 </section>
-
             </section>
         </main>
     );

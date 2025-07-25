@@ -117,30 +117,3 @@
   margin-top: 1rem;
   font-style: italic;
 }
-
-
-/* Responsive */
-@media (max-width: 768px) {
-    .formContainer {
-        margin-top: 30px; /* Ajuste para navbar móvil - más cerca */
-        padding: 2rem 1rem;
-        min-height: calc(100vh - 60px);
-    }
-
-    .formIntro h2 {
-        font-size: 1.5rem;
-    }
-
-    .formIntro p {
-        font-size: 1rem;
-    }
-
-    .formCard input {
-        width: 100%;
-        max-width: 280px;
-    }
-
-    .formInput {
-        padding: 1.5rem;
-    }
-}
