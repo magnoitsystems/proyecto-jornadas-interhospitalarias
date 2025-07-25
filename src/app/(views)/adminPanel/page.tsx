@@ -11,6 +11,7 @@ import useUsers from "@/hooks/useUsers";
 import ManuscriptCard from "@/components/UserCard/ManuscriptCard";
 import UserItemCard from "@/components/UserCard/UserCard";
 import { FilterState } from "@/types/user";
+import Link from "next/link";
 
 export default function AdminPanel() {
     const { data, loading, error } = useWorkFilter();
@@ -85,18 +86,23 @@ export default function AdminPanel() {
             <div className={styles.roundedCards}>
                 <RoundedCard />
             </div>
-            <div className={styles.seeCards}>
-                <h1>Ver</h1>
-                <select
-                    value={selectedFilter}
-                    onChange={(e) => setSelectedFilter(e.target.value as "allWorks" | "withPrize" | "withoutPrize" | "inscripts")}
-                    style={{ marginBottom: "1rem" }}
-                >
-                    <option value="allWorks">Todos los manuscritos</option>
-                    <option value="withPrize">Manuscritos CON premio</option>
-                    <option value="withoutPrize">Manuscritos SIN premio</option>
-                    <option value="inscripts">Inscriptos a la jornada</option>
-                </select>
+            <div className={styles.filterAndReportsButtonProperties}>
+                <div className={styles.seeCards}>
+                    <h1>Ver</h1>
+                    <select
+                        value={selectedFilter}
+                        onChange={(e) => setSelectedFilter(e.target.value as "allWorks" | "withPrize" | "withoutPrize" | "inscripts")}
+                        style={{ marginBottom: "1rem" }}
+                    >
+                        <option value="inscripts">Inscriptos a la jornada</option>
+                        <option value="allWorks">Todos los manuscritos</option>
+                        <option value="withPrize">Manuscritos CON premio</option>
+                        <option value="withoutPrize">Manuscritos SIN premio</option>
+                    </select>
+                </div>
+                <div className={styles.reportsButtonProperties}>
+                    <Link href={"./adminPanel/reports"}><button>Ver reportes</button></Link>
+                </div>
             </div>
             <SignOutButton />
             <section className={styles.containerContent}>
