@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import cloudinary from '@/libs/cloudinary';
+// import cloudinary from '@/libs/cloudinary';
 import { prisma } from '@/libs/prisma';
 import { v4 as uuidv4 } from 'uuid';
 import { auth } from '@/auth';
