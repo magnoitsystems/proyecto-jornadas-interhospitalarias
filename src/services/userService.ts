@@ -33,7 +33,9 @@ export class UserService {
                 };
             }
 
-            const hashedPassword = await bcrypt.hash(userData.password, 12);
+            const passwordgenerator = new PasswordGenerator();
+            const password = passwordgenerator.generatePassword();
+            const hashedPassword = await bcrypt.hash(password, 12);
 
             const userToInsert : CreateUserData = {
                 name: userData.name.trim(),
@@ -64,5 +66,9 @@ export class UserService {
     private async checkEmailExists(email: string): Promise<boolean> {
         // TODO: Implementar con Prisma cuando esté configurado        console.log(email)
         return false;
+    }
+
+    private generatePassword() {
+
     }
 }

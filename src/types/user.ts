@@ -54,6 +54,7 @@ export type FilterState = {
   Enfermeros: boolean;
   Técnicos: boolean;
   Otros: boolean;
+  NoSalud: boolean;
 };
 
 

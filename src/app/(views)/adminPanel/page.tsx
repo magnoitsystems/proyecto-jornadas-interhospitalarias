@@ -15,7 +15,7 @@ import { FilterState } from "@/types/user";
 export default function AdminPanel() {
     const { data, loading, error } = useWorkFilter();
     const { users, getUsers, loading: usersLoading } = useUsers();
-    const [selectedFilter, setSelectedFilter] = useState<"allWorks" | "withPrize" | "withoutPrize">("allWorks");
+    const [selectedFilter, setSelectedFilter] = useState<"allWorks" | "withPrize" | "withoutPrize" | "inscripts">("allWorks");
     const [worksToShow, setWorksToShow] = useState<Work[]>([]);
     const [filterState, setFilterState] = useState<FilterState>({
         Mujeres: true,
@@ -25,6 +25,7 @@ export default function AdminPanel() {
         Enfermeros: true,
         Técnicos: true,
         Otros: true,
+        NoSalud: false
     });
 
     useEffect(() => {
@@ -38,6 +39,9 @@ export default function AdminPanel() {
             case "withoutPrize":
                 setWorksToShow(data.withoutPrize);
                 break;
+            case "inscripts":
+                getUsers();
+                break;
             case "allWorks":
             default:
                 setWorksToShow(data.allWorks);
@@ -45,7 +49,10 @@ export default function AdminPanel() {
         }
     }, [selectedFilter, data]);
 
+
     useEffect(() => {
+        if (selectedFilter !== "inscripts") return;
+
         const gender: string[] = [];
         const job: string[] = [];
 
@@ -57,12 +64,14 @@ export default function AdminPanel() {
         if (filterState.Enfermeros) job.push("enfermero");
         if (filterState.Técnicos) job.push("técnico");
         if (filterState.Otros) job.push("otros");
+        if(filterState.NoSalud) job.push("no perteneciente al área de la salud");
 
         getUsers({
             gender: gender.length > 0 ? gender : undefined,
             job: job.length > 0 ? job : undefined,
         });
-    }, [filterState]);
+    }, [filterState, selectedFilter]);
+
 
     const handleFiltersChange = (newFilters: FilterState) => {
         setFilterState(newFilters);
@@ -80,44 +89,52 @@ export default function AdminPanel() {
                 <h1>Ver</h1>
                 <select
                     value={selectedFilter}
-                    onChange={(e) => setSelectedFilter(e.target.value as "allWorks" | "withPrize" | "withoutPrize")}
+                    onChange={(e) => setSelectedFilter(e.target.value as "allWorks" | "withPrize" | "withoutPrize" | "inscripts")}
                     style={{ marginBottom: "1rem" }}
                 >
                     <option value="allWorks">Todos los manuscritos</option>
                     <option value="withPrize">Manuscritos CON premio</option>
                     <option value="withoutPrize">Manuscritos SIN premio</option>
+                    <option value="inscripts">Inscriptos a la jornada</option>
                 </select>
             </div>
             <SignOutButton />
             <section className={styles.containerContent}>
-                <aside className={styles.aside}>
-                    <GroupFilters
-                        onFiltersChange={handleFiltersChange}
-                        initialFilters={filterState}
-                    />                </aside>
-                <section className={styles.containerUserCard}>
-                    {worksToShow.map((work) => (
-                        <ManuscriptCard work={work} />
-                    ))}
+                {selectedFilter === "inscripts" && (
+                    <aside className={styles.aside}>
+                        <GroupFilters
+                            onFiltersChange={handleFiltersChange}
+                            initialFilters={filterState}
+                        />
+                    </aside>
+                )}
 
-                    {usersLoading ? (
-                        <p>Cargando usuarios...</p>
-                    ) : users.length > 0 ? (
-                        users.map((user) => (
-                            <UserItemCard
-                                key={user.id}
-                                name={user.name}
-                                lastname={user.lastname}
-                                gender={user.gender}
-                                age={user.age}
-                                job={user.job}
-                                specialty={user.specialty ?? ''}
-                            />
-                        ))
+                <section className={styles.containerUserCard}>
+                    {selectedFilter === "inscripts" ? (
+                        usersLoading ? (
+                            <p>Cargando usuarios...</p>
+                        ) : users.length > 0 ? (
+                            users.map((user) => (
+                                <UserItemCard
+                                    key={user.id}
+                                    name={user.name}
+                                    lastname={user.lastname}
+                                    gender={user.gender}
+                                    age={user.age}
+                                    job={user.job}
+                                    specialty={user.specialty ?? ''}
+                                />
+                            ))
+                        ) : (
+                            <p>No se encontraron usuarios con esos filtros.</p>
+                        )
                     ) : (
-                        <p>No se encontraron usuarios con esos filtros.</p>
+                        worksToShow.map((work) => (
+                            <ManuscriptCard key={work.id} work={work} />
+                        ))
                     )}
                 </section>
+
             </section>
         </main>
     );

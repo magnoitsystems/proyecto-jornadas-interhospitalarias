@@ -3,6 +3,7 @@ import type { NextConfig } from 'next';
 /** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
     reactStrictMode: true,
+
     images: {
         remotePatterns: [
             {
@@ -10,12 +11,11 @@ const nextConfig: NextConfig = {
                 hostname: 'images.unsplash.com',
             },
         ],
+
     },
 
+
     // 👇 Desactiva Turbopack explícitamente
-    experimental: {
-        turbo: false,
-    },
 };
 
 export default nextConfig;
