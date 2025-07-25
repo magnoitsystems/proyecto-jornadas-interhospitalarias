@@ -17,7 +17,7 @@ export const authConfig = {
             const isOnLoginPage = nextUrl.pathname.startsWith('/login');
 
             if (!isLoggedIn) {
-                if (isOnAdminPanel || isOnTrabajos) return true;
+                if (isOnAdminPanel || isOnTrabajos) return false;
                 return true;
             }
 
