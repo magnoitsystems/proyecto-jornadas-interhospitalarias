@@ -10,7 +10,7 @@
 .cardProperties{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
     height: 137px;
     background-color: var(--secondary-color-4);
     color: white;
@@ -133,6 +133,7 @@
     }
 
     .cardProperties{
+        width: 480px;
         gap: 30px;
     }
 
