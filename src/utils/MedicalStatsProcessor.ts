@@ -17,7 +17,6 @@ export class MedicalStatsProcessor {
 			? { job: { not: 'no perteneciente al área de la salud' }, admin: false }
 			: { admin: false };
 
-		// PROFESIONES - Con el poder de Prisma groupBy
 		if (config.includeProfession) {
 			const professionStats = await prisma.user.groupBy({
 				by: ['job'],
@@ -61,7 +60,6 @@ export class MedicalStatsProcessor {
 			);
 		}
 
-		// GÉNEROS - Prisma siendo sexy con sus agregaciones
 		if (config.includeGender) {
 			const genderStats = await prisma.user.groupBy({
 				by: ['gender'],
@@ -88,7 +86,6 @@ export class MedicalStatsProcessor {
 			);
 		}
 
-		// ESPECIALIDADES - Solo usuarios con specialty
 		if (config.includeSpecialty) {
 			const specialtyStats = await prisma.user.groupBy({
 				by: ['specialty'],

@@ -16,7 +16,7 @@ export class PasswordGenerator {
         const array = new Uint32Array(length);
         crypto.getRandomValues(array);
 
-        let password = Array.from(array, num => characters[num % characters.length]).join('');
+        const password = Array.from(array, num => characters[num % characters.length]).join('');
 
         return this.ensureAllTypes(password);
     }
