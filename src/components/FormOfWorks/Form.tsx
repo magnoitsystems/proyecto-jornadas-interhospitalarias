@@ -21,6 +21,9 @@ const FormPost: React.FC = () => {
     const [error, setError] = useState<string>('');
     const [workFile, setWorkFile] = useState<File | null>(null);
     const [premioFile, setPremioFile] = useState<File | null>(null);
+    const [workFileError, setWorkFileError] = useState<string>('');
+    const [premioFileError, setPremioFileError] = useState<string>('');
+
 
     const { uploadWork, loading, error: uploadError, success } = useUploadWork();
 
@@ -76,6 +79,17 @@ const FormPost: React.FC = () => {
             alert("Todos los autores deben tener nombre completo.");
             return;
         }
+
+        if (workFile?.size && workFile.size > 5 * 1024 * 1024) {
+            alert('El archivo principal supera el tamaño máximo permitido de 5 MB.');
+            return;
+        }
+
+        if (premioFile?.size && premioFile.size > 5 * 1024 * 1024) {
+            alert('El archivo de opción a premio supera el tamaño máximo permitido de 5 MB.');
+            return;
+        }
+
 
         console.log("antes de llamar a upload work en el front");
         await uploadWork({
@@ -163,8 +177,19 @@ const FormPost: React.FC = () => {
                         name="archivo"
                         accept="application/pdf"
                         className={styles.fileInput}
-                        onChange={(e) => setWorkFile(e.target.files?.[0] || null)}
+                        onChange={(e) => {
+                            const file = e.target.files?.[0] || null;
+                            if (file && file.size > 5 * 1024 * 1024) {
+                                setWorkFile(null);
+                                setWorkFileError('El archivo supera el tamaño máximo permitido de 5 MB.');
+                            } else {
+                                setWorkFile(file);
+                                setWorkFileError('');
+                            }
+                        }}
                     />
+                    {workFileError && <p className={styles.errorText}>{workFileError}</p>}
+
                 </div>
 
                 <div className={styles.formGroup}>
@@ -184,8 +209,19 @@ const FormPost: React.FC = () => {
                                 id="archivoPremio"
                                 accept="application/pdf"
                                 className={styles.fileInput}
-                                onChange={(e) => setPremioFile(e.target.files?.[0] || null)} // NUEVO
+                                onChange={(e) => {
+                                    const file = e.target.files?.[0] || null;
+                                    if (file && file.size > 5 * 1024 * 1024) {
+                                        setPremioFile(null);
+                                        setPremioFileError('El archivo supera el tamaño máximo permitido de 5 MB.');
+                                    } else {
+                                        setPremioFile(file);
+                                        setPremioFileError('');
+                                    }
+                                }}
                             />
+                            {premioFileError && <p className={styles.errorText}>{premioFileError}</p>}
+
                         </div>
                     )}
                 </div>
