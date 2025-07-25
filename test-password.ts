@@ -3,7 +3,7 @@
  * Archivo de pruebas para validar que funciona correctamente
  */
 
-import { PasswordGenerator } from './PasswordGenerator';
+import { PasswordGenerator } from '@/utils/PasswordGenerator';
 
 // Función helper para validar caracteres
 function validatePassword(password: string): {
