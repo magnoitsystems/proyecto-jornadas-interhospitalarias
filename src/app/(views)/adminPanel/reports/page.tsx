@@ -1,30 +1,29 @@
 import CSVGenerator from "@/components/CSVGenerator/CSVGenerator";
+import styles from './page.module.css';
+import { cactus } from '@/app/(views)/ui/fonts';
 
 export default function ReportsPage() {
     return (
-        <div className="min-h-screen bg-gray-50 py-8">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="mb-8">
-                    <h1 className="text-3xl font-bold text-gray-900">
-                        Panel de Reportes
-                    </h1>
-                    <p className="mt-2 text-gray-600">
-                        Genera reportes estadísticos de la plataforma de jornadas médicas
-                    </p>
-                </div>
-
-                <CSVGenerator className="mb-8" />
-
-                <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-semibold mb-4">Instrucciones de Uso</h2>
-                    <ul className="list-disc list-inside space-y-2 text-gray-600">
-                        <li>Selecciona el tipo de reporte que deseas generar</li>
-                        <li>Ajusta la cantidad de usuarios simulados (para pruebas)</li>
-                        <li>Haz clic en Descargar Reporte CSV para obtener el archivo</li>
-                        <li>El archivo se descargará automáticamente y podrás abrirlo en Excel</li>
-                    </ul>
+        <main className={`${styles.page} ${cactus.className}`}>
+            <div className={styles.generatorInformation}>
+                <h1>Panel de Reportes</h1>
+                <div className={styles.aclarations}>
+                    <h4>Genera reportes estadísticos de la plataforma de jornadas médicas</h4>
+                    <h4>(Instrucciones de uso debajo del mismo)</h4>
                 </div>
             </div>
-        </div>
+
+            <CSVGenerator className="mb-8"/>
+
+            <div className={styles.generatorInformation}>
+            <h1>Instrucciones de Uso</h1>
+                <ul className={styles.instructions}>
+                    <li><h4>1. Selecciona el tipo de reporte que deseas generar</h4></li>
+                    <li><h4>2. Ajusta la cantidad de usuarios simulados (para pruebas)</h4></li>
+                    <li><h4>3. Haz clic en Descargar Reporte CSV para obtener el archivo</h4></li>
+                    <li><h4>4. El archivo se descargará automáticamente y podrás abrirlo en Excel</h4></li>
+                </ul>
+            </div>
+        </main>
     );
 }

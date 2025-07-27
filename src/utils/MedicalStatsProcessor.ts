@@ -1,84 +1,153 @@
 import { User } from '@/types/user';
-import { StatsByProfession, StatsByGender, StatsBySpecialty, ProcessedStats, CSVConfig } from '@/types/csv'
+import { StatsByGender, StatsBySpecialty, ProcessedStats, CSVConfig } from '@/types/csv';
+import { prisma } from '@/libs/prisma';
 
 
 export class MedicalStatsProcessor {
-    private users: User[];
 
-    constructor(users: User[]) {
-        this.users = users;
+    constructor() {
 
-        if (!users || users.length === 0) {
-            throw new Error('No hay usuarios para procesar.');
-        }
     }
 
-    getStatsWithConfig(config: CSVConfig): ProcessedStats {
-        // Filtrar usuarios según configuración
-        const usersToProcess = config.healthOnly
-            ? this.users.filter(user => user.job !== 'no perteneciente al área de la salud')
-            : this.users;
+	async getStatsWithConfig(config: CSVConfig): Promise<ProcessedStats> {
+		const result: ProcessedStats = {};
 
-        const result: ProcessedStats = {};
+		// Filtro base según configuración
+		const baseFilter = config.healthOnly
+			? { job: { not: 'no perteneciente al área de la salud' }, admin: false }
+			: { admin: false };
 
-        // Incluir datos según configuración
-        if (config.includeProfession)
-            result.profession = this.processStatsByProfession(usersToProcess);
+		if (config.includeProfession) {
+			const professionStats = await prisma.user.groupBy({
+				by: ['job'],
+				where: baseFilter,
+				_count: { job: true },
+				_avg: { age: true }
+			});
 
-        if (config.includeGender)
-            result.gender = this.processStatsByGender(usersToProcess);
+			result.profession = await Promise.all(
+				professionStats.map(async (stat) => {
+					// Gender breakdown para cada profesión
+					const genderBreakdown = await prisma.user.groupBy({
+						by: ['gender'],
+						where: { ...baseFilter, job: stat.job },
+						_count: { gender: true }
+					});
 
-        if (config.includeSpecialty)
-            result.specialty = this.processStatsBySpecialty(usersToProcess);
+					// Specialty breakdown
+					const specialtyBreakdown = await prisma.user.groupBy({
+						by: ['specialty'],
+						where: {
+							...baseFilter,
+							job: stat.job,
+							specialty: { not: null }
+						},
+						_count: { specialty: true }
+					});
 
+					return {
+						profession: stat.job || 'sin definir',
+						count: stat._count.job,
+						avgAge: Math.round((stat._avg.age || 0) * 100) / 100,
+						genderBreakdown: Object.fromEntries(
+							genderBreakdown.map(g => [g.gender || 'no especificado', g._count.gender])
+						),
+						specialties: Object.fromEntries(
+							specialtyBreakdown.map(s => [s.specialty!, s._count.specialty])
+						)
+					};
+				})
+			);
+		}
 
-        // Siempre incluir resumen básico
-        result.summary = {
-            totalUsers: usersToProcess.length,
-            avgAge: Math.round(usersToProcess.reduce((sum, u) => sum + (u.age || 0), 0) / usersToProcess.length * 100) / 100,
-            usersWithSpecialty: usersToProcess.filter(u => u.specialty).length,
-            uniqueSpecialties: [...new Set(usersToProcess.map(u => u.specialty).filter(Boolean))].length
-        };
+		if (config.includeGender) {
+			const genderStats = await prisma.user.groupBy({
+				by: ['gender'],
+				where: baseFilter,
+				_count: { gender: true }
+			});
 
-        return result;
-    }
+			result.gender = await Promise.all(
+				genderStats.map(async (stat) => {
+					const professionBreakdown = await prisma.user.groupBy({
+						by: ['job'],
+						where: { ...baseFilter, gender: stat.gender },
+						_count: { job: true }
+					});
 
-    private processStatsByProfession(users: User[]): StatsByProfession[] {
-        const professionMap = new Map<string, {
-            users: User[],
-            genderCount: Record<string, number>,
-            specialtyCount: Record<string, number>
-        }>();
+					return {
+						gender: stat.gender || 'no especificado',
+						count: stat._count.gender,
+						professionBreakdown: Object.fromEntries(
+							professionBreakdown.map(p => [p.job || 'sin definir', p._count.job])
+						)
+					};
+				})
+			);
+		}
 
-        users.forEach(user => {
-            const profession = user.job || 'sin definir';
+		if (config.includeSpecialty) {
+			const specialtyStats = await prisma.user.groupBy({
+				by: ['specialty'],
+				where: {
+					...baseFilter,
+					specialty: { not: null }
+				},
+				_count: { specialty: true }
+			});
 
-            if (!professionMap.has(profession)) {
-                professionMap.set(profession, {
-                    users: [],
-                    genderCount: {},
-                    specialtyCount: {}
-                });
-            }
+			result.specialty = await Promise.all(
+				specialtyStats.map(async (stat) => {
+					const professionBreakdown = await prisma.user.groupBy({
+						by: ['job'],
+						where: { ...baseFilter, specialty: stat.specialty },
+						_count: { job: true }
+					});
 
-            const profData = professionMap.get(profession)!;
-            profData.users.push(user);
+					const genderBreakdown = await prisma.user.groupBy({
+						by: ['gender'],
+						where: { ...baseFilter, specialty: stat.specialty },
+						_count: { gender: true }
+					});
 
-            const gender = user.gender || 'no especificado';
-            profData.genderCount[gender] = (profData.genderCount[gender] || 0) + 1;
+					return {
+						specialty: stat.specialty!,
+						count: stat._count.specialty,
+						professions: Object.fromEntries(
+							professionBreakdown.map(p => [p.job || 'sin definir', p._count.job])
+						),
+						genderBreakdown: Object.fromEntries(
+							genderBreakdown.map(g => [g.gender || 'no especificado', g._count.gender])
+						)
+					};
+				})
+			);
+		}
 
-            if (user.specialty) {
-                profData.specialtyCount[user.specialty] = (profData.specialtyCount[user.specialty] || 0) + 1;
-            }
-        });
+		// RESUMEN GENERAL
+		const totalUsers = await prisma.user.count({ where: baseFilter });
+		const avgAgeResult = await prisma.user.aggregate({
+			where: baseFilter,
+			_avg: { age: true }
+		});
+		const usersWithSpecialty = await prisma.user.count({
+			where: { ...baseFilter, specialty: { not: null } }
+		});
+		const uniqueSpecialties = await prisma.user.findMany({
+			where: { ...baseFilter, specialty: { not: null } },
+			select: { specialty: true },
+			distinct: ['specialty']
+		});
 
-        return Array.from(professionMap.entries()).map(([profession, data]) => ({
-            profession,
-            count: data.users.length,
-            genderBreakdown: data.genderCount,
-            specialties: data.specialtyCount
-        }));
-    }
+		result.summary = {
+			totalUsers,
+			avgAge: Math.round((avgAgeResult._avg.age || 0) * 100) / 100,
+			usersWithSpecialty,
+			uniqueSpecialties: uniqueSpecialties.length
+		};
+
+		return result;
+	}
 
     private processStatsByGender(users: User[]): StatsByGender[] {
         const genderMap = new Map<string, {

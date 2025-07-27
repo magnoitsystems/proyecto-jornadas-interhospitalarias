@@ -1,9 +1,7 @@
-//metodos de crear usuarios y obtenerlos
 import { NextRequest, NextResponse } from 'next/server';
 import { UserService } from '@/services/userService';
 import { prisma } from '@/libs/prisma';
 import {Prisma} from "@prisma/client";
-import {error} from "next/dist/build/output/log";
 
 export async function POST(request: NextRequest) {
     try {
@@ -83,8 +81,7 @@ export async function GET(request: NextRequest) {
     }
 
     catch(error){
-    console.error('API Error:', error);
-    return NextResponse.json({ message: 'Error interno del servidor' },{status:500});
-}
-
+	    console.error('API Error:', error);
+	    return NextResponse.json({ message: 'Error interno del servidor' },{status:500});
+	}
 }

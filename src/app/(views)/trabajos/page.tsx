@@ -28,7 +28,6 @@ export default function PostWork() {
                 <InstructionsToPostWorks/>
             </div>
             <Rules/>
-
         </main>
     )
 }

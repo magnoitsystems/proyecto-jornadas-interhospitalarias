@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import cloudinary from '@/libs/cloudinary';
+// import cloudinary from '@/libs/cloudinary';
 import { prisma } from '@/libs/prisma';
 import { v4 as uuidv4 } from 'uuid';
 import { auth } from '@/auth';
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
         }
 
         // Subir archivo principal
-        const normalUploadResult = await subirASupabase(file, title);
+        const normalUploadResult = await subirAGoogleDrive(file, title, false);
         const workCode = uuidv4();
 
         // Crear trabajo principal con userId
@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
 
         // Si hay premio y archivo de premio
         if (premio && premioFile && premioFile instanceof Blob) {
-            const premioUploadUrl = await subirASupabase(premioFile, `${title}-premio`);
+            const premioUploadUrl = await subirAGoogleDrive(premioFile, `${title}-premio`, true);
             await prisma.works.create({
                 data: {
                     title,
@@ -95,28 +95,31 @@ export async function POST(request: NextRequest) {
     }
 }
 
-async function subirASupabase(fileBlob: Blob, filename: string): Promise<string> {
-    const buffer = Buffer.from(await fileBlob.arrayBuffer());
+async function subirAGoogleDrive(fileBlob: Blob, filename: string, isPremio: boolean): Promise<string> {
+    const arrayBuffer = await fileBlob.arrayBuffer();
+    const base64File = Buffer.from(arrayBuffer).toString('base64');
+    const response = await fetch('https://script.google.com/macros/s/AKfycbxcSNjmgBq8m5SiL3R4CdqeWOQFgFUm_-TVc_QNrYxKTtvsWqViOYHgVq0WgRanzmXFZw/exec', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            fileName: filename,
+            fileContent: base64File,
+            isPremio: isPremio
+        }),
+    });
 
-    const { data, error } = await supabase.storage
-        .from('trabajos') // este es el nombre de tu bucket
-        .upload(`${filename}-${Date.now()}.pdf`, buffer, {
-            contentType: 'application/pdf',
-            upsert: true,
-        });
+    const result = await response.json();
 
-    if (error) {
-        console.error("Error al subir a Supabase:", error.message);
-        throw new Error("No se pudo subir el archivo");
+    if (!result.success) {
+        console.error('Error al subir a Google Drive:', result.message);
+        throw new Error('No se pudo subir el archivo a Google Drive');
     }
 
-    const { data: publicUrlData } = supabase
-        .storage
-        .from('trabajos')
-        .getPublicUrl(data.path);
-
-    return publicUrlData.publicUrl;
+    return result.url; // La URL pública
 }
+
 
 export async function GET(){
     const usersFilter = await userService.getAllStatistics();

@@ -1,0 +1,78 @@
+/*main container properties*/
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    gap: var(--30px);
+}
+
+/*introduction and instructions main properties*/
+.generatorInformation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 60%;
+    height: fit-content;
+
+    padding: var(--10px);
+    padding-inline: 0px;
+    margin: auto;
+    gap: var(--20px);
+
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    color: var(--secondary-color-1);
+}
+
+.generatorInformation h1, .generatorInformation h2, .generatorInformation h4 {
+    margin: 0px;
+    padding: 0px;
+}
+
+/*introduction properties*/
+.aclarations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+}
+
+/*instructions properties*/
+.instructions {
+    width: 100%;
+
+    padding: 1rem;
+    margin: 0;
+
+    list-style: none;
+}
+
+.instructions li {
+    width: 100%;
+
+    padding: var(--15px);
+    margin: var(--10px) 0;
+
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color-7);
+    color: var(--secondary-color-1);
+    transition: all 0.3s ease;
+}
+
+.instructions li:hover {
+    background-color: var(--secondary-color-1);
+    color: var(--secondary-color-4);
+    cursor: default;
+
+    transform: translateX(4px);
+}

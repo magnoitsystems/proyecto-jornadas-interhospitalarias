@@ -21,7 +21,8 @@ export default function GroupFilters({ onFiltersChange, initialFilters = {
     Médicos: false,
     Enfermeros: false,
     Técnicos: false,
-    Otros: false
+    Otros: false,
+    NoSalud: false
 } }: GroupFiltersProps) {
     const [filters, setFilters] = useState<FilterState>(initialFilters);
 

@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
 import { GetStatistic } from "@/services/statisticService";
-import { generateMockUsers } from '@/utils/mockData';
 import { MedicalStatsProcessor } from '@/utils/MedicalStatsProcessor';
 import { CSVGenerator } from '@/utils/csvGenerator';
 import {CSVConfig} from "@/types/csv";
@@ -48,9 +47,8 @@ export async function POST(request: NextRequest) {
         }
 
         // Procesar datos con la nueva configuración
-        const mockUsers = generateMockUsers(userCount);
-        const processor = new MedicalStatsProcessor(mockUsers);
-        const processedData = processor.getStatsWithConfig(config); // Filtra usuarios
+        const processor = new MedicalStatsProcessor();
+        const processedData = await processor.getStatsWithConfig(config); // Filtra usuarios
 
         // Generar CSV con configuración
         const csvContent = CSVGenerator.generateWithConfig(processedData, config); // Genera csv
