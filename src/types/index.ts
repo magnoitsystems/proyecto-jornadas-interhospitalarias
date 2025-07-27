@@ -1,4 +1,4 @@
-import { User } from "./user"
+import { UserView as User } from "./user"
 
 export enum WorkCategory {
     QUALITATIVE_RESEARCH = 'investigacion cualitativa',

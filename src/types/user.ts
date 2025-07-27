@@ -1,6 +1,24 @@
 import { Work } from "@/types/index";
 
-export interface User {
+export interface UserView {
+    id_user: number;
+    name: string;
+    lastname: string;
+    email: string;
+    job: string;
+    specialty?: string | null;
+    admin: boolean;
+    age: number;
+    gender: string;
+    works?: Work[];
+}
+export interface UserLogin {
+    id_user: number;
+    email: string;
+    password: string;
+    admin: boolean;
+}
+export interface UserNew {
     id_user: number;
     name: string;
     lastname: string;
@@ -13,6 +31,7 @@ export interface User {
     gender: string;
     works?: Work[];
 }
+
 
 export interface CreateUserData {
     name: string;
