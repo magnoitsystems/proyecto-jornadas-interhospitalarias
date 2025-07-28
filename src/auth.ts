@@ -33,9 +33,11 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
                     return {
                         id: userFromDb.id_user.toString(),
                         email: userFromDb.email,
-                        name: `${userFromDb.name} ${userFromDb.lastname}`,
-                        admin: userFromDb.admin, // Esta es la propiedad crucial
+                        name: userFromDb.name,
+                        lastname: userFromDb.lastname,
+                        admin: userFromDb.admin,
                     };
+
                 }
 
                 return null;
