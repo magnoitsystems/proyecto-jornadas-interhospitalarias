@@ -1,23 +1,11 @@
 import { useState, useCallback, useEffect } from "react";
-export interface User {
-  id: number;
-  name: string;
-  lastname: string;
-  email: string;
-  password: string;
-  job: string;
-  specialty?: string | null;
-  admin: boolean;
-  age: number;
-  gender: string;
-  // works?: Work[]; // si querés agregar
-}
+import {UserView as User} from "@/types/user";
+
 
 export interface UserData {
   name: string;
   lastname: string;
   email: string;
-  password: string;
   job: string;
   specialty?: string | null;
   age: number;

@@ -1,23 +1,47 @@
-/* En NavBar.module.css */
+/* button.module.css */
 
 .signOutButton {
-    /* Apariencia de texto normal */
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
 
-    /* Hereda los estilos de la navegación */
-    color: inherit; /* Hereda el color del texto de la 'ul' */
-    font-family: inherit; /* Hereda la fuente (ej. 'cactus') */
-    font-size: inherit; /* Hereda el tamaño de fuente */
+    background-color: transparent;
+    color: #52525b;
+    border: 1px solid #e4e4e7;
+    padding: 0.6rem 1.2rem;
+    border-radius: 9999px;
+
+
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 500;
+
     cursor: pointer;
-    text-decoration: none; /* Quita el subrayado si lo hereda */
-
-    /* Efecto hover sutil */
-    transition: color 0.2s ease-in-out;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.icon {
+
+    transition: transform 0.2s ease;
+}
+
+
 .signOutButton:hover {
-    color: #fdd835; /* Un color amarillo/dorado que combine con tu logo */
+
+    background-color: #ef4444;
+    color: white;
+    border-color: #ef4444;
+
+
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3); /* Sombra roja suave */
+}
+
+.signOutButton:hover .icon {
+    transform: translateX(2px);
+}
+
+.signOutButton:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(239, 68, 68, 0.2);
 }

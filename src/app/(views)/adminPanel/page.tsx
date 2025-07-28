@@ -12,6 +12,7 @@ import ManuscriptCard from "@/components/UserCard/ManuscriptCard";
 import UserItemCard from "@/components/UserCard/UserCard";
 import { FilterState } from "@/types/user";
 import Link from "next/link";
+import FilterView from "@/components/FilterButton/filtersView/FilterView";
 
 export default function AdminPanel() {
     const { data, loading, error } = useWorkFilter();
@@ -28,7 +29,12 @@ export default function AdminPanel() {
         Otros: true,
         NoSalud: false
     });
-
+    const filterOptions = [
+        { value: "allWorks", label: "Todos los manuscritos" },
+        { value: "withPrize", label: "Manuscritos CON premio" },
+        { value: "withoutPrize", label: "Manuscritos SIN premio" },
+        { value: "inscripts", label: "Inscriptos a la jornada" }
+    ];
     useEffect(() => {
         console.log(data)
         if (!data) return;
@@ -83,28 +89,23 @@ export default function AdminPanel() {
 
     return (
         <main>
+            <SignOutButton />
+
             <div className={styles.roundedCards}>
                 <RoundedCard />
             </div>
             <div className={styles.filterAndReportsButtonProperties}>
                 <div className={styles.seeCards}>
-                    <h1>Ver</h1>
-                    <select
+                    <FilterView
+                        options={filterOptions}
                         value={selectedFilter}
-                        onChange={(e) => setSelectedFilter(e.target.value as "allWorks" | "withPrize" | "withoutPrize" | "inscripts")}
-                        style={{ marginBottom: "1rem" }}
-                    >
-                        <option value="inscripts">Inscriptos a la jornada</option>
-                        <option value="allWorks">Todos los manuscritos</option>
-                        <option value="withPrize">Manuscritos CON premio</option>
-                        <option value="withoutPrize">Manuscritos SIN premio</option>
-                    </select>
+                        onChange={(value) => setSelectedFilter(value as "allWorks" | "withPrize" | "withoutPrize" | "inscripts")}
+                    />
                 </div>
                 <div className={styles.reportsButtonProperties}>
                     <Link href={"./adminPanel/reports"}><button>Ver reportes</button></Link>
                 </div>
             </div>
-            <SignOutButton />
             <section className={styles.containerContent}>
                 {selectedFilter === "inscripts" && (
                     <aside className={styles.aside}>
@@ -122,7 +123,7 @@ export default function AdminPanel() {
                         ) : users.length > 0 ? (
                             users.map((user) => (
                                 <UserItemCard
-                                    key={user.id}
+                                    key={user.id_user}
                                     name={user.name}
                                     lastname={user.lastname}
                                     gender={user.gender}

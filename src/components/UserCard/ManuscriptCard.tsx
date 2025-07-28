@@ -15,9 +15,11 @@ export default function ManuscriptCard({ work }: Props) {
         <div className={styles.containerNameAttribute}>
           <p className={styles.attribute}>Con premio: {work.prize ? "Sí" : "No"}</p>
           <p className={styles.attribute}>Autor: {work.user.name} {work.user.lastname}</p>
-          <button>
-            <Image src="/icons/downloadIcon.png" alt="Descargar" width={30} height={30} />
-          </button>
+          {work.file && (
+            <a href={work.file} target="_blank" rel="noopener noreferrer">
+              <Image src="/icons/downloadIcon.png" alt="Descargar" width={30} height={30} />
+            </a>
+          )}
         </div>
       </div>
     </div>

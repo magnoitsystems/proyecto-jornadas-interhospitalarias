@@ -1,5 +1,5 @@
 import postgres from 'postgres';
-import type { User as AppUser } from '@/types/user'; // Asegúrate que la ruta a tus tipos es correcta
+import {UserLogin as AppUser} from '@/types/user'; // Asegúrate que la ruta a tus tipos es correcta
 
 // Inicializamos la conexión a la BD aquí
 const sql = postgres(process.env.DATABASE_URL!);
