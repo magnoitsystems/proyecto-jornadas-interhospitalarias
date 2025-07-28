@@ -204,6 +204,29 @@
     background-color: #d35400; /* Naranja más oscuro */
 }
 
+.successBanner {
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.errorBanner {
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+
 /* Contenedor del input de premio para la animación de entrada */
 @keyframes slideDownFadeIn {
     from {
