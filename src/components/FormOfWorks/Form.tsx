@@ -108,7 +108,7 @@ const FormPost: React.FC = () => {
         if (success) {
             setSuccessMessage('Trabajo subido exitosamente.');
             setErrorMessageBanner('');
-            setTimeout(() => setSuccessMessage(''), 4000); // desaparece a los 4 segundos
+            setTimeout(() => setSuccessMessage(''), 4000);
         } else if (uploadError) {
             setSuccessMessage('');
             setErrorMessageBanner('No se pudo subir el trabajo, intente nuevamente.');

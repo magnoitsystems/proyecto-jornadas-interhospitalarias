@@ -10,6 +10,8 @@ declare module "next-auth" {
     interface User {
         admin?: boolean;
         id: string;
+        name: string;
+        lastname: string;
     }
 
     /**
@@ -19,6 +21,8 @@ declare module "next-auth" {
         user: {
             admin?: boolean;
             id: string;
+             name: string;
+        lastname: string;
         } & DefaultSession["user"]; // Usa DefaultSession para evitar la referencia circular
     }
 }
@@ -30,5 +34,7 @@ declare module "next-auth/jwt" {
     interface JWT {
         admin?: boolean;
         id: string;
+         name: string;
+        lastname: string;
     }
 }
