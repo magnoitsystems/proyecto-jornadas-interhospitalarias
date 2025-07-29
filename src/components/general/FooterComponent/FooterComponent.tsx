@@ -50,10 +50,6 @@ export default function Footer() {
             <Image src="/icons/phone.png" alt="Teléfono" width={16} height={16} />
             <span>2494 01-2245</span>
           </li>
-          <li className={styles.item}>
-            <Image src="/icons/external-link.png" alt="Mapa" width={16} height={16} />
-            <a className={styles.link} href="#">Google Maps</a>
-          </li>
         </ul>
       </div>
 

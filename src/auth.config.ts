@@ -42,6 +42,8 @@ export const authConfig = {
                 // Ahora token.admin y user.admin son completamente type-safe
                 token.admin = user.admin;
                 token.id = user.id;
+                token.name = user.name;
+                token.lastname = user.lastname;
             }
             return token;
         },
@@ -50,6 +52,8 @@ export const authConfig = {
             if (session.user) {
                 session.user.admin = token.admin;
                 session.user.id = token.id as string;
+                session.user.name = token.name as string;
+                session.user.lastname = token.lastname as string;
             }
             return session;
         },

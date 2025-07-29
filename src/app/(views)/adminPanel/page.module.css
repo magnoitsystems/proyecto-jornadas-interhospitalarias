@@ -1,175 +1,172 @@
-.roundedCards {
-    display: flex;
-    justify-content: space-around;
-    position: absolute;
-    top: 200px;
-    left: 0;
-    right: 0;
-    z-index: 1001;
-    padding: 0 1rem;
-}
-
-.titleProperties{
-    margin-left: 15px;
-    margin-bottom: 50px;
-    width: fit-content;
-}
-
-.aside {
-    margin: 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 3rem;
-}
-
-.containerFilter{
-    width: 95%;
-    margin: 0 auto;
-}
-
-.filterAndReportsButtonProperties{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.reportsButtonProperties button{
-    width: 210px;
-    height: 50px;
-    border-radius: 50px;
-    background-color: var(--primary-color-1);
-    color: var(--secondary-color-1);
-    border: var(--primary-color-1) 2px solid;
-    cursor: pointer;
-    font-size: var(--20px);
-    transition: 0.5s ease-out;
-    margin-top: -10px;
-}
-
-.reportsButtonProperties button:hover{
-    background-color: var(--secondary-color-1);
-    color: var(--primary-color-1);
-    transform: translateY(-10px);
-}
-
-.seeCards {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 1rem;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin-left: 0;
-    padding-top: 10px;
-    color: var(--secondary-color-4);
-    font-size: 16px;
-}
-.seeCards select{
-    width: fit-content;
-    max-width: 90%;
-    height: fit-content;
-
-    margin-left: 10px;
-    padding-inline: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-
-    font-size: 16px;
-    font-family: inherit;
-    border: 1px solid var(--primary-color-1);
-    border-radius: 50px;
-    background-color: white;
-    color: var(--secondary-color-4);
-
-    appearance: none;
-    cursor: pointer;
-
-    transition: 0.3s ease;
-}
-.seeCards select:hover{
-    background-color: var(--primary-color-1);
-    color: var(--secondary-color-1);
-    transition: 0.3s ease;
-}
-
-.seeCards select:hover option{
-    color: var(--secondary-color-1);
-}
-.seeCards select:focus {
-    color: var(--secondary-color-4);
-    border: 1px solid var(--secondary-color-2);
-    box-shadow: 0 0 0 3px rgba(239, 25, 35, 0.2);
-    outline: none;
-}
-.seeCards h1 {
-    font-size: 16px;
-}
-
-@media (max-width: 728px) {
-
-  .roundedCards {
-    top: 50px;
-    padding: 0 0.5rem;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .sliderWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    height: 100%;
-  }
-
-  .arrow {
-    background: none;
-    border: none;
-    cursor: pointer;
-    width: 28px;
-    height: 28px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    transition: color 0.3s ease;
-  }
-
-  .arrow:hover {
-    color: #7D0279;
-  }
-}
-
-@media (min-width: 1024px) {
-    .containerContent {
+    .roundedCards {
         display: flex;
-        align-items: flex-start;
+        justify-content: space-around;
+        position: absolute;
+        top: 200px;
+        left: 0;
+        right: 0;
+        z-index: 1001;
+        padding: 0 1rem;
+    }
+
+    .titleProperties{
+        margin-left: 15px;
+        margin-bottom: 50px;
+        width: fit-content;
+    }
+
+    .aside {
+        margin: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         gap: 3rem;
     }
 
-    .aside{
-        margin: 0 0 0 var(--15px);
-        flex: 0 0 auto; /* No crece ni se encoje */
+    .containerFilter{
+        width: 95%;
+        margin: 0 auto;
     }
 
-    .containerUserCard {
-        flex: 1;
-        margin-right: var(--25px);
+    .filterAndReportsButtonProperties{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .reportsButtonProperties button{
+        width: 210px;
+        height: 50px;
+        border-radius: 50px;
+        background-color: var(--primary-color-1);
+        color: var(--secondary-color-1);
+        border: var(--primary-color-1) 2px solid;
+        cursor: pointer;
+        font-size: var(--20px);
+        transition: 0.5s ease-out;
+        margin-top: -10px;
+    }
+
+    .reportsButtonProperties button:hover{
+        background-color: var(--secondary-color-1);
+        color: var(--primary-color-1);
+        transform: translateY(-10px);
     }
 
     .seeCards {
-        margin-bottom: 2rem;
-        margin-top: 1rem;
-        justify-content: left;
-        padding-left: 20px;
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 1rem;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-left: 0;
+        padding-top: 10px;
+        color: var(--secondary-color-4);
+        font-size: 16px;
     }
-    .seeCards select {
-        font-size: 30px;
+    .seeCards select{
+        width: fit-content;
+        max-width: 90%;
+        height: fit-content;
+
+        margin-left: 10px;
+        padding-inline: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+
+        font-size: 16px;
+        font-family: inherit;
+        border: 1px solid var(--primary-color-1);
+        border-radius: 50px;
+        background-color: white;
+        color: var(--secondary-color-4);
+
+        appearance: none;
+        cursor: pointer;
+
+        transition: 0.3s ease;
+    }
+    .seeCards select:hover{
+        background-color: var(--primary-color-1);
+        color: var(--secondary-color-1);
+
+        transition: 0.3s ease;
+    }
+    .seeCards select:focus {
+        color: var(--secondary-color-4);
+        border: 1px solid var(--secondary-color-2);
+        box-shadow: 0 0 0 3px rgba(239, 25, 35, 0.2);
+        outline: none;
     }
     .seeCards h1 {
-        font-size: 30px;
+        font-size: 16px;
     }
-}
+
+    @media (max-width: 728px) {
+
+      .roundedCards {
+        top: 50px;
+        padding: 0 0.5rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .sliderWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        height: 100%;
+      }
+
+      .arrow {
+        background: none;
+        border: none;
+        cursor: pointer;
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        transition: color 0.3s ease;
+      }
+
+      .arrow:hover {
+        color: #7D0279;
+      }
+    }
+
+    @media (min-width: 1024px) {
+        .containerContent {
+            display: flex;
+            align-items: flex-start;
+            gap: 3rem;
+        }
+
+        .aside{
+            margin: 0 0 0 var(--15px);
+            flex: 0 0 auto; /* No crece ni se encoje */
+        }
+
+        .containerUserCard {
+            flex: 1;
+            margin-right: var(--25px);
+        }
+
+        .seeCards {
+            margin-bottom: 2rem;
+            margin-top: 1rem;
+            justify-content: left;
+            padding-left: 20px;
+        }
+        .seeCards select {
+            font-size: 30px;
+        }
+        .seeCards h1 {
+            font-size: 30px;
+        }
+    }

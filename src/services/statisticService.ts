@@ -78,7 +78,7 @@ export class GetStatistic{
     async getTechnique(): Promise<Statistics[]>{
         const result = await prisma.user.count({
             where:{
-                job: "tecnico"
+                job: "técnico"
             }
         })
 

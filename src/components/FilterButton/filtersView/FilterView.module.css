@@ -1,0 +1,103 @@
+.customSelectContainer {
+    position: relative;
+    width: auto;
+    min-width: 250px;
+    font-family: inherit;
+}
+
+.selectTrigger {
+    /* Apariencia y tipografía */
+    width: 100%;
+    background-color: transparent;
+    color: #d94646;
+    font-size: 1.1rem;
+    font-weight: 500;
+
+    /* Layout y espaciado */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 1.2rem;
+
+    /* Bordes y cursor */
+    border: 1px solid #fca5a5;
+    border-radius: 9999px;
+    cursor: pointer;
+
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.selectTrigger:hover {
+    background-color: #ef4444;
+    color: white;
+    border-color: #ef4444;
+}
+
+.arrow {
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+}
+.arrowOpen {
+    transform: rotate(180deg);
+}
+
+/* --- EL MENÚ DESPLEGABLE --- */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(5px) scale(1);
+    }
+}
+
+.optionsList {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    list-style: none;
+
+    /* El fondo rojo semi-transparente */
+    background-color: rgba(220, 53, 69, 0.9);
+    backdrop-filter: blur(5px); /* Efecto cristal para navegadores modernos */
+
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+    /* La animación de entrada */
+    animation: slideDown 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.option {
+    padding: 0.8rem 1rem;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.option:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.optionSelected {
+    background-color: rgba(255, 255, 255, 0.25);
+    font-weight: 600;
+}
+
+/* Ajustes para desktop */
+@media (min-width: 1024px) {
+    .selectTrigger {
+        font-size: 1.5rem;
+        padding: 0.7rem 1.5rem;
+    }
+    .arrow {
+        font-size: 0.9rem;
+    }
+}

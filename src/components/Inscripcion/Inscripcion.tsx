@@ -118,7 +118,6 @@ export default function InscriptionForm() {
           </div>
 
           {error && <p className={styles.formError}>{error}</p>}
-          {loading && <p className={styles.formLoading}>Enviando datos...</p>}
 
           <div className={styles.formButton}>
             <button type="submit" className={cactus.className}>Registrarse</button>
