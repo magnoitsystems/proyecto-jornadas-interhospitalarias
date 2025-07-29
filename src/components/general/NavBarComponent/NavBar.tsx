@@ -6,12 +6,18 @@ import styles from './NavBar.module.css';
 import { JSX, useState, useEffect } from 'react';
 import { cactus } from '@/app/(views)/ui/fonts';
 import { usePathname } from 'next/navigation';
+import { useSession, signOut } from "next-auth/react";
+
 
 export default function NavBar(): JSX.Element {
 
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => setIsOpen(!isOpen);
+
+    const { data: session } = useSession();
+    console.log(session);
+    const isAdmin = session?.user?.admin === true;
 
     const getBackground = (pathname: string) => {
         if (
@@ -21,7 +27,7 @@ export default function NavBar(): JSX.Element {
             pathname === '/programa'
         ) {
             return '/backgrounds/home.png';
-        } else if (pathname === '/inscripcion' || pathname === '/trabajos' || pathname === '/adminPanel' || pathname === '/login' ||
+        } else if (pathname === '/inscripcion' || pathname === '/trabajos' ||  pathname === '/adminPanel' || pathname === '/login' ||
             pathname === '/redirection' || pathname === '/adminPanel/reports') {
             return '/backgrounds/form.png';
         }
@@ -62,10 +68,10 @@ export default function NavBar(): JSX.Element {
     return (
         <section
             className={`
-    ${styles.heroSection} 
-    ${(isFormPage && !isAdminPage) ? styles.formHero : styles.homeHero} 
-    ${isOpen ? styles.menuActive : ''}
-  `}
+                ${styles.heroSection} 
+                ${(isFormPage && !isAdminPage) ? styles.formHero : styles.homeHero} 
+                ${isOpen ? styles.menuActive : ''}
+          ` }
             style={{
                 backgroundImage: (!isFormPage || isAdminPage) ? `url(${getBackground(pathname)})` : 'none'
             }}
@@ -142,13 +148,29 @@ export default function NavBar(): JSX.Element {
                     </li>
                     <li>
                         <Link
-                            href="/trabajos"
+                            href={isAdmin ? "/adminPanel" : "/trabajos"}
                             onClick={() => setIsOpen(false)}
-                            className={`${styles.trabajosLink} ${cactus.className} ${pathname === '/trabajos' ? styles.activeLink : ''}`}
+                            className={`${styles.trabajosLink} ${cactus.className} ${pathname === (isAdmin ? '/adminPanel' : '/trabajos') ? styles.activeLink : ''}`}
                         >
-                            Trabajos
+                            {isAdmin ? "Administración" : "Trabajos"}
                         </Link>
                     </li>
+                    {session && (
+                        <li>
+                            <button
+                                onClick={() => signOut()}
+                                className={`${styles.trabajosLink} ${cactus.className}`}
+                                aria-label="Cerrar sesión"
+                            >
+                                <Image
+                                    src="/icons/autoridades.png"
+                                    alt="Cerrar sesión"
+                                    width={24}
+                                    height={24}
+                                />
+                            </button>
+                        </li>
+                    )}
                 </ul>
             </nav>
         </section>
