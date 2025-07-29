@@ -92,7 +92,7 @@ export default function AdminPanel() {
                     <select
                         value={selectedFilter}
                         onChange={(e) => setSelectedFilter(e.target.value as "allWorks" | "withPrize" | "withoutPrize" | "inscripts")}
-                        style={{ marginBottom: "1rem" }}
+
                     >
                         <option value="inscripts">Inscriptos a la jornada</option>
                         <option value="allWorks">Todos los manuscritos</option>

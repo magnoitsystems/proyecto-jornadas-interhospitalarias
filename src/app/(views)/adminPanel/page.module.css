@@ -90,8 +90,11 @@
 .seeCards select:hover{
     background-color: var(--primary-color-1);
     color: var(--secondary-color-1);
-
     transition: 0.3s ease;
+}
+
+.seeCards select:hover option{
+    color: var(--secondary-color-1);
 }
 .seeCards select:focus {
     color: var(--secondary-color-4);
