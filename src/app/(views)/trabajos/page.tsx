@@ -5,8 +5,12 @@ import styles from "./page.module.css";
 import Rules from   "@/components/rulesToPostWork/Rules"
 import { cactus } from '@/app/(views)/ui/fonts';
 import SignOutButton from '@/components/botonSingOut/SignOutButton'
+import { auth } from '@/auth';
 
-export default function PostWork() {
+export default async function PostWork() {
+    const session = await auth();
+    const user = session?.user;
+
     return (
         <main className={`${styles.mainPage} ${cactus.className}`}>
 
@@ -15,7 +19,7 @@ export default function PostWork() {
                 <Title section={"Trabajos"} imgSrc={"/icons/Vector.png"} className={"assignmentTitle"}/>
                 <div className={`${styles.presentation} ${cactus.className}`}>
                     <h1 className={`${cactus.className}`}>
-                        Bienvenido/a, Nombre Apellido
+                        Bienvenido/a, {user?.name ? `${user.name} ${user.lastname || ''}` : 'usuario/a'}
                     </h1>
                     <h2 className={`${cactus.className}`}>
                         Le solicitamos que, previo al envio de un trabajo libre lea el reglamento

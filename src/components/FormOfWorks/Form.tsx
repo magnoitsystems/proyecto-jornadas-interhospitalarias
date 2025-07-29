@@ -23,6 +23,9 @@ const FormPost: React.FC = () => {
     const [premioFile, setPremioFile] = useState<File | null>(null);
     const [workFileError, setWorkFileError] = useState<string>('');
     const [premioFileError, setPremioFileError] = useState<string>('');
+    const [successMessage, setSuccessMessage] = useState('');
+    const [errorMessageBanner, setErrorMessageBanner] = useState('');
+
 
 
     const { uploadWork, loading, error: uploadError, success } = useUploadWork();
@@ -92,7 +95,7 @@ const FormPost: React.FC = () => {
 
 
         console.log("antes de llamar a upload work en el front");
-        await uploadWork({
+        const response = await uploadWork({
             title,
             category,
             description,
@@ -102,11 +105,21 @@ const FormPost: React.FC = () => {
             premioFile: premioFile || null
         });
 
-        if (success) {
-            alert('Trabajo subido exitosamente.');
-        } else if (uploadError) {
-            alert(`Error: ${uploadError}`);
+        if (response.success) {
+            setSuccessMessage('Trabajo subido exitosamente.');
+            setErrorMessageBanner('');
+            setTimeout(() => setSuccessMessage(''), 4000);
+        } else if (response.uploadError) {
+            setSuccessMessage('');
+            setErrorMessageBanner('No se pudo subir el trabajo, intente nuevamente.');
+            setTimeout(() => setErrorMessageBanner(''), 4000);
+        } else {
+            setSuccessMessage('');
+            setErrorMessageBanner('Ocurrió un error inesperado, intente nuevamente.');
+            setTimeout(() => setErrorMessageBanner(''), 4000);
         }
+
+
     };
 
     return (
@@ -229,6 +242,10 @@ const FormPost: React.FC = () => {
                 <button type="submit" disabled={loading} className={styles.submitButton}>
                     {loading ? 'Subiendo...' : 'Enviar Formulario'}
                 </button>
+
+                {successMessage && <p className={styles.successBanner}>{successMessage}</p>}
+                {errorMessageBanner && <p className={styles.errorBanner}>{errorMessageBanner}</p>}
+
             </form>
         </main>
     );

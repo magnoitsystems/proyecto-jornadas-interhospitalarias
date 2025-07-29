@@ -240,26 +240,6 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
                     </div>
                 </div>
 
-                {/* Cantidad de usuarios */}
-                <div className={styles.inputGroup}>
-                    <label htmlFor="userCount" className={styles.inputLabel}>
-                        Cantidad de Usuarios Simulados
-                    </label>
-                    <input
-                        type="number"
-                        id="userCount"
-                        min="10"
-                        max="1000"
-                        step="10"
-                        value={formData.userCount}
-                        onChange={(e) => handleInputChange('userCount', parseInt(e.target.value) || 150)}
-                        className={styles.numberInput}
-                    />
-                    <p className={styles.inputHint}>
-                        Entre 10 y 1000 usuarios (recomendado: 150-300 para análisis realista)
-                    </p>
-                </div>
-
                 <button
                     onClick={generateReport}
                     disabled={isGenerating}

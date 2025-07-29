@@ -37,14 +37,6 @@
     margin-left: 20px;
 }
 
-.sedeInfo span:hover{
-    border-bottom: var(--secondary-color-1) 1px solid;
-}
-
-.infoCardProperties span:hover{
-    cursor: pointer;
-}
-
 .notBorder{
     border-bottom: none;
 }

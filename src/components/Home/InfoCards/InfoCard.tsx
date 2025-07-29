@@ -13,7 +13,7 @@ export default function InfoCard({info, info2, info3, info4, sede} : Prop) {
     return (
         <div className={`${styles.infoCardProperties} ${sede ? styles.sedeInfo : styles.infoCardProperties}  ${cactus.className}`}>
             <div className={styles.infoPositionProperties}>
-                <a href={url}><span className={styles.infoProperties}>{info}</span></a>
+                <span className={styles.infoProperties}>{info}</span>
                 <span className={styles.infoProperties}>{info2}</span>
                 <span className={styles.infoProperties}>{info3}</span>
                 <span className={styles.infoProperties}>{info4}</span>
