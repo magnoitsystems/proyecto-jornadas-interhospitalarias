@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
 
         // Si hay premio y archivo de premio
         if (premio && premioFile && premioFile instanceof Blob) {
-            const premioUploadUrl = await subirAGoogleDrive(premioFile, `${title}-premio`, true);
+            const premioUploadUrl = await subirAGoogleDrive(premioFile, `${title}-${workCode}-premio`, true);
             await prisma.works.create({
                 data: {
                     title,
