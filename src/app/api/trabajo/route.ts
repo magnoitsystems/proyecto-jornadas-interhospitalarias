@@ -45,8 +45,11 @@ export async function POST(request: NextRequest) {
         }
 
         // Subir archivo principal
-        const normalUploadResult = await subirAGoogleDrive(file, title, false);
-        const workCode = uuidv4();
+        console.log("antes de subir el normal a drive");
+        const workCodeWithouthPrize = uuidv4();
+        const normalUploadResult = await subirAGoogleDrive(file, `${title}-${workCodeWithouthPrize}-premio`, false);
+        console.log("workcode: "+ workCodeWithouthPrize);
+        console.log("url normal: "+normalUploadResult);
 
         // Crear trabajo principal con userId
         const normalWork = await prisma.works.create({
@@ -54,22 +57,27 @@ export async function POST(request: NextRequest) {
                 title,
                 category,
                 description,
-                work_code: workCode,
+                work_code: workCodeWithouthPrize,
                 file: normalUploadResult,
                 prize: false,
                 user_id: Number(userId),
             },
         });
+        console.log("subido trabajo normal a db");
 
+        const workCode= uuidv4();
         // Si hay premio y archivo de premio
+        console.log("antes de subir a drive");
         if (premio && premioFile && premioFile instanceof Blob) {
             const premioUploadUrl = await subirAGoogleDrive(premioFile, `${title}-${workCode}-premio`, true);
+            console.log("subido a drive");
+            console.log(premioUploadUrl);
             await prisma.works.create({
                 data: {
                     title,
                     category,
                     description,
-                    work_code: uuidv4(),
+                    work_code: workCode,
                     file: premioUploadUrl,
                     prize: true,
                     user_id: Number(userId)
@@ -77,6 +85,7 @@ export async function POST(request: NextRequest) {
             });
         }
 
+        console.log("por crear los autores");
         await prisma.author.createMany({
             data: autoresParsed.map((a: any) => ({
                 name: a.nombre,
@@ -84,9 +93,11 @@ export async function POST(request: NextRequest) {
                 work_id: normalWork.id_work
             })),
         });
+        console.log("autores creados");
 
         return NextResponse.json({ success: true }, { status: 201 });
     } catch (error) {
+        console.log(error);
         console.error('ERROR EN /api/trabajo:', error);
         return NextResponse.json(
             { success: false, message: (error as any)?.message ?? 'Error desconocido' },

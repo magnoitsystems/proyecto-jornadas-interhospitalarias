@@ -95,7 +95,7 @@ const FormPost: React.FC = () => {
 
 
         console.log("antes de llamar a upload work en el front");
-        await uploadWork({
+        const response = await uploadWork({
             title,
             category,
             description,
@@ -105,11 +105,11 @@ const FormPost: React.FC = () => {
             premioFile: premioFile || null
         });
 
-        if (success) {
+        if (response.success) {
             setSuccessMessage('Trabajo subido exitosamente.');
             setErrorMessageBanner('');
             setTimeout(() => setSuccessMessage(''), 4000);
-        } else if (uploadError) {
+        } else if (response.uploadError) {
             setSuccessMessage('');
             setErrorMessageBanner('No se pudo subir el trabajo, intente nuevamente.');
             setTimeout(() => setErrorMessageBanner(''), 4000);
