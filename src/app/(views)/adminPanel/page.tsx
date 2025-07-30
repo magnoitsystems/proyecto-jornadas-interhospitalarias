@@ -141,7 +141,6 @@ export default function AdminPanel() {
                         ))
                     )}
                 </section>
-
             </section>
         </main>
     );

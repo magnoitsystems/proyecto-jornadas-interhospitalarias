@@ -59,6 +59,12 @@
     border-radius: 50%;
 }
 
+.iconGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 /* Responsive para móviles */
 
 /* Tablets */
