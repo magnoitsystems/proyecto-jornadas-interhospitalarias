@@ -25,6 +25,13 @@ export default function Home(){
     };
     const [hovered, setHovered] = useState(false);
 
+    const url: string[] = [
+         "https://www.google.com.ar/maps/place/Teatro+del+Fuerte/@-37.3300755,-59.138836,16z/data=!3m1!4b1!4m6!3m5!1s0x95911f97a5ac2bd7:0x8d04342b14053258!8m2!3d-37.3300798!4d-59.1362611!16s%2Fg%2F11btwv__tf?hl=es&entry=ttu&g_ep=EgoyMDI1MDcyNy4wIKXMDSoASAFQAw%3D%3D",
+         "https://www.google.com.ar/maps/place/Museo+y+Academia+Municipal+de+Bellas+Artes/@-37.3302796,-59.1398119,17z/data=!3m1!4b1!4m6!3m5!1s0x95911f9798bc98cf:0xf5efcea15b43b3a3!8m2!3d-37.3302839!4d-59.137237!16s%2Fg%2F11btwv90z6?hl=es&entry=ttu&g_ep=EgoyMDI1MDcyNy4wIKXMDSoASAFQAw%3D%3D",
+         "https://www.google.com.ar/maps/place/Sal%C3%B3n+Blanco+Municipal/@-37.3298718,-59.1391468,17z/data=!3m1!4b1!4m6!3m5!1s0x95911f970ba42b73:0x4c2b355d4fca861e!8m2!3d-37.3298761!4d-59.1365719!16s%2Fg%2F11g65fw99d?hl=es&entry=ttu&g_ep=EgoyMDI1MDcyNy4wIKXMDSoASAFQAw%3D%3D",
+        "https://www.google.com.ar/maps/place/Hospital+de+Ni%C3%B1os+%22Dr.+Debilio+Blanco+Villegas%22+S.I.S.P./@-37.3163487,-59.1413192,17z/data=!3m1!4b1!4m6!3m5!1s0x95911f86286dc111:0x753c87304b361e09!8m2!3d-37.316353!4d-59.1387443!16s%2Fg%2F11b7y76kbp?hl=es&entry=ttu&g_ep=EgoyMDI1MDcyNy4wIKXMDSoASAFQAw%3D%3D"
+    ];
+
     return(
         <div>
             <section className={`${styles.sectionCardsProperties}`}>
@@ -51,7 +58,7 @@ export default function Home(){
 
                     <div className={`${styles.infoCardProperties} ${abierta? styles.openCard : styles.cardClosed}`}>
                         <InfoCard info="Teatro del Fuerte" info2={"MUMBAT"} info3={"Salón Blanco del Palacio Municipal"}
-                                  info4={"Htal. de Niños Debilio Blanco Villegas"} sede={true}/>
+                                  info4={"Htal. de Niños Debilio Blanco Villegas"} sede={true} url={url}/>
                     </div>
                 </div>
                 <div className={`${styles.cardCompletyProperties} ${abiertaB2? styles.openCardCardCompletyProperties : styles.cardCompletyProperties}`} onMouseEnter={() => setHovered(true)}
@@ -73,7 +80,7 @@ export default function Home(){
                         </div>
                     </div>
                     <div className={`${styles.infoCardProperties} ${abiertaB2? styles.openCard : styles.cardClosed}`}>
-                        <InfoCard info = {"05-Nov  |  Comienzo de la jornada"} info2={"06-Nov  |  intervalo"} info3={"07-Nov  |  Cierre de la jornada"} sede={false}/>
+                        <InfoCard info = {"05-Nov  |  Comienzo de la jornada"} info2={"06-Nov  |  intervalo"} info3={"07-Nov  |  Cierre de la jornada"} sede={false} url={[]}/>
                     </div>
                 </div>
                 <div className={`${styles.cardCompletyProperties} ${abiertaB3? styles.openCardCardCompletyProperties : styles.cardCompletyProperties}`} onMouseEnter={() => setHovered(true)}
@@ -96,7 +103,7 @@ export default function Home(){
                     </div>
                     <div className={`${styles.infoCardProperties} ${abiertaB3? styles.openCard : styles.cardClosed}`}>
                         <InfoCard info = {"Al momento las jornadas han sido declaradas de interés Municipal\n" +
-                            "                        y han sido auspiciadas por la Sociedad Argentina de Pediatría"} sede={false}/>
+                            "                        y han sido auspiciadas por la Sociedad Argentina de Pediatría"} sede={false} url={[]}/>
                     </div>
                 </div>
             </section>
