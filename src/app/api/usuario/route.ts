@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { UserService } from '@/services/userService';
 import { prisma } from '@/libs/prisma';
 import {Prisma} from "@prisma/client";
+import {EmailService} from "@/services/emailService";
 
 export async function POST(request: NextRequest) {
     try {
@@ -37,6 +38,23 @@ export async function POST(request: NextRequest) {
                      // NO seleccionamos password por seguridad
                  }
             })
+
+	        try {
+		        const emailSent = await EmailService.sendPasswordEmail(
+			        result.user.email,
+			        `${result.user.name} ${result.user.lastname}`,
+			        result.plainPassword! // La contraseña sin hashear
+		        );
+
+		        if (emailSent) {
+			        console.log('EMAIL ENVIADO EXITOSAMENTE');
+		        } else {
+			        console.log('EMAIL FALLÓ (returned false)');
+		        }
+	        } catch (emailError) {
+		        console.error('Email error:', emailError);
+		        // No fallar la creación por error de email
+	        }
 
             return NextResponse.json(
                 {
