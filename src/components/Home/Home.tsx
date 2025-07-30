@@ -95,8 +95,8 @@ export default function Home(){
                         </div>
                     </div>
                     <div className={`${styles.infoCardProperties} ${abiertaB3? styles.openCard : styles.cardClosed}`}>
-                        <InfoCard info = {"Al momento las Jornadas han sido declaradas de interes Municipal\n" +
-                            "                        y han sido auspiciadas por la Sociedad Argentina de Pediatria"} sede={false}/>
+                        <InfoCard info = {"Al momento las jornadas han sido declaradas de interés Municipal\n" +
+                            "                        y han sido auspiciadas por la Sociedad Argentina de Pediatría"} sede={false}/>
                     </div>
                 </div>
             </section>
