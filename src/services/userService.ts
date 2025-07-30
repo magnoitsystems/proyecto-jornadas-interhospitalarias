@@ -16,6 +16,7 @@ export class UserService {
         success: boolean;
         user?: CreateUserData;
         errors?: string[];
+		plainPassword?: string;
     }> {
         try {
             const validationResult: ValidationResult = this.validator.validateUser(userData);
@@ -48,16 +49,17 @@ export class UserService {
                 specialty: userData.specialty?.trim() || null,
                 admin: userData.admin || false,
                 age: userData.age,
-                gender: userData.gender.toLowerCase()
+                gender: userData.gender.toLowerCase(),
             };
 
             return {
                 success: true,
-                user: userToInsert
+                user: userToInsert,
+	            plainPassword: password
             };
 
         } catch (error) {
-            console.error('Error creating user:', error);
+            console.error('Error al crear usuario:', error);
             return {
                 success: false,
                 errors: ['Error interno del servidor al crear el usuario']
@@ -72,9 +74,6 @@ export class UserService {
 		    }
 	    })
 
-	    if (!response)
-			return true;
-
-        return false;
+	    return !!response;
     }
 }

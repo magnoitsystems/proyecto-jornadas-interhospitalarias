@@ -1,5 +1,3 @@
-// src/auth.config.ts
-
 import type { NextRequest } from 'next/server';
 import type { Session, User } from 'next-auth';
 import type { JWT } from 'next-auth/jwt';
@@ -17,8 +15,10 @@ export const authConfig = {
             const isOnLoginPage = nextUrl.pathname.startsWith('/login');
 
             if (!isLoggedIn) {
-                if (isOnAdminPanel || isOnTrabajos) return false;
-                return true;
+                return !(isOnAdminPanel || isOnTrabajos);
+//SON LO MISMO PERO SIMPLIFICADO
+                // if (isOnAdminPanel || isOnTrabajos) return false;
+                // return true;
             }
 
             if (isOnLoginPage) {
