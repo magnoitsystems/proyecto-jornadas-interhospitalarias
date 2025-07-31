@@ -25,7 +25,7 @@ export default function Footer() {
           <li className={styles.item}>
             <Image src="/icons/location-marker.png" alt="Ubicación" width={16} height={16} />
             <span>
-              Av. Avellaneda<br />1234, Tandil
+              Leandro Alem 1300 B7000, Tandil.
             </span>
           </li>
           <li className={styles.item}>
@@ -42,13 +42,13 @@ export default function Footer() {
                 height={16}
                 style={{ marginRight: '0.5rem', verticalAlign: 'middle' }}
               />
-              jornadashospitalarias@gmail.com
+              jornadas_pediatricas@sisptandil.gob.ar
             </a>
           </li>
 
           <li className={styles.item}>
             <Image src="/icons/phone.png" alt="Teléfono" width={16} height={16} />
-            <span>2494 01-2245</span>
+            <span>0249 442-5749 (Int. 303/304/305)</span>
           </li>
         </ul>
       </div>
