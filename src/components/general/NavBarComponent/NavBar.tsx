@@ -159,7 +159,7 @@ export default function NavBar(): JSX.Element {
                             </Link>
                         )}
                     </li>
-                    {pathname === '/adminPanel' ? (
+                    {(pathname === '/adminPanel') || (pathname === '/trabajos') ? (
                         <li>
                             <button
                                 onClick={async () => {
