@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/general/NavBarComponent/NavBar";
 import Footer from "@/components/general/FooterComponent/FooterComponent";
-import { SessionProvider } from "next-auth/react";
-
 
 export const metadata: Metadata = {
   title: "Jornadas Interhospitalarias",
@@ -23,11 +20,10 @@ export default function RootLayout({
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
           </head>
           <body>
-              <SessionProvider>
-                  <NavBar/>
-                  {children}
-                  <Footer></Footer>
-              </SessionProvider>
+              <NavBar/>
+              {children}
+              <Footer>
+              </Footer>
           </body>
       </html>
   );

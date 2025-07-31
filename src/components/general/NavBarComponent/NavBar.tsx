@@ -169,9 +169,9 @@ export default function NavBar(): JSX.Element {
                                     await handleSignOut();
                                     window.location.href = "/";
                                 }}
-                                className={cactus.className}
+                                className={`${styles.logoutButton} ${cactus.className}`}
                             >
-                                <h3>Cerrar Sesión</h3>
+                                <h5>Cerrar Sesión</h5>
                             </button>
                         </li>
                     ) : (
