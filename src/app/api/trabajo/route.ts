@@ -1,16 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 // import cloudinary from '@/libs/cloudinary';
+import { PdfValidationService, CompleteValidationResult } from '@/services/pdfValidationService';
 import { prisma } from '@/libs/prisma';
 import { v4 as uuidv4 } from 'uuid';
 import { auth } from '@/auth';
 import {GetWorkForFilter} from "@/services/workFilterService";
-import { supabase } from '@/libs/supabase';
+// import { supabase } from '@/libs/supabase';
 
 const userService = new GetWorkForFilter();
 
 export async function POST(request: NextRequest) {
     console.log("fuckin post");
-    try {
+	let servicePdf: PdfValidationService | null = null;
+	let validationResult: CompleteValidationResult | null = null;
+	try {
         console.log("HOLA POST");
         
         // Obtener la sesión del usuario
@@ -43,6 +46,34 @@ export async function POST(request: NextRequest) {
         if (!file || !(file instanceof Blob)) {
             return NextResponse.json({ message: 'Archivo inválido' }, { status: 400 });
         }
+
+	    // ===============================
+	    // VALIDACIÓN COMPLETA DEL PDF
+	    // ===============================
+
+	    console.log("=== INICIANDO VALIDACIÓN COMPLETA PDF ===");
+		servicePdf = new PdfValidationService();
+		validationResult = await servicePdf.validateAndStore(file, `${title}.pdf`, userId);
+
+	    // Si hay errores críticos, rechazar el archivo
+	    if (!validationResult.isValid) {
+		    console.error('Validación PDF fallida:', validationResult.criticalErrors);
+
+		    return NextResponse.json({
+			    success: false,
+			    message: 'El archivo PDF no pasó las validaciones de seguridad',
+			    errors: validationResult.allErrors,
+			    criticalIssues: validationResult.criticalErrors,
+			    details: validationResult.steps
+		    }, { status: 400 });
+	    }
+
+	    // Si solo hay warnings, continuar pero logear
+	    if (validationResult.warningErrors.length > 0) {
+		    console.warn('PDF tiene warnings pero es aceptable:', validationResult.warningErrors);
+	    }
+
+	    console.log("=== VALIDACIÓN EXITOSA, CONTINUANDO CON ALMACENAMIENTO ===");
 
         // Subir archivo principal
         console.log("antes de subir el normal a drive");
