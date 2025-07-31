@@ -3,7 +3,6 @@ import styles from './Form.module.css';
 import { cactus } from '@/app/(views)/ui/fonts';
 import useUploadWork from '@/hooks/worksAdmin';
 import { useState } from 'react';
-import Banner from '@/components/general/Banner/Banner';
 
 
 
@@ -232,24 +231,6 @@ const FormPost: React.FC = () => {
                 <button type="submit" disabled={loading} className={styles.submitButton}>
                     {loading ? 'Subiendo...' : 'Enviar Formulario'}
                 </button>
-
-
-                {successMessage && (
-                    <Banner
-                        tipo="success"
-                        mensaje={successMessage}
-                        onClose={() => setSuccessMessage('')}
-                    />
-                )}
-
-
-                {errorMessageBanner && (
-                    <Banner
-                        tipo="error"
-                        mensaje={errorMessageBanner}
-                        onClose={() => setErrorMessageBanner('')}
-                    />
-                )}
             </form>
         </main>
     );
