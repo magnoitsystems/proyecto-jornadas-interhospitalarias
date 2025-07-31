@@ -148,9 +148,9 @@ export default function NavBar(): JSX.Element {
                             <Link
                                 href="/trabajos"
                                 onClick={() => setIsOpen(false)}
-                                className={`${styles.trabajosLink} ${cactus.className} ${pathname === '/trabajos' ? styles.activeLink : ''}`}
+                                className={`${styles.trabajosLink} ${cactus.className} ${pathname === '/adminPanel' ? styles.activeLink : ''}`}
                             >
-                                Trabajos
+                                Administración
                             </Link>
                         ) : (
                             <Link
@@ -158,7 +158,7 @@ export default function NavBar(): JSX.Element {
                                 onClick={() => setIsOpen(false)}
                                 className={`${styles.trabajosLink} ${cactus.className} ${pathname === '/trabajos' ? styles.activeLink : ''}`}
                             >
-                                Administración
+                                Trabajos
                             </Link>
                         )}
                     </li>
