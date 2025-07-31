@@ -44,13 +44,17 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
         }
     ];
 
-    const handleInputChange = (field: keyof GenerateReportRequest, value: any) => {
+    const handleInputChange = (
+        field: keyof GenerateReportRequest,
+        value: string | boolean | number
+    ) => {
         setFormData(prev => ({
             ...prev,
             [field]: value
         }));
         setError(null);
     };
+
 
     const validateForm = (): boolean => {
         if (!formData.includeGender && !formData.includeSpecialty && !formData.includeProfession) {

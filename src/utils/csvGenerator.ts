@@ -5,7 +5,7 @@ export class CSVGenerator {
     /**
      * Convierte array de objetos a CSV
      */
-    private static arrayToCSV<T extends Record<string, any>>(
+    private static arrayToCSV<T extends Record<string, unknown>>(
         data: T[],
         headers: Array<{ key: keyof T; label: string }>
     ): string {

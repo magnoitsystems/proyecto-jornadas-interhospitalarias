@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-// import cloudinary from '@/libs/cloudinary';
 import { prisma } from '@/libs/prisma';
 import { v4 as uuidv4 } from 'uuid';
 import { auth } from '@/auth';
 import {GetWorkForFilter} from "@/services/workFilterService";
-import { supabase } from '@/libs/supabase';
 
 const userService = new GetWorkForFilter();
 
@@ -96,14 +94,22 @@ export async function POST(request: NextRequest) {
         console.log("autores creados");
 
         return NextResponse.json({ success: true }, { status: 201 });
-    } catch (error) {
-        console.log(error);
-        console.error('ERROR EN /api/trabajo:', error);
-        return NextResponse.json(
-            { success: false, message: (error as any)?.message ?? 'Error desconocido' },
-            { status: 500 }
-        );
+    } catch (error: unknown) {
+    console.error('ERROR EN /api/trabajo:', error);
+
+    let message = 'Error desconocido';
+
+    // Verificamos que sea un Error válido
+    if (error instanceof Error) {
+        message = error.message;
     }
+
+    return NextResponse.json(
+        { success: false, message },
+        { status: 500 }
+    );
+}
+
 }
 
 async function subirAGoogleDrive(fileBlob: Blob, filename: string, isPremio: boolean): Promise<string> {
@@ -145,10 +151,19 @@ export async function GET(){
 
         return NextResponse.json(usersFilter);
     }
-    catch (e){
-        return NextResponse.json(
-            { message: "Error del servidor" },
-            { status: 500 }
-        )
+    catch (error: unknown) {
+    console.error('ERROR EN /api/trabajo:', error);
+
+    let message = 'Error desconocido';
+
+    // Verificamos que sea un Error válido
+    if (error instanceof Error) {
+        message = error.message;
     }
+
+    return NextResponse.json(
+        { success: false, message },
+        { status: 500 }
+    );
+}
 }

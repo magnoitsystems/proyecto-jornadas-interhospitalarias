@@ -68,8 +68,8 @@ interface AuthorityCardData {
     groups: AuthorityGroup[];
 }
 
-interface AuthoritiesCardProps {
-    cardData: AuthorityCardData;
-    variant?: 'default' | 'long';
-    className?: string;
-}
+// interface AuthoritiesCardProps {
+//     cardData: AuthorityCardData;
+//     variant?: 'default' | 'long';
+//     className?: string;
+// }

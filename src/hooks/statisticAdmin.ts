@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import { Statistics } from "@/types";
 
-export function statisticAdmin(){
+export function useStatisticAdmin(){
     const [data, setData] = useState<Statistics[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);

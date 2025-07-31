@@ -1,5 +1,5 @@
-import { useState, useCallback, useEffect } from "react";
-import {UserView as User} from "@/types/user";
+import { useState } from "react";
+import { UserView as User } from "@/types/user";
 
 
 export interface UserData {
@@ -44,9 +44,13 @@ export default function useUsers() {
 
       setSuccessMessage(data.message);
       return data.user;
-    } catch (err: any) {
-      setError(err.message);
-      return null;
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Error desconocido");
+      }
+      return null; // o []
     } finally {
       setLoading(false);
     }
@@ -91,10 +95,13 @@ export default function useUsers() {
       setUsers(data.responseUser || []);
 
       return data.users || [];
-    } catch (err: any) {
-      setError(err.message);
-      setUsers([]);
-      return [];
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Error desconocido");
+      }
+      return null; // o []
     } finally {
       setLoading(false);
     }

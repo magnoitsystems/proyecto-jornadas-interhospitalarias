@@ -59,9 +59,6 @@ export default function NavBar(): JSX.Element {
             document.body.style.minHeight = '';
         };
     }, [isFormPage, isAdminPage]);
-
-    // @ts-ignore
-    // @ts-ignore
     return (
         <section
             className={`
