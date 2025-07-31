@@ -3,7 +3,8 @@ import styles from './Form.module.css';
 import { cactus } from '@/app/(views)/ui/fonts';
 import useUploadWork from '@/hooks/worksAdmin';
 import { useState } from 'react';
-import { auth } from "@/auth";
+import Banner from '@/components/general/Banner/Banner';
+
 
 
 interface Autor {
@@ -12,7 +13,7 @@ interface Autor {
     afiliacion: string;
 }
 
-const categorias = ["investigación cualitativa", "investigación cuantitativa", "presentación de casos", "relatos de experiencias"];
+const categorias = ["Investigación cualitativa", "Investigación cuantitativa", "Presentación de casos", "Relatos de experiencias"];
 
 const FormPost: React.FC = () => {
     const [opcionAPremio, setOpcionAPremio] = useState<boolean>(false);
@@ -23,12 +24,11 @@ const FormPost: React.FC = () => {
     const [premioFile, setPremioFile] = useState<File | null>(null);
     const [workFileError, setWorkFileError] = useState<string>('');
     const [premioFileError, setPremioFileError] = useState<string>('');
+    // Aquí usamos un solo estado para cada tipo de mensaje
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessageBanner, setErrorMessageBanner] = useState('');
 
-
-
-    const { uploadWork, loading, error: uploadError, success } = useUploadWork();
+    const { uploadWork, loading } = useUploadWork();
 
     const handleGenerarFormularios = () => {
         const cantidad = parseInt(cantidadAutoresInput, 10);
@@ -61,15 +61,18 @@ const FormPost: React.FC = () => {
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
-        console.log("hola handle submit");
         e.preventDefault();
+
+        // Limpiamos los mensajes de los banners antes de cada envío
+        setSuccessMessage('');
+        setErrorMessageBanner('');
 
         const title = (document.getElementById('titulo') as HTMLInputElement)?.value;
         const category = (document.getElementById('categoriaSelect') as HTMLSelectElement)?.value;
         const description = (document.getElementById('resumen') as HTMLTextAreaElement)?.value;
 
         if (!title || !category || !description || !workFile) {
-            alert('Por favor, completa todos los campos y sube un archivo.');
+            setErrorMessageBanner('Por favor, completa todos los campos y sube un archivo.');
             return;
         }
 
@@ -79,22 +82,20 @@ const FormPost: React.FC = () => {
         }));
 
         if (autoresData.some(a => !a.nombre)) {
-            alert("Todos los autores deben tener nombre completo.");
+            setErrorMessageBanner("Todos los autores deben tener nombre completo.");
             return;
         }
 
         if (workFile?.size && workFile.size > 5 * 1024 * 1024) {
-            alert('El archivo principal supera el tamaño máximo permitido de 5 MB.');
+            setErrorMessageBanner('El archivo principal supera el tamaño máximo permitido de 5 MB.');
             return;
         }
 
         if (premioFile?.size && premioFile.size > 5 * 1024 * 1024) {
-            alert('El archivo de opción a premio supera el tamaño máximo permitido de 5 MB.');
+            setErrorMessageBanner('El archivo de opción a premio supera el tamaño máximo permitido de 5 MB.');
             return;
         }
 
-
-        console.log("antes de llamar a upload work en el front");
         const response = await uploadWork({
             title,
             category,
@@ -106,19 +107,10 @@ const FormPost: React.FC = () => {
         });
 
         if (response.success) {
-            setSuccessMessage('Trabajo subido exitosamente.');
-            setErrorMessageBanner('');
-            setTimeout(() => setSuccessMessage(''), 4000);
-        } else if (response.uploadError) {
-            setSuccessMessage('');
-            setErrorMessageBanner('No se pudo subir el trabajo, intente nuevamente.');
-            setTimeout(() => setErrorMessageBanner(''), 4000);
+            setSuccessMessage('¡Se ha subido el trabajo exitosamente!');
         } else {
-            setSuccessMessage('');
-            setErrorMessageBanner('Ocurrió un error inesperado, intente nuevamente.');
-            setTimeout(() => setErrorMessageBanner(''), 4000);
+            setErrorMessageBanner(response.uploadError || 'Ocurrió un error inesperado, intente nuevamente.');
         }
-
 
     };
 
@@ -202,7 +194,6 @@ const FormPost: React.FC = () => {
                         }}
                     />
                     {workFileError && <p className={styles.errorText}>{workFileError}</p>}
-
                 </div>
 
                 <div className={styles.formGroup}>
@@ -234,7 +225,6 @@ const FormPost: React.FC = () => {
                                 }}
                             />
                             {premioFileError && <p className={styles.errorText}>{premioFileError}</p>}
-
                         </div>
                     )}
                 </div>
@@ -243,9 +233,23 @@ const FormPost: React.FC = () => {
                     {loading ? 'Subiendo...' : 'Enviar Formulario'}
                 </button>
 
-                {successMessage && <p className={styles.successBanner}>{successMessage}</p>}
-                {errorMessageBanner && <p className={styles.errorBanner}>{errorMessageBanner}</p>}
 
+                {successMessage && (
+                    <Banner
+                        tipo="success"
+                        mensaje={successMessage}
+                        onClose={() => setSuccessMessage('')}
+                    />
+                )}
+
+
+                {errorMessageBanner && (
+                    <Banner
+                        tipo="error"
+                        mensaje={errorMessageBanner}
+                        onClose={() => setErrorMessageBanner('')}
+                    />
+                )}
             </form>
         </main>
     );
