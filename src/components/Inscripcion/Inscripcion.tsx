@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function InscriptionForm() {
-  const { createUser, loading } = useCreateUser();
+  const { createUser} = useCreateUser();
   const router = useRouter();
 
   const [formData, setFormData] = useState({
@@ -52,7 +52,7 @@ export default function InscriptionForm() {
       } else {
         setError("Ocurrió un error al registrarte. Revisá los datos e intentá nuevamente.");
       }
-    } catch (err) {
+    } catch{
       setError("Error inesperado. Por favor intentá más tarde.");
     }
   };

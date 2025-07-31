@@ -1,7 +1,7 @@
 'use client';
 import { cactus } from '@/app/(views)/ui/fonts';
 import styles from './RoundedCard.module.css';
-import {statisticAdmin} from "@/hooks/statisticAdmin";
+import {useStatisticAdmin} from "@/hooks/statisticAdmin";
 import {useEffect, useState} from "react";
 import Image from "next/image";
 
@@ -20,7 +20,7 @@ export default function CircularCard() {
   }, []);
 
 
-  const { data, loading, error } = statisticAdmin();
+  const { data, loading, error } = useStatisticAdmin();
 
   const handleNext = () => {
       setCurrentIndex((prev) => (prev + 1) % data.length);

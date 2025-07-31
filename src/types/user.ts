@@ -13,8 +13,8 @@ export interface UserView {
     works?: Work[];
 }
 export interface UserLogin {
-    lastname: any;
-    name: any;
+    lastname: string | null;
+    name: string;
     id_user: number;
     email: string;
     password: string;

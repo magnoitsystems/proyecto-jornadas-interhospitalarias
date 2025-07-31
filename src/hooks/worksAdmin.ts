@@ -46,11 +46,11 @@ const useUploadWork = () => {
 
       if (res.status != 201) {
         console.log("se rompió en el post");
-        console.log("status: "+res.status);
+        console.log("status: " + res.status);
         let errorMessage = 'Error desconocido';
         try {
           const errorData = await res.json();
-          console.log("errorData:"+ errorData);
+          console.log("errorData:" + errorData);
           errorMessage = errorData.message || errorMessage;
           console.log("error:" + errorMessage);
         } catch {
@@ -58,16 +58,20 @@ const useUploadWork = () => {
         }
       }
 
-      console.log("res status fuera del if: "+res.status);
+      console.log("res status fuera del if: " + res.status);
 
       const result = await res.json();
       console.log(result);
       setSuccess(true);
       return result;
-    } catch (err: any) {
-      console.log("en el catch del hook?");
-      setError(err.message);
-      throw err;
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Error desconocido");
+        throw err;
+      }
+      return null;
     } finally {
       setLoading(false);
     }
