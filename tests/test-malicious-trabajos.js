@@ -4,7 +4,76 @@ import fs from 'fs';
 import path from 'path';
 import { FormData, File } from 'formdata-node';
 
-// Datos de prueba reutilizables
+// Configuración de autenticación
+const AUTH_CONFIG = {
+    baseUrl: 'http://localhost:3000',
+    loginEndpoint: '/api/auth/signin',
+    testUser: {
+        email: 'juan.perez@example.com',
+        password: '123456',
+    }
+};
+
+// Variable global para cookies de sesión
+let sessionCookies = '';
+
+// Función para hacer login y obtener cookies de sesión
+async function authenticateUser() {
+    console.log('Intentando autenticación...\n');
+
+    try {
+        const loginResponse = await fetch(`${AUTH_CONFIG.baseUrl}/api/auth/signin`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: AUTH_CONFIG.testUser.email,
+                password: AUTH_CONFIG.testUser.password,
+            }),
+        });
+
+        if (loginResponse.ok) {
+            const setCookieHeader = loginResponse.headers.get('set-cookie');
+            if (setCookieHeader) {
+                sessionCookies = setCookieHeader.split(',').map(cookie => cookie.split(';')[0]).join('; ');
+                console.log('Login exitoso');
+                return true;
+            }
+        }
+
+        throw new Error(`Login failed: ${loginResponse.status} - ${await loginResponse.text()}`);
+
+    } catch (error) {
+        console.error('Error de login:', error.message);
+
+        console.log('\nAlternativa - obtener cookies manualmente:');
+        console.log('1. Ir a http://localhost:3000 e iniciar sesión');
+        console.log('2. F12 > Application > Cookies');
+        console.log('3. Copiar cookie de sesión');
+        console.log('4. Pegar en MANUAL_SESSION_COOKIE\n');
+
+        return false;
+    }
+}
+
+// Si el login automático falla, pegar cookie aquí
+const MANUAL_SESSION_COOKIE = '';
+
+// Request con autenticación
+async function makeAuthenticatedRequest(endpoint, formData) {
+    const cookies = sessionCookies || MANUAL_SESSION_COOKIE;
+
+    return fetch(`${AUTH_CONFIG.baseUrl}${endpoint}`, {
+        method: 'POST',
+        headers: {
+            'Cookie': cookies
+        },
+        body: formData
+    });
+}
+
+// Datos base para los tests
 const baseWorkData = {
     title: 'Trabajo de Prueba Seguridad',
     category: 'Investigación',
@@ -15,80 +84,79 @@ const baseWorkData = {
     premio: 'false'
 };
 
-// Configuración de casos de prueba
+// Casos de prueba
 const testCases = [
     {
-        name: 'PDF con EICAR (Virus Test)',
+        name: 'PDF con EICAR',
         filename: 'eicar-test.pdf',
         shouldFail: true,
         expectedError: 'Amenaza detectada',
         createFile: () => createEicarPdf()
     },
     {
-        name: 'PDF con JavaScript Malicioso',
+        name: 'PDF con JavaScript',
         filename: 'javascript-malicious.pdf',
         shouldFail: true,
         expectedError: 'JavaScript embebido',
         createFile: () => createJavaScriptPdf()
     },
     {
-        name: 'PDF con Formularios Interactivos',
+        name: 'PDF con formularios',
         filename: 'interactive-forms.pdf',
         shouldWarn: true,
         expectedWarning: 'formularios interactivos',
         createFile: () => createInteractiveFormsPdf()
     },
     {
-        name: 'PDF con Enlaces Externos Múltiples',
+        name: 'PDF con enlaces externos',
         filename: 'external-links.pdf',
         shouldWarn: true,
         expectedWarning: 'enlaces externos',
         createFile: () => createExternalLinksPdf()
     },
     {
-        name: 'PDF Encriptado',
+        name: 'PDF encriptado',
         filename: 'encrypted.pdf',
         shouldWarn: true,
         expectedWarning: 'encriptado',
         createFile: () => createEncryptedPdf()
     },
     {
-        name: 'Archivo con Firma PDF Falsa',
+        name: 'Firma PDF falsa',
         filename: 'fake-signature.pdf',
         shouldFail: true,
         expectedError: 'PDF válido',
         createFile: () => createFakePdfSignature()
     },
     {
-        name: 'Archivo Demasiado Grande',
+        name: 'Archivo muy grande',
         filename: 'oversized.pdf',
         shouldFail: true,
         expectedError: 'demasiado grande',
         createFile: () => createOversizedPdf()
     },
     {
-        name: 'PDF Corrupto/Truncado',
+        name: 'PDF corrupto',
         filename: 'corrupted.pdf',
         shouldFail: true,
         expectedError: 'corrupto',
         createFile: () => createCorruptedPdf()
     },
     {
-        name: 'PDF con Attachments Embebidos',
+        name: 'PDF con attachments',
         filename: 'with-attachments.pdf',
         shouldWarn: true,
         expectedWarning: 'archivos adjuntos',
         createFile: () => createPdfWithAttachments()
     },
     {
-        name: 'PDF Legítimo (Control)',
+        name: 'PDF válido',
         filename: 'legitimate.pdf',
         shouldPass: true,
         createFile: () => createLegitimateValidPdf()
     }
 ];
 
-// Crear directorio de pruebas
 function ensureTestDirectory() {
     const testDir = './test-files';
     if (!fs.existsSync(testDir)) {
@@ -97,7 +165,7 @@ function ensureTestDirectory() {
     return testDir;
 }
 
-// Funciones para crear PDFs maliciosos de prueba
+// Generadores de archivos de prueba
 
 function createEicarPdf() {
     return `%PDF-1.4
@@ -210,14 +278,14 @@ endobj
 endobj
 3 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] 
-   /Annots [
-     << /Type /Annot /Subtype /Link /Rect [100 700 200 720] 
-        /A << /Type /Action /S /URI /URI (http://suspicious-site.example.com) >> >>
-     << /Type /Annot /Subtype /Link /Rect [100 650 200 670] 
-        /A << /Type /Action /S /URI /URI (https://malicious-domain.example.org) >> >>
-     << /Type /Annot /Subtype /Link /Rect [100 600 200 620] 
-        /A << /Type /Action /S /URI /URI (https://phishing-test.example.net) >> >>
-   ] >>
+  /Annots [
+    << /Type /Annot /Subtype /Link /Rect [100 700 200 720] 
+       /A << /Type /Action /S /URI /URI (http://suspicious-site.example.com) >> >>
+    << /Type /Annot /Subtype /Link /Rect [100 650 200 670] 
+       /A << /Type /Action /S /URI /URI (https://malicious-domain.example.org) >> >>
+    << /Type /Annot /Subtype /Link /Rect [100 600 200 620] 
+       /A << /Type /Action /S /URI /URI (https://phishing-test.example.net) >> >>
+  ] >>
 endobj
 xref
 0 4
@@ -260,9 +328,8 @@ And should be rejected by validation
 }
 
 function createOversizedPdf() {
-    // Crear un PDF que exceda el límite de tamaño (simulado)
     const baseContent = createLegitimateValidPdf();
-    const largePadding = 'A'.repeat(12 * 1024 * 1024); // 12MB de padding
+    const largePadding = 'A'.repeat(12 * 1024 * 1024); // 12MB
     return baseContent + '\n% Large padding:\n' + largePadding;
 }
 
@@ -340,11 +407,11 @@ stream
 BT
 /F1 12 Tf
 100 700 Td
-(Este es un documento PDF legítimo y seguro) Tj
+(Documento PDF válido para pruebas) Tj
 0 -20 Td
-(Contiene solo texto sin elementos peligrosos) Tj
+(Contiene únicamente texto sin elementos peligrosos) Tj
 0 -20 Td
-(Debería pasar todas las validaciones de seguridad) Tj
+(Debe pasar las validaciones de seguridad) Tj
 ET
 endstream
 endobj
@@ -362,9 +429,16 @@ startxref
 %%EOF`;
 }
 
-// Función principal de testing
+// Runner principal
 async function runSecurityTests() {
     console.log('Iniciando tests de seguridad para /api/trabajo\n');
+
+    const authSuccess = await authenticateUser();
+
+    if (!authSuccess && !MANUAL_SESSION_COOKIE) {
+        console.log('Sin autenticación disponible. Configurar MANUAL_SESSION_COOKIE.');
+        return;
+    }
 
     const testDir = ensureTestDirectory();
     const results = {
@@ -375,15 +449,13 @@ async function runSecurityTests() {
     };
 
     for (const testCase of testCases) {
-        console.log(`\n=== Testing: ${testCase.name} ===`);
+        console.log(`\n=== ${testCase.name} ===`);
 
         try {
-            // Crear archivo de prueba
             const fileContent = testCase.createFile();
             const filePath = path.join(testDir, testCase.filename);
             fs.writeFileSync(filePath, fileContent);
 
-            // Preparar FormData
             const formData = new FormData();
             formData.append('title', `${baseWorkData.title} - ${testCase.name}`);
             formData.append('category', baseWorkData.category);
@@ -391,87 +463,71 @@ async function runSecurityTests() {
             formData.append('autores', baseWorkData.autores);
             formData.append('premio', baseWorkData.premio);
 
-            // Agregar archivo
             const fileBuffer = fs.readFileSync(filePath);
             const file = new File([fileBuffer], testCase.filename, { type: 'application/pdf' });
             formData.append('file', file);
 
-            // Hacer request a la API
-            const response = await fetch('http://localhost:3000/api/trabajo', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    // Nota: No agregar Content-Type, fetch lo maneja automáticamente con FormData
-                }
-            });
-
+            const response = await makeAuthenticatedRequest('/api/trabajo', formData);
             const responseData = await response.json();
 
-            // Evaluar resultados
             if (testCase.shouldFail) {
                 if (!response.ok) {
-                    console.log(`✅ Correctamente rechazado: ${response.status}`);
-                    console.log(`   Razón: ${responseData.message}`);
+                    console.log(`RECHAZADO: ${response.status} - ${responseData.message}`);
                     if (responseData.errors) {
-                        console.log(`   Errores: ${responseData.errors.join(', ')}`);
+                        console.log(`Errores: ${responseData.errors.join(', ')}`);
                     }
                     results.passed++;
                 } else {
-                    console.log(`❌ FALLO: Debería haber sido rechazado pero fue aceptado`);
-                    console.log(`   Response: ${JSON.stringify(responseData, null, 2)}`);
+                    console.log(`ERROR: Debería rechazarse pero se aceptó`);
                     results.failed++;
                 }
             } else if (testCase.shouldWarn) {
                 if (response.ok) {
-                    console.log(`⚠️  Aceptado con warnings (esperado)`);
+                    console.log(`ACEPTADO con warnings`);
                     if (responseData.validationSummary?.warningsCount > 0) {
-                        console.log(`   Warnings detectados: ${responseData.validationSummary.warningsCount}`);
+                        console.log(`Warnings: ${responseData.validationSummary.warningsCount}`);
                     }
                     results.warnings++;
                 } else {
-                    console.log(`❓ Resultado inesperado: ${response.status}`);
-                    console.log(`   Response: ${JSON.stringify(responseData, null, 2)}`);
+                    console.log(`INESPERADO: ${response.status}`);
                     results.failed++;
                 }
             } else if (testCase.shouldPass) {
                 if (response.ok) {
-                    console.log(`✅ Correctamente aceptado`);
+                    console.log(`ACEPTADO correctamente`);
                     results.passed++;
                 } else {
-                    console.log(`❌ FALLO: Debería haber sido aceptado pero fue rechazado`);
-                    console.log(`   Razón: ${responseData.message}`);
+                    console.log(`ERROR: Debería aceptarse pero se rechazó`);
+                    console.log(`Razón: ${responseData.message}`);
                     results.failed++;
                 }
             }
 
-            // Limpiar archivo de prueba
             fs.unlinkSync(filePath);
 
         } catch (error) {
-            console.log(`❌ Error durante el test: ${error.message}`);
+            console.log(`ERROR: ${error.message}`);
             results.failed++;
         }
     }
 
-    // Resumen final
     console.log('\n' + '='.repeat(50));
-    console.log('RESUMEN DE TESTS DE SEGURIDAD');
+    console.log('RESUMEN');
     console.log('='.repeat(50));
-    console.log(`Total de tests: ${results.total}`);
+    console.log(`Total: ${results.total}`);
     console.log(`Exitosos: ${results.passed}`);
-    console.log(`Con warnings: ${results.warnings}`);
+    console.log(`Warnings: ${results.warnings}`);
     console.log(`Fallidos: ${results.failed}`);
-    console.log(`Tasa de éxito: ${((results.passed + results.warnings) / results.total * 100).toFixed(1)}%`);
+    console.log(`Éxito: ${((results.passed + results.warnings) / results.total * 100).toFixed(1)}%`);
 
     if (results.failed === 0) {
-        console.log('\n🎉 Todas las validaciones de seguridad funcionan correctamente');
+        console.log('\nValidaciones funcionando OK');
     } else {
-        console.log('\n⚠️  Algunas validaciones necesitan revisión');
+        console.log('\nRevisar validaciones fallidas');
     }
 }
 
-// Ejecutar tests
 runSecurityTests().catch(error => {
-    console.error('Error ejecutando tests:', error);
+    console.error('Error:', error);
     process.exit(1);
 });

@@ -1,11 +1,11 @@
-import { EmailService } from '../src/services/emailService.js';
+import { EmailService } from '../src/services/emailService.ts';
 
 async function testEmailSubmission() {
 	console.log('Iniciando test de email...');
 
 	try {
 		const result = await EmailService.sendWorkSubmissionConfirmation(
-			'test@example.com',
+			'laplacegian@gmail.com',
 			'Juan Pérez',
 			'Análisis de Casos Clínicos en Cardiología',
 			'Cardiología',
