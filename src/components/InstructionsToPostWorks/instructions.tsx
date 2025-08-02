@@ -27,11 +27,15 @@ export default function InstructionsToPostWorks() {
                 </li>
                  <li className={cactus.className}>
 
-                    <a href="#pautas-publicaciones">
-                        Ver pautas del Reglamento de Publicaciones de Archivos Argentinos de Pediatría
-                    </a>
-                </li>
+                     <a
+                         href="https://www.sap.org.ar/nosotros/institucional/direccion-de-publicaciones/para-autores"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                     >
+                         Ver pautas del Reglamento de Publicaciones de Archivos Argentinos de Pediatría
+                     </a>
+                 </li>
             </ul>
         </nav>
-    );
+);
 }

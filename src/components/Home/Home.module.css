@@ -1,10 +1,15 @@
+.main {
+    box-sizing: border-box;
+
+    padding-inline: var(--20px);
+}
+
 .sectionCardsProperties {
     display: flex;
     flex-direction: column;
     width: 100%;
     gap: 10px;
     justify-content: center;
-    padding-inline: 20px;
 }
 
 .cardProperties{
@@ -120,6 +125,25 @@
 
 .iconRotate{
     transform: rotate(180deg);
+}
+
+/*secondarySponsors*/
+.secondarySponsors {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 100%;
+    height: fit-content;
+
+    margin: 0px;
+    margin-top: var(--50px);
+    padding: var(--20px);
+    padding-inline: 0px;
+
+    border-radius: 20px;
+    border: 1px solid var(--secondary-color-4);
 }
 
 @media (min-width: 1024px) {

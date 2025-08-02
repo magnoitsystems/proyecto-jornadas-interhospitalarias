@@ -8,7 +8,6 @@
     gap: 40px;
     margin-bottom: 10px;
     margin-top: 50px;
-    padding: 20px;
 }
 
 .sponsorsProperties, .imageProperties{
@@ -35,11 +34,7 @@
     flex-direction: row;
 }
 
-.presentationCardProperties:hover{
-    background-color: var(--secondary-color-4);
-}
-
-.presentationCardProperties:hover .infoColorProperties, .presentationCardProperties:hover{
+.infoColorProperties {
     color: var(--secondary-color-1);
 }
 

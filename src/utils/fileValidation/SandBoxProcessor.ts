@@ -173,7 +173,7 @@ export class SandboxProcessor {
 				errors
 			};
 
-		} catch (error) {
+		} catch {
 			return {
 				isValid: false,
 				errors: ['Error validando tamaño de archivo']

@@ -53,7 +53,11 @@
 }
 
 .menu li {
-  margin: 0;
+  margin: auto 0px;
+}
+
+.menu li h5 {
+  margin: 0px;
 }
 
 .menu a {
@@ -136,6 +140,15 @@
   background-color: var(--primary-color-5);
 }
 
+.logoutLink:hover {
+  color: var(--primary-color-7);
+  transform: translateY(-2px);
+}
+
+.logoutLink:hover::after {
+  background-color: var(--primary-color-7);
+}
+
 .homeLink.activeLink {
   color: var(--primary-color-1);
 }
@@ -158,6 +171,10 @@
 
 .trabajosLink.activeLink {
   color: var(--primary-color-5);
+}
+
+.logoutLink.activeLink {
+  color: var(--primary-color-7);
 }
 
 .btnBurgerProperties {
@@ -328,4 +345,27 @@
   .formHero{
     height: 10px;
   }
+}
+
+/*logout*/
+.logoutButton {
+  width: fit-content;
+  height: fit-content;
+
+  margin: 0px;
+  padding-inline: 10px;
+
+  background-color: transparent;
+  color: var(--secondary-color-1);
+  border-radius: 40px;
+  border: none;
+  box-shadow: none;
+
+  transition: all 0.6s ease-in-out;
+}
+
+.logoutButton:hover {
+  border: 1px solid var(--primary-color-7);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
 }
