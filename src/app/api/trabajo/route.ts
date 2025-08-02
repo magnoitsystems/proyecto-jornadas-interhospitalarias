@@ -4,17 +4,14 @@ import { prisma } from '@/libs/prisma';
 import { v4 as uuidv4 } from 'uuid';
 import { auth } from '@/auth';
 import {GetWorkForFilter} from "@/services/workFilterService";
-// import {EmailService} from "@/services/emailService"
+import {EmailService} from "@/services/emailService"
 
 const userService = new GetWorkForFilter();
 
 export async function POST(request: NextRequest) {
-    console.log("fuckin post");
 	// let servicePdf: PdfValidationService | null = null;
 	// let validationResult: CompleteValidationResult | null = null;
 	try {
-        console.log("HOLA POST");
-        
         // Obtener la sesión del usuario
         const session = await auth();
         
@@ -125,19 +122,21 @@ export async function POST(request: NextRequest) {
         });
         console.log("autores creados");
 
-		// const name = session.user.name
-		// const email  = session.user.email
-		//
-		// if(!email)
-		// 	return NextResponse.json({ message: 'sesión sin un mail' }, { status: 400 });
-		//
-		// await EmailService.sendWorkSubmissionConfirmation(
-		// 	name,
-		// 	email,
-		// 	title,
-		// 	category,
-		// 	premio
-		// )
+		const name = session.user.name
+		const email  = session.user.email
+
+		if(!email)
+			return NextResponse.json({ message: 'sesión sin un mail' }, { status: 400 });
+
+		console.log("email: "+email);
+		const send = await EmailService.sendWorkSubmissionConfirmation(
+			email,
+			name,
+			title,
+			category,
+			premio
+		)
+		console.log("Resultado de enviar mail: "+send);
 
         return NextResponse.json({ success: true }, { status: 201 });
     } catch (error: unknown) {
@@ -145,7 +144,6 @@ export async function POST(request: NextRequest) {
 
     let message = 'Error desconocido';
 
-    // Verificamos que sea un Error válido
     if (error instanceof Error) {
         message = error.message;
     }
