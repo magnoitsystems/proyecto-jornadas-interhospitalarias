@@ -95,144 +95,154 @@ const FormPost: React.FC = () => {
             return;
         }
 
-       const response = await uploadWork({
-    title,
-    category,
-    description,
-    file: workFile,
-    autores: autoresData,
-    premio: opcionAPremio,
-    premioFile: premioFile || null
-});
+        const response = await uploadWork({
+            title,
+            category,
+            description,
+            file: workFile,
+            autores: autoresData,
+            premio: opcionAPremio,
+            premioFile: premioFile || null
+        });
 
-if (response.success) {
-    setSuccessMessage('¡Se ha subido el trabajo exitosamente!');
-} else {
-    setErrorMessageBanner(response.message || 'Ocurrió un error inesperado, intente nuevamente.');
-}
-    };
+        if (response.success) {
+            setSuccessMessage('Trabajo subido exitosamente.');
+            setErrorMessageBanner('');
+            setTimeout(() => setSuccessMessage(''), 4000);
+        } else if (response.uploadError) {
+            setSuccessMessage('');
+            setErrorMessageBanner('No se pudo subir el trabajo, intente nuevamente.');
+            setTimeout(() => setErrorMessageBanner(''), 4000);
+        } else {
+            setSuccessMessage('');
+            setErrorMessageBanner('Ocurrió un error inesperado, intente nuevamente.');
+            setTimeout(() => setErrorMessageBanner(''), 4000);
+        }
+    }
+        return (
+            <main className={`${styles.container} ${cactus.className}`}>
+                <form className={styles.formContainer} onSubmit={handleSubmit}>
 
-    return (
-        <main className={`${styles.container} ${cactus.className}`}>
-            <form className={styles.formContainer} onSubmit={handleSubmit}>
-
-                <div className={styles.formGroup}>
-                    <label htmlFor="titulo">Título (máximo 100 caracteres)</label>
-                    <input type="text" id="titulo" maxLength={100} placeholder="Escribe el título de tu trabajo" />
-                </div>
-
-                <div className={styles.formGroup}>
-                    <label htmlFor="categoriaSelect">Categoría del trabajo</label>
-                    <select name="categorias" id="categoriaSelect">
-                        {categorias.map((cat, index) => (
-                            <option key={index} value={cat}>{cat}</option>
-                        ))}
-                    </select>
-                </div>
-
-                <div className={styles.formGroup}>
-                    <label htmlFor="cantidadAutores">Cantidad de autores (hasta 8)</label>
-                    <div className={styles.inputWithButton}>
-                        <input
-                            type="number"
-                            id="cantidadAutores"
-                            value={cantidadAutoresInput}
-                            onChange={(e) => setCantidadAutoresInput(e.target.value)}
-                            placeholder="Introduce un número y presiona ✓"
-                            min="1"
-                            max="8"
-                            className={styles.mainInput}
-                        />
-                        <button type="button" onClick={handleGenerarFormularios} className={styles.checkButton}>✓</button>
+                    <div className={styles.formGroup}>
+                        <label htmlFor="titulo">Título (máximo 100 caracteres)</label>
+                        <input type="text" id="titulo" maxLength={100} placeholder="Escribe el título de tu trabajo" />
                     </div>
-                    {error && <p className={styles.errorText}>{error}</p>}
-                </div>
 
-                <div className={styles.autoresList}>
-                    {autores.map((autor, index) => (
-                        <div key={autor.id} className={styles.autorCard}>
-                            <div className={styles.cardHeader}>
-                                <h3>Datos del autor Nro. {index + 1}</h3>
-                                <button type="button" onClick={() => handleRemoverAutor(autor.id)} className={styles.removeButton}>×</button>
-                            </div>
-                            <div className={styles.formGroup}>
-                                <label htmlFor={`nombre-${autor.id}`}>Apellido y nombre</label>
-                                <input id={`nombre-${autor.id}`} type="text" placeholder="Apellido y nombre" value={autor.nombre} onChange={(e) => handleAutorChange(autor.id, 'nombre', e.target.value)} />
-                            </div>
-                            <div className={styles.formGroup}>
-                                <label htmlFor={`afiliacion-${autor.id}`}>Afiliación laboral o académica</label>
-                                <input id={`afiliacion-${autor.id}`} type="text" placeholder="Afiliación laboral o académica" value={autor.afiliacion} onChange={(e) => handleAutorChange(autor.id, 'afiliacion', e.target.value)} />
-                            </div>
+                    <div className={styles.formGroup}>
+                        <label htmlFor="categoriaSelect">Categoría del trabajo</label>
+                        <select name="categorias" id="categoriaSelect">
+                            {categorias.map((cat, index) => (
+                                <option key={index} value={cat}>{cat}</option>
+                            ))}
+                        </select>
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label htmlFor="cantidadAutores">Cantidad de autores (hasta 8)</label>
+                        <div className={styles.inputWithButton}>
+                            <input
+                                type="number"
+                                id="cantidadAutores"
+                                value={cantidadAutoresInput}
+                                onChange={(e) => setCantidadAutoresInput(e.target.value)}
+                                placeholder="Introduce un número y presiona ✓"
+                                min="1"
+                                max="8"
+                                className={styles.mainInput}
+                            />
+                            <button type="button" onClick={handleGenerarFormularios} className={styles.checkButton}>✓</button>
                         </div>
-                    ))}
-                </div>
+                        {error && <p className={styles.errorText}>{error}</p>}
+                    </div>
 
-                <div className={styles.formGroup}>
-                    <label htmlFor="resumen">Resumen (máximo 5000 caracteres)</label>
-                    <textarea id="resumen" maxLength={5000} rows={10} placeholder="Escribe un resumen de tu trabajo..."></textarea>
-                </div>
+                    <div className={styles.autoresList}>
+                        {autores.map((autor, index) => (
+                            <div key={autor.id} className={styles.autorCard}>
+                                <div className={styles.cardHeader}>
+                                    <h3>Datos del autor Nro. {index + 1}</h3>
+                                    <button type="button" onClick={() => handleRemoverAutor(autor.id)} className={styles.removeButton}>×</button>
+                                </div>
+                                <div className={styles.formGroup}>
+                                    <label htmlFor={`nombre-${autor.id}`}>Apellido y nombre</label>
+                                    <input id={`nombre-${autor.id}`} type="text" placeholder="Apellido y nombre" value={autor.nombre} onChange={(e) => handleAutorChange(autor.id, 'nombre', e.target.value)} />
+                                </div>
+                                <div className={styles.formGroup}>
+                                    <label htmlFor={`afiliacion-${autor.id}`}>Afiliación laboral o académica</label>
+                                    <input id={`afiliacion-${autor.id}`} type="text" placeholder="Afiliación laboral o académica" value={autor.afiliacion} onChange={(e) => handleAutorChange(autor.id, 'afiliacion', e.target.value)} />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
 
-                <div className={styles.formGroup}>
-                    <label htmlFor="archivo">Subí tu archivo PDF</label>
-                    <input
-                        type="file"
-                        id="archivo"
-                        name="archivo"
-                        accept="application/pdf"
-                        className={styles.fileInput}
-                        onChange={(e) => {
-                            const file = e.target.files?.[0] || null;
-                            if (file && file.size > 5 * 1024 * 1024) {
-                                setWorkFile(null);
-                                setWorkFileError('El archivo supera el tamaño máximo permitido de 5 MB.');
-                            } else {
-                                setWorkFile(file);
-                                setWorkFileError('');
-                            }
-                        }}
-                    />
-                    {workFileError && <p className={styles.errorText}>{workFileError}</p>}
-                </div>
+                    <div className={styles.formGroup}>
+                        <label htmlFor="resumen">Resumen (máximo 5000 caracteres)</label>
+                        <textarea id="resumen" maxLength={5000} rows={10} placeholder="Escribe un resumen de tu trabajo..."></textarea>
+                    </div>
 
-                <div className={styles.formGroup}>
-                    <button
-                        type="button"
-                        onClick={handleTogglePremio}
-                        className={`${styles.toggleButton} ${opcionAPremio ? styles.toggleButtonActive : ''}`}
-                    >
-                        Opción a premio (clickear en caso de requerir)
+                    <div className={styles.formGroup}>
+                        <label htmlFor="archivo">Subí tu archivo PDF</label>
+                        <input
+                            type="file"
+                            id="archivo"
+                            name="archivo"
+                            accept="application/pdf"
+                            className={styles.fileInput}
+                            onChange={(e) => {
+                                const file = e.target.files?.[0] || null;
+                                if (file && file.size > 5 * 1024 * 1024) {
+                                    setWorkFile(null);
+                                    setWorkFileError('El archivo supera el tamaño máximo permitido de 5 MB.');
+                                } else {
+                                    setWorkFile(file);
+                                    setWorkFileError('');
+                                }
+                            }}
+                        />
+                        {workFileError && <p className={styles.errorText}>{workFileError}</p>}
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <button
+                            type="button"
+                            onClick={handleTogglePremio}
+                            className={`${styles.toggleButton} ${opcionAPremio ? styles.toggleButtonActive : ''}`}
+                        >
+                            Opción a premio (clickear en caso de requerir)
+                        </button>
+
+                        {opcionAPremio && (
+                            <div className={styles.premioFileInputContainer}>
+                                <label htmlFor="archivoPremio">Subí el PDF para el premio</label>
+                                <input
+                                    type="file"
+                                    id="archivoPremio"
+                                    accept="application/pdf"
+                                    className={styles.fileInput}
+                                    onChange={(e) => {
+                                        const file = e.target.files?.[0] || null;
+                                        if (file && file.size > 5 * 1024 * 1024) {
+                                            setPremioFile(null);
+                                            setPremioFileError('El archivo supera el tamaño máximo permitido de 5 MB.');
+                                        } else {
+                                            setPremioFile(file);
+                                            setPremioFileError('');
+                                        }
+                                    }}
+                                />
+                                {premioFileError && <p className={styles.errorText}>{premioFileError}</p>}
+                            </div>
+                        )}
+                    </div>
+
+                    <button type="submit" disabled={loading} className={styles.submitButton}>
+                        {loading ? 'Subiendo...' : 'Enviar Formulario'}
                     </button>
 
-                    {opcionAPremio && (
-                        <div className={styles.premioFileInputContainer}>
-                            <label htmlFor="archivoPremio">Subí el PDF para el premio</label>
-                            <input
-                                type="file"
-                                id="archivoPremio"
-                                accept="application/pdf"
-                                className={styles.fileInput}
-                                onChange={(e) => {
-                                    const file = e.target.files?.[0] || null;
-                                    if (file && file.size > 5 * 1024 * 1024) {
-                                        setPremioFile(null);
-                                        setPremioFileError('El archivo supera el tamaño máximo permitido de 5 MB.');
-                                    } else {
-                                        setPremioFile(file);
-                                        setPremioFileError('');
-                                    }
-                                }}
-                            />
-                            {premioFileError && <p className={styles.errorText}>{premioFileError}</p>}
-                        </div>
-                    )}
-                </div>
+                    {successMessage && <p className={styles.successBanner}>{successMessage}</p>}
+                {errorMessageBanner && <p className={styles.errorBanner}>{errorMessageBanner}</p>}
+                </form>
+            </main>
+        );
+    };
 
-                <button type="submit" disabled={loading} className={styles.submitButton}>
-                    {loading ? 'Subiendo...' : 'Enviar Formulario'}
-                </button>
-            </form>
-        </main>
-    );
-};
-
-export default FormPost;
+    export default FormPost;

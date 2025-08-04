@@ -15,20 +15,13 @@ interface UploadData {
   premioFile: File | null;
 }
 
-// Interfaz para la respuesta consistente
-interface UploadResponse {
-  success: boolean;
-  message?: string;
-  data?: any;
-}
-
 const useUploadWork = () => {
   console.log("hola useupload");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
 
-  const uploadWork = async ({ title, category, description, file, autores, premio, premioFile }: UploadData): Promise<UploadResponse> => {
+  const uploadWork = async ({ title, category, description, file, autores, premio, premioFile }: UploadData) => {
     setLoading(true);
     setError(null);
     setSuccess(false);
@@ -51,43 +44,34 @@ const useUploadWork = () => {
         body: formData,
       });
 
-      const responseData = await res.json();
-
-      if (res.status !== 201) {
+      if (res.status != 201) {
         console.log("se rompió en el post");
         console.log("status: " + res.status);
-        
-        const errorMessage = responseData.message || 'Error desconocido';
-        setError(errorMessage);
-        
-        // Retornar formato consistente para error
-        return {
-          success: false,
-          message: errorMessage,
-          data: responseData
-        };
+        let errorMessage = 'Error desconocido';
+        try {
+          const errorData = await res.json();
+          console.log("errorData:" + errorData);
+          errorMessage = errorData.message || errorMessage;
+          console.log("error:" + errorMessage);
+        } catch {
+          throw new Error(errorMessage);
+        }
       }
 
       console.log("res status fuera del if: " + res.status);
-      console.log(responseData);
-      setSuccess(true);
-      
-      // Retornar formato consistente para éxito
-      return {
-        success: true,
-        message: 'Trabajo subido exitosamente',
-        data: responseData
-      };
 
+      const result = await res.json();
+      console.log(result);
+      setSuccess(true);
+      return result;
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : "Error desconocido";
-      setError(errorMessage);
-      
-      // Retornar formato consistente para excepción
-      return {
-        success: false,
-        message: errorMessage
-      };
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Error desconocido");
+        throw err;
+      }
+      return null;
     } finally {
       setLoading(false);
     }
