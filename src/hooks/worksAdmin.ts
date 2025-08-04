@@ -15,13 +15,20 @@ interface UploadData {
   premioFile: File | null;
 }
 
+// Interfaz para la respuesta consistente
+interface UploadResponse {
+  success: boolean;
+  message?: string;
+  data?: any;
+}
+
 const useUploadWork = () => {
   console.log("hola useupload");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
 
-  const uploadWork = async ({ title, category, description, file, autores, premio, premioFile }: UploadData) => {
+  const uploadWork = async ({ title, category, description, file, autores, premio, premioFile }: UploadData): Promise<UploadResponse> => {
     setLoading(true);
     setError(null);
     setSuccess(false);
@@ -44,34 +51,43 @@ const useUploadWork = () => {
         body: formData,
       });
 
-      if (res.status != 201) {
+      const responseData = await res.json();
+
+      if (res.status !== 201) {
         console.log("se rompió en el post");
         console.log("status: " + res.status);
-        let errorMessage = 'Error desconocido';
-        try {
-          const errorData = await res.json();
-          console.log("errorData:" + errorData);
-          errorMessage = errorData.message || errorMessage;
-          console.log("error:" + errorMessage);
-        } catch {
-          throw new Error(errorMessage);
-        }
+        
+        const errorMessage = responseData.message || 'Error desconocido';
+        setError(errorMessage);
+        
+        // Retornar formato consistente para error
+        return {
+          success: false,
+          message: errorMessage,
+          data: responseData
+        };
       }
 
       console.log("res status fuera del if: " + res.status);
-
-      const result = await res.json();
-      console.log(result);
+      console.log(responseData);
       setSuccess(true);
-      return result;
+      
+      // Retornar formato consistente para éxito
+      return {
+        success: true,
+        message: 'Trabajo subido exitosamente',
+        data: responseData
+      };
+
     } catch (err) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError("Error desconocido");
-        throw err;
-      }
-      return null;
+      const errorMessage = err instanceof Error ? err.message : "Error desconocido";
+      setError(errorMessage);
+      
+      // Retornar formato consistente para excepción
+      return {
+        success: false,
+        message: errorMessage
+      };
     } finally {
       setLoading(false);
     }

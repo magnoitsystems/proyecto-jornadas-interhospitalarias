@@ -88,7 +88,7 @@ export async function POST(request: NextRequest) {
             data: autoresParsed.map((a: any) => ({
                 name: a.nombre,
                 affiliation: a.afiliacion,
-                work_id: normalWork.id_work
+                id_work: normalWork.id_work
             })),
         });
         console.log("autores creados");

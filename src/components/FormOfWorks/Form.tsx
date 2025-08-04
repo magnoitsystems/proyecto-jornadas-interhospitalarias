@@ -12,7 +12,7 @@ interface Autor {
     afiliacion: string;
 }
 
-const categorias = ["Investigación cualitativa", "Investigación cuantitativa", "Presentación de casos", "Relatos de experiencias"];
+const categorias = ["investigación cualitativa", "investigación cuantitativa", "presentación de casos", "relatos de experiencias"];
 
 const FormPost: React.FC = () => {
     const [opcionAPremio, setOpcionAPremio] = useState<boolean>(false);
@@ -95,22 +95,21 @@ const FormPost: React.FC = () => {
             return;
         }
 
-        const response = await uploadWork({
-            title,
-            category,
-            description,
-            file: workFile,
-            autores: autoresData,
-            premio: opcionAPremio,
-            premioFile: premioFile || null
-        });
+       const response = await uploadWork({
+    title,
+    category,
+    description,
+    file: workFile,
+    autores: autoresData,
+    premio: opcionAPremio,
+    premioFile: premioFile || null
+});
 
-        if (response.success) {
-            setSuccessMessage('¡Se ha subido el trabajo exitosamente!');
-        } else {
-            setErrorMessageBanner(response.uploadError || 'Ocurrió un error inesperado, intente nuevamente.');
-        }
-
+if (response.success) {
+    setSuccessMessage('¡Se ha subido el trabajo exitosamente!');
+} else {
+    setErrorMessageBanner(response.message || 'Ocurrió un error inesperado, intente nuevamente.');
+}
     };
 
     return (
