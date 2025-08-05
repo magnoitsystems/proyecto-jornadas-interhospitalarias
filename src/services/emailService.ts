@@ -80,7 +80,6 @@ export class EmailService {
                             <div style="padding: 40px 30px;">
                                 <div style="text-align: center; margin-bottom: 30px;">
                                     <div style="background-color: #10b981; color: white; width: 80px; height: 80px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 36px; margin-bottom: 20px;">
-                                        ✓
                                     </div>
                                     <h2 style="color: #1f2937; margin: 0; font-size: 24px; font-weight: 600;">
                                         ¡Perfecto, ${name}!
@@ -138,10 +137,10 @@ export class EmailService {
                                 <!-- Contact Info -->
                                 <div style="border-top: 1px solid #e5e7eb; padding-top: 25px; text-align: center;">
                                     <p style="color: #6b7280; font-size: 14px; margin: 0 0 10px 0;">
-                                        ¿Tienes preguntas? Contacta con nosotros:
+                                        ¿Tenes preguntas? Contacta con nosotros:
                                     </p>
                                     <p style="color: #4f46e5; font-size: 14px; margin: 0;">
-                                        contacto@jornadasinterhospitalarias.com
+                                        jornadas_pediatricas@sisptandil.gob.ar
                                     </p>
                                 </div>
                             </div>

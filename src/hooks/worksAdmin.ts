@@ -29,7 +29,7 @@ const useUploadWork = () => {
     try {
       const formData = new FormData();
       formData.append('title', title);
-      formData.append('category', category);
+      formData.append('category', category.toLocaleLowerCase());
       formData.append('description', description);
       formData.append('file', file);
       formData.append('autores', JSON.stringify(autores));
@@ -38,6 +38,8 @@ const useUploadWork = () => {
         formData.append('premioFile', premioFile);
       }
       console.log("obtuvimos todos los campos");
+	  console.log(category);
+	  console.log(category.toLocaleLowerCase());
 
       const res = await fetch('/api/trabajo', {
         method: 'POST',
