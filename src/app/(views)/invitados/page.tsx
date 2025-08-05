@@ -1,7 +1,7 @@
 import Title from "@/components/general/SectionTitle/SectionTitle"
 import ProfessionalCard from '@/components/guest/Guest';
 import styles from './page.module.css';
-import { Professional } from '@/app/types/index'; // Importamos nuestro tipo
+import { Professional } from "@/types";
 
 const profesionales: Professional[] = [
     {
@@ -16,6 +16,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 2,
@@ -29,6 +30,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 3,
@@ -42,6 +44,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 4,
@@ -55,6 +58,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 5,
@@ -68,6 +72,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 6,
@@ -81,6 +86,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 7,
@@ -94,6 +100,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 8,
@@ -107,6 +114,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 9,
@@ -120,6 +128,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 10,
@@ -133,6 +142,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 11,
@@ -146,6 +156,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 12,
@@ -159,6 +170,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 13,
@@ -172,6 +184,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 14,
@@ -185,6 +198,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 15,
@@ -198,6 +212,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 16,
@@ -211,6 +226,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 17,
@@ -224,6 +240,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 18,
@@ -237,6 +254,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 19,
@@ -250,6 +268,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 20,
@@ -263,6 +282,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 21,
@@ -276,6 +296,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 22,
@@ -289,6 +310,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 23,
@@ -302,6 +324,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 24,
@@ -315,6 +338,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 25,
@@ -328,6 +352,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 26,
@@ -341,6 +366,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 27,
@@ -354,6 +380,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 28,
@@ -367,6 +394,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 29,
@@ -380,6 +408,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 30,
@@ -393,6 +422,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 31,
@@ -406,6 +436,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 32,
@@ -419,6 +450,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 33,
@@ -432,6 +464,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 34,
@@ -445,6 +478,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 35,
@@ -458,6 +492,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 36,
@@ -471,6 +506,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 37,
@@ -484,6 +520,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 38,
@@ -497,6 +534,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 39,
@@ -510,6 +548,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 40,
@@ -523,6 +562,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 41,
@@ -536,6 +576,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 42,
@@ -549,6 +590,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 43,
@@ -562,6 +604,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 44,
@@ -575,6 +618,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
     {
         id: 45,
@@ -588,6 +632,7 @@ const profesionales: Professional[] = [
             provincia: '-',
             pais: '-',
         },
+        imagen: null
     },
 ];
 export default function Page(){

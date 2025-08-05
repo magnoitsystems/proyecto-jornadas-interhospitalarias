@@ -34,7 +34,7 @@ model works {
   category    String?  @db.VarChar(50)
   description String?
   user_id     Int
-  work_code   String?  @unique @db.VarChar(20)
+  work_code   String?  @unique @db.VarChar(50)
   title       String?  @db.VarChar(40)
   file        String?  @db.VarChar(255)
   prize       Boolean? @default(false)
