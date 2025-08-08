@@ -23,9 +23,10 @@ export async function POST(request: NextRequest) {
     try {
         const session = await auth();
 
+        // Verificar si el usuario está autenticado
         if (!session || !session?.user?.id) {
             return NextResponse.json(
-                { message: 'Usuario no autenticado' }, 
+                { message: 'Usuario no autenticado' },
                 { status: 401 }
             );
         }
@@ -53,7 +54,11 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ message: 'Archivo inválido' }, { status: 400 });
         }
 
-        const validationPDF = await isValidMedicalPdf(file);
+		console.log("Antes del validador")
+
+		const validationPDF = await isValidMedicalPdf(file);
+
+		console.log("Resultado: ", validationPDF);
 
         if (!validationPDF.accept) {
             return NextResponse.json(
@@ -62,9 +67,11 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        if (validationPDF.details?.length !== undefined) {
-            console.warn('PDF subido con advertencias', validationPDF.details);
-        }
+		console.log("Este mensaje no debería mostarse, si el archivo no es valido");
+
+		if (validationPDF.details?.length !== undefined){
+			console.warn('PDF subido con advertencias', validationPDF.details);
+		}
 
         console.log("antes de subir el normal a drive");
         const workCodeWithouthPrize = uuidv4();
