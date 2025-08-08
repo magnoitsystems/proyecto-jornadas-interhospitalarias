@@ -12,15 +12,15 @@ export async function POST(request: NextRequest) {
 	try {
         // Obtener la sesión del usuario
         const session = await auth();
-        
+
         // Verificar si el usuario está autenticado
         if (!session || !session?.user?.id) {
             return NextResponse.json(
-                { message: 'Usuario no autenticado' }, 
+                { message: 'Usuario no autenticado' },
                 { status: 401 }
             );
         }
-        
+
         const userId = session.user.id;
         console.log(userId);
         const formData = await request.formData();
@@ -41,7 +41,11 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ message: 'Archivo inválido' }, { status: 400 });
         }
 
+		console.log("Antes del validador")
+
 		const validationPDF = await isValidMedicalPdf(file);
+
+		console.log("Resultado: ", validationPDF);
 
 		if(!validationPDF.accept){
 			return NextResponse.json(
@@ -49,6 +53,8 @@ export async function POST(request: NextRequest) {
 				{ status: 400 }
 			);
 	    }
+
+		console.log("Este mensaje no debería mostarse, si el archivo no es valido");
 
 		if (validationPDF.details?.length !== undefined){
 			console.warn('PDF subido con advertencias', validationPDF.details);
