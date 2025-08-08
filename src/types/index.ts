@@ -58,7 +58,7 @@ export type Professional = {
     origen: Origen; // Usamos el tipo que definimos arriba
 };
 
-interface AuthorityGroup {
+export interface AuthorityGroup {
     position: string;
     names: string[];
 }
@@ -68,8 +68,8 @@ interface AuthorityCardData {
     groups: AuthorityGroup[];
 }
 
-// interface AuthoritiesCardProps {
-//     cardData: AuthorityCardData;
-//     variant?: 'default' | 'long';
-//     className?: string;
-// }
+export interface AuthoritiesCardProps {
+    cardData: AuthorityCardData;
+    variant?: 'default' | 'long';
+    className?: string;
+}
