@@ -1,8 +1,0 @@
-<!DOCTYPE html>
-<html>
-<head><title>PDF Falso</title></head>
-<body>
-<h1>Esto es HTML pretendiendo ser un PDF</h1>
-<p>Debería ser bloqueado por validación de números mágicos</p>
-</body>
-</html>

