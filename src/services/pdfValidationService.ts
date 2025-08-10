@@ -4,11 +4,41 @@ interface PdfValidationResult {
 	blocker?: string;
 }
 
+// Verificación rápida de magic numbers PDF
+async function validatePdfStructure(file: File): Promise<{ valid: boolean; error?: string }> {
+	try {
+		// Leer solo los primeros 8 bytes
+		const headerBuffer = await file.slice(0, 8).arrayBuffer();
+		const headerBytes = new Uint8Array(headerBuffer);
+
+		// Verificar magic number PDF: %PDF
+		if (headerBytes[0] !== 0x25 || // %
+			headerBytes[1] !== 0x50 || // P
+			headerBytes[2] !== 0x44 || // D
+			headerBytes[3] !== 0x46) { // F
+			return { valid: false, error: 'El archivo no es un PDF válido (estructura incorrecta)' };
+		}
+
+		return { valid: true };
+	} catch (error) {
+		return { valid: false, error: 'Error al leer la estructura del archivo' };
+	}
+}
+
 export async function validatePdfSafety(file: File): Promise<PdfValidationResult> {
 	const warnings: string[] = [];
 	let blocker: string | undefined;
 
 	try {
+		const structureCheck = await validatePdfStructure(file);
+		if (!structureCheck.valid) {
+			return {
+				isValid: false,
+				warnings: [],
+				blocker: structureCheck.error
+			};
+		}
+
 		const arrayBuffer = await file.arrayBuffer();
 		const content = new TextDecoder('latin1').decode(arrayBuffer);
 
@@ -19,6 +49,9 @@ export async function validatePdfSafety(file: File): Promise<PdfValidationResult
 			'app.alert',    // Alerts automáticos (típico malware)
 			'this.submitForm', // Envío automático de datos
 			'this.launchURL',  // Abrir URLs automáticamente
+			'this.mailDoc',    // Envío de emails automático
+			'eval(',           // Evaluación de código dinámico
+			'unescape(',       // Decodificación de contenido oculto
 		];
 
 		for (const pattern of dangerousJS) {

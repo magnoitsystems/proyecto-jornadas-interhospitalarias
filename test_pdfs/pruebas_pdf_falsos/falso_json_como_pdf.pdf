@@ -1,0 +1,6 @@
+{
+  "tipo": "pdf_falso",
+  "contenido": "Estos son datos JSON disfrazados como PDF",
+  "malicioso": true,
+  "deberia_ser_bloqueado": true
+}
