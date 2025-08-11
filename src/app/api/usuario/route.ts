@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { UserService } from '@/services/userService';
 import { prisma } from '@/libs/prisma';
-import { Prisma } from "@prisma/client";
+// import { Prisma } from "@prisma/client";
 import { EmailService } from "@/services/emailService";
 
 export async function POST(request: NextRequest) {
@@ -86,7 +86,12 @@ export async function GET(request: NextRequest) {
     const genderFilters = searchParams.getAll('gender');
     const jobFilters = searchParams.getAll('job');
 
-    const filters: Prisma.userWhereInput = {admin: false};
+    const filters: {
+	    admin?: boolean;
+	    gender?: { in: string[] };
+	    job?: { in: string[] };
+    } = {admin: false};
+
     if (genderFilters.length > 0) {
         filters.gender = {in: genderFilters};
     }
