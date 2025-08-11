@@ -1,6 +1,4 @@
-/* El bloque principal de los links */
 .instructionsBox {
-    /* Mantenemos la caja pegada a la parte superior de su columna en el grid */
     top: 2rem;
     align-self: start;
     background-color: rgba(255, 255, 255, 0.05);
@@ -19,7 +17,6 @@
     gap: 1.75rem;
 }
 
-/* Estilos para los links, ahora sobre un fondo claro */
 .instructionsBox a {
     color: #f1f5f9;
     margin-top: 1rem;

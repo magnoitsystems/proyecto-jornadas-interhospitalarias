@@ -1,4 +1,3 @@
-/*guide properties*/
 .guide {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
@@ -43,8 +42,6 @@
     padding: 0px;
 }
 
-
-/*general*/
 .others {
     background: var(--primary-color-1);
 }

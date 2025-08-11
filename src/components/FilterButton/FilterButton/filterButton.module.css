@@ -30,8 +30,6 @@
 }
 
 
-
-/* El botón deslizante (knob) */
 .knob {
     position: absolute;
     top: 3px;
@@ -44,14 +42,12 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Animación del knob cuando está activo */
 .switch.active .knob {
     transform: translateX(26px);
     background-color: var(--primary-color-6);
 
 }
 
-/* Efecto de escala al hacer click */
 .button:active .knob {
     background-color: var(--primary-color-6);
     transform: scale(0.95);
@@ -61,11 +57,6 @@
     transform: translateX(17px) scale(0.95);
 }
 
-/*@media (min-width: 641px) {*/
-/*    .button{*/
-/*        flex-direction: column;*/
-/*    }*/
-/*}*/
 
 @media (min-width: 1023px) {
 

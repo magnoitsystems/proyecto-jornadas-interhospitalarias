@@ -1,6 +1,3 @@
-/* =============================================================================
-   CONTENEDOR PRINCIPAL
-   ============================================================================= */
 .container {
     background: var(--secondary-color-1);
     border-radius: var(--15px);
@@ -39,9 +36,6 @@
     opacity: 1;
 }
 
-/* =============================================================================
-   TÍTULO PRINCIPAL
-   ============================================================================= */
 .title {
     font-size: var(--h1-size);
     font-weight: 700;
@@ -64,9 +58,6 @@
     border-radius: 2px;
 }
 
-/* =============================================================================
-   ALERTAS Y MENSAJES
-   ============================================================================= */
 .errorAlert {
     margin-bottom: var(--25px);
     padding: var(--20px);
@@ -133,9 +124,6 @@
     line-height: 1.5;
 }
 
-/* =============================================================================
-   ESTRUCTURA DEL FORMULARIO
-   ============================================================================= */
 .formContent {
     display: flex;
     flex-direction: column;
@@ -174,9 +162,6 @@
     border-radius: 2px;
 }
 
-/* =============================================================================
-   RADIO BUTTONS (FORMATO)
-   ============================================================================= */
 .radioGrid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -263,9 +248,6 @@
     line-height: 1.4;
 }
 
-/* =============================================================================
-   CHECKBOXES (CATEGORÍAS Y FILTROS)
-   ============================================================================= */
 .checkboxGrid {
     display: flex;
     flex-direction: column;
@@ -331,9 +313,6 @@
     transition: color 0.2s ease;
 }
 
-/* =============================================================================
-   INPUTS NUMÉRICOS
-   ============================================================================= */
 .inputGroup {
     display: flex;
     flex-direction: column;
@@ -392,9 +371,6 @@
     font-style: italic;
 }
 
-/* =============================================================================
-   BOTÓN PRINCIPAL
-   ============================================================================= */
 .generateButton {
     width: 100%;
     display: flex;
@@ -473,11 +449,6 @@
     }
 }
 
-/* =============================================================================
-   RESPONSIVE DESIGN
-   ============================================================================= */
-
-/* Móviles */
 @media (max-width: 640px) {
     .container {
         padding: var(--20px);
@@ -533,7 +504,6 @@
     }
 }
 
-/* Tablets */
 @media (min-width: 641px) and (max-width: 1023px) {
     .container {
         padding: var(--40px);
@@ -616,9 +586,6 @@
     }
 }
 
-/* =============================================================================
-   ANIMACIONES Y MICRO-INTERACCIONES
-   ============================================================================= */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -647,7 +614,6 @@
     animation: spin 1s linear infinite, pulse 2s ease-in-out infinite;
 }
 
-/* Modo oscuro preparado usando variables existentes */
 @media (prefers-color-scheme: dark) {
     .container {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);

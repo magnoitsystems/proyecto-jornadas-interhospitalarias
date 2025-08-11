@@ -14,7 +14,7 @@ export default function CircularCard() {
       setIsMobile(window.innerWidth <= 728);
     };
 
-    handleResize(); // set initial value
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);

@@ -22,9 +22,7 @@ export default function Title({section, imgSrc, className}: Props){
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
-                    // Activamos la clase
                     setActivo(true);
-                    // Después de 2 segundos la desactivamos
                     timeoutId = setTimeout(() => {
                         setActivo(false);
                     }, 2000);

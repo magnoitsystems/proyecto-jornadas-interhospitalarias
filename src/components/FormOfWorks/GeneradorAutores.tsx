@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import styles from './GeneradorAutores.module.css';
 
-// Interfaz para definir la estructura de un autor
 interface Autor {
     id: number;
     nombre: string;
@@ -11,31 +10,25 @@ interface Autor {
 }
 
 export default function GeneradorAutores() {
-    // Estado para el número de autores del input
     const [numAutoresInput, setNumAutoresInput] = useState<string>('');
 
-    // Estado para el array de autores que se renderizarán
     const [autores, setAutores] = useState<Autor[]>([]);
 
-    // Estado para mensajes de error
     const [error, setError] = useState<string>('');
 
-    // Función para generar los formularios de autor
     const handleGenerarFormularios = () => {
         const cantidad = parseInt(numAutoresInput, 10);
 
-        // Validación
         if (isNaN(cantidad) || cantidad < 1 || cantidad > 8) {
             setError('Por favor, introduce un número válido entre 1 y 8.');
-            setAutores([]); // Limpiamos los autores si hay error
+            setAutores([]);
             return;
         }
 
-        setError(''); // Limpiamos el error si es válido
+        setError('');
 
-        // Creamos un nuevo array de autores
         const nuevosAutores = Array.from({ length: cantidad }, (_, index) => ({
-            id: Date.now() + index, // ID único para cada autor
+            id: Date.now() + index, 
             nombre: '',
             afiliacion: '',
         }));
@@ -43,7 +36,6 @@ export default function GeneradorAutores() {
         setAutores(nuevosAutores);
     };
 
-    // Función para manejar los cambios en los inputs de cada autor
     const handleAutorChange = (id: number, campo: keyof Autor, valor: string) => {
         setAutores(prevAutores =>
             prevAutores.map(autor =>
@@ -52,14 +44,12 @@ export default function GeneradorAutores() {
         );
     };
 
-    // Función para eliminar un autor del formulario
     const handleRemoverAutor = (id: number) => {
         setAutores(prevAutores => prevAutores.filter(autor => autor.id !== id));
     };
 
     return (
         <div className={styles.formContainer}>
-            {/* SECCIÓN PARA DEFINIR LA CANTIDAD */}
             <div className={styles.inputGroup}>
                 <label htmlFor="cantidadAutores">Cantidad de autores (hasta 8)</label>
                 <div className={styles.inputWithButton}>
@@ -80,7 +70,6 @@ export default function GeneradorAutores() {
                 {error && <p className={styles.errorText}>{error}</p>}
             </div>
 
-            {/* LISTA DE FORMULARIOS DE AUTOR GENERADOS */}
             <div className={styles.autoresList}>
                 {autores.map((autor, index) => (
                     <div key={autor.id} className={styles.autorCard}>

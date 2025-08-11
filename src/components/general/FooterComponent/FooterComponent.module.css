@@ -103,7 +103,7 @@
   line-height: 1.4;
 }
 
-.item a{
+.item a {
   color: white;
   text-decoration: none;
 }
@@ -124,7 +124,6 @@
   color: #ccc;
 }
 
-/* Dots alineados */
 .dotHome,
 .dotAutoridades,
 .dotInvitados,
@@ -142,23 +141,60 @@
   color: white;
 }
 
-/* Enlaces activos */
-.homeLink.activeLink { color: var(--primary-color-1); }
-.autoridadesLink.activeLink { color: var(--primary-color-4); }
-.invitadosLink.activeLink { color: var(--primary-color-2); }
-.programaLink.activeLink { color: var(--primary-color-6); }
-.inscripcionLink.activeLink { color: var(--primary-color-3); }
-.trabajosLink.activeLink { color: var(--primary-color-5); }
+.homeLink.activeLink {
+  color: var(--primary-color-1);
+}
 
-/* Hover */
-.homeLink:hover { color: var(--primary-color-1); transform: translateY(-2px); }
-.autoridadesLink:hover { color: var(--primary-color-4); transform: translateY(-2px); }
-.invitadosLink:hover { color: var(--primary-color-2); transform: translateY(-2px); }
-.programaLink:hover { color: var(--primary-color-6); transform: translateY(-2px); }
-.inscripcionLink:hover { color: var(--primary-color-3); transform: translateY(-2px); }
-.trabajosLink:hover { color: var(--primary-color-5); transform: translateY(-2px); }
+.autoridadesLink.activeLink {
+  color: var(--primary-color-4);
+}
 
-/* Dots hover */
+.invitadosLink.activeLink {
+  color: var(--primary-color-2);
+}
+
+.programaLink.activeLink {
+  color: var(--primary-color-6);
+}
+
+.inscripcionLink.activeLink {
+  color: var(--primary-color-3);
+}
+
+.trabajosLink.activeLink {
+  color: var(--primary-color-5);
+}
+
+.homeLink:hover {
+  color: var(--primary-color-1);
+  transform: translateY(-2px);
+}
+
+.autoridadesLink:hover {
+  color: var(--primary-color-4);
+  transform: translateY(-2px);
+}
+
+.invitadosLink:hover {
+  color: var(--primary-color-2);
+  transform: translateY(-2px);
+}
+
+.programaLink:hover {
+  color: var(--primary-color-6);
+  transform: translateY(-2px);
+}
+
+.inscripcionLink:hover {
+  color: var(--primary-color-3);
+  transform: translateY(-2px);
+}
+
+.trabajosLink:hover {
+  color: var(--primary-color-5);
+  transform: translateY(-2px);
+}
+
 .item:hover .dotHome,
 .item:focus-within .dotHome {
   color: var(--primary-color-1);
@@ -192,7 +228,7 @@
 .logoMagno {
   display: block;
   position: absolute;
-  right: -160px; 
+  right: -160px;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -225,11 +261,11 @@
     display: none;
   }
 
- .footer::after {
-  top: -20px;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1));
-  height: 20px;
-}
+  .footer::after {
+    top: -20px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1));
+    height: 20px;
+  }
 
 
   .leftSection,
@@ -240,14 +276,14 @@
     width: 100%;
   }
 
-.rightSection {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  width: 100vw;
-  padding: 1rem 0;
-}
+  .rightSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 100vw;
+    padding: 1rem 0;
+  }
 
 
 
@@ -264,7 +300,6 @@
     justify-content: center;
   }
 
-  /* Ocultar los dots en mobile */
   .dotHome,
   .dotAutoridades,
   .dotInvitados,
@@ -274,29 +309,28 @@
     display: none;
   }
 
-.logoWrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-}
+  .logoWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+  }
 
-.logo {
-  width: auto;
-  max-height: 70px;
-  object-fit: contain;
-  margin-top: -30px;
-}
+  .logo {
+    width: auto;
+    max-height: 70px;
+    object-fit: contain;
+    margin-top: -30px;
+  }
 
-.logoMagno {
-  width: auto;
-  max-height: 70px;
-  object-fit: contain;
-  position: static;
-  margin-top: 30px;
-}
-
+  .logoMagno {
+    width: auto;
+    max-height: 70px;
+    object-fit: contain;
+    position: static;
+    margin-top: 30px;
+  }
 
 }

@@ -1,4 +1,3 @@
-/* Animación de entrada para las tarjetas */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
@@ -34,7 +33,6 @@
     font-size: 1.1rem;
 }
 
-/* Estilos para inputs, selects y textareas */
 .formGroup input,
 .mainInput,
 .formGroup select,
@@ -175,11 +173,11 @@
     font-size: 1.1rem;
     cursor: pointer;
     margin-top: 1rem;
-    align-self: center; /* Para centrar el botón */
+    align-self: center; 
 }
 .toggleButton {
     padding: 0.8rem 1.5rem;
-    background-color: #f1f1f1; /* Color gris claro por defecto */
+    background-color: #f1f1f1;
     color: #333;
     border: 1px solid #ccc;
     border-radius: 20px;
@@ -193,15 +191,14 @@
     background-color: #e0e0e0;
 }
 
-/* Estilo del botón cuando está ACTIVO */
 .toggleButtonActive {
-    background-color: #F64401;; /* Naranja, como el botón de check */
+    background-color: #F64401;
     color: white;
-    border-color: #F64401;;
+    border-color: #F64401;
 }
 
 .toggleButtonActive:hover {
-    background-color: #d35400; /* Naranja más oscuro */
+    background-color: #d35400; 
 }
 
 .successBanner {
@@ -227,7 +224,6 @@
 }
 
 
-/* Contenedor del input de premio para la animación de entrada */
 @keyframes slideDownFadeIn {
     from {
         opacity: 0;
