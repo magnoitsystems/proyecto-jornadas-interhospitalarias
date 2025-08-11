@@ -1,5 +1,3 @@
-// src/components/FilterButton/FilterButton.tsx
-
 'use client';
 
 import styles from './filterButton.module.css';
@@ -23,8 +21,8 @@ export default function FilterButton({
 
     const handleClick = () => {
         const newActiveState = !isActive;
-        setIsActive(newActiveState); // Actualiza el estado visual interno
-        onChange?.(newActiveState); // Notifica al padre del cambio
+        setIsActive(newActiveState); 
+        onChange?.(newActiveState); 
     };
 
     return (

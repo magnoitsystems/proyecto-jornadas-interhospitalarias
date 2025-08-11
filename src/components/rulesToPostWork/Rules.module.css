@@ -8,7 +8,6 @@
     align-items: center;
 }
 
-/* El bloque individual que contendrá cada sección de texto */
 .section {
 
     width: 100%;
@@ -37,8 +36,6 @@
             inset 0 1px 1px rgba(255, 255, 255, 0.07);
 }
 
-
-/* Títulos y texto adaptados para el fondo oscuro */
 .title {
     color: #ffffff;
     text-align: center;

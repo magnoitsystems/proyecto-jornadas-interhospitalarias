@@ -1,11 +1,9 @@
-// components/ContentSections/ContentSections.tsx
 import styles from './Rules.module.css';
 
 export default function ContentSections() {
     return (
         <div className={styles.container}>
 
-            {/* --- SECCIÓN 1: REGLAMENTO --- */}
             <section id="reglamento-resumenes" className={styles.section}>
                 <h1 className={styles.title}>Reglamento para la presentación de resúmenes de trabajos libres</h1>
                 <ol className={styles.list}>
@@ -26,7 +24,6 @@ export default function ContentSections() {
                 </ol>
             </section>
 
-            {/* --- SECCIÓN 2: OPCIÓN A PREMIO --- */}
             <section id="opcion-premio" className={styles.section}>
                 <h1 className={styles.title}>Opción de presentación a premio</h1>
                 <h3>Se otorgarán premios a los mejores Trabajos Libres.</h3>
@@ -40,8 +37,7 @@ export default function ContentSections() {
                     <li><h3>El premio consistirá en un Diploma a cada uno de los autores, que será otorgado en el Acto de Clausura del evento.</h3></li>
                 </ol>
             </section>
-
-            {/* --- SECCIÓN 3: PÓSTERS DIGITALES --- */}
+            
             <section id="posters-digitales" className={styles.section}>
                 <h1 className={styles.title}>Instrucciones para el armado de pósters digitales</h1>
                 <ul className={styles.bulletList}>

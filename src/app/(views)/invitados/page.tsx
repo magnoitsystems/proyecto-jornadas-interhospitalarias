@@ -641,7 +641,6 @@ export default function Page(){
         <Title section={"Invitados"} imgSrc={"/icons/autoridades.png"} className={"guestsTitle"}/>
 
         <div className={styles.cardsContainer}>
-            {/* El `.map` funciona igual, pero ahora `prof` es de tipo `Professional` */}
             {profesionales.map((prof) => (
                 <ProfessionalCard key={prof.id} professional={prof} />
             ))}

@@ -127,7 +127,6 @@
     transform: rotate(180deg);
 }
 
-/*secondarySponsors*/
 .secondarySponsors {
     display: flex;
     flex-direction: row;

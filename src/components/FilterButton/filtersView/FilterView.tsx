@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './FilterView.module.css';
 
-// Definimos los tipos para las props
 type Option = {
     value: string;
     label: string;
@@ -19,10 +18,8 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ options, value, onChange })
     const [isOpen, setIsOpen] = useState(false);
     const selectRef = useRef<HTMLDivElement>(null);
 
-    // Encuentra la etiqueta del valor seleccionado para mostrarla
     const selectedLabel = options.find(option => option.value === value)?.label;
 
-    // Cierra el menú si se hace clic fuera de él
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (selectRef.current && !selectRef.current.contains(event.target as Node)) {

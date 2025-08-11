@@ -17,7 +17,6 @@ export default function ManuscriptCard({ work }: Props) {
           <p className={styles.attribute}>Autor: {work.user.name} {work.user.lastname}</p>
           {work.file && (
             <div className={styles.iconGroup}>
-              {/* Ícono de mail (SVG) */}
               <button type="button" aria-label="Abrir correo">
                 <a
                   className={styles.link}
@@ -43,8 +42,6 @@ export default function ManuscriptCard({ work }: Props) {
                   </svg>
                 </a>
               </button>
-
-              {/* Ícono de descarga */}
               <a href={work.file} target="_blank" rel="noopener noreferrer">
                 <Image
                   src="/icons/downloadIcon.png"

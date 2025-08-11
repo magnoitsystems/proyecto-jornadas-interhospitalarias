@@ -15,7 +15,7 @@ export default async function PostWork() {
         <main className={`${styles.mainPage} ${cactus.className}`}>
 
             <div className={`${styles.introduction} ${cactus.className}`}>
-                {/*<SignOutButton/>*/}
+                <SignOutButton/>
                 <Title section={"Trabajos"} imgSrc={"/icons/Vector.png"} className={"assignmentTitle"}/>
                 <div className={`${styles.presentation} ${cactus.className}`}>
                     <h1 className={`${cactus.className}`}>

@@ -49,7 +49,6 @@ export default function NavBar(): JSX.Element {
             document.body.style.minHeight = '';
         }
 
-        // Cleanup al desmontar
         return () => {
             document.body.style.backgroundImage = '';
             document.body.style.backgroundSize = '';

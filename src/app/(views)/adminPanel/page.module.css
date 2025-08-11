@@ -150,7 +150,7 @@
 
         .aside{
             margin: 0 0 0 var(--15px);
-            flex: 0 0 auto; /* No crece ni se encoje */
+            flex: 0 0 auto;
         }
 
         .containerUserCard {

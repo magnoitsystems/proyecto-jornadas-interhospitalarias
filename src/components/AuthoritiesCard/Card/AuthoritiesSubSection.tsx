@@ -2,7 +2,7 @@ import styles from "@/components/AuthoritiesCard/Card/AuthoritiesCard.module.css
 import { cactus } from '@/app/(views)/ui/fonts';
 
 interface AuthorityGroup {
-    position: string;  // cargo en inglés
+    position: string; 
     names: string[];
 }
 
@@ -19,7 +19,7 @@ export default function AuthoritiesSubSection({ authorityGroup }: AuthoritiesSub
             {authorityGroup.names.map((name: string, index: number) => (
                 <p
                     className={`${styles.text} ${styles.marginLeft} ${cactus.className}`}
-                    key={`${name}-${index}`} // Key mejorado para evitar conflicts
+                    key={`${name}-${index}`} 
                 >
                     {name}
                 </p>

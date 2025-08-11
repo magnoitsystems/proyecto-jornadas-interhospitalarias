@@ -1,4 +1,3 @@
-// components/instructionsToPostWorks/instructions.tsx
 import styles from './instructions.module.css';
 import {cactus} from "@/app/(views)/ui/fonts";
 

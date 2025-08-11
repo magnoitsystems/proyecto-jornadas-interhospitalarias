@@ -62,7 +62,6 @@ const FormPost: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        // Limpiamos los mensajes de los banners antes de cada envío
         setSuccessMessage('');
         setErrorMessageBanner('');
 

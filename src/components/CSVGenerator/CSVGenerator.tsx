@@ -99,13 +99,11 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
                 throw new Error(`Error ${response.status}: ${errorText}`);
             }
 
-            // Obtener el filename del header
             const contentDisposition = response.headers.get('content-disposition');
             const filename = contentDisposition
                 ? contentDisposition.split('filename=')[1]?.replace(/"/g, '')
                 : `estadisticas-medicas-${formData.format}-${Date.now()}.csv`;
 
-            // Crear blob y disparar descarga
             const blob = await response.blob();
             const url = window.URL.createObjectURL(blob);
 
@@ -116,7 +114,6 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
             link.click();
             document.body.removeChild(link);
 
-            // Limpiar URL object
             window.URL.revokeObjectURL(url);
 
             setLastGenerated(new Date().toLocaleString());
@@ -143,7 +140,6 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
             )}
 
             <div className={`${styles.formContent} ${cactus.className}`}>
-                {/* Formato de Reporte */}
                 <div className={styles.section}>
                     <label className={styles.sectionLabel}>
                         Formato de Reporte
@@ -225,7 +221,6 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
                     </div>
                 </div>
 
-                {/* Filtros Adicionales */}
                 <div className={styles.section}>
                     <label className={styles.sectionLabel}>
                         Filtros Adicionales
