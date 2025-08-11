@@ -12,7 +12,6 @@
     color: var(--secondary-color-1);
     background-color: var(--secondary-color-5);
     margin: var(--15px) 0;
-    /*margin: ;*/
 }
 
 .subSection{
@@ -32,14 +31,12 @@
     padding-left: var(--15px);
 }
 
-/* Tablets */
 @media (min-width: 641px) and (max-width: 1023px) {
     .text{
         font-size: var(--15px);
     }
 }
 
-/* Desktop */
 @media (min-width: 1024px) {
     .card{
         width: 100%;

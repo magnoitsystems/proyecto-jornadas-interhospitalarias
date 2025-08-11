@@ -1,4 +1,3 @@
-// src/components/SignOutButton.tsx
 import { handleSignOut } from '@/libs/actions';
 import styles from "./button.module.css";
 
