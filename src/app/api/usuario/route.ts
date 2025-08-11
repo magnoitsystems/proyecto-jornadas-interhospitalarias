@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { UserService } from '@/services/userService';
 import { prisma } from '@/libs/prisma';
-import type { Prisma } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 import { EmailService } from "@/services/emailService";
 
 export async function POST(request: NextRequest) {
