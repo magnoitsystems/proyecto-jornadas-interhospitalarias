@@ -111,9 +111,7 @@ export default function Home(){
             <div className={`${styles.documentProperties} ${hovered ? styles.activa : ""}`}>
                 <CardAndSponsors />
             </div>
-            <div className={`${styles.secondarySponsors} ${cactus.className}`}>
-                hola aca van los futuros sponsors :(
-            </div>
+
         </main>
     );
 }

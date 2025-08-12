@@ -38,14 +38,7 @@ export default function CardAndSponsors() {
                     <h2>Nos acompañan</h2>
                 </div>
                 <div className={styles.imageProperties}>
-                    <a href="https://www.casasco.com.ar/es/" target="_blank" rel="noopener noreferrer">
-                        <Image
-                            src="/imgs/sponsors/casascoImg.jpg"
-                            alt="Sponsor Casasco"
-                            width={281}
-                            height={112}
-                        />
-                    </a>
+
                     <a href="https://www.pfizer.com.ar/" target="_blank" rel="noopener noreferrer">
                         <Image
                             src="/imgs/sponsors/pfizerSponsor.png"
@@ -60,6 +53,38 @@ export default function CardAndSponsors() {
                             alt="Sponsor Roemmers"
                             width={310}
                             height={140}
+                        />
+                    </a>
+                    <a href="https://inmunova.com/" target="_blank" rel="noopener noreferrer">
+                        <Image
+                            src="/imgs/sponsors/inmunova.png"
+                            alt="Sponsor Roemmers"
+                            width={310}
+                            height={140}
+                        />
+                    </a>
+                    <a href="https://www.biomarin.com/" target="_blank" rel="noopener noreferrer">
+                        <Image
+                            src="/imgs/sponsors/biomarin.png"
+                            alt="Sponsor Roemmers"
+                            width={310}
+                            height={140}
+                        />
+                    </a>
+                    <a href="https://cassara.com.ar/" target="_blank" rel="noopener noreferrer">
+                        <Image
+                            src="/imgs/sponsors/cassara.png"
+                            alt="Sponsor Roemmers"
+                            width={310}
+                            height={140}
+                        />
+                    </a>
+                    <a href="https://www.casasco.com.ar/es/" target="_blank" rel="noopener noreferrer">
+                        <Image
+                            src="/imgs/sponsors/casascoImg.jpg"
+                            alt="Sponsor Casasco"
+                            width={250}
+                            height={100}
                         />
                     </a>
                 </div>
