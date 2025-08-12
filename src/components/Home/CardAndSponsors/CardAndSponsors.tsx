@@ -38,7 +38,6 @@ export default function CardAndSponsors() {
                     <h2>Nos acompañan</h2>
                 </div>
                 <div className={styles.imageProperties}>
-
                     <a href="https://www.pfizer.com.ar/" target="_blank" rel="noopener noreferrer">
                         <Image
                             src="/imgs/sponsors/pfizerSponsor.png"
