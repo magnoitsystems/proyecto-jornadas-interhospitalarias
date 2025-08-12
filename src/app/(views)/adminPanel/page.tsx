@@ -89,7 +89,9 @@ export default function AdminPanel() {
 
     return (
         <main>
-            <SignOutButton />
+            <div className={styles.signOutButtonProperties}>
+                <SignOutButton />
+            </div>
             <div className={styles.roundedCards}>
                 <RoundedCard />
             </div>

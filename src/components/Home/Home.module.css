@@ -60,10 +60,6 @@
     white-space: nowrap;
 }
 
-#sedesCardPropertie{
-    margin-bottom: 200px;
-}
-
 .imageCardProperties{
     background-color: white;
     width: 55px;
@@ -93,6 +89,7 @@
     opacity: 1;
     width: 90%;
     background-color: var(--primary-color-1);
+    margin-bottom: 15%;
 }
 
 .openCardProperties{
@@ -113,7 +110,6 @@
 
 .deployIconCardCalendarProperties{
     padding-left: 0;
-    background-color: #7D0279;
     margin-right: 5px;
 }
 
@@ -136,10 +132,10 @@
     width: 100%;
     height: fit-content;
 
-    margin: 0px;
+    margin: 0;
     margin-top: var(--50px);
     padding: var(--20px);
-    padding-inline: 0px;
+    padding-inline: 0;
 
     border-radius: 20px;
     border: 1px solid var(--secondary-color-4);
