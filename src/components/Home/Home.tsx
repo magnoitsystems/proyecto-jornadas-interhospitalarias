@@ -5,7 +5,6 @@ import InfoCard from "@/components/Home/InfoCards/InfoCard";
 import CardAndSponsors from "@/components/Home/CardAndSponsors/CardAndSponsors";
 import { useState } from 'react';
 import { nunito } from '@/app/(views)/ui/fonts';
-import { cactus } from '@/app/(views)/ui/fonts';
 
 export default function Home(){
     const [abierta, setAbiertaB1] = useState(false);

@@ -136,18 +136,18 @@ export default function Footer() {
             className={styles.logo}
           />
           <a
-  href="https://mail.google.com/mail/?view=cm&fs=1&to=magno.itsystems@gmail.com&su=Consultar%20por%20servicios%20de%20desarrollo%20de%20software"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <Image
-    src="/imgs/magno.png"
-    alt="Logo magno"
-    width={100}
-    height={100}
-    className={styles.logoMagno}
-  />
-</a>
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=magno.itsystems@gmail.com&su=Consultar%20por%20servicios%20de%20desarrollo%20de%20software"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/imgs/magno.png"
+              alt="Logo magno"
+              width={100}
+              height={100}
+              className={styles.logoMagno}
+            />
+          </a>
 
 
 
