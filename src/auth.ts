@@ -29,12 +29,13 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
                 const passwordsMatch = await bcrypt.compare(inputPassword, userFromDb.password);
 
                 if (passwordsMatch) {
-                    // El objeto que retornas aquí se pasa al callback 'jwt'
+                    const fullName = userFromDb.lastname
+                        ? `${userFromDb.name} ${userFromDb.lastname}`
+                        : userFromDb.name;
                     return {
                         id: userFromDb.id_user.toString(),
                         email: userFromDb.email,
-                        name: userFromDb.name,
-                        lastname: userFromDb.lastname,
+                        fullName: fullName,
                         admin: userFromDb.admin,
                     };
 
