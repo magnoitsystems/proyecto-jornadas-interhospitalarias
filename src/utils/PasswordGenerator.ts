@@ -1,18 +1,21 @@
+// src/utils/PasswordGenerator.ts
+
 export class PasswordGenerator {
     private readonly UPPERCASE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     private readonly LOWERCASE = 'abcdefghijklmnopqrstuvwxyz';
     private readonly NUMBERS = '0123456789';
 
-     generatePassword(length: number = 12): string {
+    public generatePassword(length: number = 12): string {
         if (length < 6 || length > 50) {
-            throw new Error('Length must be between 6 and 50 characters');
+            throw new Error('La longitud debe ser entre 6 y 50 caracteres');
         }
 
         const characters = this.UPPERCASE + this.LOWERCASE + this.NUMBERS;
         return this.createSecurePassword(characters, length);
     }
 
-    private  createSecurePassword(characters: string, length: number): string {
+    private createSecurePassword(characters: string, length: number): string {
+        // crypto.getRandomValues está disponible globalmente en Vercel (Node.js moderno) y navegadores
         const array = new Uint32Array(length);
         crypto.getRandomValues(array);
 
@@ -21,25 +24,33 @@ export class PasswordGenerator {
         return this.ensureAllTypes(password);
     }
 
-    private  ensureAllTypes(password: string): string {
+    private ensureAllTypes(password: string): string {
         const chars = password.split('');
 
+        // Comprobamos si cada tipo de caracter ya está presente
         const hasUpper = /[A-Z]/.test(password);
         const hasLower = /[a-z]/.test(password);
         const hasNumber = /[0-9]/.test(password);
 
-        if (!hasUpper) {
-            chars[0] = this.UPPERCASE[Math.floor(Math.random() * this.UPPERCASE.length)];
+        // Si falta algún tipo, lo insertamos en una posición aleatoria para no ser predecibles
+        if (!hasUpper && chars.length > 0) {
+            const randomIndex = Math.floor(Math.random() * chars.length);
+            chars[randomIndex] = this.UPPERCASE[Math.floor(Math.random() * this.UPPERCASE.length)];
         }
-        if (!hasLower) {
-            chars[1] = this.LOWERCASE[Math.floor(Math.random() * this.LOWERCASE.length)];
+        if (!hasLower && chars.length > 0) {
+            const randomIndex = Math.floor(Math.random() * chars.length);
+            // Aseguramos no sobreescribir la mayúscula que acabamos de poner
+            if(/[A-Z]/.test(chars[randomIndex])) {
+                chars[(randomIndex + 1) % chars.length] = this.LOWERCASE[Math.floor(Math.random() * this.LOWERCASE.length)];
+            } else {
+                chars[randomIndex] = this.LOWERCASE[Math.floor(Math.random() * this.LOWERCASE.length)];
+            }
         }
-        if (!hasNumber) {
-            chars[2] = this.NUMBERS[Math.floor(Math.random() * this.NUMBERS.length)];
+        if (!hasNumber && chars.length > 0) {
+            const randomIndex = Math.floor(Math.random() * chars.length);
+            chars[randomIndex] = this.NUMBERS[Math.floor(Math.random() * this.NUMBERS.length)];
         }
 
         return chars.join('');
     }
 }
-
-module.exports = { PasswordGenerator };
