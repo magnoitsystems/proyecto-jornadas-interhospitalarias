@@ -29,13 +29,12 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
                 const passwordsMatch = await bcrypt.compare(inputPassword, userFromDb.password);
 
                 if (passwordsMatch) {
-                    const fullName = userFromDb.lastname
-                        ? `${userFromDb.name} ${userFromDb.lastname}`
-                        : userFromDb.name;
+                    // El objeto que retornas aquí se pasa al callback 'jwt'
                     return {
                         id: userFromDb.id_user.toString(),
                         email: userFromDb.email,
-                        fullName: fullName,
+                        name: userFromDb.name,
+                        lastname: userFromDb.lastname,
                         admin: userFromDb.admin,
                     };
 
@@ -45,5 +44,4 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
             },
         }),
     ],
-    // El bloque 'callbacks' ya no es necesario aquí, porque está en authConfig
 });
