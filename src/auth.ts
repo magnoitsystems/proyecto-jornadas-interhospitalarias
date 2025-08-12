@@ -44,5 +44,4 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
             },
         }),
     ],
-    // El bloque 'callbacks' ya no es necesario aquí, porque está en authConfig
 });

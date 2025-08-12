@@ -3,9 +3,10 @@
     align-items: center;
     gap: 0.6rem;
 
-    background-color: transparent;
-    color: #52525b;
-    border: 1px solid #e4e4e7;
+    background-color: var(--primary-color-1);
+    color: var(--secondary-color-1);
+    border: none;
+
     padding: 0.6rem 1.2rem;
     border-radius: 9999px;
 
@@ -15,21 +16,19 @@
     font-weight: 500;
 
     cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon {
-
     transition: transform 0.2s ease;
 }
 
 
 .signOutButton:hover {
 
-    background-color: #ef4444;
-    color: white;
-    border-color: #ef4444;
-
+    background-color: transparent;
+    color: var(--primary-color-1);
+    border: 1px solid var(--secondary-color-1);
 
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3); 

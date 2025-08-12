@@ -1,6 +1,4 @@
-// src/types/next-auth.d.ts
-
-import { DefaultSession, User } from "next-auth";
+import { DefaultSession } from "next-auth";
 import "next-auth/jwt";
 
 /**
@@ -21,8 +19,8 @@ declare module "next-auth" {
         user: {
             admin?: boolean;
             id: string;
-             name: string;
-        lastname: string;
+			name: string;
+            lastname: string;
         } & DefaultSession["user"]; // Usa DefaultSession para evitar la referencia circular
     }
 }
@@ -34,7 +32,7 @@ declare module "next-auth/jwt" {
     interface JWT {
         admin?: boolean;
         id: string;
-         name: string;
+		name: string;
         lastname: string;
     }
 }

@@ -20,7 +20,7 @@ async function validatePdfStructure(file: File): Promise<{ valid: boolean; error
 		}
 
 		return { valid: true };
-	} catch (error) {
+	} catch {
 		return { valid: false, error: 'Error al leer la estructura del archivo' };
 	}
 }
@@ -74,7 +74,7 @@ export async function validatePdfSafety(file: File): Promise<PdfValidationResult
 		}
 
 		if (file.size > 5 * 1024 * 1024) { // 5MB
-			blocker = '❌ Archivo demasiado grande para un documento médico';
+			blocker = 'Archivo demasiado grande para un documento médico';
 		}
 
 		if (file.size < 100) { // 100 bytes
@@ -87,11 +87,11 @@ export async function validatePdfSafety(file: File): Promise<PdfValidationResult
 			blocker
 		};
 
-	} catch (error) {
+	} catch {
 		return {
 			isValid: false,
 			warnings: [],
-			blocker: '❌ Error al leer el archivo'
+			blocker: 'Error al leer el archivo'
 		};
 	}
 }

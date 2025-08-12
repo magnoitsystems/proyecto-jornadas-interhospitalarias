@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
 
         if (!validationPDF.accept) {
             return NextResponse.json(
-                { message: validationPDF.message },
+                { success: false, message: validationPDF.message },
                 { status: 400 }
             );
         }

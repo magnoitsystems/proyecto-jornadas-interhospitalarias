@@ -6,7 +6,8 @@ export class GetStatistic{
     async getForGenderFeminine(): Promise<Statistics[]>{
         const result = await prisma.user.count({
             where: {
-                gender: "femenino"
+                gender: "femenino",
+                admin: false
             }
         })
         return [{
@@ -18,7 +19,8 @@ export class GetStatistic{
     async getForGenderMale(): Promise<Statistics[]>{
         const result = await prisma.user.count({
             where:{
-                gender: "masculino"
+                gender: "masculino",
+                admin: false
             }
         })
         return [{
@@ -28,7 +30,11 @@ export class GetStatistic{
     }
 
     async getTotalUsers(): Promise<Statistics[]>{
-        const result = await prisma.user.count();
+        const result = await prisma.user.count({
+            where: {
+                admin: false
+            }
+        })
 
         return [{
             statistics: "Usuarios",
@@ -39,7 +45,8 @@ export class GetStatistic{
     async getStudents(): Promise<Statistics[]>{
         const result = await prisma.user.count({
             where:{
-                job: "estudiante"
+                job: "estudiante",
+                admin: false
             }
         })
 
@@ -52,7 +59,8 @@ export class GetStatistic{
     async getMedical(): Promise<Statistics[]>{
         const result = await prisma.user.count({
             where:{
-                job: "medico"
+                job: "medico",
+                admin: false
             }
         })
 
@@ -65,7 +73,8 @@ export class GetStatistic{
     async getNurse(): Promise<Statistics[]>{
         const result = await prisma.user.count({
             where:{
-                job: "enfermero"
+                job: "enfermero",
+                admin: false
             }
         })
 
@@ -78,7 +87,8 @@ export class GetStatistic{
     async getTechnique(): Promise<Statistics[]>{
         const result = await prisma.user.count({
             where:{
-                job: "técnico"
+                job: "técnico",
+                admin: false
             }
         })
 

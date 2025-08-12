@@ -50,14 +50,20 @@ const useUploadWork = () => {
         console.log("se rompió en el post");
         console.log("status: " + res.status);
         let errorMessage = 'Error desconocido';
-        try {
-          const errorData = await res.json();
-          console.log("errorData:" + errorData);
-          errorMessage = errorData.message || errorMessage;
-          console.log("error:" + errorMessage);
-        } catch {
-          throw new Error(errorMessage);
-        }
+	      try {
+		      const errorData = await res.json();
+			  console.log("res.json() = " + errorData);
+			  console.log(errorData);
+			  console.log("errorData.error = " + errorData.error );
+		      const actualMessage = errorData.result?.message || errorData.message;
+		      console.log("mensaje de error: " + actualMessage);
+		      errorMessage = actualMessage || errorMessage;
+		      setError(errorMessage);
+		      return { success: false, uploadError: true, message: errorMessage };
+	      } catch {
+		      setError('Error de conexión');
+		      return { success: false, uploadError: true, message: 'Error de conexión' };
+	      }
       }
 
       console.log("res status fuera del if: " + res.status);

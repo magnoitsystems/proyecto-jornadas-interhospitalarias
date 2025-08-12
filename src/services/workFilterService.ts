@@ -23,7 +23,7 @@ export class GetWorkForFilter {
         name: author.name,
         lastname: "",
         affiliation: author.affiliation,
-        workId: author.work_id
+        workId: author.id_work,
       })),
       user: {
         id_user: work.user.idUser,
