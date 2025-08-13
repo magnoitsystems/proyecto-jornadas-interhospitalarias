@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <html lang="en">
+      <html lang="es">
           <head>
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
             <meta name="google-site-verification" content="5XxYTljI-V7ytErFMbV1yrAL6QzawUMcHoEZhvU7iHg" />
