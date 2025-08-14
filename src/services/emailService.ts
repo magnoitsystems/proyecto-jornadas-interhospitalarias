@@ -11,11 +11,15 @@ export class EmailService {
 		try {
 
 			// Verificar configuración
-			if (!process.env.RESEND_API_KEY)
-				return false;
+			if (!process.env.RESEND_API_KEY) {
+				console.error('RESEND_API_KEY no configurada');
+				throw new Error('Servicio de email no configurado');
+			}
 
-			if (!process.env.EMAIL_FROM)
-				return false;
+			if (!process.env.EMAIL_FROM) {
+				console.error('EMAIL_FROM no configurada');
+				throw new Error('Emisor del mail no configurado');
+			}
 
 			const { data, error } = await resend.emails.send({
 				from: process.env.EMAIL_FROM!,
@@ -29,13 +33,19 @@ export class EmailService {
                 `
 			});
 
-			if (error)
-				return false;
+			if (error) {
+				console.error('Error de Resend:', error);
+				throw new Error(`Resend error: ${error.message}`);
+			}
 
-			return !!data?.id;
+			if (!data?.id) {
+				console.error('Resend no devolvió ID');
+				throw new Error('Email enviado pero sin un retorno de ID');
+			}
 
+			return true;
 		} catch (error) {
-			console.error('Error en el Email service:', error);
+			console.error('Error en el envio de la contraseña', error);
 			return false;
 		}
 	}
@@ -48,8 +58,15 @@ export class EmailService {
 		hasPrize: boolean = false
 	): Promise<boolean> {
 		try {
-			if (!process.env.RESEND_API_KEY || !process.env.EMAIL_FROM) {
-				return false;
+
+			if (!process.env.RESEND_API_KEY) {
+				console.error('RESEND_API_KEY no configurada');
+				throw new Error('Servicio de email no configurado');
+			}
+
+			if (!process.env.EMAIL_FROM) {
+				console.error('EMAIL_FROM no configurada');
+				throw new Error('Emisor del mail no configurado');
 			}
 
 			const { data, error } = await resend.emails.send({
@@ -160,7 +177,17 @@ export class EmailService {
                 `
 			});
 
-			return !error && !!data?.id;
+			if (error) {
+				console.error('Error de Resend en confirmación:', error);
+				throw new Error(`Resend error: ${error.message}`);
+			}
+
+			if (!data?.id) {
+				throw new Error('Email enviado pero sin un id retornado');
+			}
+
+			return true;
+
 		} catch (error) {
 			console.error('Error enviando confirmación de trabajo:', error);
 			return false;
