@@ -5,82 +5,165 @@ import { prisma } from '@/libs/prisma';
 import { EmailService } from "@/services/emailService";
 
 export async function POST(request: NextRequest) {
-    try {
-        const userData = await request.json();
-        const userService = new UserService();
+	let createdUserId: number | null = null;
 
-        const result = await userService.validateUser(userData);
+	try {
+		// Validar datos de entrada
+		let userData;
+		try {
+			userData = await request.json();
+		} catch (parseError) {
+			return NextResponse.json(
+				{ message: 'Formato de datos inválido' },
+				{ status: 400 }
+			);
+		}
 
-        if (result.success && result.user) {
+		const userService = new UserService();
+		const result = await userService.validateUser(userData);
 
-             const createdUser = await prisma.user.create({
-                 data:{
-                     name: result.user.name,
-                     lastname: result.user.lastname,
-                     email: result.user.email,
-                     password: result.user.password,
-                     job: result.user.job,
-                     specialty: result.user.specialty,
-                     admin: result.user.admin,
-                     age: result.user.age,
-                     gender: result.user.gender
-                 },
-                 select: {
-                     idUser: true,
-                     name: true,
-                     lastname: true,
-                     email: true,
-                     job: true,
-                     specialty: true,
-                     admin: true,
-                     age: true,
-                     gender: true,
-                     // NO seleccionamos password por seguridad
-                 }
-            })
+		if (!result.success || !result.user) {
+			return NextResponse.json(
+				{
+					message: 'Error de validación',
+					errors: result.errors || 'Datos de usuario inválidos'
+				},
+				{ status: 400 }
+			);
+		}
 
-	        try {
-		        const emailSent = await EmailService.sendPasswordEmail(
-			        result.user.email,
-			        `${result.user.name} ${result.user.lastname}`,
-			        result.plainPassword! // La contraseña sin hashear
-		        );
+		// Crear usuario en base de datos
+		let createdUser;
+		try {
+			createdUser = await prisma.user.create({
+				data: {
+					name: result.user.name,
+					lastname: result.user.lastname,
+					email: result.user.email,
+					password: result.user.password,
+					job: result.user.job,
+					specialty: result.user.specialty,
+					admin: result.user.admin || false,
+					age: result.user.age,
+					gender: result.user.gender
+				},
+				select: {
+					idUser: true,
+					name: true,
+					lastname: true,
+					email: true,
+					job: true,
+					specialty: true,
+					admin: true,
+					age: true,
+					gender: true
+				}
+			});
 
-		        if (emailSent) {
-			        console.log('EMAIL ENVIADO EXITOSAMENTE');
-		        } else {
-			        console.log('EMAIL FALLÓ (returned false)');
-		        }
-	        } catch (emailError) {
-		        console.error('Email error:', emailError);
-		        // No fallar la creación por error de email
-	        }
+			createdUserId = createdUser.idUser;
+			console.log(`Usuario creado en DB: ${createdUser.idUser}`);
 
-            return NextResponse.json(
-                {
-                    message: 'Usuario creado exitosamente',
-                    user: createdUser,
-                },
-                { status: 201 }
-            );
-        } else {
-            return NextResponse.json(
-                {
-                    message: 'Error de validación',
-                    errors: result.errors
-                },
-                { status: 400 }
-            );
-        }
-    } catch (error) {
-        console.error('API Error:', error);
-        return NextResponse.json(
-            { message: 'Error interno del servidor' },
-            { status: 500 }
-        );
-    }
+		} catch (dbError) {
+			console.error('Error al crear usuario en DB:', dbError);
 
+			// Manejo específico de errores de duplicación
+			if (dbError instanceof Error && dbError.message.includes('Unique constraint')) {
+				return NextResponse.json(
+					{
+						message: 'Error de validación',
+						errors: [{ field: 'email', message: 'El email ya está registrado' }]
+					},
+					{ status: 409 }
+				);
+			}
+
+			return NextResponse.json(
+				{ message: 'Error interno del servidor al crear usuario' },
+				{ status: 500 }
+			);
+		}
+
+		// Enviar email con contraseña
+		try {
+			const emailSent = await EmailService.sendPasswordEmail(
+				result.user.email,
+				`${result.user.name} ${result.user.lastname}`,
+				result.plainPassword!
+			);
+
+			if (!emailSent) {
+				throw new Error('EmailService retornó false');
+			}
+
+			console.log('Email enviado exitosamente');
+
+			return NextResponse.json(
+				{
+					message: 'Usuario creado exitosamente. Revisa tu email para obtener tu contraseña.',
+					user: createdUser
+				},
+				{ status: 201 }
+			);
+
+		} catch (emailError) {
+			console.error('Error crítico al enviar email:', emailError);
+
+			// Rollback: eliminar usuario creado si email falla
+			try {
+				await prisma.user.delete({
+					where: { idUser: createdUserId! }
+				});
+				console.log(`Rollback exitoso: Usuario ${createdUserId} eliminado`);
+
+				return NextResponse.json(
+					{
+						message: 'Error temporal del servicio de email. Por favor intenta nuevamente.',
+						errors: 'El registro no pudo completarse debido a problemas de email.'
+					},
+					{ status: 503 }
+				);
+			} catch (rollbackError) {
+				console.error('Error en rollback:', rollbackError);
+
+				// Log para investigación manual
+				console.error(`Usuario órfano creado: ID ${createdUserId}, Email: ${result.user.email}`);
+
+				return NextResponse.json(
+					{
+						message: 'Error crítico del sistema. Contacta al administrador.',
+						supportInfo: {
+							errorCode: 'ORPHAN_USER_CREATED',
+							userId: createdUserId,
+							timestamp: new Date().toISOString()
+						}
+					},
+					{ status: 500 }
+				);
+			}
+		}
+
+	} catch (error) {
+		console.error('Error general en POST /api/usuario:', error);
+
+		// Log detallado para debugging
+		const errorLog = {
+			message: error instanceof Error ? error.message : 'Unknown error',
+			stack: error instanceof Error ? error.stack : undefined,
+			timestamp: new Date().toISOString(),
+			userId: createdUserId
+		};
+		console.error('Error details:', errorLog);
+
+		return NextResponse.json(
+			{
+				message: 'Error interno del servidor',
+				errorCode: 'INTERNAL_SERVER_ERROR'
+			},
+			{ status: 500 }
+		);
+	}
 }
+
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const genderFilters = searchParams.getAll('gender');
