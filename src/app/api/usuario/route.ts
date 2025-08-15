@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
 		let userData;
 		try {
 			userData = await request.json();
-		} catch (parseError) {
+		} catch {
 			return NextResponse.json(
 				{ message: 'Formato de datos inválido' },
 				{ status: 400 }
