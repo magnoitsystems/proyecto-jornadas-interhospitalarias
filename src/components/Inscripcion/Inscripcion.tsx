@@ -108,10 +108,6 @@ export default function InscriptionForm() {
                     const monthDiff = today.getMonth() - birthDate.getMonth();
                     const dayDiff = today.getDate() - birthDate.getDate();
 
-                    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
-                      age-1;
-                    }
-
                     setFormData(prev => ({
                       ...prev,
                       age: age.toString()
