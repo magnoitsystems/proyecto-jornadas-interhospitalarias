@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { UserView as User } from "@/types/user";
 
-
 export interface UserData {
   name: string;
   lastname: string;
@@ -18,9 +17,8 @@ export interface UserFilters {
   job?: string[];
 }
 
-
 export default function useUsers() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false); // Cambiado de true a false
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [users, setUsers] = useState<User[]>([]);
@@ -31,26 +29,48 @@ export default function useUsers() {
     setError(null);
     setSuccessMessage(null);
 
+    // Construir URL completa
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ||
+        (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000');
+
+    const fullUrl = `${baseUrl}/api/usuario`;
+
+    console.log('🚀 Enviando datos del usuario:', userData);
+    console.log('🔗 URL completa:', fullUrl);
+
     try {
-      const response = await fetch("/api/usuario", {
+      const response = await fetch(fullUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify(userData),
       });
 
-      const data = await response.json();
+      console.log('📡 Respuesta del servidor:', response.status, response.statusText);
 
-      if (!response.ok) throw new Error(data.message || "Error al crear usuario");
+      const data = await response.json();
+      console.log('📊 Datos de respuesta:', data);
+
+      if (!response.ok) {
+        console.error('❌ Error en la respuesta:', data);
+        throw new Error(data.message || `Error ${response.status}: ${response.statusText}`);
+      }
 
       setSuccessMessage(data.message);
       return data.user;
+
     } catch (err) {
+      console.error('💥 Error en createUser:', err);
+
       if (err instanceof Error) {
         setError(err.message);
+        console.error('💥 Error message:', err.message);
       } else {
         setError("Error desconocido");
+        console.error('💥 Error desconocido:', err);
       }
-      return null; // o []
+      return null;
     } finally {
       setLoading(false);
     }
@@ -63,45 +83,38 @@ export default function useUsers() {
 
     try {
       const params = new URLSearchParams();
-
-      const genderArray = Array.isArray(filters.gender)
-        ? filters.gender
-        : filters.gender
-          ? [filters.gender]
-          : [];
-
-      const jobArray = Array.isArray(filters.job)
-        ? filters.job
-        : filters.job
-          ? [filters.job]
-          : [];
+      const genderArray = Array.isArray(filters.gender) ? filters.gender : filters.gender ? [filters.gender] : [];
+      const jobArray = Array.isArray(filters.job) ? filters.job : filters.job ? [filters.job] : [];
 
       genderArray.forEach(g => params.append("gender", g));
       jobArray.forEach(j => params.append("job", j));
 
-
       const query = params.toString();
-      const url = query ? `/api/usuario?${query}` : `/api/usuario`;
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ||
+          (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000');
+
+      const url = query ? `${baseUrl}/api/usuario?${query}` : `${baseUrl}/api/usuario`;
 
       const response = await fetch(url, {
         method: "GET",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json"
+        },
       });
 
       if (!response.ok) throw new Error("Error al obtener usuarios");
 
       const data = await response.json();
-
       setUsers(data.responseUser || []);
+      return data.responseUser || [];
 
-      return data.users || [];
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
       } else {
         setError("Error desconocido");
       }
-      return null; // o []
+      return [];
     } finally {
       setLoading(false);
     }
