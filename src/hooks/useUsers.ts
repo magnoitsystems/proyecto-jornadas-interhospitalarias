@@ -18,7 +18,7 @@ export interface UserFilters {
 }
 
 export default function useUsers() {
-  const [loading, setLoading] = useState(false); // Cambiado de true a false
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [users, setUsers] = useState<User[]>([]);
@@ -29,17 +29,10 @@ export default function useUsers() {
     setError(null);
     setSuccessMessage(null);
 
-    // Construir URL completa
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ||
-        (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000');
-
-    const fullUrl = `${baseUrl}/api/usuario`;
-
     console.log('🚀 Enviando datos del usuario:', userData);
-    console.log('🔗 URL completa:', fullUrl);
 
     try {
-      const response = await fetch(fullUrl, {
+      const response = await fetch("/api/usuario", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -90,10 +83,7 @@ export default function useUsers() {
       jobArray.forEach(j => params.append("job", j));
 
       const query = params.toString();
-      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ||
-          (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000');
-
-      const url = query ? `${baseUrl}/api/usuario?${query}` : `${baseUrl}/api/usuario`;
+      const url = query ? `/api/usuario?${query}` : `/api/usuario`;
 
       const response = await fetch(url, {
         method: "GET",

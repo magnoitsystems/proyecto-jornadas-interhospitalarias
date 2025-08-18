@@ -4,6 +4,7 @@ import { prisma } from '@/libs/prisma';
 import { EmailService } from "@/services/emailService";
 
 export async function POST(request: NextRequest) {
+	console.log("hola");
 	let createdUserId: number | null = null;
 
 	try {
@@ -71,6 +72,7 @@ export async function POST(request: NextRequest) {
 			});
 
 			createdUserId = createdUser.idUser;
+
 			console.log(`✅ Usuario creado en DB: ${createdUser.idUser}`);
 
 		} catch (dbError) {
@@ -93,13 +95,9 @@ export async function POST(request: NextRequest) {
 			);
 		}
 
-		// Enviar email con contraseña
+		// Envío de email
 		try {
 			console.log('📧 Iniciando envío de email...');
-			console.log('📧 Destinatario:', result.user.email);
-			console.log('👤 Nombre completo:', `${result.user.name} ${result.user.lastname}`);
-
-			// Intentar enviar el email
 			await EmailService.sendPasswordEmail(
 				result.user.email,
 				`${result.user.name} ${result.user.lastname}`,
@@ -107,7 +105,6 @@ export async function POST(request: NextRequest) {
 			);
 
 			console.log('✅ Email enviado exitosamente');
-
 			return NextResponse.json(
 				{
 					message: 'Usuario creado exitosamente. Revisa tu email para obtener tu contraseña.',
@@ -128,8 +125,8 @@ export async function POST(request: NextRequest) {
 			// Determinar si el error es de configuración o temporal
 			const isConfigError = emailError instanceof Error && (
 				emailError.message.includes('configurada') ||
-				emailError.message.includes('EMAIL_FROM') ||
-				emailError.message.includes('RESEND_API_KEY') ||
+				emailError.message.includes('EMAIL_USER') ||
+				emailError.message.includes('EMAIL_APP_PASSWORD') ||
 				emailError.message.includes('@gmail.com') ||
 				emailError.message.includes('@yahoo.com') ||
 				emailError.message.includes('@hotmail.com')
