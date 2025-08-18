@@ -49,8 +49,6 @@ export default function InscriptionForm() {
         admin: false
       };
 
-      console.log('🚀 Enviando usuario:', userToCreate);
-
       const createdUser = await createUser(userToCreate);
 
       if (createdUser) {
