@@ -20,75 +20,284 @@ export default function Programa(){
                 </div>
                 <div className={styles.events}>
                     <ActivityCard
-                        eventName={"Situaciones Clínicas en Vacunas"}
+                        eventName={"Acreditación"}
+                        time={"08:30"}
+                        place={"-"}
+                        guestsName={"-"}
+                        guests={['-']}
+                        coordinators={['-']}
+                        topics={['-']}
+                        personalizedClassName={'others'} className={""}
+                    />
+
+                    <ActivityCard
+                        eventName={"Situaciones clínicas en vacunas"}
                         time={"09:15 - 12:15"}
-                        place={"Teatro del Fuerte"}
-                        guestsName={"Disertantes"}
-                        guests={[
-                            'Dra. Angela Gentile,',
-                            ' Dra. Florencia Bruggesser.'
-                        ]}
+                        place={"Teatro Del Fuerte"}
+                        guestsName={"-"}
+                        guests={[]}
                         coordinators={[
-                            'Dra. Carolina Bullor'
+                            'Carolina Bullor,',
+                            ' Romina Escruela.'
                         ]}
                         topics={[
-                            '"Situación epidemiológica de sarampión: Cómo enfrentamos el brote de Sarampión (09:15 - 10:15)", ',
-                            '"Pertussis: un brote silencioso (10:15 - 11:10)", ',
-                            '"Cómo completar esquemas y evitar oportunidades perdidas de vacunación (11:30 - 12:15)".'
+                            '-'
+                        ]}
+                        personalizedClassName={'taller'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Situación epidemiológica de sarampión:\n" +
+                            "¿Cómo enfrentamos el brote ?"}
+                        time={"09:15 - 10:15"}
+                        place={"Teatro Del Fuerte"}
+                        guestsName={"Disertantes"}
+                        guests={[
+                            'Ángela Gentile,',
+                            ' María del Valle Juárez,',
+                            ' Natalia Pejito.'
+                        ]}
+                        coordinators={[
+                            'Carolina Bullor,',
+                            ' Romina Escruela.'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'taller'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Pertussis: un brote silencioso"}
+                        time={"10:15 - 11:10"}
+                        place={"Teatro Del Fuerte"}
+                        guestsName={"Disertantes"}
+                        guests={[
+                            'Florencia Bruggesser,',
+                            ' María del Valle Juárez,',
+                            ' Natalia Pejito.',
+                        ]}
+                        coordinators={[
+                            'Carolina Bullor,',
+                            ' Romina Escruela.'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'taller'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Receso"}
+                        time={"11:10 - 11:30"}
+                        place={"Teatro Del Fuerte"}
+                        guestsName={'-'}
+                        guests={['-']}
+                        coordinators={['-']}
+                        topics={['-']}
+                        personalizedClassName={'taller'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Cómo completar esquemas y evitar oportunidades perdidas de\n" +
+                            "vacunación"}
+                        time={"11:30 - 12:15"}
+                        place={"Teatro Del Fuerte"}
+                        guestsName={"Disertantes"}
+                        guests={[
+                            'Vanesa Castellano,',
+                            ' Virginia Bazan.',
+                        ]}
+                        coordinators={[
+                            'Carolina Bullor,',
+                            ' Romina Escruela.'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'taller'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Almuerzo"}
+                        time={"12.30"}
+                        place={"-"}
+                        guestsName={'-'}
+                        guests={['-']}
+                        coordinators={['-']}
+                        topics={['-']}
+                        personalizedClassName={'others'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Jornada para Enfermería"}
+                        time={"14:00 - 18:00"}
+                        place={"MUMBAT"}
+                        guestsName={"Disertantes"}
+                        guests={[
+                            '-',
+                        ]}
+                        coordinators={[
+                            '-'
+                        ]}
+                        topics={[
+                            'Taller de sedoanalgesia. Taller cuidados del recién nacido.'
                         ]}
                         personalizedClassName={'taller'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Educar para la prevención cardiovascular"}
-                        time={"13:45 - 15:30"}
-                        place={"MUMBAT"}
-                        guestsName={"Disertantes"}
+                        time={"13.45 - 15.30"}
+                        place={"Teatro Del Fuerte"}
+                        guestsName={"Panelistas"}
                         guests={[
-                            'Dra. Angela Sardella,',
-                            ' Dra. Evangelina Latazza,',
-                            ' Dra. Gabriela Rossi,',
-                            ' Dra. Sol Elorriaga.'
+                            'Detallado en cada evento',
                         ]}
                         coordinators={[
-                            'Dra. Laura Riva'
+                            'Laura Riva.'
                         ]}
                         topics={[
-                            '"Prevención cardiovascular y envejecimiento vascular en pediatría", ',
-                            '"HTA", ',
-                            '"Obesidad y sme metabólico, "',
-                            '"Prescripción de actividad física en pediatría".'
+                            '-'
                         ]}
-                        personalizedClassName={'taller'} className={""}                    />
+                        personalizedClassName={'redonda'} className={""}                    />
 
                     <ActivityCard
-                        eventName={"Enfermedades crónicas, adecuación y transición a clínica médica"}
-                        time={"16:00 - 17:30"}
-                        place={"MUMBAT"}
-                        guestsName={"Disertantes"}
+                        eventName={"Prevención cardiovascular y envejecimiento vascular en pediatría"}
+                        time={"13.45 - 15.30"}
+                        place={"Teatro Del Fuerte"}
+                        guestsName={"Panelista"}
                         guests={[
-                            'Dra. Ileana Mastropierro,',
-                            ' Dr. Alejandro Fainboim.'
+                            'Claudio Moros.',
                         ]}
                         coordinators={[
-                            'Dra.Carolina Bullor'
+                            'Laura Riva.'
                         ]}
                         topics={[
-                            '“El proceso de transición a los servicios de adultos en Tandil”, ',
-                            '“El proceso de transición a los servicios de adultos en CABA”, ',
-                            '“¿Cuál es la mirada del clínico al recibir un adolescente con enfermedad crónica?".'
+                            '-'
                         ]}
-                        personalizedClassName={'taller'} className={""}                    />
+                        personalizedClassName={'redonda'} className={""}                    />
 
                     <ActivityCard
-                        eventName={"Novedades de calendario 2026"}
-                        time={"17:45 - 18:45"}
+                        eventName={"Hipertensión arterial"}
+                        time={"13.45 - 15.30"}
+                        place={"Teatro Del Fuerte"}
+                        guestsName={"Panelista"}
+                        guests={[
+                            'Evangelina Latazza.',
+                        ]}
+                        coordinators={[
+                            'Laura Riva.'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'redonda'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Obesidad y sindrome metabólico"}
+                        time={"13.45 - 15.30"}
+                        place={"Teatro Del Fuerte"}
+                        guestsName={"Panelista"}
+                        guests={[
+                            'Gabriela Rossi.',
+                        ]}
+                        coordinators={[
+                            'Laura Riva.'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'redonda'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Prescripción de actividad física en pediatría y controles"}
+                        time={"13.45 - 15.30"}
+                        place={"Teatro Del Fuerte"}
+                        guestsName={"Panelista"}
+                        guests={[
+                            'Sol Elorriaga.',
+                        ]}
+                        coordinators={[
+                            'Laura Riva.'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'redonda'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Niños con enfermedades crónicas: la transición a la vida adulta."}
+                        time={"16:00 - 17.30"}
+                        place={"Teatro Del Fuerte"}
+                        guestsName={"Panelistas"}
+                        guests={[
+                            'Detallados en cada evento',
+                        ]}
+                        coordinators={[
+                            'Mabel Brindo,',
+                            ' Lucila Heer.'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'redonda'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"El proceso de transición a los servicios de adultos en Tandil"}
+                        time={"16:00 - 17.30"}
+                        place={"Teatro Del Fuerte"}
+                        guestsName={"Panelista"}
+                        guests={[
+                            'Josefina Girodo.',
+                        ]}
+                        coordinators={[
+                            'Mabel Brindo,',
+                            ' Lucila Heer.'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'redonda'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"El proceso de transición a los servicios de adultos en CABA"}
+                        time={"16:00 - 17.30"}
+                        place={"Teatro Del Fuerte"}
+                        guestsName={"Panelista"}
+                        guests={[
+                            'Alejandro Fainboim.',
+                        ]}
+                        coordinators={[
+                            'Mabel Brindo,',
+                            ' Lucila Heer.'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'redonda'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"¿Cuál es la mirada del clínico al recibir un adolescente con\n" +
+                            "enfermedad crónica?"}
+                        time={"16:00 - 17.30"}
+                        place={"Teatro Del Fuerte"}
+                        guestsName={"Panelista"}
+                        guests={[
+                            'Laura Lewin.',
+                        ]}
+                        coordinators={[
+                            'Mabel Brindo,',
+                            ' Lucila Heer.'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'redonda'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Últimas novedades del Calendario Nacional"}
+                        time={"17.45 - 18.45"}
                         place={"Salón Blanco"}
                         guestsName={"Conferencista"}
                         guests={[
-                            'Dra. Angela Gentile.'
+                            'Ángela Gentile.',
                         ]}
                         coordinators={[
-                            '-'
+                            'Carolina Pascual.'
                         ]}
                         topics={[
                             '-'
@@ -99,9 +308,9 @@ export default function Programa(){
                         eventName={"Acto Inaugural"}
                         time={"19:00"}
                         place={"Salón Blanco"}
-                        guestsName={"Disertantes"}
+                        guestsName={"-"}
                         guests={[
-                            '-'
+                            '-',
                         ]}
                         coordinators={[
                             '-'
@@ -111,6 +320,7 @@ export default function Programa(){
                         ]}
                         personalizedClassName={'others'} className={""}                    />
                 </div>
+
             </div>
 
             <div className={styles.dayProgram}>
@@ -121,13 +331,10 @@ export default function Programa(){
                     <ActivityCard
                         eventName={"Presentación de pósters"}
                         time={"08:00 - 09:00"}
-                        place={"MUMBAT/Teatro del Fuerte"}
-                        guestsName={"Invitados"}
+                        place={"MUMBAT-Teatro del Fuerte"}
+                        guestsName={"-"}
                         guests={[
-                            'Dr. Tomás Baliña,',
-                            ' Dra. Carolina Bullor',
-                            ' Dra. Micaela Salas,',
-                            ' Dra. Celeste Garreta.'
+                            '-'
                         ]}
                         coordinators={[
                             '-'
@@ -138,51 +345,84 @@ export default function Programa(){
                         personalizedClassName={'others'} className={""}                    />
 
                     <ActivityCard
-                        eventName={"Seguridad del paciente y calidad"}
+                        eventName={"Presentaciones y diálogo con experto en temas de medicina interna"}
                         time={"09:15 - 10:45"}
                         place={"Teatro del Fuerte"}
-                        guestsName={"Disertantes"}
+                        guestsName={"Expertos"}
                         guests={[
-                            'Dra. Mariana Flichman,',
-                            ' Lic. Alejandra Rigalli.'
+                            'Especificado en cada evento.'
                         ]}
                         coordinators={[
-                            'Dra. Manuela Beazley,',
-                            ' Dra. Ana Albanese'
+                            'Alejandra Pérez Cerisola.'
                         ]}
                         topics={[
-                            '"La importancia de la comunicación efectiva en salud", ',
-                            '"Instaurando una cultura de seguridad para brindar cuidados de calidad".'
+                            '"Desafíos clínicos en la atención de los paciente con TCA", ',
+                            '"Fluidoterapia endovenosa en situaciones especiales: cetoacidosis diabetica, cardiopatías y lesión renal aguda".'
                         ]}
-                        personalizedClassName={'taller'} className={""}                    />
+                        personalizedClassName={'dialogo'} className={""}                    />
 
                     <ActivityCard
-                        eventName={"Simulación como herramienta de formación"}
+                        eventName={"Desafíos clínicos en la atención de los paciente con TCA"}
+                        time={"09:15 - 10:45"}
+                        place={"Teatro del Fuerte"}
+                        guestsName={"Expertos"}
+                        guests={[
+                            'Alejandra Ariovich,',
+                            ' Maria del Valle Carpineta.'
+                        ]}
+                        coordinators={[
+                            'Alejandra Pérez Cerisola.'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'dialogo'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Fluidoterapia endovenosa en situaciones especiales:\n" +
+                            "cetoacidosis diabetica, cardiopatías y lesión renal aguda"}
+                        time={"09:15 - 10:45"}
+                        place={"Teatro del Fuerte"}
+                        guestsName={"Expertos"}
+                        guests={[
+                            'Juan B. Dartiguelongue.'
+                        ]}
+                        coordinators={[
+                            'Alejandra Pérez Cerisola.'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'dialogo'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Simulación como herramienta en la formación"}
                         time={"11:00 - 12:30"}
                         place={"Teatro del Fuerte"}
-                        guestsName={"Disertantes"}
+                        guestsName={"Panelistas"}
                         guests={[
-                            'Dra. Adriana Bordogna,',
-                            ' Dra. Gladys Palacios,',
-                            ' Dr. Estanislao Diaz Pumara.'
+                            'Adriana Bordogna,',
+                            ' Gladys Palacios,',
+                            ' Christian Bernardo,',
+                            ' Estanislao Diaz Pumara,',
                         ]}
                         coordinators={[
-                            'Dra.Celeste Garreta, ',
-                            'Equipo TANSIM.'
+                            'Manuel Morán.'
                         ]}
                         topics={[
-                            '“Experiencia Tandil”, ',
-                            '“Experiencia CABA”.'
+                            '"Debriefing clínico", ',
+                            ' "Recorrido y desafíos Tansim", ',
+                            ' "Simulación con bajos recursos".'
                         ]}
-                        personalizedClassName={'taller'} className={""}                    />
+                        personalizedClassName={'redonda'} className={""}                    />
 
                     <ActivityCard
-                        eventName={"Simposio de la industria VSR y Prevenar 20"}
+                        eventName={"Simposio vacunas: VSR y Prevenar 20 - Laboratorio Pfizer"}
                         time={"13:00 - 14:00"}
                         place={"Teatro del Fuerte"}
-                        guestsName={"Disertante"}
+                        guestsName={"-"}
                         guests={[
-                            'Laboratorio PFIZER.'
+                            '-',
                         ]}
                         coordinators={[
                             '-'
@@ -193,15 +433,31 @@ export default function Programa(){
                         personalizedClassName={'simposio'} className={""}                    />
 
                     <ActivityCard
-                        eventName={"De Freud a la biología molecular. Actualidad del neurodesarrollo 130 años después."}
-                        time={"16:00 - 17:25"}
-                        place={"??????????"}
-                        guestsName={"Conferencista"}
+                        eventName={"Almuerzo"}
+                        time={"14:00 - 14:45"}
+                        place={"-"}
+                        guestsName={"-"}
                         guests={[
-                            'Dr. Julian Onaindia'
+                            '-',
                         ]}
                         coordinators={[
                             '-'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'others'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"De Freud a la biología molecular. Actualidad del neurodesarrollo 130 años después "}
+                        time={"14:45 - 15:45"}
+                        place={"Teatro del Fuerte"}
+                        guestsName={"Conferencista"}
+                        guests={[
+                            'Julian Onaindia.',
+                        ]}
+                        coordinators={[
+                            'Nancy Guerrero.'
                         ]}
                         topics={[
                             '-'
@@ -209,44 +465,156 @@ export default function Programa(){
                         personalizedClassName={'conferencia'} className={""}                    />
 
                     <ActivityCard
-                        eventName={"La internación por salud mental en sala pediatría."}
-                        time={"16:00 - 17:25"}
-                        place={"??????????"}
-                        guestsName={"Disertantes"}
+                        eventName={"Calidad en la atención en salud"}
+                        time={"16:00 - 17:15"}
+                        place={"Teatro del Fuerte"}
+                        guestsName={"Panelistas"}
                         guests={[
-                            'Dra. Carolina Pascual, ',
-                            'Dra. Sandra Novas, ',
-                            'Lic. Constanza Funes.'
+                            'Detallado en cada evento',
                         ]}
                         coordinators={[
-                            'Dr. Teo Silva'
+                            'Ana Albanese,',
+                            ' Manuela Beazley.'
                         ]}
                         topics={[
-                            '"Cuidados clínicos en pacientes internados por patología de salud mental", ',
-                            '"Seguimiento pediátrico ambulatorio de pacientes con patología".'
+                            '-'
                         ]}
-                        personalizedClassName={'taller'} className={""}                    />
+                        personalizedClassName={'redonda'} className={""}                    />
 
                     <ActivityCard
-                        eventName={"Presentación y diálogo con expertos"}
-                        time={"17:30 - 18:45"}
-                        place={"???????????"}
-                        guestsName={"Expertos"}
+                        eventName={"La importancia de la comunicación efectiva en salud"}
+                        time={"16:00 - 17:15"}
+                        place={"Teatro del Fuerte"}
+                        guestsName={"Panelista"}
                         guests={[
-                            'Dra. Alejandra Pérez Cerisola, ',
-                            'Dra. Alejandra Ariovich, ',
-                            'Dra. Maria del Valle Carpinetta, ',
-                            'Dr. Juan B. Dartiguelongue.'
+                            'Alejandra Rigalli.',
                         ]}
                         coordinators={[
-                            'Dra. Camila Pereyra, ',
-                            'Dra. Ileana Mastropierro.'
+                            'Ana Albanese,',
+                            ' Manuela Beazley.'
                         ]}
                         topics={[
-                            '"Desafíos clínicos en la atención de los TCA", ',
-                            '"Fluidoterapia endovenosa en situaciones especiales: CAD, cardiopatías y lesión renal aguda".'
+                            '-'
                         ]}
-                        personalizedClassName={'dialogo'} className={""}                    />
+                        personalizedClassName={'redonda'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Instaurando una cultura de seguridad para brindar cuidados de calidad"}
+                        time={"16:00 - 17:15"}
+                        place={"Teatro del Fuerte"}
+                        guestsName={"Panelista"}
+                        guests={[
+                            'Mariana Flichman.',
+                        ]}
+                        coordinators={[
+                            'Ana Albanese,',
+                            ' Manuela Beazley.'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'redonda'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"La internación por salud mental en la infancia. Prácticas clínicas, gestión, abordaje interdisciplinario en un Hospital Pediátrico"}
+                        time={"17:30 - 19:50"}
+                        place={"Teatro del Fuerte"}
+                        guestsName={"Panelistas"}
+                        guests={[
+                            'Detallado en cada evento',
+                        ]}
+                        coordinators={[
+                            'Cynthia Sflaeftein,',
+                            '  Ileana Mastropierro.'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'redonda'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Abordaje integral de pacientes internados por patología de salud mental en salas de pediatría"}
+                        time={"17:30 - 19:50"}
+                        place={"Teatro del Fuerte"}
+                        guestsName={"Panelistas"}
+                        guests={[
+                            'Carolina Pascual',
+                        ]}
+                        coordinators={[
+                            'Cynthia Sflaeftein,',
+                            '  Ileana Mastropierro.'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'redonda'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Internación por salud mental de niños y adolescentes. Desafíos y controversias actuales"}
+                        time={"17:30 - 19:50"}
+                        place={"Teatro del Fuerte"}
+                        guestsName={"Panelistas"}
+                        guests={[
+                            'Sandra Novas',
+                        ]}
+                        coordinators={[
+                            'Cynthia Sflaeftein,',
+                            ' Ileana Mastropierro.'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'redonda'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"El pediatra en salud mental: un nuevo espacio de articulación y cuidado clínico"}
+                        time={"17:30 - 19:50"}
+                        place={"Teatro del Fuerte"}
+                        guestsName={"Panelistas"}
+                        guests={[
+                            'Lic Constanza Funes',
+                            ' Jose Silva.'
+                        ]}
+                        coordinators={[
+                            'Cynthia Sflaeftein,',
+                            ' Ileana Mastropierro.'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'redonda'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Actividad Cultural: Proyección de la película “Alemania”"}
+                        time={"19:00"}
+                        place={"Cine Fórum - Teatro Del Fuerte"}
+                        guestsName={"Invitados"}
+                        guests={[
+                            'Actividad abierta a la comunidad'
+                        ]}
+                        coordinators={[
+                            'Constanza Funes.'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'others'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"RCP al paso"}
+                        time={"Todo el día"}
+                        place={"Teatro del Fuerte - Mumbat"}
+                        guestsName={"Invitados"}
+                        guests={[
+                            'Residencia de Pediatría Tandil'
+                        ]}
+                        coordinators={[
+                            'Emilia Peñalva.'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'others'} className={""}                    />
                 </div>
             </div>
 
@@ -256,24 +624,23 @@ export default function Programa(){
                 </div>
                 <div className={styles.events}>
                     <ActivityCard
-                        eventName={"Talleres de habilidades Simulación"}
+                        eventName={"Talleres de habilidades en simulación clínica"}
                         time={"08:00 - 09:30"}
-                        place={"HNDV"}
-                        guestsName={"Disertantes"}
+                        place={"SUM HDBV"}
+                        guestsName={"Invitados"}
                         guests={[
-                            'TANSIM,',
-                            ' Hospital de Niños Debilio Villegas'
+                            '-'
                         ]}
                         coordinators={[
-                            ''
+                            'Centro de simulación clínica Tandil (TANSIM).'
                         ]}
                         topics={[
-                            '-'
+                            'Suturas / Manejo del paciente traqueostomizado / Vía aérea'
                         ]}
                         personalizedClassName={'taller'} className={""}                    />
 
                     <ActivityCard
-                        eventName={"Reunión del Comité de Ética"}
+                        eventName={"Reunión de Integrantes del Comité de Ética e Investigadores"}
                         time={"08:30 - 10:00"}
                         place={"MUMBAT"}
                         guestsName={"Invitados"}
@@ -282,7 +649,7 @@ export default function Programa(){
                             ' Dra. Lorena Firenze.'
                         ]}
                         coordinators={[
-                            'Comité de Ética SISP.'
+                            '-'
                         ]}
                         topics={[
                             '-'
@@ -290,65 +657,134 @@ export default function Programa(){
                         personalizedClassName={'reunion'} className={""}                    />
 
                     <ActivityCard
-                        eventName={"Controversias en la atención del politrauma TIPO??"}
+                        eventName={"Novedades en el manejo del politrauma"}
                         time={"09:45 - 11:15"}
-                        place={"??????????"}
-                        guestsName={"????????"}
-                        guests={[
-                            'Dra. Miriam Carbone,',
-                            ' Dr. Pablo Neira.'
-                        ]}
-                        coordinators={[
-                            'Dra.Celeste Garreta.'
-                        ]}
-                        topics={[
-                            '“Trauma con víctimas múltiples. Prehospital.”, ',
-                            '“Registro Nacional del Trauma”.'
-                        ]}
-                        personalizedClassName={'others'} className={""}                    />
-
-                    <ActivityCard
-                        eventName={"Comorbilidades en los trastornos del neurodesarrollo. Alimentación, crianza y sueño"}
-                        time={"11:15 - 12:45"}
-                        place={"?????????"}
-                        guestsName={"????????"}
-                        guests={[
-                            'Dra. Natalia Regatky, ',
-                            'Dra. Josefina Girodo.'
-                        ]}
-                        coordinators={[
-                            'Dra. Micaela Salas'
-                        ]}
-                        topics={[
-                            '-'
-                        ]}
-                        personalizedClassName={'others'} className={""}                    />
-
-                    <ActivityCard
-                        eventName={"Obesidad. Tratamiento obesidad con análogos GLP1."}
-                        time={"13:00 - 14:15"}
-                        place={"??????????"}
+                        place={"Teatro Del Fuerte"}
                         guestsName={"Panelistas"}
                         guests={[
-                            'Dra. Gabrielle Grinstein, ',
-                            'Dra. Adriana Roussos.'
+                            'Detallado en cada evento.'
                         ]}
                         coordinators={[
-                            'Dra. Cintia Ojea, ',
-                            'Dra. Nancy Guerrero.'
+                            'Celeste Garreta,',
+                            ' Gonzalo Laplace.',
                         ]}
                         topics={[
-                            '"Estrategias en intervenciones nutricionales y hábitos."'
+                            '“Controversias en la atención del politrauma”, ',
+                            '“Trauma con víctimas múltiples. Prehospital.”.'
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
                     <ActivityCard
-                        eventName={"Vacuna Dengue."}
-                        time={"14:00 - 15:00"}
-                        place={"??????????"}
+                        eventName={"Controversias en la atención del politrauma"}
+                        time={"09:45 - 11:15"}
+                        place={"Teatro Del Fuerte"}
+                        guestsName={"Panelistas"}
+                        guests={[
+                            'Miriam Carbone.'
+                        ]}
+                        coordinators={[
+                            'Celeste Garreta,',
+                            ' Gonzalo Laplace.',
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'redonda'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Trauma con víctimas múltiples. Prehospital"}
+                        time={"09:45 - 11:15"}
+                        place={"Teatro Del Fuerte"}
+                        guestsName={"Panelistas"}
+                        guests={[
+                            'Pablo Neira.'
+                        ]}
+                        coordinators={[
+                            'Celeste Garreta,',
+                            ' Gonzalo Laplace.',
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'redonda'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={'“Neurodesarrollo y desafíos cotidianos: comorbilidades en el espectro”, “Alimentación, crianza y sueño”'}
+                        time={"11:15 - 12:45"}
+                        place={"Teatro del Fuerte"}
+                        guestsName={"??????????"}
+                        guests={[
+                            'Natalia Regatky, ',
+                            '  Ana Cabral.'
+                        ]}
+                        coordinators={[
+                            'Josefina Girodo,',
+                            '  Berenice González.',
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'???????'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Nuevos desafíos en el manejo de la obesidad"}
+                        time={"13:00 - 14:15"}
+                        place={"Teatro del Fuerte"}
+                        guestsName={"Panelistas"}
+                        guests={[
+                            'Especificados en cada evento.'
+                        ]}
+                        coordinators={[
+                            'Juliana Mehring, ',
+                            'Florencia Migliano.'
+                        ]}
+                        topics={[
+                            '"Tratamiento obesidad con análogos GLP1,"',
+                            ' "Estrategias en intervenciones nutricionales y hábitos de vida".'
+                        ]}
+                        personalizedClassName={'redonda'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Tratamiento obesidad con análogos GLP1"}
+                        time={"13:00 - 14:15"}
+                        place={"Teatro del Fuerte"}
+                        guestsName={"Panelista"}
+                        guests={[
+                            'Nuni Grinstein.'
+                        ]}
+                        coordinators={[
+                            'Juliana Mehring, ',
+                            'Florencia Migliano.'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'redonda'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Estrategias en intervenciones nutricionales y hábitos de vida"}
+                        time={"13:00 - 14:15"}
+                        place={"Teatro del Fuerte"}
+                        guestsName={"Panelista"}
+                        guests={[
+                            'Adriana Roussos.'
+                        ]}
+                        coordinators={[
+                            'Juliana Mehring, ',
+                            'Florencia Migliano.'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'redonda'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={'Simposio Laboratorio Inmunova'}
+                        time={"14:15 - 15:15"}
+                        place={"Teatro del Fuerte"}
                         guestsName={"Disertante"}
                         guests={[
-                            'TAKEDA.'
+                            '-'
                         ]}
                         coordinators={[
                             '-'
@@ -359,32 +795,15 @@ export default function Programa(){
                         personalizedClassName={'simposio'} className={""}                    />
 
                     <ActivityCard
-                        eventName={"Innovación Tecnológica"}
-                        time={"15:00 - 16:30"}
-                        place={"???????????"}
-                        guestsName={"Panelistas"}
-                        guests={[
-                            'Dr. Nicolás Vecchio, ',
-                            'Dr. Guillermo Golfarb.'
-                        ]}
-                        coordinators={[
-                            '-'
-                        ]}
-                        topics={[
-                            '-'
-                        ]}
-                        personalizedClassName={'redonda'} className={""}                    />
-
-                    <ActivityCard
-                        eventName={"Taller Mindfullnes"}
+                        eventName={"Taller Mindfullnes. Cupo: 30 personas - Inscripción previa."}
                         time={"14:00 - 15:30"}
-                        place={"???????????"}
+                        place={"MUMBAT"}
                         guestsName={"Disertante"}
                         guests={[
-                            'Dr. Christian Elias Costa'
+                            'Christian Elias Costa.'
                         ]}
                         coordinators={[
-                            'Dra. Nancy Guerrero'
+                            '-'
                         ]}
                         topics={[
                             '-'
@@ -394,34 +813,33 @@ export default function Programa(){
                     <ActivityCard
                         eventName={"Inteligencia Artificial aplicada al campo de la salud. ¿Para qué debemos prepararnos?"}
                         time={"15:30 - 16:45"}
-                        place={"???????????"}
-                        guestsName={"?????????"}
+                        place={"Teatro del Fuerte"}
+                        guestsName={"Panelistas"}
                         guests={[
                             'Dr. Nicolás Vecchio, ',
                             'Dr. Guillermo Golfarb.'
                         ]}
                         coordinators={[
-                            'Dra. Camila Pereyra'
+                            'Camila Pereyra,',
+                            ' Cintia Ojea.'
                         ]}
                         topics={[
                             '-'
                         ]}
-                        personalizedClassName={'others'} className={""}                    />
+                        personalizedClassName={'redonda'} className={""}                    />
 
                     <ActivityCard
-                        eventName={'Procuración de órganos y trasplante'}
+                        eventName={'Hablemos de la donación de órganos en pediatría'}
                         time={"17:00 - 18:00"}
-                        place={"???????????"}
+                        place={"Teatro del Fuerte"}
                         guestsName={"Conferencistas"}
                         guests={[
-                            'Dra. Lorena Moreno, ',
-                            'Dr. Ruben Bernardi, ',
-                            'Dr. Alejandro Yancowoski, ',
-                            'Dra. Mariana Ziunen, ',
-                            'Natalia Cuesta (Autora del libro "Psicología").'
+                            'Lorena Moreno, ',
+                            'Mariana Cyunell, ',
+                            'Laura Alladro.'
                         ]}
                         coordinators={[
-                            'Equipo de procuración'
+                            '-'
                         ]}
                         topics={[
                             '-'
@@ -429,9 +847,25 @@ export default function Programa(){
                         personalizedClassName={'confAbierta'} className={""}                    />
 
                     <ActivityCard
-                        eventName={"Cierre - Cocktail despedida"}
+                        eventName={"Cierre"}
                         time={"18:00 - 18:30"}
-                        place={"???????????"}
+                        place={"Teatro del Fuerte"}
+                        guestsName={"-"}
+                        guests={[
+                            '-'
+                        ]}
+                        coordinators={[
+                            '-'
+                        ]}
+                        topics={[
+                            '-'
+                        ]}
+                        personalizedClassName={'others'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Cocktail de Despedida"}
+                        time={"18:00 - 18:30"}
+                        place={"Teatro del Fuerte"}
                         guestsName={"-"}
                         guests={[
                             '-'
