@@ -21,7 +21,7 @@ export default function NavBar(): JSX.Element {
             pathname === '/invitados' ||
             pathname === '/programa'
         ) {
-            return '/backgrounds/home.png';
+            return '/backgrounds/homeMain.png';
         } else if (pathname === '/inscripcion' || pathname === '/trabajos' || pathname === '/adminPanel' || pathname === '/login' ||
             pathname === '/redirection' || pathname === '/adminPanel/reports') {
             return '/backgrounds/form.png';
