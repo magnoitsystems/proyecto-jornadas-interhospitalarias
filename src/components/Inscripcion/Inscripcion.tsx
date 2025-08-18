@@ -104,10 +104,6 @@ export default function InscriptionForm() {
                     const today = new Date();
                     const age = today.getFullYear() - birthDate.getFullYear();
 
-                    // Ajustar si el cumpleaños no ha pasado este año
-                    const monthDiff = today.getMonth() - birthDate.getMonth();
-                    const dayDiff = today.getDate() - birthDate.getDate();
-
                     setFormData(prev => ({
                       ...prev,
                       age: age.toString()
