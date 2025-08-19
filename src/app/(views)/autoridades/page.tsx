@@ -8,14 +8,14 @@ const presidentialAuthority = {
         {
             position: "PRESIDENTES DEL CONGRESO",
             names: [
-                "Dr. Pablo Neira",
-                "Dra. Nancy Guerrero"
+                "Nancy Guerrero",
+                "Pablo Neira"
             ]
         },
         {
             position: "Secretaria General",
             names: [
-                "Dra. Carolina Pascual"
+                "Carolina Pascual"
             ]
         }
     ]
@@ -27,23 +27,24 @@ const scientificGroup = {
         {
             position: "Secretarios",
             names: [
-                "Dra. Ileana Mastropierro",
-                "Dr. Juan Dartiguelongue"
+                "Ileana Mastropierro",
+                "Juan Dartiguelongue"
             ]
         },
         {
             position: "Miembros",
             names: [
-                "Dra. Myriam Carbone",
-                "Dr. Christian Bernardo",
-                "Dr. Manuel Moran",
-                "Dr. Tomas Baliña",
-                "Dra. Alejandra Perez Cerisola",
-                "Lic. Constanza Funes",
-                "Dra. Celeste Garreta",
-                "Dra. Carolina Bullor",
-                "Dra. Micaela Salas",
-                "Dra. Camila Pereira"
+                "Myriam Carbone",
+                "Cristian Bernardo",
+                "Manuel Moran",
+                "Tomas Baliña",
+                "Alejandra Perez Cerisola",
+                "Constanza Funes",
+                "Celeste Garreta",
+                "Carolina Bullor",
+                "Micaela Salas",
+                "Camila Pereira",
+                "Ezequiel Monteverde"
             ]
         }
     ]
@@ -55,20 +56,23 @@ const organizingGroup = {
         {
             position: "Secretaria",
             names: [
-                "Dra. Manuela Beazley"
+                "Manuela Beazley"
             ]
         },
         {
             position: "Miembros",
             names: [
-                "Dra. Ana Albanese",
-                "Dra. Lorena Moreno",
-                "Dra. Mabel Brindo",
-                "Lorena San Martin",
+                "Ana Albanese",
+                "Lorena Moreno",
+                "Mabel Brindo",
                 "Karina Ochoa",
                 "Gaston Mujica",
-                "Lic. Cecilia Acosta",
-                "Lic. Gabriela Osimek"
+                "Cecilia Acosta",
+                "Gabriela Osimek",
+                "Antonella Juanenea",
+                "Cynthia Slaifstein",
+                "Laura Riva",
+                "Romina Escruela"
             ]
         }
     ]

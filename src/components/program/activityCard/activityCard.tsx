@@ -10,8 +10,8 @@ type Props = {
     place: string,
     guestsName: string,
     guests: string[],
-    coordinators: string[],
-    topics: string[],
+    coordinators?: string[] | undefined,
+    topics?: string[] | undefined,
     className: string,
     personalizedClassName: string;
 }
@@ -42,9 +42,9 @@ export default function ActivityCard({eventName, time, place, guestsName, guests
                     </div>
                 </div>
                 <div className={`${styles.aditionalInformation} ${showDetails ? styles.visible : styles.invisible}`}>
-                    <h4><span>{guestsName}</span>: {guests}</h4>
+                    <h4>{guests}</h4>
                     <h4><span>Coordinadores</span>: {coordinators}</h4>
-                    <h4><span>Temas a tratar</span>: {topics}</h4>
+                    <h4>{topics}</h4>
                 </div>
             </div>
         </main>

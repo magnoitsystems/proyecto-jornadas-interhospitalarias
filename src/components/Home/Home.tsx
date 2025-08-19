@@ -102,8 +102,8 @@ export default function Home(){
                         </div>
                     </div>
                     <div className={`${styles.infoCardProperties} ${abiertaB3? styles.openCard : styles.cardClosed} ${nunito.className}`}>
-                        <InfoCard info = {"Al momento las jornadas han sido declaradas de interés Municipal\n" +
-                            "                        y han sido auspiciadas por la Sociedad Argentina de Pediatría"} sede={false} url={[]}/>
+                        <InfoCard info = {"Estas jornadas han sido declaradas de interés Municipal\n" +
+                            "                        y son auspiciadas por la Sociedad Argentina de Pediatría y la Facultad de Ciencias de la Salud de la UNICEN"} sede={false} url={[]}/>
                     </div>
                 </div>
             </section>
