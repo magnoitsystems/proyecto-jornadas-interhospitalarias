@@ -22,11 +22,11 @@ export default function Programa(){
                     <ActivityCard
                         eventName={"Acreditación"}
                         time={"08:30"}
-                        place={"-"}
-                        guestsName={"-"}
-                        guests={['-']}
-                        coordinators={['-']}
-                        topics={['-']}
+                        place={""}
+                        guestsName={""}
+                        guests={['']}
+                        coordinators={['']}
+                        topics={['']}
                         personalizedClassName={'others'} className={""}
                     />
 
@@ -34,14 +34,14 @@ export default function Programa(){
                         eventName={"Situaciones clínicas en vacunas"}
                         time={"09:15 - 12:15"}
                         place={"Teatro Del Fuerte"}
-                        guestsName={"-"}
+                        guestsName={""}
                         guests={[]}
                         coordinators={[
                             'Carolina Bullor,',
                             ' Romina Escruela.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'taller'} className={""}                    />
 
@@ -80,7 +80,7 @@ export default function Programa(){
                             ' Romina Escruela.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'taller'} className={""}                    />
 
@@ -88,10 +88,10 @@ export default function Programa(){
                         eventName={"Receso"}
                         time={"11:10 - 11:30"}
                         place={"Teatro Del Fuerte"}
-                        guestsName={'-'}
-                        guests={['-']}
-                        coordinators={['-']}
-                        topics={['-']}
+                        guestsName={''}
+                        guests={['']}
+                        coordinators={['']}
+                        topics={['']}
                         personalizedClassName={'taller'} className={""}                    />
 
                     <ActivityCard
@@ -109,18 +109,18 @@ export default function Programa(){
                             ' Romina Escruela.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'taller'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Almuerzo"}
                         time={"12.30"}
-                        place={"-"}
-                        guestsName={'-'}
-                        guests={['-']}
-                        coordinators={['-']}
-                        topics={['-']}
+                        place={""}
+                        guestsName={''}
+                        guests={['']}
+                        coordinators={['']}
+                        topics={['']}
                         personalizedClassName={'others'} className={""}                    />
 
                     {/*<ActivityCard*/}
@@ -199,7 +199,7 @@ export default function Programa(){
                             'Laura Riva.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -215,7 +215,7 @@ export default function Programa(){
                             'Laura Riva.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -231,7 +231,7 @@ export default function Programa(){
                             'Laura Riva.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -247,7 +247,7 @@ export default function Programa(){
                             'Laura Riva.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -263,7 +263,7 @@ export default function Programa(){
                             'Laura Riva.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -280,7 +280,7 @@ export default function Programa(){
                             ' Lucila Heer.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -297,7 +297,7 @@ export default function Programa(){
                             ' Lucila Heer.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -314,7 +314,7 @@ export default function Programa(){
                             ' Lucila Heer.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -332,7 +332,7 @@ export default function Programa(){
                             ' Lucila Heer.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -348,7 +348,7 @@ export default function Programa(){
                             'Carolina Pascual.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'conferencia'} className={""}                    />
 
@@ -356,15 +356,15 @@ export default function Programa(){
                         eventName={"Acto Inaugural"}
                         time={"19:00"}
                         place={"Salón Blanco"}
-                        guestsName={"-"}
+                        guestsName={""}
                         guests={[
-                            '-',
+                            '',
                         ]}
                         coordinators={[
-                            '-'
+                            ''
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'others'} className={""}                    />
                 </div>
@@ -382,13 +382,13 @@ export default function Programa(){
                         place={"MUMBAT-Teatro del Fuerte"}
                         guestsName={"-"}
                         guests={[
-                            '-'
+                            ''
                         ]}
                         coordinators={[
-                            '-'
+                            ''
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'others'} className={""}                    />
 
@@ -422,7 +422,7 @@ export default function Programa(){
                             'Alejandra Pérez Cerisola, Camila Pereyra'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'dialogo'} className={""}                    />
 
@@ -439,7 +439,7 @@ export default function Programa(){
                             'Alejandra Pérez Cerisola, Camila Pereyra'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'dialogo'} className={""}                    />
 
@@ -468,31 +468,31 @@ export default function Programa(){
                         eventName={"Simposio de la Industria: VSR y Prevenar 20 - Laboratorio Pfizer"}
                         time={"13:00 - 14:00"}
                         place={"Teatro del Fuerte"}
-                        guestsName={"-"}
+                        guestsName={""}
                         guests={[
-                            '-',
+                            '',
                         ]}
                         coordinators={[
-                            '-'
+                            ''
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'simposio'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Almuerzo"}
                         time={"14:00 - 14:45"}
-                        place={"-"}
-                        guestsName={"-"}
+                        place={""}
+                        guestsName={""}
                         guests={[
-                            '-',
+                            '',
                         ]}
                         coordinators={[
-                            '-'
+                            ''
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'others'} className={""}                    />
 
@@ -508,7 +508,7 @@ export default function Programa(){
                             'Nancy Guerrero.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'conferencia'} className={""}                    />
 
@@ -525,7 +525,7 @@ export default function Programa(){
                             ' Manuela Beazley.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -542,7 +542,7 @@ export default function Programa(){
                             ' Manuela Beazley.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -559,7 +559,7 @@ export default function Programa(){
                             ' Manuela Beazley.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -576,7 +576,7 @@ export default function Programa(){
                             '  Ileana Mastropierro.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -593,7 +593,7 @@ export default function Programa(){
                             '  Ileana Mastropierro.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -610,7 +610,7 @@ export default function Programa(){
                             ' Ileana Mastropierro.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -628,7 +628,7 @@ export default function Programa(){
                             ' Ileana Mastropierro.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -657,7 +657,7 @@ export default function Programa(){
                             'Emilia Peñalva.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'others'} className={""}                    />
                 </div>
@@ -674,7 +674,7 @@ export default function Programa(){
                         place={"SUM HDBV"}
                         guestsName={"Invitados"}
                         guests={[
-                            '-'
+                            ''
                         ]}
                         coordinators={[
                             'Centro de simulación clínica Tandil (TANSIM).'
@@ -694,10 +694,10 @@ export default function Programa(){
                             ' Dra. Lorena Firenze.'
                         ]}
                         coordinators={[
-                            '-'
+                            ''
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'reunion'} className={""}                    />
 
@@ -732,7 +732,7 @@ export default function Programa(){
                             ' Gonzalo Laplace.',
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -745,11 +745,11 @@ export default function Programa(){
                             'Pablo Neira.'
                         ]}
                         coordinators={[
-                            'Celeste Garreta,',
-                            ' Gonzalo Laplace.',
+                            'Celeste Garreta, ',
+                            'Gonzalo Laplace.',
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -760,14 +760,14 @@ export default function Programa(){
                         guestsName={"??????????"}
                         guests={[
                             'Natalia Regatky, ',
-                            '  Ana Cabral.'
+                            'Ana Cabral.'
                         ]}
                         coordinators={[
                             'Josefina Girodo,',
                             ' Micaela Salas',
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -784,7 +784,7 @@ export default function Programa(){
                             ' Micaela Salas',
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -802,7 +802,7 @@ export default function Programa(){
                             ' Micaela Salas',
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -864,13 +864,13 @@ export default function Programa(){
                         place={"Teatro del Fuerte"}
                         guestsName={"Disertante"}
                         guests={[
-                            '-'
+                            ''
                         ]}
                         coordinators={[
-                            '-'
+                            ''
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'simposio'} className={""}                    />
 
