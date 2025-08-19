@@ -135,9 +135,9 @@ export default function InscriptionForm() {
                 <option value="estudiante">Estudiante</option>
                 <option value="enfermero">Enfermero</option>
                 <option value="kinesiologo">Kinesiólogo</option>
-                <option value="fonoudiologo">Fonoaudiólogo</option>
+                <option value="fonoaudiologo">Fonoaudiólogo</option>
                 <option value="tecnico">Técnico</option>
-                <option value="no-pertenece">No perteneciente al área de la salud</option>
+                <option value="no perteneciente al área de la salud">No perteneciente al área de la salud</option>
                 <option value="otros">Otros</option>
               </select>
 

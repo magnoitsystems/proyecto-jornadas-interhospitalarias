@@ -37,7 +37,7 @@ export default function RootLayout({
               name: "Jornadas Interhospitalarias de Pediatría",
               description:
                 "Encuentro anual de profesionales de la salud pediátrica para compartir conocimientos, investigaciones y experiencias clínicas.",
-              startDate: "2025-11-4T09:00",
+              startDate: "2025-11-5T09:00",
               endDate: "2025-11-7T18:00", 
               eventAttendanceMode:
                 "https://schema.org/OfflineEventAttendanceMode",
