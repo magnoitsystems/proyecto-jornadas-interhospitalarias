@@ -29,7 +29,7 @@ export default function useUsers() {
     setError(null);
     setSuccessMessage(null);
 
-    console.log('🚀 Enviando datos del usuario:', userData);
+
 
     try {
       const response = await fetch("/api/usuario", {
@@ -43,10 +43,8 @@ export default function useUsers() {
       console.log('📡 Respuesta del servidor:', response.status, response.statusText);
 
       const data = await response.json();
-      console.log('📊 Datos de respuesta:', data);
 
       if (!response.ok) {
-        console.error('❌ Error en la respuesta:', data);
         throw new Error(data.message || `Error ${response.status}: ${response.statusText}`);
       }
 
@@ -54,14 +52,11 @@ export default function useUsers() {
       return data.user;
 
     } catch (err) {
-      console.error('💥 Error en createUser:', err);
 
       if (err instanceof Error) {
         setError(err.message);
-        console.error('💥 Error message:', err.message);
       } else {
         setError("Error desconocido");
-        console.error('💥 Error desconocido:', err);
       }
       return null;
     } finally {

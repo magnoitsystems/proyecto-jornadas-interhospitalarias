@@ -21,7 +21,6 @@ export async function POST(request: NextRequest) {
 		const result = await userService.validateUser(userData);
 
 		if (!result.success || !result.user) {
-			console.log('❌ Validación falló:', result.errors);
 			return NextResponse.json(
 				{
 					message: 'Error de validación',
@@ -30,9 +29,6 @@ export async function POST(request: NextRequest) {
 				{ status: 400 }
 			);
 		}
-
-		console.log('✅ Usuario validado correctamente');
-		console.log('🔑 Contraseña generada:', result.plainPassword ? 'Sí' : 'No');
 
 		// Crear usuario en base de datos
 		let createdUser;
@@ -64,10 +60,7 @@ export async function POST(request: NextRequest) {
 
 			createdUserId = createdUser.idUser;
 
-			console.log(`✅ Usuario creado en DB: ${createdUser.idUser}`);
-
 		} catch (dbError) {
-			console.error('❌ Error al crear usuario en DB:', dbError);
 
 			// Manejo específico de errores de duplicación
 			if (dbError instanceof Error && dbError.message.includes('Unique constraint')) {
