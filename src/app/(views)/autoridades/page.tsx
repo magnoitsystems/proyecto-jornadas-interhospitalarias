@@ -50,7 +50,7 @@ const scientificGroup = {
 };
 
 const organizingGroup = {
-    title: "Cómite organizador",
+    title: "Comité organizador",
     groups: [
         {
             position: "Secretaria",
