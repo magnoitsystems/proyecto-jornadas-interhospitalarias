@@ -4,11 +4,9 @@ import { prisma } from '@/libs/prisma';
 import { EmailService } from "@/services/emailService";
 
 export async function POST(request: NextRequest) {
-	console.log("hola");
 	let createdUserId: number | null = null;
 
 	try {
-		// Validar datos de entrada
 		let userData;
 		try {
 			userData = await request.json();
@@ -18,13 +16,6 @@ export async function POST(request: NextRequest) {
 				{ status: 400 }
 			);
 		}
-
-		console.log('📝 Datos recibidos:', {
-			name: userData.name,
-			lastname: userData.lastname,
-			email: userData.email,
-			job: userData.job
-		});
 
 		const userService = new UserService();
 		const result = await userService.validateUser(userData);

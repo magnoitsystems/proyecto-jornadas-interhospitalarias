@@ -16,7 +16,7 @@ type Props = {
     personalizedClassName: string;
 }
 
-export default function ActivityCard({eventName, time, place, guestsName, guests, coordinators, topics, personalizedClassName}: Props) {
+export default function ActivityCard({eventName, time, place, guests, coordinators, topics, personalizedClassName}: Props) {
     const [showDetails, setShowDetails] = useState(false);
 
     return(

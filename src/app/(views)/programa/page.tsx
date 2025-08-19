@@ -148,7 +148,7 @@ export default function Programa(){
                             "Laura Vazquez -  Rosa Gonzáles  Gabriela Ozimek"
                         ]}
                         coordinators={[
-                            "Cecilia Acosta, Miriam Aguirre"
+                            "Cecilia Acosta, Silvia Rouch"
                         ]}
                         topics={[
 
@@ -377,7 +377,7 @@ export default function Programa(){
                 </div>
                 <div className={styles.events}>
                     <ActivityCard
-                        eventName={"Presentación de pósters"}
+                        eventName={"Presentaciones orales"}
                         time={"08:00 - 09:00"}
                         place={"MUMBAT-Teatro del Fuerte"}
                         guestsName={"-"}
