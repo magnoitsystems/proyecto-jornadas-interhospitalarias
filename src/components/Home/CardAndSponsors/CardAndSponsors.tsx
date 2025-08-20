@@ -41,7 +41,7 @@ export default function CardAndSponsors() {
                             src="/imgs/sponsors/pfizerSponsor.png"
                             alt="Sponsor Pfizer"
                             width={310}
-                            height={180}
+                            height={180} //agrandar un poco
                         />
                     </a>
                     <a href="https://roemmers.com.ar/" target="_blank" rel="noopener noreferrer">
@@ -72,8 +72,8 @@ export default function CardAndSponsors() {
                         <Image
                             src="/imgs/sponsors/cassara.png"
                             alt="Sponsor Roemmers"
-                            width={310}
-                            height={140}
+                            width={210}
+                            height={140} //achicar
                         />
                     </a>
                     <a href="https://www.casasco.com.ar/es/" target="_blank" rel="noopener noreferrer">

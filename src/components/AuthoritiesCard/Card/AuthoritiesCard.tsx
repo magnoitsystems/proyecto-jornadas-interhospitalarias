@@ -1,7 +1,7 @@
 import styles from "./AuthoritiesCard.module.css";
 import AuthoritiesSubSection from "@/components/AuthoritiesCard/Card/AuthoritiesSubSection";
 import { cactus } from '@/app/(views)/ui/fonts';
-import { AuthoritiesCardProps, AuthorityGroup } from '../../../types/index';
+import { AuthoritiesCardProps, AuthorityGroup } from '@/types';
 
 export default function AuthoritiesCard({
   cardData,

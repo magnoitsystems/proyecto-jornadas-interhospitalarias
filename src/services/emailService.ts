@@ -1,28 +1,42 @@
-import { Resend } from 'resend';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import nodemailer from 'nodemailer';
+import type { Transporter } from 'nodemailer';
 
 export class EmailService {
+	private static transporter: Transporter;
+
+	// Inicializar el transporter
+	private static getTransporter(): Transporter {
+		if (!this.transporter) {
+			// Verificar configuración
+			if (!process.env.EMAIL_USER) {
+				throw new Error('EMAIL_USER no configurada en las variables de entorno');
+			}
+
+			if (!process.env.EMAIL_APP_PASSWORD) {
+				throw new Error('EMAIL_APP_PASSWORD no configurada en las variables de entorno');
+			}
+
+			this.transporter = nodemailer.createTransport({
+				service: 'gmail',
+				auth: {
+					user: process.env.EMAIL_USER,
+					pass: process.env.EMAIL_APP_PASSWORD // Contraseña de aplicación de Gmail
+				}
+			});
+		}
+		return this.transporter;
+	}
+
 	static async sendPasswordEmail(
 		email: string,
 		name: string,
 		password: string
 	): Promise<boolean> {
 		try {
+			const transporter = this.getTransporter();
 
-			// Verificar configuración
-			if (!process.env.RESEND_API_KEY) {
-				console.error('RESEND_API_KEY no configurada');
-				throw new Error('Servicio de email no configurado');
-			}
-
-			if (!process.env.EMAIL_FROM) {
-				console.error('EMAIL_FROM no configurada');
-				throw new Error('Emisor del mail no configurado');
-			}
-
-			const { data, error } = await resend.emails.send({
-				from: process.env.EMAIL_FROM!,
+			const mailOptions = {
+				from: `"Jornadas Interhospitalarias" <${process.env.EMAIL_USER}>`,
 				to: email,
 				subject: 'Tu contraseña de acceso - Jornadas interhospitalarias',
 				html: `
@@ -31,21 +45,14 @@ export class EmailService {
                         <p>Tu contraseña es: <strong>${password}</strong></p>
                     </div>
                 `
-			});
+			};
 
-			if (error) {
-				console.error('Error de Resend:', error);
-				throw new Error(`Resend error: ${error.message}`);
-			}
-
-			if (!data?.id) {
-				console.error('Resend no devolvió ID');
-				throw new Error('Email enviado pero sin un retorno de ID');
-			}
-
+			const info = await transporter.sendMail(mailOptions);
+			console.log('Email de contraseña enviado:', info.messageId);
 			return true;
+
 		} catch (error) {
-			console.error('Error en el envio de la contraseña', error);
+			console.error('Error en el envío de la contraseña:', error);
 			return false;
 		}
 	}
@@ -58,19 +65,10 @@ export class EmailService {
 		hasPrize: boolean = false
 	): Promise<boolean> {
 		try {
+			const transporter = this.getTransporter();
 
-			if (!process.env.RESEND_API_KEY) {
-				console.error('RESEND_API_KEY no configurada');
-				throw new Error('Servicio de email no configurado');
-			}
-
-			if (!process.env.EMAIL_FROM) {
-				console.error('EMAIL_FROM no configurada');
-				throw new Error('Emisor del mail no configurado');
-			}
-
-			const { data, error } = await resend.emails.send({
-				from: process.env.EMAIL_FROM!,
+			const mailOptions = {
+				from: `"Jornadas Interhospitalarias" <${process.env.EMAIL_USER}>`,
 				to: email,
 				subject: `Trabajo recibido: "${workTitle}"`,
 				html: `
@@ -97,6 +95,7 @@ export class EmailService {
                             <div style="padding: 40px 30px;">
                                 <div style="text-align: center; margin-bottom: 30px;">
                                     <div style="background-color: #10b981; color: white; width: 80px; height: 80px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 36px; margin-bottom: 20px;">
+                                        ✓
                                     </div>
                                     <h2 style="color: #1f2937; margin: 0; font-size: 24px; font-weight: 600;">
                                         ¡Perfecto, ${name}!
@@ -120,13 +119,13 @@ export class EmailService {
                                         </p> 
                                         <p style="margin: 8px 0; color: #4b5563; font-size: 14px;">
                                             <strong style="color: #1f2937;">Fecha de envío:</strong> ${new Date().toLocaleDateString('es-ES', {
-												weekday: 'long',
-												year: 'numeric',
-												month: 'long',
-												day: 'numeric',
-												hour: '2-digit',
-												minute: '2-digit'
-											})}
+					weekday: 'long',
+					year: 'numeric',
+					month: 'long',
+					day: 'numeric',
+					hour: '2-digit',
+					minute: '2-digit'
+				})}
                                         </p>
                                         ${hasPrize ? `
                                         <div style="background-color: #fef3c7; border: 1px solid #f59e0b; border-radius: 8px; padding: 12px; margin-top: 15px;">
@@ -175,17 +174,10 @@ export class EmailService {
                     </body>
                     </html>
                 `
-			});
+			};
 
-			if (error) {
-				console.error('Error de Resend en confirmación:', error);
-				throw new Error(`Resend error: ${error.message}`);
-			}
-
-			if (!data?.id) {
-				throw new Error('Email enviado pero sin un id retornado');
-			}
-
+			const info = await transporter.sendMail(mailOptions);
+			console.log('Email de confirmación enviado:', info.messageId);
 			return true;
 
 		} catch (error) {

@@ -22,11 +22,11 @@ export default function Programa(){
                     <ActivityCard
                         eventName={"Acreditación"}
                         time={"08:30"}
-                        place={"-"}
-                        guestsName={"-"}
-                        guests={['-']}
-                        coordinators={['-']}
-                        topics={['-']}
+                        place={""}
+                        guestsName={""}
+                        guests={['']}
+                        coordinators={['']}
+                        topics={['']}
                         personalizedClassName={'others'} className={""}
                     />
 
@@ -34,14 +34,14 @@ export default function Programa(){
                         eventName={"Situaciones clínicas en vacunas"}
                         time={"09:15 - 12:15"}
                         place={"Teatro Del Fuerte"}
-                        guestsName={"-"}
+                        guestsName={""}
                         guests={[]}
                         coordinators={[
                             'Carolina Bullor,',
                             ' Romina Escruela.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'taller'} className={""}                    />
 
@@ -61,7 +61,7 @@ export default function Programa(){
                             ' Romina Escruela.'
                         ]}
                         topics={[
-                            '-'
+
                         ]}
                         personalizedClassName={'taller'} className={""}                    />
 
@@ -80,7 +80,7 @@ export default function Programa(){
                             ' Romina Escruela.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'taller'} className={""}                    />
 
@@ -88,10 +88,10 @@ export default function Programa(){
                         eventName={"Receso"}
                         time={"11:10 - 11:30"}
                         place={"Teatro Del Fuerte"}
-                        guestsName={'-'}
-                        guests={['-']}
-                        coordinators={['-']}
-                        topics={['-']}
+                        guestsName={''}
+                        guests={['']}
+                        coordinators={['']}
+                        topics={['']}
                         personalizedClassName={'taller'} className={""}                    />
 
                     <ActivityCard
@@ -109,33 +109,81 @@ export default function Programa(){
                             ' Romina Escruela.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'taller'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Almuerzo"}
                         time={"12.30"}
-                        place={"-"}
-                        guestsName={'-'}
-                        guests={['-']}
-                        coordinators={['-']}
-                        topics={['-']}
+                        place={""}
+                        guestsName={''}
+                        guests={['']}
+                        coordinators={['']}
+                        topics={['']}
                         personalizedClassName={'others'} className={""}                    />
 
+                    {/*<ActivityCard*/}
+                    {/*    eventName={"Jornada para Enfermería"}*/}
+                    {/*    time={"14:00 - 18:00"}*/}
+                    {/*    place={"MUMBAT"}*/}
+                    {/*    guestsName={"Disertantes"}*/}
+                    {/*    guests={[*/}
+                    {/*        '-',*/}
+                    {/*    ]}*/}
+                    {/*    coordinators={[*/}
+                    {/*        '-'*/}
+                    {/*    ]}*/}
+                    {/*    topics={[*/}
+                    {/*        'Taller de sedoanalgesia. Taller cuidados del recién nacido.'*/}
+                    {/*    ]}*/}
+                    {/*    personalizedClassName={'taller'} className={""}                    />*/}
+
                     <ActivityCard
-                        eventName={"Jornada para Enfermería"}
-                        time={"14:00 - 18:00"}
+                        eventName={"Analgo sedación en paciente con ARM en UTIP"}
+                        time={"14:00 - 16:00"}
                         place={"MUMBAT"}
                         guestsName={"Disertantes"}
                         guests={[
-                            '-',
+                            "Laura Vazquez -  Rosa Gonzáles  Gabriela Ozimek"
                         ]}
                         coordinators={[
-                            '-'
+                            "Cecilia Acosta, Silvia Rouch"
                         ]}
                         topics={[
-                            'Taller de sedoanalgesia. Taller cuidados del recién nacido.'
+
+                        ]}
+                        personalizedClassName={'taller'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Intervenciones Humanizadas en UCIN. Fortaleciendo el vínculo en momentos críticos"}
+                        time={"16:00 - 17:00"}
+                        place={"MUMBAT"}
+                        guestsName={"Disertantes"}
+                        guests={[
+                            "Cecilia Trangoni -  Marisol Lazarte"
+                        ]}
+                        coordinators={[
+                            "Cecilia Acosta, Miriam Aguirre"
+                        ]}
+                        topics={[
+
+                        ]}
+                        personalizedClassName={'taller'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={"Cuidados Humanizados, ayudar a los padres a hacer frente a la UCIN"}
+                        time={"17:00 - 18:00"}
+                        place={"MUMBAT"}
+                        guestsName={"Disertantes"}
+                        guests={[
+                            "Daniela Satragno  -  María Luisa Videla Balaguer"
+                        ]}
+                        coordinators={[
+                            "Cecilia Acosta, Miriam Aguirre"
+                        ]}
+                        topics={[
+
                         ]}
                         personalizedClassName={'taller'} className={""}                    />
 
@@ -151,7 +199,7 @@ export default function Programa(){
                             'Laura Riva.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -167,7 +215,7 @@ export default function Programa(){
                             'Laura Riva.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -183,7 +231,7 @@ export default function Programa(){
                             'Laura Riva.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -199,7 +247,7 @@ export default function Programa(){
                             'Laura Riva.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -215,7 +263,7 @@ export default function Programa(){
                             'Laura Riva.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -232,7 +280,7 @@ export default function Programa(){
                             ' Lucila Heer.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -249,7 +297,7 @@ export default function Programa(){
                             ' Lucila Heer.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -266,7 +314,7 @@ export default function Programa(){
                             ' Lucila Heer.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -284,7 +332,7 @@ export default function Programa(){
                             ' Lucila Heer.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -300,7 +348,7 @@ export default function Programa(){
                             'Carolina Pascual.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'conferencia'} className={""}                    />
 
@@ -308,15 +356,15 @@ export default function Programa(){
                         eventName={"Acto Inaugural"}
                         time={"19:00"}
                         place={"Salón Blanco"}
-                        guestsName={"-"}
+                        guestsName={""}
                         guests={[
-                            '-',
+                            '',
                         ]}
                         coordinators={[
-                            '-'
+                            ''
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'others'} className={""}                    />
                 </div>
@@ -329,18 +377,18 @@ export default function Programa(){
                 </div>
                 <div className={styles.events}>
                     <ActivityCard
-                        eventName={"Presentación de pósters"}
+                        eventName={"Presentaciones orales"}
                         time={"08:00 - 09:00"}
                         place={"MUMBAT-Teatro del Fuerte"}
                         guestsName={"-"}
                         guests={[
-                            '-'
+                            ''
                         ]}
                         coordinators={[
-                            '-'
+                            ''
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'others'} className={""}                    />
 
@@ -371,10 +419,10 @@ export default function Programa(){
                             ' Maria del Valle Carpineta.'
                         ]}
                         coordinators={[
-                            'Alejandra Pérez Cerisola.'
+                            'Alejandra Pérez Cerisola, Camila Pereyra'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'dialogo'} className={""}                    />
 
@@ -385,13 +433,13 @@ export default function Programa(){
                         place={"Teatro del Fuerte"}
                         guestsName={"Expertos"}
                         guests={[
-                            'Juan B. Dartiguelongue.'
+                            ''
                         ]}
                         coordinators={[
-                            'Alejandra Pérez Cerisola.'
+                            'Alejandra Pérez Cerisola, Camila Pereyra'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'dialogo'} className={""}                    />
 
@@ -403,8 +451,8 @@ export default function Programa(){
                         guests={[
                             'Adriana Bordogna,',
                             ' Gladys Palacios,',
-                            ' Christian Bernardo,',
-                            ' Estanislao Diaz Pumara,',
+                            ' Cristian Bernardo,',
+                            ' Estanislao Díaz Pumara,',
                         ]}
                         coordinators={[
                             'Manuel Morán.'
@@ -417,34 +465,34 @@ export default function Programa(){
                         personalizedClassName={'redonda'} className={""}                    />
 
                     <ActivityCard
-                        eventName={"Simposio vacunas: VSR y Prevenar 20 - Laboratorio Pfizer"}
+                        eventName={"Simposio de la Industria: VSR y Prevenar 20 - Laboratorio Pfizer"}
                         time={"13:00 - 14:00"}
                         place={"Teatro del Fuerte"}
-                        guestsName={"-"}
+                        guestsName={""}
                         guests={[
-                            '-',
+                            '',
                         ]}
                         coordinators={[
-                            '-'
+                            ''
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'simposio'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Almuerzo"}
                         time={"14:00 - 14:45"}
-                        place={"-"}
-                        guestsName={"-"}
+                        place={""}
+                        guestsName={""}
                         guests={[
-                            '-',
+                            '',
                         ]}
                         coordinators={[
-                            '-'
+                            ''
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'others'} className={""}                    />
 
@@ -460,7 +508,7 @@ export default function Programa(){
                             'Nancy Guerrero.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'conferencia'} className={""}                    />
 
@@ -477,7 +525,7 @@ export default function Programa(){
                             ' Manuela Beazley.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -494,7 +542,7 @@ export default function Programa(){
                             ' Manuela Beazley.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -511,12 +559,12 @@ export default function Programa(){
                             ' Manuela Beazley.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
                     <ActivityCard
-                        eventName={"La internación por salud mental en la infancia. Prácticas clínicas, gestión, abordaje interdisciplinario en un Hospital Pediátrico"}
+                        eventName={"La internación por salud mental en la infancia. Prácticas clínicas, gestión, abordaje interdisciplinario en un hospital pediátrico"}
                         time={"17:30 - 19:50"}
                         place={"Teatro del Fuerte"}
                         guestsName={"Panelistas"}
@@ -528,7 +576,7 @@ export default function Programa(){
                             '  Ileana Mastropierro.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -536,7 +584,7 @@ export default function Programa(){
                         eventName={"Abordaje integral de pacientes internados por patología de salud mental en salas de pediatría"}
                         time={"17:30 - 19:50"}
                         place={"Teatro del Fuerte"}
-                        guestsName={"Panelistas"}
+                        guestsName={""}
                         guests={[
                             'Carolina Pascual',
                         ]}
@@ -545,7 +593,7 @@ export default function Programa(){
                             '  Ileana Mastropierro.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -553,7 +601,7 @@ export default function Programa(){
                         eventName={"Internación por salud mental de niños y adolescentes. Desafíos y controversias actuales"}
                         time={"17:30 - 19:50"}
                         place={"Teatro del Fuerte"}
-                        guestsName={"Panelistas"}
+                        guestsName={""}
                         guests={[
                             'Sandra Novas',
                         ]}
@@ -562,7 +610,7 @@ export default function Programa(){
                             ' Ileana Mastropierro.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -570,17 +618,17 @@ export default function Programa(){
                         eventName={"El pediatra en salud mental: un nuevo espacio de articulación y cuidado clínico"}
                         time={"17:30 - 19:50"}
                         place={"Teatro del Fuerte"}
-                        guestsName={"Panelistas"}
+                        guestsName={""}
                         guests={[
-                            'Lic Constanza Funes',
-                            ' Jose Silva.'
+                            'Constanza Funes, ',
+                            'Jose Silva.'
                         ]}
                         coordinators={[
                             'Cynthia Sflaeftein,',
                             ' Ileana Mastropierro.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -588,15 +636,12 @@ export default function Programa(){
                         eventName={"Actividad Cultural: Proyección de la película “Alemania”"}
                         time={"19:00"}
                         place={"Cine Fórum - Teatro Del Fuerte"}
-                        guestsName={"Invitados"}
+                        guestsName={""}
                         guests={[
                             'Actividad abierta a la comunidad'
                         ]}
                         coordinators={[
                             'Constanza Funes.'
-                        ]}
-                        topics={[
-                            '-'
                         ]}
                         personalizedClassName={'others'} className={""}                    />
 
@@ -604,7 +649,7 @@ export default function Programa(){
                         eventName={"RCP al paso"}
                         time={"Todo el día"}
                         place={"Teatro del Fuerte - Mumbat"}
-                        guestsName={"Invitados"}
+                        guestsName={""}
                         guests={[
                             'Residencia de Pediatría Tandil'
                         ]}
@@ -612,7 +657,7 @@ export default function Programa(){
                             'Emilia Peñalva.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'others'} className={""}                    />
                 </div>
@@ -629,7 +674,7 @@ export default function Programa(){
                         place={"SUM HDBV"}
                         guestsName={"Invitados"}
                         guests={[
-                            '-'
+                            ''
                         ]}
                         coordinators={[
                             'Centro de simulación clínica Tandil (TANSIM).'
@@ -649,10 +694,10 @@ export default function Programa(){
                             ' Dra. Lorena Firenze.'
                         ]}
                         coordinators={[
-                            '-'
+                            ''
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'reunion'} className={""}                    />
 
@@ -687,7 +732,7 @@ export default function Programa(){
                             ' Gonzalo Laplace.',
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -700,31 +745,66 @@ export default function Programa(){
                             'Pablo Neira.'
                         ]}
                         coordinators={[
-                            'Celeste Garreta,',
-                            ' Gonzalo Laplace.',
+                            'Celeste Garreta, ',
+                            'Gonzalo Laplace.',
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
                     <ActivityCard
-                        eventName={'“Neurodesarrollo y desafíos cotidianos: comorbilidades en el espectro”, “Alimentación, crianza y sueño”'}
+                        eventName={'Neurodesarrollo'}
                         time={"11:15 - 12:45"}
                         place={"Teatro del Fuerte"}
                         guestsName={"??????????"}
                         guests={[
                             'Natalia Regatky, ',
-                            '  Ana Cabral.'
+                            'Ana Cabral.'
                         ]}
                         coordinators={[
                             'Josefina Girodo,',
-                            '  Berenice González.',
+                            ' Micaela Salas',
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
-                        personalizedClassName={'???????'} className={""}                    />
+                        personalizedClassName={'redonda'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={'Neurodesarrollo y desafíos cotidianos: comorbilidades en el espectro'}
+                        time={"11:15 - 12:45"}
+                        place={"Teatro del Fuerte"}
+                        guestsName={"??????????"}
+                        guests={[
+                            'Natalia Regatky'
+                        ]}
+                        coordinators={[
+                            'Josefina Girodo,',
+                            ' Micaela Salas',
+                        ]}
+                        topics={[
+                            ''
+                        ]}
+                        personalizedClassName={'redonda'} className={""}                    />
+
+                    <ActivityCard
+                        eventName={'Alimentación, crianza y sueño'}
+                        time={"11:15 - 12:45"}
+                        place={"Teatro del Fuerte"}
+                        guestsName={"??????????"}
+                        guests={[
+                            'Natalia Regatky, ',
+                            ' Ana Cabral.'
+                        ]}
+                        coordinators={[
+                            'Josefina Girodo,',
+                            ' Micaela Salas',
+                        ]}
+                        topics={[
+                            ''
+                        ]}
+                        personalizedClassName={'redonda'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Nuevos desafíos en el manejo de la obesidad"}
@@ -745,25 +825,25 @@ export default function Programa(){
                         personalizedClassName={'redonda'} className={""}                    />
 
                     <ActivityCard
-                        eventName={"Tratamiento obesidad con análogos GLP1"}
-                        time={"13:00 - 14:15"}
+                        eventName={"Tratamiento de la obesidad con análogos GLP1"}
+                        time={""}
                         place={"Teatro del Fuerte"}
                         guestsName={"Panelista"}
                         guests={[
-                            'Gabriela Nuni Grinstein.'
+                            'Nuni Grinstein.'
                         ]}
                         coordinators={[
                             'Juliana Mehring, ',
                             'Florencia Migliano.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
                     <ActivityCard
                         eventName={"Estrategias en intervenciones nutricionales y hábitos de vida"}
-                        time={"13:00 - 14:15"}
+                        time={""}
                         place={"Teatro del Fuerte"}
                         guestsName={"Panelista"}
                         guests={[
@@ -774,7 +854,7 @@ export default function Programa(){
                             'Florencia Migliano.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -784,13 +864,13 @@ export default function Programa(){
                         place={"Teatro del Fuerte"}
                         guestsName={"Disertante"}
                         guests={[
-                            '-'
+                            ''
                         ]}
                         coordinators={[
-                            '-'
+                            ''
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'simposio'} className={""}                    />
 
@@ -803,10 +883,10 @@ export default function Programa(){
                             'Christian Elias Costa.'
                         ]}
                         coordinators={[
-                            '-'
+                            ''
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'taller'} className={""}                    />
 
@@ -816,15 +896,15 @@ export default function Programa(){
                         place={"Teatro del Fuerte"}
                         guestsName={"Panelistas"}
                         guests={[
-                            'Dr. Nicolás Vecchio, ',
-                            'Dr. Guillermo Goldfarb.'
+                            'Nicolás Vecchio, ',
+                            'Guillermo Golfarb.'
                         ]}
                         coordinators={[
                             'Camila Pereyra,',
                             ' Cintia Ojea.'
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'redonda'} className={""}                    />
 
@@ -839,26 +919,26 @@ export default function Programa(){
                             'Laura Alladro.'
                         ]}
                         coordinators={[
-                            '-'
+                            ''
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'confAbierta'} className={""}                    />
 
                     <ActivityCard
-                        eventName={"Cierre"}
+                        eventName={"Cierre de Jornadas"}
                         time={"18:00 - 18:30"}
                         place={"Teatro del Fuerte"}
                         guestsName={"-"}
                         guests={[
-                            '-'
+                            ''
                         ]}
                         coordinators={[
-                            '-'
+                            ''
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'others'} className={""}                    />
 
@@ -868,13 +948,13 @@ export default function Programa(){
                         place={"Teatro del Fuerte"}
                         guestsName={"-"}
                         guests={[
-                            '-'
+                            ''
                         ]}
                         coordinators={[
-                            '-'
+                            ''
                         ]}
                         topics={[
-                            '-'
+                            ''
                         ]}
                         personalizedClassName={'others'} className={""}                    />
                 </div>
