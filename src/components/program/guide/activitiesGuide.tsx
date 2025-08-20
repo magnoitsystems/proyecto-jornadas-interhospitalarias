@@ -11,7 +11,7 @@ export default function ActivitiesGuide() {
             </div>
 
             <div className={`${cactus.className} ${styles.activity} ${styles.redonda}`}>
-                <h3>Mesa Redonda</h3>
+                <h3>Mesas Redondas</h3>
             </div>
 
             <div className={`${cactus.className} ${styles.activity} ${styles.simposio}`}>
