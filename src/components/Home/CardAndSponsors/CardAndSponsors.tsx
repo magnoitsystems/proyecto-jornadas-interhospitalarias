@@ -12,21 +12,19 @@ export default function CardAndSponsors() {
                         <div className={styles.infoAndImageProperties}>
                             <div className={`${styles.paragraphProperties} ${styles.infoColorProperties} ${cactus.className}`}>
                                 <p>
-                                    Nos complace darles la bienvenida a este espacio de encuentro, reflexión y
-                                    aprendizaje compartido, organizado en conjunto por el Hospital de Niños &quot;Dr. Debilio Blanco
-                                    Villegas&quot; de Tandil, el Hospital de Niños &quot;Ricardo Gutiérrez&quot; y el Sistema Integrado de Salud Pública.
+                                    Nos complace darles la bienvenida a las Segundas Jornadas Interhospitalarias de Pediatría, organizadas conjuntamente por el Hospital de Niños “Debilio Blanco Villegas” de Tandil y el Hospital de Niños “Ricardo Gutiérrez” de la Ciudad Autónoma de Buenos Aires y el Sistema Integrado de Salud Pública.
                                 </p>
                                 <p>
-                                    Estas jornadas han sido pensadas como un puente entre experiencias hospitalarias, saberes interdisciplinarios y
-                                    el compromiso cotidiano por una salud pública de calidad. Desde la ciudad hasta las sierras, nos unimos
-                                    para seguir construyendo una atención pediátrica integral, humana y en constante evolución.
+                                    Estas jornadas nacen del compromiso compartido de fortalecer los lazos entre instituciones pediátricas, promoviendo el intercambio de saberes, experiencias y buenas prácticas, con el objetivo de mejorar la atención integral de nuestros niños y niñas.
+                                </p>
+                                <p>
+                                    Durante estos días, Tandil será el escenario de un enriquecedor espacio de encuentro científico y humano. Contaremos con la presencia de destacados especialistas, talleres interactivos y mesas redondas que, sin dudas, enriquecerán nuestro ejercicio profesional, el compromiso por una salud pública de calidad, integral, humana y en constante evolución.
                                 </p>
                             </div>
                         </div>
                         <div className={`${styles.paragraphProperties} ${styles.secondParagraphProperties} ${styles.infoColorProperties} ${cactus.className}`}>
                             <p>
-                                Gracias por ser parte de este evento. ¡Los invitamos a recorrer la página y conocer todas las actividades
-                                que tenemos preparadas!
+                                Agradecemos profundamente a cada uno de ustedes por su participación, les deseamos unas jornadas inspiradoras, donde el conocimiento se combine con la calidez del encuentro y el compromiso con la salud infantil nos siga guiando.
                             </p>
                         </div>
                     </div>

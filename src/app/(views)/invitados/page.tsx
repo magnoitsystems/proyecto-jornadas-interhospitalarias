@@ -678,8 +678,8 @@ const profesionales: Professional[] = [
     },
     {
         id: 48,
-        nombre: 'Nuni',
-        apellido: 'Grinstein',
+        nombre: 'Gabriela',
+        apellido: 'Nuni Grinstein',
         profesion: '-',
         especializacion: '-',
         lugarEjerce: '-',
@@ -735,7 +735,7 @@ const profesionales: Professional[] = [
     {
         id: 52,
         nombre: 'Guillermo',
-        apellido: 'Golfarb',
+        apellido: 'Goldfarb',
         profesion: '-',
         especializacion: '-',
         lugarEjerce: '-',
@@ -806,6 +806,90 @@ const profesionales: Professional[] = [
         id: 57,
         nombre: 'Laura',
         apellido: 'Alladro',
+        profesion: '-',
+        especializacion: '-',
+        lugarEjerce: '-',
+        origen: {
+            ciudad: '-',
+            provincia: '-',
+            pais: '-',
+        },
+        imagen: null
+    },
+    {
+        id: 58,
+        nombre: 'Ona',
+        apellido: 'Sujoy',
+        profesion: '-',
+        especializacion: '-',
+        lugarEjerce: '-',
+        origen: {
+            ciudad: '-',
+            provincia: '-',
+            pais: '-',
+        },
+        imagen: null
+    },
+    {
+        id: 59,
+        nombre: 'María',
+        apellido: 'Zanetti',
+        profesion: '-',
+        especializacion: '-',
+        lugarEjerce: '-',
+        origen: {
+            ciudad: '-',
+            provincia: '-',
+            pais: '-',
+        },
+        imagen: null
+    },
+    {
+        id: 60,
+        nombre: 'Cecilia',
+        apellido: 'Trangoni',
+        profesion: '-',
+        especializacion: '-',
+        lugarEjerce: '-',
+        origen: {
+            ciudad: '-',
+            provincia: '-',
+            pais: '-',
+        },
+        imagen: null
+    },
+    {
+        id: 61,
+        nombre: 'Marisol',
+        apellido: 'Lazarte',
+        profesion: '-',
+        especializacion: '-',
+        lugarEjerce: '-',
+        origen: {
+            ciudad: '-',
+            provincia: '-',
+            pais: '-',
+        },
+        imagen: null
+    },
+    {
+        id: 62,
+        nombre: 'Daniela',
+        apellido: 'Satragno',
+        profesion: '-',
+        especializacion: '-',
+        lugarEjerce: '-',
+        origen: {
+            ciudad: '-',
+            provincia: '-',
+            pais: '-',
+        },
+        imagen: null
+    },
+    {
+        id: 63,
+        nombre: 'María Luisa',
+        apellido: 'Videla Balaguer',
         profesion: '-',
         especializacion: '-',
         lugarEjerce: '-',

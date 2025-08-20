@@ -750,7 +750,7 @@ export default function Programa(){
                         place={"Teatro del Fuerte"}
                         guestsName={"Panelista"}
                         guests={[
-                            'Nuni Grinstein.'
+                            'Gabriela Nuni Grinstein.'
                         ]}
                         coordinators={[
                             'Juliana Mehring, ',
@@ -817,7 +817,7 @@ export default function Programa(){
                         guestsName={"Panelistas"}
                         guests={[
                             'Dr. Nicolás Vecchio, ',
-                            'Dr. Guillermo Golfarb.'
+                            'Dr. Guillermo Goldfarb.'
                         ]}
                         coordinators={[
                             'Camila Pereyra,',
