@@ -9,9 +9,14 @@ export const metadata = {
   },
   description: "Encuentro anual de profesionales de la salud pediátrica para compartir conocimientos, investigaciones y experiencias clínicas.",
   icons: {
-    icon: 'imgs/logos/navLogo.png',
+    icon: [
+      { url: '/icons/running_childs.png', type: 'image/png', sizes: '37x34' },
+    ],
+    shortcut: { url: '/icons/running_childs.png' },
+    apple: { url: '/icons/running_childs.png' },
   },
 }
+
 
 
 export default function RootLayout({
