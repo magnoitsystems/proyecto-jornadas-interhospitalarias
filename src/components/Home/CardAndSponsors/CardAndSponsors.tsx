@@ -36,7 +36,7 @@ export default function CardAndSponsors() {
 
             <div className={styles.sponsorsProperties}>
                 <div className={styles.infoProperties}>
-                    <h2>Nos acompañan</h2>
+                    <h1>Nos acompañan</h1>
                 </div>
                 <div className={styles.imageProperties}>
                     <a href="https://www.pfizer.com.ar/" target="_blank" rel="noopener noreferrer">
@@ -76,7 +76,7 @@ export default function CardAndSponsors() {
                             src="/imgs/sponsors/cassara.png"
                             alt="Sponsor Roemmers"
                             width={210}
-                            height={140} //achicar
+                            height={110} //achicar
                         />
                     </a>
                     <a href="https://www.casasco.com.ar/es/" target="_blank" rel="noopener noreferrer">

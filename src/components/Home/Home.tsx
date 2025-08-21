@@ -103,7 +103,7 @@ export default function Home(){
                             </div>
                             <div className={styles.infoCardsProperties}>
                                 <span>Auspicios</span>
-                                <span>Auspiciantes</span>
+                                <span>Apoyan este evento</span>
                             </div>
                         </div>
                     </div>
