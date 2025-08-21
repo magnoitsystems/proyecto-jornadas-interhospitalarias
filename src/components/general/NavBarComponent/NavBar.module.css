@@ -206,10 +206,9 @@
   }
 
   .homeHero {
-    height: auto;
-    aspect-ratio: 16 / 9;
-    background-size: 100% auto;
-    background-position: top center;
+    min-height: 85vh;
+    background-size: cover;
+    background-position: center top;
   }
 
   .formHero {

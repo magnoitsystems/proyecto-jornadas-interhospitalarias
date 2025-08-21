@@ -7,12 +7,17 @@ import { JSX, useState, useEffect } from 'react';
 import { cactus } from '@/app/(views)/ui/fonts';
 import { usePathname } from 'next/navigation';
 import {handleSignOut} from "@/libs/actions";
+import useIsMobile from '@/hooks/useIsMobile';
 
 export default function NavBar(): JSX.Element {
 
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => setIsOpen(!isOpen);
+
+    const isMobile = useIsMobile(1024);
+    const isHomeLike = (p: string) =>
+        p === '/' || p === '/autoridades' || p === '/invitados' || p === '/programa';
 
     const getBackground = (pathname: string) => {
         if (
@@ -58,6 +63,13 @@ export default function NavBar(): JSX.Element {
             document.body.style.minHeight = '';
         };
     }, [isFormPage, isAdminPage]);
+
+    const bgUrl = (!isFormPage || isAdminPage)
+        ? (isMobile && isHomeLike(pathname)
+            ? '/backgrounds/mobileMain.png'
+            : getBackground(pathname))
+        : 'none';
+
     return (
         <section
             className={`
@@ -66,7 +78,7 @@ export default function NavBar(): JSX.Element {
     ${isOpen ? styles.menuActive : ''}
   `}
             style={{
-                backgroundImage: (!isFormPage || isAdminPage) ? `url(${getBackground(pathname)})` : 'none'
+                backgroundImage: bgUrl === 'none' ? 'none' : `url(${bgUrl})`
             }}
         >
 
