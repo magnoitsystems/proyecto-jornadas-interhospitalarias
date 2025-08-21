@@ -50,12 +50,15 @@
     gap: var(--5px);
 }
 .details h1, .details h3, .details h4 {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 
     text-align: left;
 }
 
+.topicsProperties{
+    font-weight: bold;
+}
 
 .aditionalInformation {
     display: none;
@@ -65,9 +68,14 @@
     gap: var(--10px);
 }
 .aditionalInformation h4 {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
+
+.aditionalInformation span{
+    font-style: italic;
+}
+
 .visible {
     display: flex;
     padding-bottom: var(--30px);

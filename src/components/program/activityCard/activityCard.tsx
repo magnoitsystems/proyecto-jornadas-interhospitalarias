@@ -14,9 +14,10 @@ type Props = {
     topics?: string[] | undefined,
     className: string,
     personalizedClassName: string;
+    coordinator?: string | undefined;
 }
 
-export default function ActivityCard({eventName, time, place, guests, coordinators, topics, personalizedClassName}: Props) {
+export default function ActivityCard({eventName, time, place, guests, coordinator, coordinators, topics, personalizedClassName}: Props) {
     const [showDetails, setShowDetails] = useState(false);
 
     return(
@@ -43,8 +44,8 @@ export default function ActivityCard({eventName, time, place, guests, coordinato
                 </div>
                 <div className={`${styles.aditionalInformation} ${showDetails ? styles.visible : styles.invisible}`}>
                     <h4>{guests}</h4>
-                    <h4><span>Coordinadores</span>: {coordinators}</h4>
-                    <h4>{topics}</h4>
+                    <h4><span>{coordinator}</span> {coordinators}</h4>
+                    <h4 className={styles.topicsProperties}>{topics}</h4>
                 </div>
             </div>
         </main>

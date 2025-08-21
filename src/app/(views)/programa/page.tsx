@@ -36,6 +36,7 @@ export default function Programa(){
                         place={"Teatro Del Fuerte"}
                         guestsName={""}
                         guests={[]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Carolina Bullor,',
                             ' Romina Escruela.'
@@ -56,6 +57,7 @@ export default function Programa(){
                             ' María del Valle Juárez,',
                             ' Natalia Pejito.'
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Carolina Bullor,',
                             ' Romina Escruela.'
@@ -75,6 +77,7 @@ export default function Programa(){
                             ' María del Valle Juárez,',
                             ' Natalia Pejito.',
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Carolina Bullor,',
                             ' Romina Escruela.'
@@ -104,6 +107,7 @@ export default function Programa(){
                             'Vanesa Castellano,',
                             ' Virginia Bazan.',
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Carolina Bullor,',
                             ' Romina Escruela.'
@@ -147,6 +151,7 @@ export default function Programa(){
                         guests={[
                             "Laura Vazquez -  Rosa Gonzáles  Gabriela Ozimek"
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             "Cecilia Acosta, Silvia Rouch"
                         ]}
@@ -163,6 +168,7 @@ export default function Programa(){
                         guests={[
                             "Cecilia Trangoni -  Marisol Lazarte"
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             "Cecilia Acosta, Miriam Aguirre"
                         ]}
@@ -179,6 +185,7 @@ export default function Programa(){
                         guests={[
                             "Daniela Satragno  -  María Luisa Videla Balaguer"
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             "Cecilia Acosta, Miriam Aguirre"
                         ]}
@@ -195,6 +202,7 @@ export default function Programa(){
                         guests={[
                             'Detallado en cada evento',
                         ]}
+                        coordinator={"Coordinador:"}
                         coordinators={[
                             'Laura Riva.'
                         ]}
@@ -211,6 +219,7 @@ export default function Programa(){
                         guests={[
                             'Claudio Moros.',
                         ]}
+                        coordinator={"Coordinador:"}
                         coordinators={[
                             'Laura Riva.'
                         ]}
@@ -227,6 +236,7 @@ export default function Programa(){
                         guests={[
                             'Evangelina Latazza.',
                         ]}
+                        coordinator={"Coordinador:"}
                         coordinators={[
                             'Laura Riva.'
                         ]}
@@ -243,6 +253,7 @@ export default function Programa(){
                         guests={[
                             'Gabriela Rossi.',
                         ]}
+                        coordinator={"Coordinador:"}
                         coordinators={[
                             'Laura Riva.'
                         ]}
@@ -259,6 +270,7 @@ export default function Programa(){
                         guests={[
                             'Sol Elorriaga.',
                         ]}
+                        coordinator={"Coordinador:"}
                         coordinators={[
                             'Laura Riva.'
                         ]}
@@ -275,6 +287,7 @@ export default function Programa(){
                         guests={[
                             'Detallados en cada evento',
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Mabel Brindo,',
                             ' Lucila Heer.'
@@ -292,6 +305,7 @@ export default function Programa(){
                         guests={[
                             'Josefina Girodo.',
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Mabel Brindo,',
                             ' Lucila Heer.'
@@ -309,6 +323,7 @@ export default function Programa(){
                         guests={[
                             'Alejandro Fainboim.',
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Mabel Brindo,',
                             ' Lucila Heer.'
@@ -327,6 +342,7 @@ export default function Programa(){
                         guests={[
                             'Laura Lewin.',
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Mabel Brindo,',
                             ' Lucila Heer.'
@@ -344,6 +360,7 @@ export default function Programa(){
                         guests={[
                             'Ángela Gentile.',
                         ]}
+                        coordinator={"Coordinador:"}
                         coordinators={[
                             'Carolina Pascual.'
                         ]}
@@ -400,6 +417,7 @@ export default function Programa(){
                         guests={[
                             'Especificado en cada evento.'
                         ]}
+                        coordinator={"Coordinador:"}
                         coordinators={[
                             'Alejandra Pérez Cerisola.'
                         ]}
@@ -418,6 +436,7 @@ export default function Programa(){
                             'Alejandra Ariovich,',
                             ' Maria del Valle Carpineta.'
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Alejandra Pérez Cerisola, Camila Pereyra'
                         ]}
@@ -435,6 +454,7 @@ export default function Programa(){
                         guests={[
                             ''
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Alejandra Pérez Cerisola, Camila Pereyra'
                         ]}
@@ -454,6 +474,7 @@ export default function Programa(){
                             ' Cristian Bernardo,',
                             ' Estanislao Díaz Pumara,',
                         ]}
+                        coordinator={"Coordinador:"}
                         coordinators={[
                             'Manuel Morán.'
                         ]}
@@ -504,6 +525,7 @@ export default function Programa(){
                         guests={[
                             'Julian Onaindia.',
                         ]}
+                        coordinator={"Coordinadora:"}
                         coordinators={[
                             'Nancy Guerrero.'
                         ]}
@@ -520,6 +542,7 @@ export default function Programa(){
                         guests={[
                             'Detallado en cada evento',
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Ana Albanese,',
                             ' Manuela Beazley.'
@@ -537,6 +560,7 @@ export default function Programa(){
                         guests={[
                             'Alejandra Rigalli.',
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Ana Albanese,',
                             ' Manuela Beazley.'
@@ -554,6 +578,7 @@ export default function Programa(){
                         guests={[
                             'Mariana Flichman.',
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Ana Albanese,',
                             ' Manuela Beazley.'
@@ -571,6 +596,7 @@ export default function Programa(){
                         guests={[
                             'Detallado en cada evento',
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Cynthia Sflaeftein,',
                             '  Ileana Mastropierro.'
@@ -588,6 +614,7 @@ export default function Programa(){
                         guests={[
                             'Carolina Pascual',
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Cynthia Sflaeftein,',
                             '  Ileana Mastropierro.'
@@ -605,6 +632,7 @@ export default function Programa(){
                         guests={[
                             'Sandra Novas',
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Cynthia Sflaeftein,',
                             ' Ileana Mastropierro.'
@@ -623,6 +651,7 @@ export default function Programa(){
                             'Constanza Funes, ',
                             'Jose Silva.'
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Cynthia Sflaeftein,',
                             ' Ileana Mastropierro.'
@@ -640,6 +669,7 @@ export default function Programa(){
                         guests={[
                             'Actividad abierta a la comunidad'
                         ]}
+                        coordinator={"Coordinadora:"}
                         coordinators={[
                             'Constanza Funes.'
                         ]}
@@ -653,6 +683,7 @@ export default function Programa(){
                         guests={[
                             'Residencia de Pediatría Tandil'
                         ]}
+                        coordinator={"Coordinadora:"}
                         coordinators={[
                             'Emilia Peñalva.'
                         ]}
@@ -676,6 +707,7 @@ export default function Programa(){
                         guests={[
                             ''
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Centro de simulación clínica Tandil (TANSIM).'
                         ]}
@@ -709,6 +741,7 @@ export default function Programa(){
                         guests={[
                             'Detallado en cada evento.'
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Celeste Garreta,',
                             ' Gonzalo Laplace.',
@@ -727,6 +760,7 @@ export default function Programa(){
                         guests={[
                             'Miriam Carbone.'
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Celeste Garreta,',
                             ' Gonzalo Laplace.',
@@ -744,6 +778,7 @@ export default function Programa(){
                         guests={[
                             'Pablo Neira.'
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Celeste Garreta, ',
                             'Gonzalo Laplace.',
@@ -762,6 +797,7 @@ export default function Programa(){
                             'Natalia Regatky, ',
                             'Ana Cabral.'
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Josefina Girodo,',
                             ' Micaela Salas',
@@ -779,6 +815,7 @@ export default function Programa(){
                         guests={[
                             'Natalia Regatky'
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Josefina Girodo,',
                             ' Micaela Salas',
@@ -792,11 +829,12 @@ export default function Programa(){
                         eventName={'Alimentación, crianza y sueño'}
                         time={"11:15 - 12:45"}
                         place={"Teatro del Fuerte"}
-                        guestsName={"??????????"}
+                        guestsName={""}
                         guests={[
                             'Natalia Regatky, ',
                             ' Ana Cabral.'
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Josefina Girodo,',
                             ' Micaela Salas',
@@ -814,6 +852,7 @@ export default function Programa(){
                         guests={[
                             'Especificados en cada evento.'
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Juliana Mehring, ',
                             'Florencia Migliano.'
@@ -832,6 +871,7 @@ export default function Programa(){
                         guests={[
                             'Nuni Grinstein.'
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Juliana Mehring, ',
                             'Florencia Migliano.'
@@ -849,6 +889,7 @@ export default function Programa(){
                         guests={[
                             'Adriana Roussos.'
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Juliana Mehring, ',
                             'Florencia Migliano.'
@@ -899,6 +940,7 @@ export default function Programa(){
                             'Nicolás Vecchio, ',
                             'Guillermo Golfarb.'
                         ]}
+                        coordinator={"Coordinadores:"}
                         coordinators={[
                             'Camila Pereyra,',
                             ' Cintia Ojea.'
