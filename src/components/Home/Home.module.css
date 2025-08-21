@@ -29,7 +29,7 @@
     visibility: hidden;
     height: 0;
     transition: opacity 1s ease;
-    width: 90%;
+    width: 100%;
 }
 
 .cardCompletyProperties{
@@ -56,6 +56,7 @@
 .infoCardsProperties{
     display: flex;
     flex-direction: column;
+    width: 100%;
     font-size: 20px;
     white-space: nowrap;
 }
@@ -87,7 +88,7 @@
 .openCard{
     visibility: visible;
     opacity: 1;
-    width: 90%;
+    width: 100%;
     background-color: var(--primary-color-1);
     margin-bottom: 15%;
 }
@@ -152,7 +153,7 @@
     }
 
     .cardProperties{
-        width: 480px;
+        width: 100%;
         gap: 30px;
     }
 
