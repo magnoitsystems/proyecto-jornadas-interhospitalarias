@@ -80,7 +80,7 @@ export default function Home(){
                                 <Image src={'/icons/calendarIcon.png'} alt={"Icono de calendario"} width={32} height={32}/>
                             </div>
                             <div className={styles.infoCardsProperties}>
-                                <span>Fechaa</span>
+                                <span>Fecha</span>
                                 <span>05 al 07 de Noviembre</span>
                             </div>
                         </div>
