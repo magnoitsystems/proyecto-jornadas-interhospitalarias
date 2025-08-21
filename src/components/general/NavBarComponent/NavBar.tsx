@@ -66,7 +66,7 @@ export default function NavBar(): JSX.Element {
 
     const bgUrl = (!isFormPage || isAdminPage)
         ? (isMobile && isHomeLike(pathname)
-            ? '/backgrounds/mob.svg'
+            ? '/backgrounds/homeMobile.svg'
             : getBackground(pathname))
         : 'none';
 
