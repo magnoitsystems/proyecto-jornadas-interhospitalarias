@@ -9,9 +9,11 @@
     align-items: center;
     white-space: wrap;
     justify-self: center;
+    justify-content: center;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border-top: darkred 1px solid;
+    margin-inline: auto;
 }
 
 .infoPositionProperties{

@@ -81,7 +81,7 @@ export default function Home(){
                             </div>
                             <div className={styles.infoCardsProperties}>
                                 <span>Fecha</span>
-                                <span>05 al 07 de Noviembre</span>
+                                <span>05 al 07 de Nov</span>
                             </div>
                         </div>
                     </div>
