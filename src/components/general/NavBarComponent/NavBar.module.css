@@ -14,7 +14,7 @@
 }
 
 .homeHero {
-  height: 550px;
+  min-height: 550px;
 }
 
 .formHero {
@@ -191,10 +191,10 @@
 
   .heroSection {
     width: 100vw;
-    min-height: 300px; /* 👈 asegura que el fondo tenga espacio visible */
+    min-height: 150px;
     background-size: cover;
     background-position: center top;
-    background-attachment: scroll; /* 👈 fallback confiable en mobile */
+    background-attachment: scroll;
     margin: 0;
     padding: 0;
     position: relative;
