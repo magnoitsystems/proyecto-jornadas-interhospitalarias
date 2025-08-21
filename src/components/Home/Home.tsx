@@ -32,6 +32,12 @@ export default function Home(){
         "https://www.google.com.ar/maps/place/Hospital+de+Ni%C3%B1os+%22Dr.+Debilio+Blanco+Villegas%22+S.I.S.P./@-37.3163487,-59.1413192,17z/data=!3m1!4b1!4m6!3m5!1s0x95911f86286dc111:0x753c87304b361e09!8m2!3d-37.316353!4d-59.1387443!16s%2Fg%2F11b7y76kbp?hl=es&entry=ttu&g_ep=EgoyMDI1MDcyNy4wIKXMDSoASAFQAw%3D%3D"
     ];
 
+    const daysUrls: string[] = [
+        "/programa/#wednesday",
+        "/programa/#thursday",
+        "/programa/#friday",
+    ]
+
     return(
         <main className={styles.main}>
             <section className={`${styles.sectionCardsProperties} ${nunito.className}`}>
@@ -80,7 +86,7 @@ export default function Home(){
                         </div>
                     </div>
                     <div className={`${styles.infoCardProperties} ${abiertaB2? styles.openCard : styles.cardClosed} ${nunito.className}`}>
-                        <InfoCard info = {"05-Nov  |  Primer encuentro"} info2={"06-Nov  |  Segundo encuentro"} info3={"07-Nov  |  Tercer encuentro"} sede={false} url={[]}/>
+                        <InfoCard info = {"05-Nov  |  Primer encuentro"} info2={"06-Nov  |  Segundo encuentro"} info3={"07-Nov  |  Tercer encuentro"} sede={true} url={daysUrls}/>
                     </div>
                 </div>
                 <div className={`${styles.cardCompletyProperties} ${abiertaB3? styles.openCardCardCompletyProperties : styles.cardCompletyProperties}`} onMouseEnter={() => setHovered(true)}

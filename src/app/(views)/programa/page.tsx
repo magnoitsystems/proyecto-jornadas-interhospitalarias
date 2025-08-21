@@ -14,7 +14,7 @@ export default function Programa(){
 
             <ActivitiesGuide/>
 
-            <div className={styles.dayProgram}>
+            <div className={styles.dayProgram} id={'wednesday'}>
                 <div className={styles.date}>
                     <h2>Miércoles 05 de Noviembre</h2>
                 </div>
@@ -388,7 +388,7 @@ export default function Programa(){
 
             </div>
 
-            <div className={styles.dayProgram}>
+            <div className={styles.dayProgram} id={'thursday'}>
                 <div className={styles.date}>
                     <h2>Jueves 06 de Noviembre</h2>
                 </div>
@@ -694,7 +694,7 @@ export default function Programa(){
                 </div>
             </div>
 
-            <div className={styles.dayProgram}>
+            <div className={styles.dayProgram} id={'friday'}>
                 <div className={styles.date}>
                     <h2>Viernes 07 de Noviembre</h2>
                 </div>

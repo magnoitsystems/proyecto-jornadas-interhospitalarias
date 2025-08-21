@@ -1,3 +1,5 @@
+'use client'
+
 import styles from './InfoCard.module.css';
 import { nunito } from '@/app/(views)/ui/fonts';
 import Link from "next/link";
