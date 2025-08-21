@@ -2,6 +2,7 @@
     box-sizing: border-box;
 
     padding-inline: var(--20px);
+    margin-top: var(--20px);
 }
 
 .sectionCardsProperties {
