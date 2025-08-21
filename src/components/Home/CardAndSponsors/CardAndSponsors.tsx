@@ -20,9 +20,6 @@ export default function CardAndSponsors() {
                                 <p>
                                     Durante estos días, Tandil será el escenario de un enriquecedor espacio de encuentro científico y humano. Contaremos con la presencia de destacados especialistas, talleres interactivos y mesas redondas que, sin dudas, enriquecerán nuestro ejercicio profesional, el compromiso por una salud pública de calidad, integral, humana y en constante evolución.
                                 </p>
-                                <p>
-                                    Agradecemos profundamente a cada uno de ustedes por su participación, les deseamos unas jornadas inspiradoras, donde el conocimiento se combine con la calidez del encuentro y el compromiso con la salud infantil nos siga guiando.
-                                </p>
                             </div>
                         </div>
                         <div className={`${styles.paragraphProperties} ${styles.secondParagraphProperties} ${styles.infoColorProperties} ${cactus.className}`}>
