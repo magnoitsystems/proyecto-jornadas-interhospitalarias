@@ -86,7 +86,7 @@ export default function Home(){
                         </div>
                     </div>
                     <div className={`${styles.infoCardProperties} ${abiertaB2? styles.openCard : styles.cardClosed} ${nunito.className}`}>
-                        <InfoCard info = {"05-Nov  |  Primer encuentro"} info2={"06-Nov  |  Segundo encuentro"} info3={"07-Nov  |  Tercer encuentro"} sede={true} url={daysUrls}/>
+                        <InfoCard info = {"05/11  -  Miércoles ( Ver más + )"} info2={"06/11  -  Jueves ( Ver más + )"} info3={"07/11  -  Viernes ( Ver más + )"} sede={true} url={daysUrls}/>
                     </div>
                 </div>
                 <div className={`${styles.cardCompletyProperties} ${abiertaB3? styles.openCardCardCompletyProperties : styles.cardCompletyProperties}`} onMouseEnter={() => setHovered(true)}
