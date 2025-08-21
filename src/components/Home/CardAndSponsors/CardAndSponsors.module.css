@@ -19,9 +19,17 @@
 .imageProperties {
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 15px;
-    padding-left: 10%;
+}
+
+.sponsor {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
 }
 
 

@@ -1,6 +1,7 @@
 import styles from "@/components/Home/CardAndSponsors/CardAndSponsors.module.css";
 import Image from "next/image";
 import { cactus } from '@/app/(views)/ui/fonts';
+import Link from "next/link";
 
 export default function CardAndSponsors() {
     return (
@@ -36,54 +37,66 @@ export default function CardAndSponsors() {
                     <h1>Nos acompañan</h1>
                 </div>
                 <div className={styles.imageProperties}>
-                    <a href="https://www.pfizer.com.ar/" target="_blank" rel="noopener noreferrer">
-                        <Image
-                            src="/imgs/sponsors/pfizerSponsor.png"
-                            alt="Sponsor Pfizer"
-                            width={310}
-                            height={180} //agrandar un poco
-                        />
-                    </a>
-                    <a href="https://roemmers.com.ar/" target="_blank" rel="noopener noreferrer">
-                        <Image
-                            src="/imgs/sponsors/roemmersSponsor.png"
-                            alt="Sponsor Roemmers"
-                            width={310}
-                            height={140}
-                        />
-                    </a>
-                    <a href="https://inmunova.com/" target="_blank" rel="noopener noreferrer">
-                        <Image
-                            src="/imgs/sponsors/inmunova.png"
-                            alt="Sponsor Roemmers"
-                            width={310}
-                            height={140}
-                        />
-                    </a>
-                    <a href="https://www.biomarin.com/" target="_blank" rel="noopener noreferrer">
-                        <Image
-                            src="/imgs/sponsors/biomarin.png"
-                            alt="Sponsor Roemmers"
-                            width={310}
-                            height={140}
-                        />
-                    </a>
-                    <a href="https://cassara.com.ar/" target="_blank" rel="noopener noreferrer">
-                        <Image
-                            src="/imgs/sponsors/cassara.png"
-                            alt="Sponsor Roemmers"
-                            width={210}
-                            height={110} //achicar
-                        />
-                    </a>
-                    <a href="https://www.casasco.com.ar/es/" target="_blank" rel="noopener noreferrer">
-                        <Image
-                            src="/imgs/sponsors/casascoImg.jpg"
-                            alt="Sponsor Casasco"
-                            width={250}
-                            height={100}
-                        />
-                    </a>
+                    <div className={styles.sponsor}>
+                        <Link href="https://www.pfizer.com.ar/">
+                            <Image
+                                src="/imgs/sponsors/pfizerSponsor.png"
+                                alt="Sponsor Pfizer"
+                                width={258}
+                                height={150}
+                            />
+                        </Link>
+                    </div>
+                    <div className={styles.sponsor}>
+                        <a href="https://roemmers.com.ar/" target="_blank" rel="noopener noreferrer">
+                            <Image
+                                src="/imgs/sponsors/roemmersSponsor.png"
+                                alt="Sponsor Roemmers"
+                                width={310}
+                                height={130}
+                            />
+                        </a>
+                    </div>
+                    <div className={styles.sponsor}>
+                        <a href="https://inmunova.com/" target="_blank" rel="noopener noreferrer">
+                            <Image
+                                src="/imgs/sponsors/inmunova.png"
+                                alt="Sponsor Roemmers"
+                                width={310}
+                                height={90}
+                            />
+                        </a>
+                    </div>
+                    <div className={styles.sponsor}>
+                        <a href="https://www.biomarin.com/" target="_blank" rel="noopener noreferrer">
+                            <Image
+                                src="/imgs/sponsors/biomarin.png"
+                                alt="Sponsor Roemmers"
+                                width={285}
+                                height={200}
+                            />
+                        </a>
+                    </div>
+                    <div className={styles.sponsor}>
+                        <a href="https://cassara.com.ar/" target="_blank" rel="noopener noreferrer">
+                            <Image
+                                src="/imgs/sponsors/cassara.png"
+                                alt="Sponsor Roemmers"
+                                width={210}
+                                height={120}
+                            />
+                        </a>
+                    </div>
+                    <div className={styles.sponsor}>
+                        <a href="https://www.casasco.com.ar/es/" target="_blank" rel="noopener noreferrer">
+                            <Image
+                                src="/imgs/sponsors/casascoImg.jpg"
+                                alt="Sponsor Casasco"
+                                width={280}
+                                height={80}
+                            />
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
