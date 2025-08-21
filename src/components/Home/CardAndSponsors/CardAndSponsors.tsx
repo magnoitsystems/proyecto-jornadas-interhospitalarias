@@ -43,7 +43,7 @@ export default function CardAndSponsors() {
                                 src="/imgs/sponsors/pfizerSponsor.png"
                                 alt="Sponsor Pfizer"
                                 width={258}
-                                height={150}
+                                height={100}
                             />
                         </Link>
                     </div>
@@ -63,7 +63,7 @@ export default function CardAndSponsors() {
                                 src="/imgs/sponsors/inmunova.png"
                                 alt="Sponsor Roemmers"
                                 width={310}
-                                height={90}
+                                height={60}
                             />
                         </a>
                     </div>
@@ -73,7 +73,7 @@ export default function CardAndSponsors() {
                                 src="/imgs/sponsors/biomarin.png"
                                 alt="Sponsor Roemmers"
                                 width={285}
-                                height={200}
+                                height={55}
                             />
                         </a>
                     </div>
