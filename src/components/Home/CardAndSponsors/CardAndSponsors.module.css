@@ -19,9 +19,9 @@
 .imageProperties {
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 15px;
-    padding: var(--20px);
+    padding-left: 10%;
 }
 
 

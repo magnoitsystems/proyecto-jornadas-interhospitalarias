@@ -145,20 +145,6 @@ const profesionales: Professional[] = [
         imagen: null
     },
     {
-        id: 11,
-        nombre: 'Evangelina',
-        apellido: 'Latazza',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
         id: 12,
         nombre: 'Gabriela',
         apellido: 'Rossi',

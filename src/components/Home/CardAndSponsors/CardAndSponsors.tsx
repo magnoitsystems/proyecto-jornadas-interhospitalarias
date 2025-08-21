@@ -20,6 +20,9 @@ export default function CardAndSponsors() {
                                 <p>
                                     Durante estos días, Tandil será el escenario de un enriquecedor espacio de encuentro científico y humano. Contaremos con la presencia de destacados especialistas, talleres interactivos y mesas redondas que, sin dudas, enriquecerán nuestro ejercicio profesional, el compromiso por una salud pública de calidad, integral, humana y en constante evolución.
                                 </p>
+                                <p>
+                                    Agradecemos profundamente a cada uno de ustedes por su participación, les deseamos unas jornadas inspiradoras, donde el conocimiento se combine con la calidez del encuentro y el compromiso con la salud infantil nos siga guiando.
+                                </p>
                             </div>
                         </div>
                         <div className={`${styles.paragraphProperties} ${styles.secondParagraphProperties} ${styles.infoColorProperties} ${cactus.className}`}>
@@ -33,7 +36,7 @@ export default function CardAndSponsors() {
 
             <div className={styles.sponsorsProperties}>
                 <div className={styles.infoProperties}>
-                    <h2>Nos acompañan</h2>
+                    <h1>Nos acompañan</h1>
                 </div>
                 <div className={styles.imageProperties}>
                     <a href="https://www.pfizer.com.ar/" target="_blank" rel="noopener noreferrer">
@@ -73,7 +76,7 @@ export default function CardAndSponsors() {
                             src="/imgs/sponsors/cassara.png"
                             alt="Sponsor Roemmers"
                             width={210}
-                            height={140} //achicar
+                            height={110} //achicar
                         />
                     </a>
                     <a href="https://www.casasco.com.ar/es/" target="_blank" rel="noopener noreferrer">
