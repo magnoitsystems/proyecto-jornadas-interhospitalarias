@@ -238,7 +238,7 @@ export default function Programa(){
                         ]}
                         coordinator={"Coordinador:"}
                         coordinators={[
-                            'Laura Riva.'
+                            'Grabriela Rossi'
                         ]}
                         topics={[
                             ''
