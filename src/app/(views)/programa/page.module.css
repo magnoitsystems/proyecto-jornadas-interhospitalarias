@@ -10,16 +10,10 @@
     margin: 20px auto;
     padding: 10px;
     padding-inline: 0px;
-    gap: 20px;
+
 
     border: 1px solid var(--secondary-color-2);
     border-radius: 5px;
-}
-
-.events {
-    width: 100%;
-
-    gap: 20px;
 }
 
 .date {
@@ -31,13 +25,36 @@
     width: 100%;
     height: fit-content;
 
-    margin-bottom: 20px;
+    padding: 20px;
+    gap: 20px;
 
     background-color: var(--secondary-color-4);
     color: var(--secondary-color-1);
 }
 
-.date h2 {
+.date h1, .date h3, .date h4 {
     margin: 0px;
     padding: 0px;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+    color: var(--secondary-color-1);
+}
+
+.details:hover {
+    transform: translateY(-4px);
+    color: var(--primary-color-2);
+}
+
+.details a {
+    text-decoration: none;
 }

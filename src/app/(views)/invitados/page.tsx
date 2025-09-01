@@ -19,20 +19,6 @@ const profesionales: Professional[] = [
         imagen: null
     },
     {
-        id: 2,
-        nombre: 'Romina',
-        apellido: 'Escruela',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
         id: 3,
         nombre: 'Angela',
         apellido: 'Gentile',
@@ -89,37 +75,9 @@ const profesionales: Professional[] = [
         imagen: null
     },
     {
-        id: 7,
-        nombre: 'Vanesa',
-        apellido: 'Vanesa',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
         id: 8,
         nombre: 'Vanesa',
         apellido: 'Bazan',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
-        id: 9,
-        nombre: 'Laura',
-        apellido: 'Riva',
         profesion: '-',
         especializacion: '-',
         lugarEjerce: '-',
@@ -159,62 +117,6 @@ const profesionales: Professional[] = [
         imagen: null
     },
     {
-        id: 13,
-        nombre: 'Sol',
-        apellido: 'Elorriaga',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
-        id: 14,
-        nombre: 'Mabel',
-        apellido: 'Brindo',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
-        id: 15,
-        nombre: 'Lucila',
-        apellido: 'Heer',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: 'Hospital El Cruce',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
-        id: 16,
-        nombre: 'Josefina',
-        apellido: 'Girodo',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
         id: 17,
         nombre: 'Alejandro',
         apellido: 'Fainboim',
@@ -232,34 +134,6 @@ const profesionales: Professional[] = [
         id: 18,
         nombre: 'Laura',
         apellido: 'Lewin',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
-        id: 19,
-        nombre: 'Carolina',
-        apellido: 'Pascual',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
-        id: 20,
-        nombre: 'Alejandra',
-        apellido: 'Pérez Cerisola',
         profesion: '-',
         especializacion: '-',
         lugarEjerce: '-',
@@ -327,20 +201,6 @@ const profesionales: Professional[] = [
         imagen: null
     },
     {
-        id: 25,
-        nombre: 'Christian',
-        apellido: 'Bernardo',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
         id: 26,
         nombre: 'Estanislao',
         apellido: 'Diaz Pumara',
@@ -355,65 +215,9 @@ const profesionales: Professional[] = [
         imagen: null
     },
     {
-        id: 27,
-        nombre: 'Manuel',
-        apellido: 'Morán',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
         id: 28,
         nombre: 'Julian',
         apellido: 'Onaindia',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
-        id: 29,
-        nombre: 'Nancy',
-        apellido: 'Guerrero',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
-        id: 30,
-        nombre: 'Ana',
-        apellido: 'Albanese',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
-        id: 31,
-        nombre: 'Manuela',
-        apellido: 'Beazley',
         profesion: '-',
         especializacion: '-',
         lugarEjerce: '-',
@@ -453,79 +257,9 @@ const profesionales: Professional[] = [
         imagen: null
     },
     {
-        id: 34,
-        nombre: 'Cynthia',
-        apellido: 'Sflaeftein',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
-        id: 35,
-        nombre: 'Ileana',
-        apellido: 'Mastropierro',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
         id: 36,
         nombre: 'Sandra',
         apellido: 'Novas',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
-        id: 37,
-        nombre: 'Constanza',
-        apellido: 'Funes',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
-        id: 38,
-        nombre: 'Jose',
-        apellido: 'Silva',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
-        id: 39,
-        nombre: 'Emilia',
-        apellido: 'Peñalva',
         profesion: '-',
         especializacion: '-',
         lugarEjerce: '-',
@@ -551,79 +285,9 @@ const profesionales: Professional[] = [
         imagen: null
     },
     {
-        id: 41,
-        nombre: 'Celeste',
-        apellido: 'Garreta',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
-        id: 42,
-        nombre: 'Gonzalo',
-        apellido: 'Laplace',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
-        id: 43,
-        nombre: 'Miriam',
-        apellido: 'Carbone',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
-        id: 44,
-        nombre: 'Pablo',
-        apellido: 'Neira',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
         id: 45,
         nombre: 'Natalia',
         apellido: 'Regatky',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
-        id: 46,
-        nombre: 'Berenice',
-        apellido: 'González',
         profesion: '-',
         especializacion: '-',
         lugarEjerce: '-',
@@ -722,48 +386,6 @@ const profesionales: Professional[] = [
         id: 52,
         nombre: 'Guillermo',
         apellido: 'Goldfarb',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
-        id: 53,
-        nombre: 'Camila',
-        apellido: 'Pereyra',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
-        id: 54,
-        nombre: 'Cintia',
-        apellido: 'Ojea',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
-        id: 55,
-        nombre: 'Lorena',
-        apellido: 'Moreno',
         profesion: '-',
         especializacion: '-',
         lugarEjerce: '-',

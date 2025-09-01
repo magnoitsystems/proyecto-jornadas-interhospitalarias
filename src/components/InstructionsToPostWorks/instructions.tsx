@@ -30,15 +30,6 @@ export default function InstructionsToPostWorks() {
                         Ver instrucciones para el armado de pósters digitales
                     </a>
                 </li>
-                <li className={cactus.className}>
-                    <a
-                        href="https://www.sap.org.ar/nosotros/institucional/direccion-de-publicaciones/para-autores"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Ver pautas del Reglamento de Publicaciones de Archivos Argentinos de Pediatría
-                    </a>
-                </li>
             </ul>
         </nav>
     );
