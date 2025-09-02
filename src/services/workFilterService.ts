@@ -17,6 +17,7 @@ export class GetWorkForFilter {
       workCode: work.work_code,
       title: work.title,
       file: work.file,
+      additional_text: work.additional_text,
       prize: work.prize ?? false,
       authors: work.author.map(author => ({
         id: author.id_author,

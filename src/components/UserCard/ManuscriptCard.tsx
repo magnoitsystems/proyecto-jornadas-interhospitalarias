@@ -47,10 +47,11 @@ export default function ManuscriptCard({ work }: Props) {
               <p className={styles.attribute}>Con premio: {work.prize ? "Sí" : "No"}</p>
               <p className={styles.attribute}>Autor: {work.user.name} {work.user.lastname}</p>
             </div>
-            {work.file && (
+            {(work.file || work.additional_text) && (
               <div className={styles.iconGroup}>
-                <button 
-                  type="button" 
+                {/* Botón para abrir correo */}
+                <button
+                  type="button"
                   aria-label="Abrir correo"
                   onClick={(e) => e.stopPropagation()}
                 >
@@ -77,21 +78,43 @@ export default function ManuscriptCard({ work }: Props) {
                     </svg>
                   </a>
                 </button>
-                <a 
-                  href={work.file} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <Image
-                    src="/icons/downloadIcon.png"
-                    alt="Descargar"
-                    width={30}
-                    height={30}
-                  />
-                </a>
+
+                {/* Botón de descarga de file */}
+                {work.file && (
+                  <a
+                    href={work.file}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <Image
+                      src="/icons/downloadIcon.png"
+                      alt="Descargar"
+                      width={30}
+                      height={30}
+                    />
+                  </a>
+                )}
+
+                {/* Botón de descarga de additional_text */}
+                {work.additional_text && (
+                  <a
+                    href={work.additional_text}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <Image
+                      src="/icons/downloadIcon.png"
+                      alt="Descargar adicional"
+                      width={30}
+                      height={30}
+                    />
+                  </a>
+                )}
               </div>
             )}
+
           </div>
         </div>
 
