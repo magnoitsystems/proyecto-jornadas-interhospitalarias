@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import styles from './ExportToSheetsButton.module.css';
 
 interface ExportButtonProps {
-    className?: string;
 }
 
-const ExportToSheetsButton: React.FC<ExportButtonProps> = ({ className = '' }) => {
+const ExportToSheetsButton: React.FC<ExportButtonProps> = () => {
     const [isExporting, setIsExporting] = useState(false);
     const [exportStatus, setExportStatus] = useState<string>('');
 
