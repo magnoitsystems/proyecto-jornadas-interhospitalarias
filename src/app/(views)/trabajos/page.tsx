@@ -4,7 +4,6 @@ import InstructionsToPostWorks from "@/components/InstructionsToPostWorks/instru
 import styles from "./page.module.css";
 import Rules from   "@/components/rulesToPostWork/Rules"
 import { cactus } from '@/app/(views)/ui/fonts';
-import SignOutButton from '@/components/botonSingOut/SignOutButton'
 import { auth } from '@/auth';
 
 export default async function PostWork() {
@@ -15,7 +14,6 @@ export default async function PostWork() {
         <main className={`${styles.mainPage} ${cactus.className}`}>
 
             <div className={`${styles.introduction} ${cactus.className}`}>
-                <SignOutButton/>
                 <Title section={"Trabajos"} imgSrc={"/icons/Vector.png"} className={"assignmentTitle"}/>
                 <div className={`${styles.presentation} ${cactus.className}`}>
                     <h1 className={`${cactus.className}`}>

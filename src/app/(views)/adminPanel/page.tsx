@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import RoundedCard from "@/components/RoundedCard/RoundedCard";
 import styles from './page.module.css';
 import GroupFilters from "@/components/FilterButton/GroupFilters/GroupFilters";
-import SignOutButton from "@/components/botonSingOut/SignOutButton"
 import { useWorkFilter } from "@/hooks/workFilterAdmin";
 import { Work } from "@/types";
 import useUsers from "@/hooks/useUsers";
@@ -89,9 +88,6 @@ export default function AdminPanel() {
 
     return (
         <main>
-            <div className={styles.signOutButtonProperties}>
-                <SignOutButton />
-            </div>
             <div className={styles.roundedCards}>
                 <RoundedCard />
             </div>
