@@ -95,6 +95,7 @@ export default function ManuscriptCard({ work }: Props) {
           </div>
         </div>
 
+        {/* Contenido expandido */}
         {isExpanded && (
           <div className={styles.expandedContent}>
             <div className={styles.expandedGrid}>
