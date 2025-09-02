@@ -67,75 +67,53 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        console.log("Este mensaje no debería mostarse, si el archivo no es valido");
+        console.log("Este mensaje no debería mostrase, si el archivo no es valido");
 
         if (validationPDF.details?.length !== undefined) {
             console.warn('PDF subido con advertencias', validationPDF.details);
         }
 
-        console.log("antes de subir el normal a drive");
-        const workCodeWithouthPrize = uuidv4();
-        const normalUploadResult = await subirAGoogleDrive(file, `${title}-${workCodeWithouthPrize}-premio`, false);
-        console.log("workcode: " + workCodeWithouthPrize);
-        console.log("url normal: " + normalUploadResult);
+        const workCode = uuidv4();
+        
+        console.log("Subiendo archivo principal a drive");
+        const mainFileUrl = await subirAGoogleDrive(file, `${title}-${workCode}`, premio);
+        console.log("workcode: " + workCode);
+        console.log("url archivo principal: " + mainFileUrl);
 
-        const normalWork = await prisma.works.create({
+        let additionalTextUrl: string | null = null;
+
+        if (premio && premioFile && premioFile instanceof Blob) {
+            console.log("Subiendo archivo adicional (texto completo) a drive");
+            additionalTextUrl = await subirAGoogleDrive(premioFile, `${title}-${workCode}-adicional`, true);
+            console.log("url archivo adicional: " + additionalTextUrl);
+        }
+
+        const work = await prisma.works.create({
             data: {
                 title,
                 category,
                 description,
-                work_code: workCodeWithouthPrize,
-                file: normalUploadResult,
-                prize: false,
+                work_code: workCode,
+                file: mainFileUrl,
+                prize: premio,
+                additional_text: additionalTextUrl, 
                 user_id: Number(userId),
             },
         });
 
-        console.log("subido trabajo normal a db");
+        console.log("Trabajo guardado en base de datos con ID:", work.id_work);
 
-        const workCode = uuidv4();
-
-        if (premio && premioFile && premioFile instanceof Blob) {
-            const premioUploadUrl = await subirAGoogleDrive(premioFile, `${title}-${workCode}-premio`, true);
-            console.log("subido a drive");
-            console.log(premioUploadUrl);
-
-            const prizeWork = await prisma.works.create({
-                data: {
-                    title,
-                    category,
-                    description,
-                    work_code: workCode,
-                    file: premioUploadUrl,
-                    prize: true,
-                    user_id: Number(userId)
-                },
+        if (work.id_work != null) {
+            console.log("Creando autores para el trabajo");
+            await prisma.author.createMany({
+                data: autoresParsed.map((a: AuthorParsed) => ({
+                    name: a.nombre,
+                    affiliation: a.afiliacion,
+                    id_work: work.id_work
+                })),
             });
-
-            if (prizeWork.id_work != null) {
-                console.log("por crear los autores para premio");
-                await prisma.author.createMany({
-                    data: autoresParsed.map((a: AuthorParsed) => ({
-                        name: a.nombre,
-                        affiliation: a.afiliacion,
-                        id_work: prizeWork.id_work
-                    })),
-                });
-                console.log("autores creados para premio");
-            }
-
+            console.log("Autores creados");
         }
-
-        console.log("por crear los autores");
-        await prisma.author.createMany({
-            data: autoresParsed.map((a: AuthorParsed) => ({
-                name: a.nombre,
-                affiliation: a.afiliacion,
-                id_work: normalWork.id_work
-            })),
-        });
-        console.log("autores creados");
-
 
         const name = session.user.name;
         const email = session.user.email;
