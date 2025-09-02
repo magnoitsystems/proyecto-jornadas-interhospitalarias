@@ -57,7 +57,6 @@ const ExportToSheetsButton: React.FC<ExportButtonProps> = ({ className = '' }) =
             </>
           ) : (
             <>
-              <span className={styles.icon}>📊</span>
               <span className={styles.buttonText}>Exportar a Google Sheets</span>
             </>
           )}

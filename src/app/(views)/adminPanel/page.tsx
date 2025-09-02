@@ -11,6 +11,8 @@ import { FilterState } from "@/types/user";
 import Link from "next/link";
 import FilterView from "@/components/FilterButton/filtersView/FilterView";
 import ExportToSheetsButton from "@/components/ExportToSheets/ExportToSheetsButton";
+import ManuscriptCard from "@/components/UserCard/ManuscriptCard";
+import UserItemCard from "@/components/UserCard/UserCard";
 
 export default function AdminPanel() {
     const { data, loading, error } = useWorkFilter();
@@ -101,6 +103,9 @@ export default function AdminPanel() {
                 <div className={styles.reportsButtonProperties}>
                     <Link href={"./adminPanel/reports"}><button>Ver reportes</button></Link>
                 </div>
+                <div className={styles.reportsButtonProperties}>
+<ExportToSheetsButton ></ExportToSheetsButton>
+</div>
             </div>
             <section className={styles.containerContent}>
                 {selectedFilter === "inscripts" && (
@@ -111,11 +116,10 @@ export default function AdminPanel() {
                         />
                     </aside>
                 )}
-
-                <ExportToSheetsButton></ExportToSheetsButton>
+                
             
 
-                {/* <section className={styles.containerUserCard}>
+                <section className={styles.containerUserCard}>
                     {selectedFilter === "inscripts" ? (
                         usersLoading ? (
                             <p>Cargando usuarios...</p>
@@ -139,7 +143,7 @@ export default function AdminPanel() {
                             <ManuscriptCard key={work.id} work={work} />
                         ))
                     )}
-                </section> */}
+                </section>
             </section>
         </main>
     );
