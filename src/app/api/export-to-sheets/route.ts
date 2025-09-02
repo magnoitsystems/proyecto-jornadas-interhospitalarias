@@ -6,7 +6,6 @@ export async function POST(request: NextRequest) {
   try {
     const session = await auth();
 
-    // Verificar autenticación (opcional: agregar verificación de permisos)
     if (!session || !session?.user?.id) {
       return NextResponse.json(
         { success: false, message: 'Usuario no autenticado' },
@@ -14,23 +13,36 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.log('Iniciando exportación a Google Sheets...');
+    console.log('🚀 Iniciando exportación a Google Sheets...');
+    console.log('👤 Usuario:', session.user.id, session.user.email);
 
     // Obtener todos los datos de works con sus autores
     const worksWithAuthors = await prisma.works.findMany({
       include: {
-        author: true, // Incluir los autores relacionados
+        author: true,
       },
       orderBy: {
-        id_work: 'desc' // Ordenar por más recientes primero
+        id_work: 'desc'
       }
     });
 
+    console.log('📚 Trabajos encontrados:', worksWithAuthors.length);
+
+    if (worksWithAuthors.length === 0) {
+      return NextResponse.json({
+        success: false,
+        message: 'No hay trabajos para exportar'
+      }, { status: 404 });
+    }
+
     // Formatear los datos para Google Sheets
     const formattedData = formatDataForSheets(worksWithAuthors);
+    console.log('✏️  Datos formateados - Filas:', formattedData.length, 'Columnas:', formattedData[0]?.length);
 
     // Enviar a Google Apps Script
     const exportResult = await sendToGoogleSheets(formattedData);
+
+    console.log('📤 Resultado final de exportación:', exportResult);
 
     if (exportResult.success) {
       return NextResponse.json({
@@ -47,11 +59,12 @@ export async function POST(request: NextRequest) {
     }
 
   } catch (error: unknown) {
-    console.error('ERROR en exportación:', error);
+    console.error('💥 ERROR COMPLETO en exportación:', error);
     
     let message = 'Error desconocido en la exportación';
     if (error instanceof Error) {
       message = error.message;
+      console.error('📋 Stack trace:', error.stack);
     }
 
     return NextResponse.json(
@@ -107,26 +120,63 @@ function formatDataForSheets(works: any[]) {
 // Función para enviar a Google Sheets
 async function sendToGoogleSheets(data: any[][]) {
   try {
+    console.log('📤 Enviando datos a Google Sheets...');
+    console.log('📊 Cantidad de filas:', data.length);
+    console.log('🔗 URL del script:', 'https://script.google.com/macros/s/AKfycbxTmXuXM__bkTnkJGB3l_yGzUGZVs-Pk8QitQBE0D1COeqhS5dkzV5x6sCVFJM-4m3KmA/exec');
+    
+    const payload = {
+      action: 'exportWorks',
+      data: data,
+      sheetName: `Trabajos_${new Date().toISOString().split('T')[0]}`
+    };
+    
+    console.log('📦 Payload enviado:', JSON.stringify(payload, null, 2));
+
     const response = await fetch('https://script.google.com/macros/s/AKfycbxTmXuXM__bkTnkJGB3l_yGzUGZVs-Pk8QitQBE0D1COeqhS5dkzV5x6sCVFJM-4m3KmA/exec', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        action: 'exportWorks',
-        data: data,
-        sheetName: `Trabajos_${new Date().toISOString().split('T')[0]}` // Nombre con fecha
-      }),
+      body: JSON.stringify(payload),
     });
 
+    console.log('📡 Status de respuesta:', response.status);
+    console.log('📡 Headers de respuesta:', Object.fromEntries(response.headers.entries()));
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('❌ Error en respuesta HTTP:', errorText);
+      return {
+        success: false,
+        message: `Error HTTP ${response.status}: ${errorText}`
+      };
+    }
+
     const result = await response.json();
+    console.log('✅ Respuesta completa de Google:', result);
     return result;
 
   } catch (error) {
-    console.error('Error al enviar a Google Sheets:', error);
+    console.error('❌ Error completo al enviar a Google Sheets:', error);
+    
+    // Más detalles del error
+    if (error instanceof TypeError && error.message.includes('fetch')) {
+      return {
+        success: false,
+        message: 'Error de red: No se pudo conectar con Google Apps Script'
+      };
+    }
+    
+    if (error instanceof SyntaxError && error.message.includes('JSON')) {
+      return {
+        success: false,
+        message: 'Error: Google Apps Script retornó una respuesta inválida'
+      };
+    }
+    
     return {
       success: false,
-      message: 'Error de conexión con Google Sheets'
+      message: `Error de conexión: ${error instanceof Error ? error.message : 'Error desconocido'}`
     };
   }
 }

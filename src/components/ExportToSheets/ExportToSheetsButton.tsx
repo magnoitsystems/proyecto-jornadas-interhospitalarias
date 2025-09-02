@@ -75,3 +75,5 @@ const ExportToSheetsButton: React.FC<ExportButtonProps> = ({ className = '' }) =
     </div>
   );
 };
+
+export default ExportToSheetsButton;

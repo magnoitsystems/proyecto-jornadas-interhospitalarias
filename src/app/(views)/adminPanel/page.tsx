@@ -7,11 +7,10 @@ import GroupFilters from "@/components/FilterButton/GroupFilters/GroupFilters";
 import { useWorkFilter } from "@/hooks/workFilterAdmin";
 import { Work } from "@/types";
 import useUsers from "@/hooks/useUsers";
-import ManuscriptCard from "@/components/UserCard/ManuscriptCard";
-import UserItemCard from "@/components/UserCard/UserCard";
 import { FilterState } from "@/types/user";
 import Link from "next/link";
 import FilterView from "@/components/FilterButton/filtersView/FilterView";
+import ExportToSheetsButton from "@/components/ExportToSheets/ExportToSheetsButton";
 
 export default function AdminPanel() {
     const { data, loading, error } = useWorkFilter();
@@ -112,6 +111,9 @@ export default function AdminPanel() {
                         />
                     </aside>
                 )}
+
+                <ExportToSheetsButton></ExportToSheetsButton>
+            
 
                 {/* <section className={styles.containerUserCard}>
                     {selectedFilter === "inscripts" ? (
