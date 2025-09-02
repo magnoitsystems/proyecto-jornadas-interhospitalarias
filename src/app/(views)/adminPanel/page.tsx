@@ -113,7 +113,7 @@ export default function AdminPanel() {
                     </aside>
                 )}
 
-                <section className={styles.containerUserCard}>
+                {/* <section className={styles.containerUserCard}>
                     {selectedFilter === "inscripts" ? (
                         usersLoading ? (
                             <p>Cargando usuarios...</p>
@@ -137,7 +137,7 @@ export default function AdminPanel() {
                             <ManuscriptCard key={work.id} work={work} />
                         ))
                     )}
-                </section>
+                </section> */}
             </section>
         </main>
     );
