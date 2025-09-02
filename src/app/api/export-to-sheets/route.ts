@@ -3,8 +3,11 @@ import { prisma } from '@/libs/prisma';
 import { NextResponse } from 'next/server';
 import type { works, author } from '@prisma/client';
 
-// Tipo extendido con relación
-type WorkWithAuthors = works & { author: author[] };
+type WorkWithAuthors = works & { 
+  author: author[];
+  created_at?: string | Date;
+};
+
 
 type GoogleSheetsResponse = {
   success: boolean;
@@ -83,7 +86,10 @@ function formatDataForSheets(works: WorkWithAuthors[]): string[][] {
       work.additional_text ?? 'No disponible',
       String(work.user_id),
       autores,
-      afiliaciones
+      afiliaciones,
+      work.created_at
+        ? new Date(work.created_at).toLocaleString('es-AR')
+        : 'No disponible'
     ];
   });
 
