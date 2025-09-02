@@ -1,13 +1,14 @@
 import { auth } from '@/auth';
 import { prisma } from '@/libs/prisma';
 import { NextResponse } from 'next/server';
-import type { works, author } from '@prisma/client';
+import type { works, author, user } from '@prisma/client';
 
+// Incluimos los datos del usuario aquí
 type WorkWithAuthors = works & { 
   author: author[];
+  user?: user; // <-- agregado
   created_at?: string | Date;
 };
-
 
 type GoogleSheetsResponse = {
   success: boolean;
@@ -27,7 +28,10 @@ export async function POST() {
     }
 
     const worksWithAuthors: WorkWithAuthors[] = await prisma.works.findMany({
-      include: { author: true },
+      include: { 
+        author: true,
+        user: true // <-- incluimos los datos del usuario
+      },
       orderBy: { id_work: 'desc' }
     });
 
@@ -67,14 +71,15 @@ function formatDataForSheets(works: WorkWithAuthors[]): string[][] {
   const headers = [
     'ID', 'Título', 'Categoría', 'Descripción',
     'Código de Trabajo', 'Archivo Principal', 'A Premio',
-    'Texto Adicional', 'ID Usuario', 'Autores',
-    'Afiliaciones', 'Fecha Creación'
+    'Texto Adicional', 'ID Usuario', 'Nombre Usuario',
+    'Apellido Usuario', 'Email Usuario',
+    'Autores', 'Afiliaciones', 'Fecha Creación'
   ];
 
   const rows = works.map(work => {
     const autores = work.author?.map(a => a.name).join('; ') || 'Sin autores';
     const afiliaciones = work.author?.map(a => a.affiliation).join('; ') || 'Sin afiliaciones';
-
+    
     return [
       String(work.id_work),
       work.title ?? 'Sin título',
@@ -85,6 +90,9 @@ function formatDataForSheets(works: WorkWithAuthors[]): string[][] {
       work.prize ? 'Sí' : 'No',
       work.additional_text ?? 'No disponible',
       String(work.user_id),
+      work.user?.name ?? 'No disponible',
+      work.user?.lastname ?? 'No disponible',
+      work.user?.email ?? 'No disponible',
       autores,
       afiliaciones,
       work.created_at

@@ -71,7 +71,7 @@ export default function AdminPanel() {
         if (filterState.Enfermeros) job.push("enfermero");
         if (filterState.Técnicos) job.push("técnico");
         if (filterState.Otros) job.push("otros");
-        if(filterState.NoSalud) job.push("no perteneciente al área de la salud");
+        if (filterState.NoSalud) job.push("no perteneciente al área de la salud");
 
         getUsers({
             gender: gender.length > 0 ? gender : undefined,
@@ -104,8 +104,8 @@ export default function AdminPanel() {
                     <Link href={"./adminPanel/reports"}><button>Ver reportes</button></Link>
                 </div>
                 <div className={styles.reportsButtonProperties}>
-<ExportToSheetsButton ></ExportToSheetsButton>
-</div>
+                    <ExportToSheetsButton ></ExportToSheetsButton>
+                </div>
             </div>
             <section className={styles.containerContent}>
                 {selectedFilter === "inscripts" && (
@@ -116,8 +116,8 @@ export default function AdminPanel() {
                         />
                     </aside>
                 )}
-                
-            
+
+
 
                 <section className={styles.containerUserCard}>
                     {selectedFilter === "inscripts" ? (
