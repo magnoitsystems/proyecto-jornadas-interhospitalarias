@@ -11,7 +11,6 @@
     padding: 10px;
     padding-inline: 0px;
 
-
     border: 1px solid var(--secondary-color-2);
     border-radius: 5px;
 }
@@ -37,6 +36,13 @@
     padding: 0px;
 }
 
+.date a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+}
+
 .details {
     display: flex;
     flex-direction: column;
@@ -55,6 +61,7 @@
     color: var(--primary-color-2);
 }
 
-.details a {
-    text-decoration: none;
+.details:hover h3,
+.details:hover h4 {
+    color: var(--primary-color-2);
 }

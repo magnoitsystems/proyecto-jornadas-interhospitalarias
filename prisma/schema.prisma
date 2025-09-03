@@ -30,14 +30,15 @@ model user {
 }
 
 model works {
-  id_work     Int      @id @default(autoincrement())
-  category    String?  @db.VarChar(50)
-  description String?
-  user_id     Int
-  work_code   String?  @unique @db.VarChar(50)
-  title       String?  @db.VarChar(40)
-  file        String?  @db.VarChar(255)
-  prize       Boolean? @default(false)
-  author      author[]
-  user        user     @relation(fields: [user_id], references: [idUser], onDelete: Cascade, onUpdate: NoAction, map: "fk_works_user")
+  id_work         Int      @id @default(autoincrement())
+  category        String?  @db.VarChar(50)
+  description     String?
+  user_id         Int
+  work_code       String?  @unique @db.VarChar(50)
+  title           String?  @db.VarChar(40)
+  file            String?  @db.VarChar(255)
+  prize           Boolean? @default(false)
+  additional_text String?  @db.VarChar(255)
+  author          author[]
+  user            user     @relation(fields: [user_id], references: [idUser], onDelete: Cascade, onUpdate: NoAction, map: "fk_works_user")
 }

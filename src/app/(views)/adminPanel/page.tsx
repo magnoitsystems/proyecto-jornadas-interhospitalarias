@@ -4,15 +4,15 @@ import { useEffect, useState } from "react";
 import RoundedCard from "@/components/RoundedCard/RoundedCard";
 import styles from './page.module.css';
 import GroupFilters from "@/components/FilterButton/GroupFilters/GroupFilters";
-import SignOutButton from "@/components/botonSingOut/SignOutButton"
 import { useWorkFilter } from "@/hooks/workFilterAdmin";
 import { Work } from "@/types";
 import useUsers from "@/hooks/useUsers";
-import ManuscriptCard from "@/components/UserCard/ManuscriptCard";
-import UserItemCard from "@/components/UserCard/UserCard";
 import { FilterState } from "@/types/user";
 import Link from "next/link";
 import FilterView from "@/components/FilterButton/filtersView/FilterView";
+import ExportToSheetsButton from "@/components/ExportToSheets/ExportToSheetsButton";
+import ManuscriptCard from "@/components/UserCard/ManuscriptCard";
+import UserItemCard from "@/components/UserCard/UserCard";
 
 export default function AdminPanel() {
     const { data, loading, error } = useWorkFilter();
@@ -71,7 +71,7 @@ export default function AdminPanel() {
         if (filterState.Enfermeros) job.push("enfermero");
         if (filterState.Técnicos) job.push("técnico");
         if (filterState.Otros) job.push("otros");
-        if(filterState.NoSalud) job.push("no perteneciente al área de la salud");
+        if (filterState.NoSalud) job.push("no perteneciente al área de la salud");
 
         getUsers({
             gender: gender.length > 0 ? gender : undefined,
@@ -89,9 +89,6 @@ export default function AdminPanel() {
 
     return (
         <main>
-            <div className={styles.signOutButtonProperties}>
-                <SignOutButton />
-            </div>
             <div className={styles.roundedCards}>
                 <RoundedCard />
             </div>
@@ -106,6 +103,9 @@ export default function AdminPanel() {
                 <div className={styles.reportsButtonProperties}>
                     <Link href={"./adminPanel/reports"}><button>Ver reportes</button></Link>
                 </div>
+                <div className={styles.reportsButtonProperties}>
+                    <ExportToSheetsButton ></ExportToSheetsButton>
+                </div>
             </div>
             <section className={styles.containerContent}>
                 {selectedFilter === "inscripts" && (
@@ -116,6 +116,8 @@ export default function AdminPanel() {
                         />
                     </aside>
                 )}
+
+
 
                 <section className={styles.containerUserCard}>
                     {selectedFilter === "inscripts" ? (

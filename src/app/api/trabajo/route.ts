@@ -54,11 +54,11 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ message: 'Archivo inválido' }, { status: 400 });
         }
 
-		console.log("Antes del validador")
+        console.log("Antes del validador")
 
-		const validationPDF = await isValidMedicalPdf(file);
+        const validationPDF = await isValidMedicalPdf(file);
 
-		console.log("Resultado: ", validationPDF);
+        console.log("Resultado: ", validationPDF);
 
         if (!validationPDF.accept) {
             return NextResponse.json(
@@ -67,61 +67,53 @@ export async function POST(request: NextRequest) {
             );
         }
 
-		console.log("Este mensaje no debería mostarse, si el archivo no es valido");
+        console.log("Este mensaje no debería mostrase, si el archivo no es valido");
 
-		if (validationPDF.details?.length !== undefined){
-			console.warn('PDF subido con advertencias', validationPDF.details);
-		}
+        if (validationPDF.details?.length !== undefined) {
+            console.warn('PDF subido con advertencias', validationPDF.details);
+        }
 
-        console.log("antes de subir el normal a drive");
-        const workCodeWithouthPrize = uuidv4();
-        const normalUploadResult = await subirAGoogleDrive(file, `${title}-${workCodeWithouthPrize}-premio`, false);
-        console.log("workcode: "+ workCodeWithouthPrize);
-        console.log("url normal: "+normalUploadResult);
+        const workCode = uuidv4();
+        
+        console.log("Subiendo archivo principal a drive");
+        const mainFileUrl = await subirAGoogleDrive(file, `${title}-${workCode}`, premio);
+        console.log("workcode: " + workCode);
+        console.log("url archivo principal: " + mainFileUrl);
 
-        const normalWork = await prisma.works.create({
+        let additionalTextUrl: string | null = null;
+
+        if (premio && premioFile && premioFile instanceof Blob) {
+            console.log("Subiendo archivo adicional (texto completo) a drive");
+            additionalTextUrl = await subirAGoogleDrive(premioFile, `${title}-${workCode}-adicional`, true);
+            console.log("url archivo adicional: " + additionalTextUrl);
+        }
+
+        const work = await prisma.works.create({
             data: {
                 title,
                 category,
                 description,
-                work_code: workCodeWithouthPrize,
-                file: normalUploadResult,
-                prize: false,
+                work_code: workCode,
+                file: mainFileUrl,
+                prize: premio,
+                additional_text: additionalTextUrl, 
                 user_id: Number(userId),
             },
         });
 
-        console.log("subido trabajo normal a db");
+        console.log("Trabajo guardado en base de datos con ID:", work.id_work);
 
-        const workCode = uuidv4();
-
-        if (premio && premioFile && premioFile instanceof Blob) {
-            const premioUploadUrl = await subirAGoogleDrive(premioFile, `${title}-${workCode}-premio`, true);
-            console.log("subido a drive");
-            console.log(premioUploadUrl);
-
-            await prisma.works.create({
-                data: {
-                    title,
-                    category,
-                    description,
-                    work_code: workCode,
-                    file: premioUploadUrl,
-                    prize: true,
-                    user_id: Number(userId)
-                },
+        if (work.id_work != null) {
+            console.log("Creando autores para el trabajo");
+            await prisma.author.createMany({
+                data: autoresParsed.map((a: AuthorParsed) => ({
+                    name: a.nombre,
+                    affiliation: a.afiliacion,
+                    id_work: work.id_work
+                })),
             });
+            console.log("Autores creados");
         }
-
-        console.log("por crear los autores");
-        await prisma.author.createMany({
-            data: autoresParsed.map((a: AuthorParsed) => ({
-                name: a.nombre,
-                affiliation: a.afiliacion,
-                id_work: normalWork.id_work
-            })),
-        });
-        console.log("autores creados");
 
         const name = session.user.name;
         const email = session.user.email;
@@ -129,7 +121,7 @@ export async function POST(request: NextRequest) {
         if (!email)
             return NextResponse.json({ message: 'sesión sin un mail' }, { status: 400 });
 
-        console.log("email: "+email);
+        console.log("email: " + email);
         const send = await EmailService.sendWorkSubmissionConfirmation(
             email,
             name,
@@ -137,7 +129,7 @@ export async function POST(request: NextRequest) {
             category,
             premio
         );
-        console.log("Resultado de enviar mail: "+send);
+        console.log("Resultado de enviar mail: " + send);
 
         return NextResponse.json({ success: true }, { status: 201 });
 
@@ -159,7 +151,7 @@ export async function POST(request: NextRequest) {
 async function subirAGoogleDrive(fileBlob: Blob, filename: string, isPremio: boolean): Promise<string> {
     const arrayBuffer = await fileBlob.arrayBuffer();
     const base64File = Buffer.from(arrayBuffer).toString('base64');
-    
+
     const response = await fetch('https://script.google.com/macros/s/AKfycbxcSNjmgBq8m5SiL3R4CdqeWOQFgFUm_-TVc_QNrYxKTtvsWqViOYHgVq0WgRanzmXFZw/exec', {
         method: 'POST',
         headers: {

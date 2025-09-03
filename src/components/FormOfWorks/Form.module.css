@@ -223,6 +223,55 @@
   text-align: center;
 }
 
+/* Agregar estos estilos a tu Form.module.css existente */
+
+/* Input cuando es anónimo - usando tus colores existentes */
+.anonymousInput {
+    border-color: #F64401 !important;
+    background-color: #353535;
+    box-shadow: 0 0 0 3px rgba(246, 68, 1, 0.2);
+}
+
+/* Texto informativo para autores anónimos */
+.infoText {
+    color: #F64401;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    font-weight: bold;
+}
+
+/* Banner de advertencia - usando el mismo estilo que tus banners existentes */
+.warningBanner {
+    color: #F64401;
+    background-color: #fff3e0;
+    border: 1px solid #F64401;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    font-weight: bold;
+    text-align: center;
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* Botón de premio deshabilitado */
+.toggleButtonDisabled {
+    opacity: 0.5;
+    cursor: not-allowed !important;
+    background-color: #f1f1f1 !important;
+    color: #999 !important;
+}
+
+.toggleButtonDisabled:hover {
+    background-color: #f1f1f1 !important;
+}
+
+/* Etiqueta de deshabilitado */
+.disabledLabel {
+    font-size: 0.8rem;
+    font-style: italic;
+    opacity: 0.7;
+}
+
 
 @keyframes slideDownFadeIn {
     from {

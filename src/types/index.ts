@@ -29,6 +29,7 @@ export interface Work {
     workCode: string | null;
     title: string | null;
     file: string | null;
+    additional_text: string | null;
     prize: boolean | null;
     user: User;
     authors: Author[];
