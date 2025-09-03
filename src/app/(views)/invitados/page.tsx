@@ -5,20 +5,6 @@ import { Professional } from "@/types";
 
 const profesionales: Professional[] = [
     {
-        id: 1,
-        nombre: 'Carolina',
-        apellido: 'Bullor',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
         id: 3,
         nombre: 'Angela',
         apellido: 'Gentile',
@@ -159,20 +145,6 @@ const profesionales: Professional[] = [
         imagen: null
     },
     {
-        id: 22,
-        nombre: 'Juan B.',
-        apellido: 'Dartiguelongue',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
         id: 23,
         nombre: 'Adriana',
         apellido: 'Bordogna',
@@ -288,34 +260,6 @@ const profesionales: Professional[] = [
         id: 45,
         nombre: 'Natalia',
         apellido: 'Regatky',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
-        id: 47,
-        nombre: 'Juliana',
-        apellido: 'Mehring',
-        profesion: '-',
-        especializacion: '-',
-        lugarEjerce: '-',
-        origen: {
-            ciudad: '-',
-            provincia: '-',
-            pais: '-',
-        },
-        imagen: null
-    },
-    {
-        id: 47,
-        nombre: 'Florencia',
-        apellido: 'Migliano',
         profesion: '-',
         especializacion: '-',
         lugarEjerce: '-',
