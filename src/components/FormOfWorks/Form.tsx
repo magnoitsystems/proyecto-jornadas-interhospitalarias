@@ -24,6 +24,8 @@ const FormPost: React.FC = () => {
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessageBanner, setErrorMessageBanner] = useState('');
     const [anonymousWarning, setAnonymousWarning] = useState<string>('');
+    const [resumen, setResumen] = useState<string>('');
+    const [resumenError, setResumenError] = useState<string>('');
 
     const { uploadWork, loading } = useUploadWork();
 
@@ -44,6 +46,18 @@ const FormPost: React.FC = () => {
     const hayAutoresAnonimos = (): boolean => {
         return autores.some(autor => esAnonimo(autor.nombre));
     };
+
+const handleResumenChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const valor = e.target.value;
+    setResumen(valor);
+    
+    if (valor.length > 4999) {
+        setResumenError(`Se ha superado el límite de 5000 caracteres (${valor.length}/5000)`);
+    } else {
+        setResumenError('');
+    }
+};
+
 
     const handleGenerarFormularios = () => {
         const cantidad = parseInt(cantidadAutoresInput, 10);
@@ -105,12 +119,17 @@ const FormPost: React.FC = () => {
 
         const title = (document.getElementById('titulo') as HTMLInputElement)?.value;
         const category = (document.getElementById('categoriaSelect') as HTMLSelectElement)?.value;
-        const description = (document.getElementById('resumen') as HTMLTextAreaElement)?.value;
 
-        if (!title || !category || !description || !workFile) {
+        if (!title || !category || !resumen || !workFile) {
             setErrorMessageBanner('Por favor, completa todos los campos y sube un archivo.');
             return;
         }
+
+        if (resumen.length < 1 || resumen.length > 4999) {
+    setErrorMessageBanner('El resumen debe tener entre 1 y 5000 caracteres.');
+    return;
+}
+
 
         const autoresData = autores.map(autor => ({
             nombre: autor.nombre.trim(),
@@ -147,7 +166,7 @@ const FormPost: React.FC = () => {
         const response = await uploadWork({
             title,
             category,
-            description,
+            description: resumen,
             file: workFile,
             autores: autoresData,
             premio: opcionAPremio,
@@ -241,8 +260,22 @@ const FormPost: React.FC = () => {
                 </div>
 
                 <div className={styles.formGroup}>
-                    <label htmlFor="resumen">Resumen (máximo 5000 caracteres)</label>
-                    <textarea id="resumen" maxLength={5000} rows={10} placeholder="Escribe un resumen de tu trabajo..."></textarea>
+                    <label htmlFor="resumen">
+                        Resumen (máximo 5000 caracteres)
+                        <span className={`${styles.charCounter} ${resumen.length > 4999 ? styles.charCounterError : ''}`}>
+    {resumen.length}/5000
+</span>
+
+                    </label>
+                    <textarea 
+                        id="resumen" 
+                        rows={10} 
+                        placeholder="Escribe un resumen de tu trabajo..."
+                        value={resumen}
+                        onChange={handleResumenChange}
+                        className={resumen.length > 5000 ? styles.textareaError : ''}
+                    ></textarea>
+                    {resumenError && <p className={styles.warningText}>{resumenError}</p>}
                 </div>
 
                 <div className={styles.formGroup}>
@@ -302,9 +335,13 @@ const FormPost: React.FC = () => {
                     )}
                 </div>
 
-                <button type="submit" disabled={loading} className={styles.submitButton}>
-                    {loading ? 'Subiendo...' : 'Enviar Formulario'}
-                </button>
+                <button 
+    type="submit" 
+    disabled={loading || resumen.length > 4999} 
+    className={`${styles.submitButton} ${(loading || resumen.length > 4999) ? styles.submitButtonDisabled : ''}`}
+>
+    {loading ? 'Subiendo...' : 'Enviar Formulario'}
+</button>
 
                 {successMessage && <p className={styles.successBanner}>{successMessage}</p>}
                 {errorMessageBanner && <p className={styles.errorBanner}>{errorMessageBanner}</p>}

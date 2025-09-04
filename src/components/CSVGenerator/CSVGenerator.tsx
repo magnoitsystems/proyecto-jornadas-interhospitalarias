@@ -37,14 +37,6 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
         healthOnly: false
     });
 
-    const handleFilterChange = (field: keyof FilterOptions, value: boolean) => {
-        setFilters(prev => ({
-            ...prev,
-            [field]: value
-        }));
-        setError(null);
-    };
-
     // Función para escapar valores CSV
     const escapeCSVValue = (value: unknown): string => {
         if (value === null || value === undefined) {
