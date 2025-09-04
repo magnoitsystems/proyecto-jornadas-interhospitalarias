@@ -193,65 +193,6 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
                         Las columnas ID, Nombre, Email y Edad siempre se incluyen
                     </p>
                     
-                    <div className={styles.checkboxGrid}>
-                        <div className={styles.checkboxContainer}>
-                            <input
-                                id="includeProfession"
-                                type="checkbox"
-                                checked={filters.includeProfession}
-                                onChange={(e) => handleFilterChange('includeProfession', e.target.checked)}
-                                className={styles.checkbox}
-                            />
-                            <label htmlFor="includeProfession" className={styles.checkboxLabel}>
-                                Profesión
-                            </label>
-                        </div>
-
-                        <div className={styles.checkboxContainer}>
-                            <input
-                                id="includeGender"
-                                type="checkbox"
-                                checked={filters.includeGender}
-                                onChange={(e) => handleFilterChange('includeGender', e.target.checked)}
-                                className={styles.checkbox}
-                            />
-                            <label htmlFor="includeGender" className={styles.checkboxLabel}>
-                                Género
-                            </label>
-                        </div>
-
-                        <div className={styles.checkboxContainer}>
-                            <input
-                                id="includeSpecialty"
-                                type="checkbox"
-                                checked={filters.includeSpecialty}
-                                onChange={(e) => handleFilterChange('includeSpecialty', e.target.checked)}
-                                className={styles.checkbox}
-                            />
-                            <label htmlFor="includeSpecialty" className={styles.checkboxLabel}>
-                                Especialidad
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div className={styles.section}>
-                    <label className={styles.sectionLabel}>
-                        Filtros
-                    </label>
-                    <div className={styles.checkboxContainer}>
-                        <input
-                            id="healthOnly"
-                            type="checkbox"
-                            checked={filters.healthOnly}
-                            onChange={(e) => handleFilterChange('healthOnly', e.target.checked)}
-                            className={styles.checkbox}
-                        />
-                        <label htmlFor="healthOnly" className={styles.checkboxLabel}>
-                            Solo profesionales del área de la salud
-                        </label>
-                    </div>
-                </div>
 
                 <button
                     onClick={generateCSV}
@@ -279,6 +220,7 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
                     </div>
                 )}
             </div>
+        </div>
         </div>
     );
 };

@@ -14,16 +14,6 @@ export default function ReportsPage() {
             </div>
 
             <CSVGenerator className="mb-8"/>
-
-            <div className={styles.generatorInformation}>
-            <h1>Instrucciones de Uso</h1>
-                <ul className={styles.instructions}>
-                    <li><h4>1. Selecciona el tipo de reporte que deseas generar</h4></li>
-                    <li><h4>2. Ajusta la cantidad de usuarios simulados (para pruebas)</h4></li>
-                    <li><h4>3. Haz clic en Descargar Reporte CSV para obtener el archivo</h4></li>
-                    <li><h4>4. El archivo se descargará automáticamente y podrás abrirlo en Excel</h4></li>
-                </ul>
-            </div>
         </main>
     );
 }
