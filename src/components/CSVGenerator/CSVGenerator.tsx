@@ -30,7 +30,7 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
     const [error, setError] = useState<string | null>(null);
     const [lastGenerated, setLastGenerated] = useState<string | null>(null);
 
-    const [filters, setFilters] = useState<FilterOptions>({
+    const [filters] = useState<FilterOptions>({
         includeGender: true,
         includeSpecialty: true,
         includeProfession: true,
