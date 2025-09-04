@@ -207,7 +207,7 @@ const handleResumenChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
                 </div>
 
                 <div className={styles.formGroup}>
-                    <label htmlFor="cantidadAutores">Cantidad de autores (hasta 8)</label>
+                    <label htmlFor="cantidadAutores">Cantidad de autores (hasta  8, cargar la cantidad de autores adicionales al que está cargando el formulario) y hacer clic en el botón de check rojo</label>
                     <div className={styles.inputWithButton}>
                         <input
                             type="number"
@@ -228,7 +228,7 @@ const handleResumenChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
                     {autores.map((autor, index) => (
                         <div key={autor.id} className={styles.autorCard}>
                             <div className={styles.cardHeader}>
-                                <h3>Datos del autor Nro. {index + 1}</h3>
+                                <h3>Datos del autor Nro. {index + 2}</h3>
                                 <button type="button" onClick={() => handleRemoverAutor(autor.id)} className={styles.removeButton}>×</button>
                             </div>
                             <div className={styles.formGroup}>
