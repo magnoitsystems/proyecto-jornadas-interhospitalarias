@@ -5,7 +5,7 @@ export class CSVGenerator {
     /**
      * Escapa valores CSV correctamente
      */
-    private static escapeCSVValue(value: any): string {
+    private static escapeCSVValue(value: unknown): string {
         if (value === null || value === undefined) {
             return '';
         }
@@ -48,6 +48,7 @@ export class CSVGenerator {
         if (config.includeSpecialty) {
             columns.push({ key: 'specialty', label: 'Especialidad' });
         }
+
 
         // Crear header
         const header = columns.map(col => this.escapeCSVValue(col.label)).join(',');

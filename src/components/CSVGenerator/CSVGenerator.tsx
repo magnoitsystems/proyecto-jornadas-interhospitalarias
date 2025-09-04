@@ -46,7 +46,7 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
     };
 
     // Función para escapar valores CSV
-    const escapeCSVValue = (value: any): string => {
+    const escapeCSVValue = (value: unknown): string => {
         if (value === null || value === undefined) {
             return '';
         }
