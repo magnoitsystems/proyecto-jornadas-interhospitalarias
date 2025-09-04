@@ -15,6 +15,7 @@ interface GenerateReportRequest {
     includeProfession: boolean;
     healthOnly: boolean;
     format: 'readable' | 'compact';
+    csvType: 'individual' | 'aggregated'; // Nueva propiedad
 }
 
 const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
@@ -28,8 +29,22 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
         includeSpecialty: true,
         includeProfession: true,
         healthOnly: false,
-        format: 'readable'
+        format: 'readable',
+        csvType: 'individual' // Default a datos individuales
     });
+
+    const csvTypeOptions = [
+        {
+            value: 'individual',
+            label: 'Datos Individuales',
+            description: 'CSV con una fila por cada usuario registrado (formato CSV real)'
+        },
+        {
+            value: 'aggregated',
+            label: 'Estadísticas Agregadas',
+            description: 'Reporte con resúmenes y totales por categoría'
+        }
+    ];
 
     const formatOptions = [
         {
@@ -57,9 +72,18 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
 
 
     const validateForm = (): boolean => {
-        if (!formData.includeGender && !formData.includeSpecialty && !formData.includeProfession) {
-            setError('Debes seleccionar al menos una categoría de datos para incluir');
-            return false;
+        if (formData.csvType === 'individual') {
+            // Para datos individuales, solo necesitamos que seleccione al menos una categoría
+            if (!formData.includeGender && !formData.includeSpecialty && !formData.includeProfession) {
+                setError('Debes seleccionar al menos una categoría de datos para incluir');
+                return false;
+            }
+        } else {
+            // Para datos agregados, validación original
+            if (!formData.includeGender && !formData.includeSpecialty && !formData.includeProfession) {
+                setError('Debes seleccionar al menos una categoría de datos para incluir');
+                return false;
+            }
         }
 
         if (formData.userCount < 10 || formData.userCount > 1000) {
@@ -102,7 +126,7 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
             const contentDisposition = response.headers.get('content-disposition');
             const filename = contentDisposition
                 ? contentDisposition.split('filename=')[1]?.replace(/"/g, '')
-                : `estadisticas-medicas-${formData.format}-${Date.now()}.csv`;
+                : `estadisticas-medicas-${formData.csvType}-${formData.format}-${Date.now()}.csv`;
 
             const blob = await response.blob();
             const url = window.URL.createObjectURL(blob);
@@ -140,25 +164,26 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
             )}
 
             <div className={`${styles.formContent} ${cactus.className}`}>
+                {/* Tipo de CSV */}
                 <div className={styles.section}>
                     <label className={styles.sectionLabel}>
-                        Formato de Reporte
+                        Tipo de CSV
                     </label>
                     <div className={styles.radioGrid}>
-                        {formatOptions.map((option) => (
+                        {csvTypeOptions.map((option) => (
                             <label
                                 key={option.value}
                                 className={`
                                     ${styles.radioOption}
-                                    ${formData.format === option.value ? styles.radioOptionSelected : ''}
+                                    ${formData.csvType === option.value ? styles.radioOptionSelected : ''}
                                 `}
                             >
                                 <input
                                     type="radio"
-                                    name="format"
+                                    name="csvType"
                                     value={option.value}
-                                    checked={formData.format === option.value}
-                                    onChange={(e) => handleInputChange('format', e.target.value as 'readable' | 'compact')}
+                                    checked={formData.csvType === option.value}
+                                    onChange={(e) => handleInputChange('csvType', e.target.value as 'individual' | 'aggregated')}
                                     className={styles.radioInput}
                                 />
                                 <div className={styles.radioContent}>
@@ -174,10 +199,50 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
                     </div>
                 </div>
 
+                {/* Formato de Reporte - Solo mostrar para agregados */}
+                {formData.csvType === 'aggregated' && (
+                    <div className={styles.section}>
+                        <label className={styles.sectionLabel}>
+                            Formato de Reporte
+                        </label>
+                        <div className={styles.radioGrid}>
+                            {formatOptions.map((option) => (
+                                <label
+                                    key={option.value}
+                                    className={`
+                                        ${styles.radioOption}
+                                        ${formData.format === option.value ? styles.radioOptionSelected : ''}
+                                    `}
+                                >
+                                    <input
+                                        type="radio"
+                                        name="format"
+                                        value={option.value}
+                                        checked={formData.format === option.value}
+                                        onChange={(e) => handleInputChange('format', e.target.value as 'readable' | 'compact')}
+                                        className={styles.radioInput}
+                                    />
+                                    <div className={styles.radioContent}>
+                                        <div className={styles.radioLabel}>
+                                            {option.label}
+                                        </div>
+                                        <div className={styles.radioDescription}>
+                                            {option.description}
+                                        </div>
+                                    </div>
+                                </label>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
                 {/* Categorías de Datos */}
                 <div className={styles.section}>
                     <label className={styles.sectionLabel}>
-                        Categorías de Datos a Incluir
+                        {formData.csvType === 'individual' 
+                            ? 'Columnas a Incluir en el CSV' 
+                            : 'Categorías de Datos a Incluir'
+                        }
                     </label>
                     <div className={styles.checkboxGrid}>
                         <div className={styles.checkboxContainer}>
@@ -189,7 +254,7 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
                                 className={styles.checkbox}
                             />
                             <label htmlFor="includeProfession" className={styles.checkboxLabel}>
-                                Estadísticas por Profesión
+                                {formData.csvType === 'individual' ? 'Columna Profesión' : 'Estadísticas por Profesión'}
                             </label>
                         </div>
 
@@ -202,7 +267,7 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
                                 className={styles.checkbox}
                             />
                             <label htmlFor="includeSpecialty" className={styles.checkboxLabel}>
-                                Estadísticas por Especialidad Médica
+                                {formData.csvType === 'individual' ? 'Columna Especialidad' : 'Estadísticas por Especialidad Médica'}
                             </label>
                         </div>
 
@@ -215,7 +280,7 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
                                 className={styles.checkbox}
                             />
                             <label htmlFor="includeGender" className={styles.checkboxLabel}>
-                                Estadísticas por Género
+                                {formData.csvType === 'individual' ? 'Columna Género' : 'Estadísticas por Género'}
                             </label>
                         </div>
                     </div>
@@ -253,7 +318,7 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
                             Generando Reporte...
                         </>
                     ) : (
-                        'Descargar Reporte CSV'
+                        `Descargar ${formData.csvType === 'individual' ? 'CSV Individual' : 'Reporte Agregado'}`
                     )}
                 </button>
 

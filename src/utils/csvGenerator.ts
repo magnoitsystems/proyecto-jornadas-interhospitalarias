@@ -1,6 +1,73 @@
-import { ProcessedStats, CSVConfig } from '@/types/csv';
+import { ProcessedStats, CSVConfig, UserData } from '@/types/csv';
 
 export class CSVGenerator {
+
+    /**
+     * Escapa valores CSV correctamente
+     */
+    private static escapeCSVValue(value: any): string {
+        if (value === null || value === undefined) {
+            return '';
+        }
+        
+        const stringValue = String(value);
+        
+        // Si contiene coma, comilla doble o salto de línea, envolver en comillas
+        if (stringValue.includes(',') || stringValue.includes('"') || stringValue.includes('\n') || stringValue.includes('\r')) {
+            // Escapar comillas dobles duplicándolas
+            return `"${stringValue.replace(/"/g, '""')}"`;
+        }
+        
+        return stringValue;
+    }
+
+    /**
+     * Genera CSV con datos individuales de usuarios
+     */
+    static generateUserDataCSV(users: UserData[], config: CSVConfig): string {
+        if (users.length === 0) {
+            return 'Sin datos disponibles\n';
+        }
+
+        // Definir columnas según configuración
+        const columns: Array<{key: keyof UserData, label: string}> = [
+            { key: 'id', label: 'ID' },
+            { key: 'name', label: 'Nombre' },
+            { key: 'email', label: 'Email' },
+            { key: 'age', label: 'Edad' }
+        ];
+
+        if (config.includeProfession) {
+            columns.push({ key: 'job', label: 'Profesión' });
+        }
+
+        if (config.includeGender) {
+            columns.push({ key: 'gender', label: 'Género' });
+        }
+
+        if (config.includeSpecialty) {
+            columns.push({ key: 'specialty', label: 'Especialidad' });
+        }
+
+        // Crear header
+        const header = columns.map(col => this.escapeCSVValue(col.label)).join(',');
+
+        // Crear filas de datos
+        const rows = users.map(user => {
+            return columns.map(col => {
+                let value = user[col.key];
+                
+                // Formatear especialidad
+                if (col.key === 'specialty' && !value) {
+                    value = 'Sin especialidad';
+                }
+                
+                return this.escapeCSVValue(value);
+            }).join(',');
+        });
+
+        return header + '\n' + rows.join('\n') + '\n';
+    }
 
     /**
      * Convierte array de objetos a CSV
@@ -13,7 +80,7 @@ export class CSVGenerator {
             return 'Sin datos disponibles\n';
         }
 
-        const headerRow = headers.map(h => h.label).join(',');
+        const headerRow = headers.map(h => this.escapeCSVValue(h.label)).join(',');
 
         const dataRows = data.map(item => {
             return headers.map(header => {
@@ -22,21 +89,23 @@ export class CSVGenerator {
                 // Manejo de objetos anidados
                 if (typeof value === 'object' && value !== null) {
                     const entries = Object.entries(value);
-                    return `"${entries.map(([k, v]) => `${k}: ${v}`).join('; ')}"`;
+                    return this.escapeCSVValue(entries.map(([k, v]) => `${k}: ${v}`).join('; '));
                 }
 
-                if (typeof value === 'string' && (value.includes(',') || value.includes('"'))) {
-                    return `"${value.replace(/"/g, '""')}"`;
-                }
-
-                return value?.toString() || '';
+                return this.escapeCSVValue(value);
             }).join(',');
         }).join('\n');
 
         return `${headerRow}\n${dataRows}\n`;
     }
 
-    static generateWithConfig(data: ProcessedStats, config: CSVConfig): string {
+    static generateWithConfig(data: ProcessedStats | UserData[], config: CSVConfig): string {
+        // Si es un array de usuarios, generar CSV de datos individuales
+        if (Array.isArray(data)) {
+            return this.generateUserDataCSV(data, config);
+        }
+
+        // Si no, usar el formato anterior para estadísticas agregadas
         if (config.format === 'readable') {
             return this.generateReadableFormat(data, config);
         }
@@ -54,6 +123,7 @@ export class CSVGenerator {
             output += '================\n';
             output += `Total de usuarios: ${data.summary.totalUsers}\n`;
             output += `Edad promedio: ${data.summary.avgAge} años\n`;
+            output += '\n';
         }
 
         // Estadísticas por profesión
@@ -98,6 +168,7 @@ export class CSVGenerator {
             output += 'Métrica,Valor\n';
             output += `Total Usuarios,${data.summary.totalUsers}\n`;
             output += `Edad Promedio,${data.summary.avgAge}\n`;
+            output += '\n';
         }
 
         // Por profesión

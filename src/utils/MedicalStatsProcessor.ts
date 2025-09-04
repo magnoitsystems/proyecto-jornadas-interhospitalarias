@@ -1,11 +1,41 @@
-import { ProcessedStats, CSVConfig } from '@/types/csv';
+import { ProcessedStats, CSVConfig, UserData } from '@/types/csv';
 import { prisma } from '@/libs/prisma';
-
 
 export class MedicalStatsProcessor {
 
-    constructor() {
+    // Nuevo método para obtener datos individuales de usuarios
+    async getUsersData(config: CSVConfig): Promise<UserData[]> {
+        // Filtro base según configuración
+        const baseFilter = config.healthOnly
+            ? { job: { not: 'no perteneciente al área de la salud' }, admin: false }
+            : { admin: false };
 
+        const users = await prisma.user.findMany({
+            where: baseFilter,
+            select: {
+                idUser: true,
+                name: true,
+                email: true,
+                age: true,
+                gender: true,
+                job: true,
+                specialty: true,
+                // Removido createdAt
+            },
+            orderBy: {
+                idUser: 'desc' // Ordenar por ID en su lugar
+            }
+        });
+
+        return users.map(user => ({
+            id: user.idUser,
+            name: user.name || 'Sin nombre',
+            email: user.email || 'Sin email',
+            age: user.age || 0,
+            gender: user.gender || 'No especificado',
+            job: user.job || 'Sin definir',
+            specialty: user.specialty || null,
+        }));
     }
 
 	async getStatsWithConfig(config: CSVConfig): Promise<ProcessedStats> {
@@ -148,3 +178,4 @@ export class MedicalStatsProcessor {
 		return result;
 	}
 }
+

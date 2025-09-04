@@ -15,7 +15,9 @@ export interface CSVConfig{
     includeSpecialty: boolean,
     includeProfession: boolean,
     healthOnly: boolean,
-    format: string
+    format: string,
+    // Nueva propiedad para elegir el tipo de CSV
+    csvType?: 'individual' | 'aggregated'
 }
 
 export interface ProcessedStats {
@@ -33,6 +35,7 @@ export interface ProcessedStats {
 export interface StatsByProfession {
     profession: string;
     count: number;
+    avgAge?: number;
     genderBreakdown: Record<string, number>;
     specialties: Record<string, number>;
 }
@@ -48,4 +51,15 @@ export interface StatsBySpecialty {
     count: number;
     professions: Record<string, number>;
     genderBreakdown: Record<string, number>;
+}
+
+// Nueva interfaz para datos individuales de usuarios
+export interface UserData {
+    id: number;
+    name: string;
+    email: string;
+    age: number;
+    gender: string;
+    job: string;
+    specialty: string | null;
 }
