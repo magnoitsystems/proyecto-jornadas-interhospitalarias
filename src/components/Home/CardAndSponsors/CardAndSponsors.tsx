@@ -48,16 +48,6 @@ export default function CardAndSponsors() {
                         </Link>
                     </div>
                     <div className={styles.sponsor}>
-                        <a href="https://roemmers.com.ar/" target="_blank" rel="noopener noreferrer">
-                            <Image
-                                src="/imgs/sponsors/roemmersSponsor.png"
-                                alt="Sponsor Roemmers"
-                                width={310}
-                                height={130}
-                            />
-                        </a>
-                    </div>
-                    <div className={styles.sponsor}>
                         <a href="https://inmunova.com/" target="_blank" rel="noopener noreferrer">
                             <Image
                                 src="/imgs/sponsors/inmunova.png"
@@ -92,8 +82,8 @@ export default function CardAndSponsors() {
                             <Image
                                 src="/imgs/sponsors/casascoImg.jpg"
                                 alt="Sponsor Casasco"
-                                width={280}
-                                height={80}
+                                width={250}
+                                height={50}
                             />
                         </a>
                     </div>

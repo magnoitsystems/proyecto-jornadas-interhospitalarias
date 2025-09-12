@@ -45,6 +45,23 @@ export default function Footer() {
               jornadas_pediatricas@sisptandil.gob.ar
             </a>
           </li>
+          <li className={styles.item}>
+            <a
+              className={styles.link}
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=codei@sisptandil.gob.ar"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="/icons/mail-open.png"
+                alt="Email"
+                width={16}
+                height={16}
+                style={{ marginRight: '0.5rem', verticalAlign: 'middle' }}
+              />
+              codei@sisptandil.gob.ar
+            </a>
+          </li>
 
           <li className={styles.item}>
             <Image src="/icons/phone.png" alt="Teléfono" width={16} height={16} />
