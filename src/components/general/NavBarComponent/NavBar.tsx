@@ -26,7 +26,7 @@ export default function NavBar(): JSX.Element {
             pathname === '/invitados' ||
             pathname === '/programa'
         ) {
-            return '/backgrounds/homeMain.png';
+            return '/backgrounds/desktopHome.svg';
         } else if (pathname === '/inscripcion' || pathname === '/trabajos' || pathname === '/adminPanel' || pathname === '/login' ||
             pathname === '/redirection' || pathname === '/adminPanel/reports') {
             return '/backgrounds/form.png';
@@ -66,7 +66,7 @@ export default function NavBar(): JSX.Element {
 
     const bgUrl = (!isFormPage || isAdminPage)
         ? (isMobile && isHomeLike(pathname)
-            ? '/backgrounds/homeMobile.svg'
+            ? '/backgrounds/mobileHome.svg'
             : getBackground(pathname))
         : 'none';
 
