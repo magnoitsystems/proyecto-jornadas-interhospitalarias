@@ -11,7 +11,7 @@ export default function ContentSections() {
                         Científico.
                         Serán aceptados para su evaluación solamente aquellos que se ajusten plenamente al
                         reglamento para la presentación de resúmenes de trabajos libres.</h3></li>
-                    <li><h3>2. La fecha límite para la presentación de los resúmenes será el 5 de Septiembre del
+                    <li><h3>2. La fecha límite para la presentación de los resúmenes será el 5 de Octubre del
                         2025</h3></li>
                     <li><h3>3. Los trabajos no deben estar publicados. Pueden haber sido presentados en otros eventos
                         del país
