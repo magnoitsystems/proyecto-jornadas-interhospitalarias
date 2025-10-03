@@ -35,7 +35,7 @@ model works {
   description     String? @db.Text
   user_id         Int
   work_code       String?  @unique @db.VarChar(50)
-  title           String?  @db.VarChar(40)
+  title           String?  @db.Text
   prize           Boolean? @default(false)
   file            String @db.Text
   additional_text String? @db.Text
