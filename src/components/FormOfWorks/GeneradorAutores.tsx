@@ -19,8 +19,8 @@ export default function GeneradorAutores() {
     const handleGenerarFormularios = () => {
         const cantidad = parseInt(numAutoresInput, 10);
 
-        if (isNaN(cantidad) || cantidad < 1 || cantidad > 8) {
-            setError('Por favor, introduce un número válido entre 1 y 8.');
+        if (isNaN(cantidad) || cantidad < 1 || cantidad > 20) {
+            setError('Por favor, introduce un número válido entre 1 y 20.');
             setAutores([]);
             return;
         }
@@ -51,13 +51,13 @@ export default function GeneradorAutores() {
     return (
         <div className={styles.formContainer}>
             <div className={styles.inputGroup}>
-                <label htmlFor="cantidadAutores">Cantidad de autores (hasta 8)</label>
+                <label htmlFor="cantidadAutores">Cantidad de autores</label>
                 <div className={styles.inputWithButton}>
                     <input
                         id="cantidadAutores"
                         type="number"
                         min="1"
-                        max="8"
+                        max="20"
                         placeholder="Cantidad de autores"
                         value={numAutoresInput}
                         onChange={(e) => setNumAutoresInput(e.target.value)}
