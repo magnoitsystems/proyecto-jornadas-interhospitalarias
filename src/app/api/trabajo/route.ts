@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { isValidMedicalPdf } from "@/services/pdfValidationService";
+// import { isValidMedicalPdf } from "@/services/pdfValidationService";
 import { prisma } from '@/libs/prisma';
 import { v4 as uuidv4 } from 'uuid';
 import { auth } from '@/auth';
