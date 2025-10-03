@@ -32,7 +32,7 @@ model user {
 model works {
   id_work         Int      @id @default(autoincrement())
   category        String?  @db.VarChar(50)
-  description     String?
+  description     String? @db.Text
   user_id         Int
   work_code       String?  @unique @db.VarChar(50)
   title           String?  @db.VarChar(40)
