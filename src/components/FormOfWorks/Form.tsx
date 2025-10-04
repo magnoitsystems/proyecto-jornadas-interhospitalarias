@@ -29,40 +29,23 @@ const FormPost: React.FC = () => {
 
     const { uploadWork, loading } = useUploadWork();
 
-    // Función para verificar si un nombre es anónimo
     const esAnonimo = (nombre: string): boolean => {
         const nombreLimpio = nombre.trim().toLowerCase();
-        return nombreLimpio === 'anónimo' || 
-               nombreLimpio === 'anonimo' || 
-               nombreLimpio === 'anónima' || 
-               nombreLimpio === 'anonima' ||
-               nombreLimpio === 'Anónimo' ||
-               nombreLimpio === 'Anonimo' ||
-               nombreLimpio === 'Anónima' ||
-               nombreLimpio === 'Anonima';
+        return ['anónimo','anonimo','anónima','anonima'].includes(nombreLimpio);
     };
 
-    // Función para verificar si hay autores anónimos
-    const hayAutoresAnonimos = (): boolean => {
-        return autores.some(autor => esAnonimo(autor.nombre));
+    const hayAutoresAnonimos = (): boolean => autores.some(autor => esAnonimo(autor.nombre));
+
+    const handleResumenChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        const valor = e.target.value;
+        setResumen(valor);
+        setResumenError(valor.length > 4999 ? `Se ha superado el límite de 5000 caracteres (${valor.length}/5000)` : '');
     };
-
-const handleResumenChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const valor = e.target.value;
-    setResumen(valor);
-    
-    if (valor.length > 4999) {
-        setResumenError(`Se ha superado el límite de 5000 caracteres (${valor.length}/5000)`);
-    } else {
-        setResumenError('');
-    }
-};
-
 
     const handleGenerarFormularios = () => {
         const cantidad = parseInt(cantidadAutoresInput, 10);
-        if (isNaN(cantidad) || cantidad < 1 || cantidad > 8) {
-            setError('Por favor, introduce un número válido entre 1 y 8.');
+        if (isNaN(cantidad) || cantidad < 1 || cantidad > 12) {
+            setError('Por favor, introduce un número válido entre 1 y 12.');
             setAutores([]);
             return;
         }
@@ -80,7 +63,6 @@ const handleResumenChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
             autor.id === id ? { ...autor, [campo]: valor } : autor
         ));
 
-        // Verificar si se está escribiendo un nombre anónimo y hay opción a premio activa
         if (campo === 'nombre' && esAnonimo(valor) && opcionAPremio) {
             setAnonymousWarning('Los trabajos anónimos no pueden optar a premio. Se ha desactivado la opción a premio.');
             setOpcionAPremio(false);
@@ -95,16 +77,12 @@ const handleResumenChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     };
 
     const handleTogglePremio = () => {
-        // Verificar si hay autores anónimos antes de activar premio
         if (!opcionAPremio && hayAutoresAnonimos()) {
             setAnonymousWarning('No se puede activar opción a premio porque hay autores anónimos en el trabajo.');
             setTimeout(() => setAnonymousWarning(''), 5000);
             return;
         }
-
         setOpcionAPremio(prev => !prev);
-        
-        // Si se desactiva el premio, limpiar archivo de premio
         if (opcionAPremio) {
             setPremioFile(null);
             setPremioFileError('');
@@ -126,10 +104,9 @@ const handleResumenChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         }
 
         if (resumen.length < 1 || resumen.length > 4999) {
-    setErrorMessageBanner('El resumen debe tener entre 1 y 5000 caracteres.');
-    return;
-}
-
+            setErrorMessageBanner('El resumen debe tener entre 1 y 5000 caracteres.');
+            return;
+        }
 
         const autoresData = autores.map(autor => ({
             nombre: autor.nombre.trim(),
@@ -141,15 +118,8 @@ const handleResumenChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
             return;
         }
 
-        // Validación final: si hay opción a premio, no debe haber autores anónimos
         if (opcionAPremio && autoresData.some(a => esAnonimo(a.nombre))) {
             setErrorMessageBanner('Los trabajos con autores anónimos no pueden optar a premio.');
-            return;
-        }
-
-        // Si hay autores anónimos, no debe haber opción a premio
-        if (autoresData.some(a => esAnonimo(a.nombre)) && opcionAPremio) {
-            setErrorMessageBanner('Los trabajos anónimos no pueden optar a premio.');
             return;
         }
 
@@ -177,13 +147,8 @@ const handleResumenChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
             setSuccessMessage('Trabajo subido exitosamente.');
             setErrorMessageBanner('');
             setTimeout(() => setSuccessMessage(''), 4000);
-        } else if (response.uploadError) {
-            setSuccessMessage('');
-            setErrorMessageBanner('No se pudo subir el trabajo: ' +  response.message);
-            setTimeout(() => setErrorMessageBanner(''), 4000);
         } else {
-            setSuccessMessage('');
-            setErrorMessageBanner('Ocurrió un error inesperado, intente nuevamente.');
+            setErrorMessageBanner('No se pudo subir el trabajo: ' +  response.message);
             setTimeout(() => setErrorMessageBanner(''), 4000);
         }
     }
@@ -191,7 +156,6 @@ const handleResumenChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     return (
         <main className={`${styles.container} ${cactus.className}`}>
             <form className={styles.formContainer} onSubmit={handleSubmit}>
-
                 <div className={styles.formGroup}>
                     <label htmlFor="titulo">Título (máximo 100 caracteres)</label>
                     <input type="text" id="titulo" maxLength={100} placeholder="Escribe el título de tu trabajo" />
@@ -207,7 +171,9 @@ const handleResumenChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
                 </div>
 
                 <div className={styles.formGroup}>
-                    <label htmlFor="cantidadAutores">Cantidad de autores (hasta  8, cargar la cantidad de autores adicionales al que está cargando el formulario) y hacer clic en el botón de check rojo</label>
+                    <label htmlFor="cantidadAutores">
+                        Cantidad de autores (hasta 12, cargar la cantidad de autores adicionales al que está cargando el formulario)
+                    </label>
                     <div className={styles.inputWithButton}>
                         <input
                             type="number"
@@ -216,7 +182,7 @@ const handleResumenChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
                             onChange={(e) => setCantidadAutoresInput(e.target.value)}
                             placeholder="Introduce un número y presiona ✓"
                             min="1"
-                            max="8"
+                            max="12"
                             className={styles.mainInput}
                         />
                         <button type="button" onClick={handleGenerarFormularios} className={styles.checkButton}>✓</button>
@@ -239,11 +205,7 @@ const handleResumenChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
                                     placeholder="Apellido y nombre" 
                                     value={autor.nombre} 
                                     onChange={(e) => handleAutorChange(autor.id, 'nombre', e.target.value)}
-                                    className={esAnonimo(autor.nombre) ? styles.anonymousInput : ''}
                                 />
-                                {esAnonimo(autor.nombre) && (
-                                    <p className={styles.infoText}>⚠️ Autor anónimo - No podrá optar a premio</p>
-                                )}
                             </div>
                             <div className={styles.formGroup}>
                                 <label htmlFor={`afiliacion-${autor.id}`}>Afiliación laboral o académica</label>

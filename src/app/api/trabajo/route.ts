@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-// import { isValidMedicalPdf } from "@/services/pdfValidationService";
+import { isValidMedicalPdf } from "@/services/pdfValidationService";
 import { prisma } from '@/libs/prisma';
 import { v4 as uuidv4 } from 'uuid';
 import { auth } from '@/auth';
@@ -56,22 +56,22 @@ export async function POST(request: NextRequest) {
 
         console.log("Antes del validador")
 
-        // const validationPDF = await isValidMedicalPdf(file);
+        const validationPDF = await isValidMedicalPdf(file);
 
-        // console.log("Resultado: ", validationPDF);
+        console.log("Resultado: ", validationPDF);
 
-        // if (!validationPDF.accept) {
-        //     return NextResponse.json(
-        //         { success: false, message: validationPDF.message },
-        //         { status: 400 }
-        //     );
-        // }
+        if (!validationPDF.accept) {
+            return NextResponse.json(
+                { success: false, message: validationPDF.message },
+                { status: 400 }
+            );
+        }
 
-        // console.log("Este mensaje no debería mostrase, si el archivo no es valido");
+        console.log("Este mensaje no debería mostrase, si el archivo no es valido");
 
-        // if (validationPDF.details?.length !== undefined) {
-        //     console.warn('PDF subido con advertencias', validationPDF.details);
-        // }
+        if (validationPDF.details?.length !== undefined) {
+            console.warn('PDF subido con advertencias', validationPDF.details);
+        }
 
         const workCode = uuidv4();
         

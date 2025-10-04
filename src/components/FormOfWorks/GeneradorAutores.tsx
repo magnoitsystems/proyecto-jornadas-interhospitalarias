@@ -11,16 +11,14 @@ interface Autor {
 
 export default function GeneradorAutores() {
     const [numAutoresInput, setNumAutoresInput] = useState<string>('');
-
     const [autores, setAutores] = useState<Autor[]>([]);
-
     const [error, setError] = useState<string>('');
 
     const handleGenerarFormularios = () => {
         const cantidad = parseInt(numAutoresInput, 10);
 
-        if (isNaN(cantidad) || cantidad < 1 || cantidad > 20) {
-            setError('Por favor, introduce un número válido entre 1 y 20.');
+        if (isNaN(cantidad) || cantidad < 1 || cantidad > 12) {
+            setError('Por favor, introduce un número válido entre 1 y 12.');
             setAutores([]);
             return;
         }
@@ -57,7 +55,7 @@ export default function GeneradorAutores() {
                         id="cantidadAutores"
                         type="number"
                         min="1"
-                        max="20"
+                        max="12"
                         placeholder="Cantidad de autores"
                         value={numAutoresInput}
                         onChange={(e) => setNumAutoresInput(e.target.value)}
