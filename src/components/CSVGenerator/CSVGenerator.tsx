@@ -38,7 +38,6 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
         healthOnly: false
     });
 
-    // Función para escapar valores CSV
     const escapeCSVValue = (value: unknown): string => {
         if (value === null || value === undefined) {
             return '';
@@ -53,13 +52,11 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
         return stringValue;
     };
 
-    // Función para convertir usuarios a CSV
     const usersToCSV = (users: User[]): string => {
         if (users.length === 0) {
             return 'Sin usuarios encontrados';
         }
 
-        // Definir columnas base
         const columns = [
             { key: 'id' as keyof User, label: 'ID' },
             { key: 'name' as keyof User, label: 'Nombre' },
@@ -68,7 +65,6 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
             { key: 'age' as keyof User, label: 'Edad' }
         ];
 
-        // Agregar columnas según filtros
         if (filters.includeProfession) {
             columns.push({ key: 'job' as keyof User, label: 'Profesión' });
         }
@@ -81,10 +77,8 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
             columns.push({ key: 'specialty' as keyof User, label: 'Especialidad' });
         }
 
-        // Crear header
         const header = columns.map(col => escapeCSVValue(col.label)).join(',');
 
-        // Crear filas
         const rows = users.map(user => {
             return columns.map(col => {
                 let value = user[col.key];
@@ -114,12 +108,10 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
         setError(null);
 
         try {
-            // Construir parámetros de filtro
             const params = new URLSearchParams();
             
             if (filters.healthOnly) {
-                // Agregar filtros específicos si es necesario
-                params.append('job', 'medico'); // Ajusta según tus datos
+                params.append('job', 'medico'); 
             }
 
             const response = await fetch(`/api/usuario?${params.toString()}`);
@@ -131,7 +123,6 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
             const data = await response.json();
             const users: User[] = data.responseUser;
 
-            // Filtrar usuarios de salud si es necesario
             let filteredUsers = users;
             if (filters.healthOnly) {
                 filteredUsers = users.filter(user => 
@@ -139,10 +130,8 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
                 );
             }
 
-            // Generar CSV
             const csvContent = usersToCSV(filteredUsers);
             
-            // Crear y descargar archivo
             const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
             const url = window.URL.createObjectURL(blob);
             
