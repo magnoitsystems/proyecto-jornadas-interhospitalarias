@@ -202,20 +202,22 @@ export async function GET(request: NextRequest) {
 	const jobFilters = searchParams.getAll('job');
 
 	const filters: {
-		admin?: boolean;
 		gender?: { in: string[] };
 		job?: { in: string[] };
-	} = { admin: false };
+	} = {};
 
 	if (genderFilters.length > 0) {
 		filters.gender = { in: genderFilters };
 	}
+
 	if (jobFilters.length > 0) {
 		filters.job = { in: jobFilters };
 	}
 
 	try {
-		const responseUser = await prisma.user.findMany({ where: filters });
+		const responseUser = await prisma.user.findMany({
+			where: filters,
+		});
 		return NextResponse.json({ responseUser });
 	} catch (error) {
 		console.error('❌ API Error:', error);
