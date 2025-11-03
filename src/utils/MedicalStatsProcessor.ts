@@ -15,12 +15,12 @@ export class MedicalStatsProcessor {
             select: {
                 idUser: true,
                 name: true,
+				lastname: true,
                 email: true,
                 age: true,
                 gender: true,
                 job: true,
                 specialty: true,
-                // Removido createdAt
             },
             orderBy: {
                 idUser: 'desc' // Ordenar por ID en su lugar
@@ -30,6 +30,7 @@ export class MedicalStatsProcessor {
         return users.map(user => ({
             id: user.idUser,
             name: user.name || 'Sin nombre',
+			lastname: user.lastname || 'Sin apellido',
             email: user.email || 'Sin email',
             age: user.age || 0,
             gender: user.gender || 'No especificado',
