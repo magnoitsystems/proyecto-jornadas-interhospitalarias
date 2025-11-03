@@ -57,6 +57,7 @@ export interface StatsBySpecialty {
 export interface UserData {
     id: number;
     name: string;
+    lastname: string,
     email: string;
     age: number;
     gender: string;

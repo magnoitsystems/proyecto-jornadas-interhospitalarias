@@ -33,6 +33,7 @@ export class CSVGenerator {
         const columns: Array<{key: keyof UserData, label: string}> = [
             { key: 'id', label: 'ID' },
             { key: 'name', label: 'Nombre' },
+            {key: 'lastname', label: 'Apellido'},
             { key: 'email', label: 'Email' },
             { key: 'age', label: 'Edad' }
         ];

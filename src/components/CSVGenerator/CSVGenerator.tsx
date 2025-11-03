@@ -11,6 +11,7 @@ interface CSVGeneratorProps {
 interface User {
     id: number;
     name: string;
+    lastname: string;
     email: string;
     age: number;
     gender: string;
@@ -62,6 +63,7 @@ const CSVGenerator: React.FC<CSVGeneratorProps> = ({ className = '' }) => {
         const columns = [
             { key: 'id' as keyof User, label: 'ID' },
             { key: 'name' as keyof User, label: 'Nombre' },
+            { key: 'lastname' as keyof User, label: 'Apellido'},
             { key: 'email' as keyof User, label: 'Email' },
             { key: 'age' as keyof User, label: 'Edad' }
         ];
